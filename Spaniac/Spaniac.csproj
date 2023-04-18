@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\InicioSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\InicioSesion.Designer.cs">
+      <DependentUpon>InicioSesion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,10 +66,16 @@
     <Compile Include="Modelos\DatosEmpresa.cs" />
     <Compile Include="Modelos\DatosEntrada.cs" />
     <Compile Include="Modelos\DatosProducto.cs" />
+    <Compile Include="Modelos\DatosProveedor.cs" />
+    <Compile Include="Modelos\DatosSalida.cs" />
+    <Compile Include="Modelos\DatosUsuario.cs" />
     <Compile Include="Modelos\Master.cs" />
     <Compile Include="Modelos\Repositorio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\InicioSesion.resx">
+      <DependentUpon>InicioSesion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>

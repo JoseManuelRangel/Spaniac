@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spaniac.Formularios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -109,6 +110,13 @@ namespace Spaniac
             btnIniciar.BackColor = c_botones;
         }
 
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
+            InicioSesion form = new InicioSesion();
+            form.Show();
+            this.Visible = false;
+        }
+
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                                EVENTOS DEL BOTÓN DE REGISTRARSE                                 */
@@ -127,8 +135,6 @@ namespace Spaniac
             }
             btnRegistrarse.BackColor = c_botones;
         }
-
-
 
 
         /*-------------------------------------------------------------------------------------------------*/
@@ -153,5 +159,8 @@ namespace Spaniac
             }
             btnSalir.BackColor = c_botones;
         }
+
+
+        
     }
 }
