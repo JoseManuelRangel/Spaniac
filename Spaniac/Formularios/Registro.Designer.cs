@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registro));
             this.panelIzquierdo = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lbInicio = new System.Windows.Forms.Label();
             this.txtDNI = new System.Windows.Forms.TextBox();
             this.lbDNI = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.cbEmail = new System.Windows.Forms.ComboBox();
             this.imgPerfil = new System.Windows.Forms.PictureBox();
             this.lbErrorImg = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnCargaImg = new System.Windows.Forms.Button();
             this.btnQuitaImg = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
@@ -68,8 +68,8 @@
             this.imgMuestra1 = new System.Windows.Forms.PictureBox();
             this.imgMuestra2 = new System.Windows.Forms.PictureBox();
             this.panelIzquierdo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMuestra1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMuestra2)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +84,17 @@
             this.panelIzquierdo.Size = new System.Drawing.Size(117, 706);
             this.panelIzquierdo.TabIndex = 0;
             this.panelIzquierdo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelIzquierdo_MouseDown);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(12, 21);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(87, 67);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // lbInicio
             // 
@@ -101,8 +112,9 @@
             this.txtDNI.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDNI.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtDNI.Location = new System.Drawing.Point(155, 107);
+            this.txtDNI.Multiline = true;
             this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(357, 24);
+            this.txtDNI.Size = new System.Drawing.Size(357, 33);
             this.txtDNI.TabIndex = 5;
             this.txtDNI.Text = "DNI";
             this.txtDNI.Enter += new System.EventHandler(this.txtDNI_Enter);
@@ -150,8 +162,9 @@
             this.txtNombre.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtNombre.Location = new System.Drawing.Point(155, 193);
+            this.txtNombre.Multiline = true;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(357, 24);
+            this.txtNombre.Size = new System.Drawing.Size(357, 33);
             this.txtNombre.TabIndex = 15;
             this.txtNombre.Text = "Nombre";
             this.txtNombre.Enter += new System.EventHandler(this.txtNombre_Enter);
@@ -186,8 +199,9 @@
             this.txtAp1.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAp1.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtAp1.Location = new System.Drawing.Point(155, 279);
+            this.txtAp1.Multiline = true;
             this.txtAp1.Name = "txtAp1";
-            this.txtAp1.Size = new System.Drawing.Size(150, 24);
+            this.txtAp1.Size = new System.Drawing.Size(150, 32);
             this.txtAp1.TabIndex = 18;
             this.txtAp1.Text = "Apellido 1";
             this.txtAp1.Enter += new System.EventHandler(this.txtAp1_Enter);
@@ -222,8 +236,9 @@
             this.txtAp2.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAp2.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtAp2.Location = new System.Drawing.Point(362, 279);
+            this.txtAp2.Multiline = true;
             this.txtAp2.Name = "txtAp2";
-            this.txtAp2.Size = new System.Drawing.Size(150, 24);
+            this.txtAp2.Size = new System.Drawing.Size(150, 32);
             this.txtAp2.TabIndex = 21;
             this.txtAp2.Text = "Apellido 2";
             this.txtAp2.Enter += new System.EventHandler(this.txtAp2_Enter);
@@ -258,8 +273,9 @@
             this.txtUsuario.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtUsuario.Location = new System.Drawing.Point(155, 367);
+            this.txtUsuario.Multiline = true;
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(357, 24);
+            this.txtUsuario.Size = new System.Drawing.Size(357, 32);
             this.txtUsuario.TabIndex = 24;
             this.txtUsuario.Text = "Usuario";
             this.txtUsuario.Enter += new System.EventHandler(this.txtUsuario_Enter);
@@ -294,8 +310,9 @@
             this.txtClave.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClave.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtClave.Location = new System.Drawing.Point(154, 457);
+            this.txtClave.Multiline = true;
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(361, 24);
+            this.txtClave.Size = new System.Drawing.Size(361, 32);
             this.txtClave.TabIndex = 27;
             this.txtClave.Text = "Contraseña";
             this.txtClave.Enter += new System.EventHandler(this.txtClave_Enter);
@@ -330,8 +347,9 @@
             this.txtConfirma.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirma.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtConfirma.Location = new System.Drawing.Point(155, 545);
+            this.txtConfirma.Multiline = true;
             this.txtConfirma.Name = "txtConfirma";
-            this.txtConfirma.Size = new System.Drawing.Size(361, 24);
+            this.txtConfirma.Size = new System.Drawing.Size(361, 32);
             this.txtConfirma.TabIndex = 30;
             this.txtConfirma.Text = "Confirmar contraseña";
             this.txtConfirma.Enter += new System.EventHandler(this.txtConfirma_Enter);
@@ -393,8 +411,9 @@
             this.txtEmail.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtEmail.Location = new System.Drawing.Point(619, 193);
+            this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(150, 24);
+            this.txtEmail.Size = new System.Drawing.Size(150, 32);
             this.txtEmail.TabIndex = 35;
             this.txtEmail.Text = "ejemplo123";
             this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
@@ -448,17 +467,6 @@
             this.lbErrorImg.TabIndex = 39;
             this.lbErrorImg.Text = "Error";
             this.lbErrorImg.Visible = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(12, 21);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(87, 67);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
             // 
             // btnCargaImg
             // 
@@ -596,8 +604,8 @@
             this.Text = "Registro";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Registro_MouseDown);
             this.panelIzquierdo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMuestra1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMuestra2)).EndInit();
             this.ResumeLayout(false);
