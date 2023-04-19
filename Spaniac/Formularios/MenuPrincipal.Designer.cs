@@ -59,10 +59,10 @@
             // 
             this.imgCerrar.BackColor = System.Drawing.Color.Transparent;
             this.imgCerrar.Image = ((System.Drawing.Image)(resources.GetObject("imgCerrar.Image")));
-            this.imgCerrar.Location = new System.Drawing.Point(676, 3);
+            this.imgCerrar.Location = new System.Drawing.Point(676, 8);
             this.imgCerrar.Name = "imgCerrar";
-            this.imgCerrar.Size = new System.Drawing.Size(36, 36);
-            this.imgCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgCerrar.Size = new System.Drawing.Size(27, 27);
+            this.imgCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgCerrar.TabIndex = 1;
             this.imgCerrar.TabStop = false;
             this.imgCerrar.Click += new System.EventHandler(this.imgCerrar_Click);
@@ -109,6 +109,7 @@
             this.btnRegistrarse.TabIndex = 4;
             this.btnRegistrarse.Text = "REGISTRARSE";
             this.btnRegistrarse.UseVisualStyleBackColor = false;
+            this.btnRegistrarse.Click += new System.EventHandler(this.btnRegistrarse_Click);
             this.btnRegistrarse.MouseEnter += new System.EventHandler(this.btnRegistrarse_MouseEnter);
             this.btnRegistrarse.MouseLeave += new System.EventHandler(this.btnRegistrarse_MouseLeave);
             // 
@@ -144,6 +145,7 @@
             this.Controls.Add(this.imgMinimizar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MenuPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuPrincipal_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.imgMinimizar)).EndInit();

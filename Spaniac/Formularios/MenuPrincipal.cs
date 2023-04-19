@@ -112,7 +112,7 @@ namespace Spaniac
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            InicioSesion form = new InicioSesion();
+            InicioSesion form = new InicioSesion(this);
             form.Show();
             this.Visible = false;
         }
@@ -134,6 +134,13 @@ namespace Spaniac
                 this.Cursor = Cursors.Default;
             }
             btnRegistrarse.BackColor = c_botones;
+        }
+
+        private void btnRegistrarse_Click(object sender, EventArgs e)
+        {
+            Registro form = new Registro(this);
+            form.Show();
+            this.Visible = false;
         }
 
 
@@ -159,7 +166,6 @@ namespace Spaniac
             }
             btnSalir.BackColor = c_botones;
         }
-
 
         
     }
