@@ -30,34 +30,34 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Notificaciones));
             this.panelIzquierdo = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.logoEmpresa = new System.Windows.Forms.PictureBox();
             this.lbTitulo = new System.Windows.Forms.Label();
             this.lbDescAviso = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.panelIzquierdo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).BeginInit();
             this.SuspendLayout();
             // 
             // panelIzquierdo
             // 
             this.panelIzquierdo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelIzquierdo.BackgroundImage")));
-            this.panelIzquierdo.Controls.Add(this.pictureBox2);
+            this.panelIzquierdo.Controls.Add(this.logoEmpresa);
             this.panelIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.panelIzquierdo.Name = "panelIzquierdo";
             this.panelIzquierdo.Size = new System.Drawing.Size(117, 216);
             this.panelIzquierdo.TabIndex = 0;
             // 
-            // pictureBox2
+            // logoEmpresa
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(12, 21);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(87, 67);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.logoEmpresa.BackColor = System.Drawing.Color.Transparent;
+            this.logoEmpresa.Image = ((System.Drawing.Image)(resources.GetObject("logoEmpresa.Image")));
+            this.logoEmpresa.Location = new System.Drawing.Point(12, 21);
+            this.logoEmpresa.Name = "logoEmpresa";
+            this.logoEmpresa.Size = new System.Drawing.Size(87, 67);
+            this.logoEmpresa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoEmpresa.TabIndex = 1;
+            this.logoEmpresa.TabStop = false;
             // 
             // lbTitulo
             // 
@@ -93,6 +93,7 @@
             this.btnAceptar.TabIndex = 41;
             this.btnAceptar.Text = "ACEPTAR";
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // Notificaciones
             // 
@@ -106,9 +107,10 @@
             this.Controls.Add(this.panelIzquierdo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Notificaciones";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notificaciones";
             this.panelIzquierdo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,7 +119,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panelIzquierdo;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox logoEmpresa;
         private System.Windows.Forms.Label lbTitulo;
         private System.Windows.Forms.Label lbDescAviso;
         private System.Windows.Forms.Button btnAceptar;

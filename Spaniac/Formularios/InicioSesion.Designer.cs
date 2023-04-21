@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InicioSesion));
             this.panelIzquierdo = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.logoEmpresa = new System.Windows.Forms.PictureBox();
             this.lbInicio = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.imgUsuario = new System.Windows.Forms.PictureBox();
@@ -44,7 +44,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelIzquierdo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgClave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMuestra)).BeginInit();
@@ -54,7 +54,7 @@
             // 
             this.panelIzquierdo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelIzquierdo.BackgroundImage")));
             this.panelIzquierdo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panelIzquierdo.Controls.Add(this.pictureBox2);
+            this.panelIzquierdo.Controls.Add(this.logoEmpresa);
             this.panelIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.panelIzquierdo.Name = "panelIzquierdo";
@@ -62,16 +62,16 @@
             this.panelIzquierdo.TabIndex = 0;
             this.panelIzquierdo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelIzquierdo_MouseDown);
             // 
-            // pictureBox2
+            // logoEmpresa
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(12, 21);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(87, 67);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.logoEmpresa.BackColor = System.Drawing.Color.Transparent;
+            this.logoEmpresa.Image = ((System.Drawing.Image)(resources.GetObject("logoEmpresa.Image")));
+            this.logoEmpresa.Location = new System.Drawing.Point(12, 21);
+            this.logoEmpresa.Name = "logoEmpresa";
+            this.logoEmpresa.Size = new System.Drawing.Size(87, 67);
+            this.logoEmpresa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoEmpresa.TabIndex = 1;
+            this.logoEmpresa.TabStop = false;
             // 
             // lbInicio
             // 
@@ -124,9 +124,8 @@
             this.txtClave.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClave.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtClave.Location = new System.Drawing.Point(185, 161);
-            this.txtClave.Multiline = true;
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(357, 32);
+            this.txtClave.Size = new System.Drawing.Size(349, 24);
             this.txtClave.TabIndex = 6;
             this.txtClave.Text = "Contraseña";
             this.txtClave.Enter += new System.EventHandler(this.txtClave_Enter);
@@ -146,6 +145,7 @@
             this.btnEntrar.TabIndex = 8;
             this.btnEntrar.Text = "ENTRAR";
             this.btnEntrar.UseVisualStyleBackColor = false;
+            this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
             // btnCancelar
             // 
@@ -241,7 +241,7 @@
             this.Text = "InicioSesion";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.InicioSesion_MouseDown);
             this.panelIzquierdo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgClave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMuestra)).EndInit();
@@ -263,7 +263,7 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.PictureBox imgMuestra;
         private System.Windows.Forms.Label lbError;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox logoEmpresa;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
     }

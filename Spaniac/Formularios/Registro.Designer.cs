@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registro));
             this.panelIzquierdo = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.logoEmpresa = new System.Windows.Forms.PictureBox();
             this.lbInicio = new System.Windows.Forms.Label();
             this.txtDNI = new System.Windows.Forms.TextBox();
             this.lbDNI = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.txtConfirma = new System.Windows.Forms.TextBox();
             this.lbConfirma = new System.Windows.Forms.Label();
             this.cbRol = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbErrorRol = new System.Windows.Forms.Label();
             this.lbErrorEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lbEmail = new System.Windows.Forms.Label();
@@ -68,7 +68,7 @@
             this.imgMuestra1 = new System.Windows.Forms.PictureBox();
             this.imgMuestra2 = new System.Windows.Forms.PictureBox();
             this.panelIzquierdo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMuestra1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMuestra2)).BeginInit();
@@ -77,7 +77,7 @@
             // panelIzquierdo
             // 
             this.panelIzquierdo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelIzquierdo.BackgroundImage")));
-            this.panelIzquierdo.Controls.Add(this.pictureBox2);
+            this.panelIzquierdo.Controls.Add(this.logoEmpresa);
             this.panelIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.panelIzquierdo.Name = "panelIzquierdo";
@@ -85,16 +85,16 @@
             this.panelIzquierdo.TabIndex = 0;
             this.panelIzquierdo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelIzquierdo_MouseDown);
             // 
-            // pictureBox2
+            // logoEmpresa
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(12, 21);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(87, 67);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.logoEmpresa.BackColor = System.Drawing.Color.Transparent;
+            this.logoEmpresa.Image = ((System.Drawing.Image)(resources.GetObject("logoEmpresa.Image")));
+            this.logoEmpresa.Location = new System.Drawing.Point(12, 21);
+            this.logoEmpresa.Name = "logoEmpresa";
+            this.logoEmpresa.Size = new System.Drawing.Size(87, 67);
+            this.logoEmpresa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoEmpresa.TabIndex = 0;
+            this.logoEmpresa.TabStop = false;
             // 
             // lbInicio
             // 
@@ -117,6 +117,7 @@
             this.txtDNI.Size = new System.Drawing.Size(357, 33);
             this.txtDNI.TabIndex = 5;
             this.txtDNI.Text = "DNI";
+            this.txtDNI.TextChanged += new System.EventHandler(this.txtDNI_TextChanged);
             this.txtDNI.Enter += new System.EventHandler(this.txtDNI_Enter);
             this.txtDNI.Leave += new System.EventHandler(this.txtDNI_Leave);
             // 
@@ -167,6 +168,7 @@
             this.txtNombre.Size = new System.Drawing.Size(357, 33);
             this.txtNombre.TabIndex = 15;
             this.txtNombre.Text = "Nombre";
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             this.txtNombre.Enter += new System.EventHandler(this.txtNombre_Enter);
             this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
             // 
@@ -204,6 +206,7 @@
             this.txtAp1.Size = new System.Drawing.Size(150, 32);
             this.txtAp1.TabIndex = 18;
             this.txtAp1.Text = "Apellido 1";
+            this.txtAp1.TextChanged += new System.EventHandler(this.txtAp1_TextChanged);
             this.txtAp1.Enter += new System.EventHandler(this.txtAp1_Enter);
             this.txtAp1.Leave += new System.EventHandler(this.txtAp1_Leave);
             // 
@@ -241,6 +244,7 @@
             this.txtAp2.Size = new System.Drawing.Size(150, 32);
             this.txtAp2.TabIndex = 21;
             this.txtAp2.Text = "Apellido 2";
+            this.txtAp2.TextChanged += new System.EventHandler(this.txtAp2_TextChanged);
             this.txtAp2.Enter += new System.EventHandler(this.txtAp2_Enter);
             this.txtAp2.Leave += new System.EventHandler(this.txtAp2_Leave);
             // 
@@ -278,6 +282,7 @@
             this.txtUsuario.Size = new System.Drawing.Size(357, 32);
             this.txtUsuario.TabIndex = 24;
             this.txtUsuario.Text = "Usuario";
+            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             this.txtUsuario.Enter += new System.EventHandler(this.txtUsuario_Enter);
             this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
             // 
@@ -295,11 +300,11 @@
             // 
             this.lbErrorClave.AutoSize = true;
             this.lbErrorClave.BackColor = System.Drawing.Color.White;
-            this.lbErrorClave.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorClave.Font = new System.Drawing.Font("Reem Kufi", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbErrorClave.ForeColor = System.Drawing.Color.Red;
             this.lbErrorClave.Location = new System.Drawing.Point(150, 500);
             this.lbErrorClave.Name = "lbErrorClave";
-            this.lbErrorClave.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorClave.Size = new System.Drawing.Size(40, 22);
             this.lbErrorClave.TabIndex = 28;
             this.lbErrorClave.Text = "Error";
             this.lbErrorClave.Visible = false;
@@ -310,11 +315,11 @@
             this.txtClave.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClave.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtClave.Location = new System.Drawing.Point(154, 457);
-            this.txtClave.Multiline = true;
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(361, 32);
+            this.txtClave.Size = new System.Drawing.Size(361, 24);
             this.txtClave.TabIndex = 27;
             this.txtClave.Text = "Contraseña";
+            this.txtClave.TextChanged += new System.EventHandler(this.txtClave_TextChanged);
             this.txtClave.Enter += new System.EventHandler(this.txtClave_Enter);
             this.txtClave.Leave += new System.EventHandler(this.txtClave_Leave);
             // 
@@ -347,11 +352,11 @@
             this.txtConfirma.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirma.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtConfirma.Location = new System.Drawing.Point(155, 545);
-            this.txtConfirma.Multiline = true;
             this.txtConfirma.Name = "txtConfirma";
-            this.txtConfirma.Size = new System.Drawing.Size(361, 32);
+            this.txtConfirma.Size = new System.Drawing.Size(361, 24);
             this.txtConfirma.TabIndex = 30;
             this.txtConfirma.Text = "Confirmar contraseña";
+            this.txtConfirma.TextChanged += new System.EventHandler(this.txtConfirma_TextChanged);
             this.txtConfirma.Enter += new System.EventHandler(this.txtConfirma_Enter);
             this.txtConfirma.Leave += new System.EventHandler(this.txtConfirma_Leave);
             // 
@@ -372,25 +377,27 @@
             this.cbRol.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRol.FormattingEnabled = true;
             this.cbRol.Items.AddRange(new object[] {
+            "",
             "Administrador",
             "Empleado"});
             this.cbRol.Location = new System.Drawing.Point(619, 104);
             this.cbRol.Name = "cbRol";
             this.cbRol.Size = new System.Drawing.Size(321, 36);
             this.cbRol.TabIndex = 32;
+            this.cbRol.SelectedIndexChanged += new System.EventHandler(this.cbRol_SelectedIndexChanged);
             // 
-            // label1
+            // lbErrorRol
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(615, 150);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 23);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "Error";
-            this.label1.Visible = false;
+            this.lbErrorRol.AutoSize = true;
+            this.lbErrorRol.BackColor = System.Drawing.Color.White;
+            this.lbErrorRol.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorRol.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorRol.Location = new System.Drawing.Point(615, 150);
+            this.lbErrorRol.Name = "lbErrorRol";
+            this.lbErrorRol.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorRol.TabIndex = 33;
+            this.lbErrorRol.Text = "Error";
+            this.lbErrorRol.Visible = false;
             // 
             // lbErrorEmail
             // 
@@ -416,6 +423,7 @@
             this.txtEmail.Size = new System.Drawing.Size(150, 32);
             this.txtEmail.TabIndex = 35;
             this.txtEmail.Text = "ejemplo123";
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
             this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
@@ -436,6 +444,7 @@
             this.cbEmail.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEmail.FormattingEnabled = true;
             this.cbEmail.Items.AddRange(new object[] {
+            "",
             "@hotmail.es",
             "@hotmail.com",
             "@outlook.com",
@@ -482,6 +491,7 @@
             this.btnCargaImg.TabIndex = 40;
             this.btnCargaImg.Text = "CARGAR";
             this.btnCargaImg.UseVisualStyleBackColor = false;
+            this.btnCargaImg.Click += new System.EventHandler(this.btnCargaImg_Click);
             // 
             // btnQuitaImg
             // 
@@ -497,6 +507,7 @@
             this.btnQuitaImg.TabIndex = 41;
             this.btnQuitaImg.Text = "QUITAR";
             this.btnQuitaImg.UseVisualStyleBackColor = false;
+            this.btnQuitaImg.Click += new System.EventHandler(this.btnQuitaImg_Click);
             // 
             // btnRegistrar
             // 
@@ -573,7 +584,7 @@
             this.Controls.Add(this.lbErrorEmail);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lbEmail);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbErrorRol);
             this.Controls.Add(this.cbRol);
             this.Controls.Add(this.lbErrorConfirma);
             this.Controls.Add(this.txtConfirma);
@@ -604,7 +615,7 @@
             this.Text = "Registro";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Registro_MouseDown);
             this.panelIzquierdo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMuestra1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMuestra2)).EndInit();
@@ -639,12 +650,12 @@
         private System.Windows.Forms.TextBox txtConfirma;
         private System.Windows.Forms.Label lbConfirma;
         private System.Windows.Forms.ComboBox cbRol;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbErrorRol;
         private System.Windows.Forms.Label lbErrorEmail;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lbEmail;
         private System.Windows.Forms.ComboBox cbEmail;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox logoEmpresa;
         private System.Windows.Forms.PictureBox imgPerfil;
         private System.Windows.Forms.Label lbErrorImg;
         private System.Windows.Forms.Button btnCargaImg;

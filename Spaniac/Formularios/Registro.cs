@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -22,6 +23,10 @@ namespace Spaniac.Formularios
         /* Variable que controla el formulario anterior para no generar nuevos formularios en caso de querer cancelar el inicio de sesión. */
         MenuPrincipal principal;
 
+        bool dniCorrect = false, nombreCorrect = false, ap1Correct = false, ap2Correct = false, usuarioCorrect = false, 
+            claveCorrect = false, confCorrect = false, rolCorrect = false, emailCorrect = false, imgCorrect = false;
+
+        string conection = "server=localhost; database=Spaniac; integrated security = true";
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
@@ -30,6 +35,22 @@ namespace Spaniac.Formularios
         {
             InitializeComponent();
             principal = form;
+
+            /* Carga de imágenes en tiempo de ejecución. */
+            panelIzquierdo.BackgroundImage = Image.FromFile("Fondo.png");
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+            imgMuestra1.Image = Image.FromFile("ojoAbierto.png");
+            imgMuestra2.Image = Image.FromFile("ojoAbierto.png");
+
+            /* Inicializando errores de registro. */
+            lbErrorRol.Text = "Error, selecciona un rol.";
+            lbErrorRol.Visible = true;
+
+            lbErrorEmail.Text = "Selecciona una extensión.";
+            lbErrorEmail.Visible = true;
+
+            lbErrorImg.Text = "Selecciona una imagen de perfil.";
+            lbErrorImg.Visible = true;
         }
 
         private void Registro_MouseDown(object sender, MouseEventArgs e)
@@ -77,7 +98,15 @@ namespace Spaniac.Formularios
             {
                 txtDNI.Text = "DNI";
                 txtDNI.ForeColor = Color.DarkGray;
+                lbDNI.ForeColor = Color.Black;
+                lbErrorDNI.Text = "";
+                lbErrorDNI.Visible = false;
             }
+        }
+
+        private void txtDNI_TextChanged(object sender, EventArgs e)
+        {
+            compruebaDNI();
         }
 
 
@@ -99,7 +128,15 @@ namespace Spaniac.Formularios
             {
                 txtNombre.Text = "Nombre";
                 txtNombre.ForeColor = Color.DarkGray;
+                lbNombre.ForeColor = Color.Black;
+                lbErrorNombre.Text = "";
+                lbErrorNombre.Visible = false;
             }
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            compruebaNombre();
         }
 
 
@@ -121,7 +158,16 @@ namespace Spaniac.Formularios
             {
                 txtAp1.Text = "Apellido 1";
                 txtAp1.ForeColor = Color.DarkGray;
+                lbAp1.ForeColor = Color.Black;
+                lbErrorAp1.Text = "";
+                lbErrorAp1.Visible = false;
             }
+        }
+
+        private void txtAp1_TextChanged(object sender, EventArgs e)
+        {
+            string apellido = txtAp1.Text.ToString();
+            compruebaApellidos(apellido, 1);
         }
 
 
@@ -143,7 +189,16 @@ namespace Spaniac.Formularios
             {
                 txtAp2.Text = "Apellido 2";
                 txtAp2.ForeColor = Color.DarkGray;
+                lbAp2.ForeColor = Color.Black;
+                lbErrorAp2.Text = "";
+                lbErrorAp2.Visible = false;
             }
+        }
+
+        private void txtAp2_TextChanged(object sender, EventArgs e)
+        {
+            string apellido = txtAp2.Text.ToString();
+            compruebaApellidos(apellido, 2);
         }
 
 
@@ -165,7 +220,15 @@ namespace Spaniac.Formularios
             {
                 txtUsuario.Text = "Usuario";
                 txtUsuario.ForeColor = Color.DarkGray;
+                lbUsuario.ForeColor = Color.Black;
+                lbErrorUsuario.Text = "";
+                lbErrorUsuario.Visible = false;
             }
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+            compruebaUsuario();
         }
 
 
@@ -197,7 +260,15 @@ namespace Spaniac.Formularios
                 txtClave.UseSystemPasswordChar = false;
                 txtClave.Text = "Contraseña";
                 txtClave.ForeColor = Color.DarkGray;
+                lbClave.ForeColor = Color.Black;
+                lbErrorClave.Text = "";
+                lbErrorClave.Visible = false;
             }
+        }
+
+        private void txtClave_TextChanged(object sender, EventArgs e)
+        {
+            compruebaContraseña();
         }
 
 
@@ -226,8 +297,36 @@ namespace Spaniac.Formularios
         {
             if(txtConfirma.Text.Equals(""))
             {
+                txtConfirma.UseSystemPasswordChar = false;
                 txtConfirma.Text = "Confirmar contraseña";
                 txtConfirma.ForeColor = Color.DarkGray;
+                lbConfirma.ForeColor = Color.Black;
+                lbErrorConfirma.Text = "";
+                lbErrorConfirma.Visible = false;
+            }
+        }
+
+        private void txtConfirma_TextChanged(object sender, EventArgs e)
+        {
+            compruebaConfirmacion();
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                          GESTIÓN DE EVENTOS DEL COMBOBOX DE ROLES                              */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void cbRol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbRol.SelectedIndex != 0)
+            {
+                lbErrorRol.Text = "";
+                lbErrorRol.Visible = false;
+                rolCorrect = false;
+            } else
+            {
+                lbErrorRol.Text = "Error, selecciona un rol.";
+                lbErrorRol.Visible = true;
+                rolCorrect = true;
             }
         }
 
@@ -251,6 +350,11 @@ namespace Spaniac.Formularios
                 txtEmail.Text = "ejemplo123";
                 txtEmail.ForeColor = Color.DarkGray;
             }
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            compruebaEmail();
         }
 
 
@@ -313,6 +417,394 @@ namespace Spaniac.Formularios
         private void imgMuestra2_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                   GESTIÓN DE EVENTOS DE LOS BOTONES CARGAR Y QUITAR IMAGEN                      */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void btnCargaImg_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog buscador = new OpenFileDialog();
+            buscador.Filter = "*.jpg | *.png";
+            buscador.FileName = "";
+            buscador.Title = "Cargar imagen de perfil";
+            buscador.InitialDirectory = "C:\\";
+
+            if(buscador.ShowDialog() == DialogResult.OK)
+            {
+                String direccion = buscador.FileName;
+
+                imgPerfil.ImageLocation = direccion;
+                imgPerfil.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                lbErrorImg.Text = "";
+                lbErrorImg.Visible = false;
+
+                imgCorrect = true;
+            }
+        }
+
+        private void btnQuitaImg_Click(object sender, EventArgs e)
+        {
+            if (imgPerfil.Image != null)
+            {
+                imgPerfil.Image = null;
+
+                lbErrorImg.Text = "Selecciona una imagen de perfil.";
+                lbErrorImg.Visible = true;
+
+                imgCorrect = false;
+            }
+        }
+
+
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                                    MÉTODOS PRIVADOS DEL FORMULARIO                              */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void compruebaDNI()
+        {
+            string dni = txtDNI.Text.ToString();
+
+            if(dni.Length != 9 || (dni.Length == 9 && !Char.IsLetter(dni, (dni.Length - 1))))
+            {
+                lbErrorDNI.Text = "DNI Inválido.";
+                lbErrorDNI.Visible = true;
+                lbDNI.ForeColor = Color.Red;
+                dniCorrect = false;
+            } else if(dni.Length == 9 && Char.IsLetter(dni, (dni.Length - 1)) && !dni.Equals("DNI"))
+            {
+                lbErrorDNI.Text = "";
+                lbErrorDNI.Visible = false;
+                lbDNI.ForeColor = Color.Green;
+                dniCorrect = true;
+            } else if(dni.Equals("DNI"))
+            {
+                lbErrorDNI.Text = "";
+                lbErrorDNI.Visible = false;
+                lbDNI.ForeColor = Color.Black;
+                dniCorrect = false;
+            }
+        }
+
+        
+
+        private void compruebaNombre()
+        {
+            string nombre = txtNombre.Text.ToString();
+
+            if(nombre.Length == 0 || nombre.Length > 30)
+            {
+                lbErrorNombre.Visible = true;
+                lbNombre.ForeColor = Color.Red;
+
+                if(nombre.Length == 0)
+                {
+                    lbErrorNombre.Text = "El nombre no puede estar vacío.";
+                } else if(nombre.Length > 30)
+                {
+                    lbErrorNombre.Text = "El nombre es demasiado largo.";
+                }
+
+                nombreCorrect = false;
+            } else if(nombre.Length > 0 && !nombre.Equals("Nombre"))
+            {
+                lbErrorNombre.Text = "";
+                lbErrorNombre.Visible = false;
+                lbNombre.ForeColor = Color.Green;
+                nombreCorrect = true;
+            } else if(nombre.Equals("Nombre"))
+            {
+                lbErrorNombre.Text = "";
+                lbErrorNombre.Visible = false;
+                lbNombre.ForeColor = Color.Black;
+                nombreCorrect = false;
+            }
+        }
+
+        private void compruebaApellidos(string apellido, int numAp)
+        {
+            switch(numAp)
+            {
+                case 1:
+                    if (apellido.Length == 0 || apellido.Length > 20)
+                    {
+                        lbErrorAp1.Visible = true;
+                        lbAp1.ForeColor = Color.Red;
+
+                        if (apellido.Length == 0)
+                        {
+                            lbErrorAp1.Text = "El apellido no puede estar vacío.";
+                        }
+                        else if (apellido.Length > 20)
+                        {
+                            lbErrorAp1.Text = "El apellido es demasiado largo.";
+                        }
+
+                        ap1Correct = false;
+                    }
+                    else if (apellido.Length > 0 && !apellido.Equals("Apellido 1"))
+                    {
+                        lbErrorAp1.Text = "";
+                        lbErrorAp1.Visible = false;
+                        lbAp1.ForeColor = Color.Green;
+                        ap1Correct = true;
+                    }
+                    else if(apellido.Equals("Apellido 1"))
+                    {
+                        lbErrorAp1.Text = "";
+                        lbErrorAp1.Visible = false;
+                        lbAp1.ForeColor = Color.Black;
+                        ap1Correct = false;
+                    }
+                    break;
+                case 2:
+                    if (apellido.Length == 0 || apellido.Length > 20)
+                    {
+                        lbErrorAp2.Visible = true;
+                        lbAp2.ForeColor = Color.Red;
+
+                        if (apellido.Length == 0)
+                        {
+                            lbErrorAp2.Text = "El apellido no puede estar vacío.";
+                        }
+                        else if (apellido.Length > 20)
+                        {
+                            lbErrorAp2.Text = "El apellido es demasiado largo.";
+                        }
+
+                        ap2Correct = false;
+                    }
+                    else if (apellido.Length > 0 && !apellido.Equals("Apellido 2"))
+                    {
+                        lbErrorAp2.Text = "";
+                        lbErrorAp2.Visible = false;
+                        lbAp2.ForeColor = Color.Green;
+                        ap2Correct = true;
+                    }
+                    else if (apellido.Equals("Apellido 2"))
+                    {
+                        lbErrorAp2.Text = "";
+                        lbErrorAp2.Visible = false;
+                        lbAp2.ForeColor = Color.Black;
+                        ap2Correct = false;
+                    }
+                    break;
+            }
+        }
+
+        private void compruebaUsuario()
+        {
+            string usuario = txtUsuario.Text.ToString();
+
+            try
+            {
+                if (usuario.Length == 0 || usuario.Length > 20)
+                {
+                    lbErrorUsuario.Visible = true;
+                    lbUsuario.ForeColor = Color.Red;
+
+                    if (usuario.Length == 0)
+                    {
+                        lbErrorUsuario.Text = "El usuario no puede estar vacío.";
+                    }
+                    else if (usuario.Length > 20)
+                    {
+                        lbErrorUsuario.Text = "El usuario es demasiado largo.";
+                    }
+
+                    usuarioCorrect = false;
+                }
+                else if (usuario.Length > 0 && !usuario.Equals("Usuario"))
+                {
+                    string sql = "SELECT * FROM Usuario";
+
+                    SqlConnection cnx = new SqlConnection(conection);
+                    cnx.Open();
+
+                    SqlCommand command = new SqlCommand(sql, cnx);
+                    SqlDataReader lector = command.ExecuteReader();
+
+                    while(lector.Read())
+                    {
+                        if(lector.GetString(4).Equals(usuario))
+                        {
+                            lbErrorUsuario.Text = "El usuario ya existe.";
+                            lbErrorUsuario.Visible = true;
+
+                            lbUsuario.ForeColor = Color.Red;
+
+                            usuarioCorrect = false;
+                        } else
+                        {
+                            lbErrorUsuario.Text = "";
+                            lbErrorUsuario.Visible = false;
+
+                            lbUsuario.ForeColor = Color.Green;
+
+                            usuarioCorrect = true;
+                        }
+                    }
+                }
+                else if (usuario.Equals("Usuario"))
+                {
+                    lbErrorUsuario.Text = "";
+                    lbErrorUsuario.Visible = false;
+                    lbUsuario.ForeColor = Color.Black;
+                    usuarioCorrect = false;
+                }
+            } catch(Exception ex)
+            {
+                Notificaciones form = new Notificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void compruebaContraseña()
+        {
+            string contraseña = txtClave.Text.ToString();
+
+            if(algoritmoContraseña(contraseña))
+            {
+                lbErrorClave.Text = "";
+                lbErrorClave.Visible = false;
+
+                lbClave.ForeColor = Color.Green;
+
+                claveCorrect = true;
+            } else if(!algoritmoContraseña(contraseña) && contraseña.Equals("Contraseña"))
+            {
+                lbErrorClave.Text = "";
+                lbErrorClave.Visible = false;
+
+                lbClave.ForeColor = Color.Black;
+
+                claveCorrect = false;
+            } else
+            {
+                lbErrorClave.Text = "Debe incluir mayusculas, minúsculas, signos y números siendo superior de 8 caracteres.";
+                lbErrorClave.Visible = true;
+
+                lbClave.ForeColor = Color.Red;
+
+                claveCorrect = false;
+            }
+        }
+
+        private void compruebaConfirmacion()
+        {
+            string conf = txtConfirma.Text.ToString();
+            string contraseña = txtClave.Text.ToString();
+
+            if(!conf.Equals(contraseña) || (conf.Equals(contraseña) && contraseña.Equals("Contraseña")))
+            {
+                if(!conf.Equals(contraseña))
+                {
+                    lbErrorConfirma.Text = "Las contraseñas deben ser iguales.";
+                } else if(conf.Equals(contraseña) && contraseña.Equals("Contraseña"))
+                {
+                    lbErrorConfirma.Text = "Escribe una contraseña antes.";
+                }
+                
+                lbErrorConfirma.Visible = true;
+
+                lbConfirma.ForeColor = Color.Red;
+
+                confCorrect = false;
+            } else if(conf.Equals(contraseña))
+            {
+                lbErrorConfirma.Text = "";
+                lbErrorConfirma.Visible = false;
+
+                lbConfirma.ForeColor = Color.Green;
+
+                confCorrect = true;
+            } else if(!conf.Equals(contraseña) && conf.Equals("Confirmar contraseña"))
+            {
+                lbErrorConfirma.Text = "";
+                lbErrorConfirma.Visible = false;
+
+                lbErrorConfirma.ForeColor = Color.Black;
+
+                confCorrect = false;
+            }
+        }
+
+        private void compruebaEmail()
+        {
+            int extension = cbEmail.SelectedIndex;
+            if(extension == 0)
+            {
+                lbErrorEmail.Text = "Selecciona una extensión.";
+                lbErrorEmail.Visible = true;
+            } else
+            {
+                string email = txtEmail.Text.ToString();
+                if(email.Length == 0 || email.Equals("ejemplo123"))
+                {
+                    if(email.Length == 0)
+                    {
+                        lbErrorEmail.Text = "Email vacío.";
+                        lbErrorEmail.Visible = true;
+                        lbEmail.ForeColor = Color.Red;
+                    } else if(email.Equals("ejemplo123"))
+                    {
+                        lbErrorEmail.Text = "";
+                        lbErrorEmail.Visible = false;
+                        lbEmail.ForeColor = Color.Black;
+                    }
+
+                    emailCorrect = false;
+                } else
+                {
+                    email += cbEmail.Text.ToString();
+
+                    if(email.Length > 100)
+                    {
+                        lbErrorEmail.Text = "Error, email demasiado largo.";
+                        lbErrorEmail.Visible = true;
+                        lbEmail.ForeColor = Color.Red;
+                    } else
+                    {
+                        lbErrorEmail.Text = "";
+                        lbErrorEmail.Visible = false;
+                        lbEmail.ForeColor = Color.Green;
+                    }
+                }
+            }
+        }
+
+        private bool algoritmoContraseña(string contraseña)
+        {
+            bool mayus = false, minus = false, num = false, caraesp = false;
+            for (int i = 0; i < contraseña.Length; i++)
+            {
+                if (Char.IsUpper(contraseña, i))
+                {
+                    mayus = true;
+                }
+                else if (Char.IsLower(contraseña, i))
+                {
+                    minus = true;
+                }
+                else if (Char.IsDigit(contraseña, i))
+                {
+                    num = true;
+                }
+                else
+                {
+                    caraesp = true;
+                }
+            }
+
+            if (mayus && minus && num && caraesp && contraseña.Length >= 8 && !contraseña.Equals("Contraseña"))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

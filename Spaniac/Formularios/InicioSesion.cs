@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -25,6 +26,9 @@ namespace Spaniac.Formularios
         /* Variable que controla el formulario anterior para no generar nuevos formularios en caso de querer cancelar el inicio de sesión. */
         MenuPrincipal principal;
 
+        /* Variable que muestra con "true" o "false" si ha encontrado al usuario que realiza el login. */
+        bool encontrado;
+
         /*-------------------------------------------------------------------------------------------------*/
         /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
         /*-------------------------------------------------------------------------------------------------*/
@@ -32,6 +36,13 @@ namespace Spaniac.Formularios
         {
             InitializeComponent();
             principal = form;
+
+            /* Carga de imágenes en tiempo de ejecución. */
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+            imgUsuario.Image = Image.FromFile("persona.png");
+            imgClave.Image = Image.FromFile("Candado.png");
+            imgMuestra.Image = Image.FromFile("ojoAbierto.png");
+            panelIzquierdo.BackgroundImage = Image.FromFile("Fondo.png");
         }
 
         private void InicioSesion_MouseDown(object sender, MouseEventArgs e)
@@ -81,8 +92,6 @@ namespace Spaniac.Formularios
                 txtUsuario.ForeColor = Color.DarkGray;
             }
         }
-
-
 
 
         /*-------------------------------------------------------------------------------------------------*/
@@ -147,6 +156,54 @@ namespace Spaniac.Formularios
 
 
         /*-------------------------------------------------------------------------------------------------*/
+        /*                             GESTIÓN DE EVENTOS DEL BOTÓN ENTRAR                                 */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string usuario, clave, sql;
+
+                encontrado = false;
+                usuario = txtUsuario.Text.ToString();
+                clave = txtClave.Text.ToString();
+                sql = "SELECT * FROM Usuario WHERE usuario='" + usuario + "'";
+                
+                SqlConnection cnx = new SqlConnection(conection);
+                cnx.Open();
+                
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                while(lector.Read())
+                {
+                    if(lector.GetString(4).Equals(usuario) && lector.GetString(5).Equals(clave)) 
+                    {
+                        MenuPrograma form = new MenuPrograma();
+                        form.Show();
+                        this.Visible = false;
+
+                        encontrado = true;
+                    }
+                }
+
+                if(encontrado == false)
+                {
+                    txtUsuario.Text = "";
+                    txtClave.Text = "";
+
+                    lbError.Visible = true;
+                    lbError.Text = "Usuario y/o contraseña incorrecto/s.";
+                }
+            } catch (Exception ex)
+            {
+                Notificaciones form = new Notificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
         /*                             GESTIÓN DE EVENTOS DEL BOTÓN CANCELAR                               */
         /*-------------------------------------------------------------------------------------------------*/
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -154,5 +211,7 @@ namespace Spaniac.Formularios
             this.Close();
             principal.Visible = true;
         }
+
+       
     }
 }

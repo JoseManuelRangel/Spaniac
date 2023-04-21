@@ -29,6 +29,12 @@ namespace Spaniac
         public MenuPrincipal()
         {
             InitializeComponent();
+
+            /* Carga de imágenes en tiempo de ejecución. */
+            imgCerrar.Image = Image.FromFile("Cerrar.png");
+            imgMinimizar.Image = Image.FromFile("Minimizar.png");
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+            this.BackgroundImage = Image.FromFile("Fondo.png");
         }
 
         private void MenuPrincipal_MouseDown(object sender, MouseEventArgs e)

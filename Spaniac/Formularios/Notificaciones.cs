@@ -12,9 +12,21 @@ namespace Spaniac.Formularios
 {
     public partial class Notificaciones : Form
     {
-        public Notificaciones()
+        public Notificaciones(string mensaje)
         {
             InitializeComponent();
+
+            /* Carga de imágenes en tiempo de ejecución. */
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+            panelIzquierdo.BackgroundImage = Image.FromFile("Fondo.png");
+
+            lbDescAviso.Text = mensaje;
+        }
+
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
