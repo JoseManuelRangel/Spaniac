@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\FormCarga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormCarga.Designer.cs">
+      <DependentUpon>FormCarga.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FormCodigo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     <Compile Include="Modelos\Repositorio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\FormCarga.resx">
+      <DependentUpon>FormCarga.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FormCodigo.resx">
       <DependentUpon>FormCodigo.cs</DependentUpon>
     </EmbeddedResource>

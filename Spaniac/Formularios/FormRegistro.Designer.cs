@@ -492,6 +492,8 @@
             this.btnCargaImg.Text = "CARGAR";
             this.btnCargaImg.UseVisualStyleBackColor = false;
             this.btnCargaImg.Click += new System.EventHandler(this.btnCargaImg_Click);
+            this.btnCargaImg.MouseLeave += new System.EventHandler(this.btnCargaImg_MouseLeave);
+            this.btnCargaImg.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCargaImg_MouseMove);
             // 
             // btnQuitaImg
             // 
@@ -508,6 +510,8 @@
             this.btnQuitaImg.Text = "QUITAR";
             this.btnQuitaImg.UseVisualStyleBackColor = false;
             this.btnQuitaImg.Click += new System.EventHandler(this.btnQuitaImg_Click);
+            this.btnQuitaImg.MouseLeave += new System.EventHandler(this.btnQuitaImg_MouseLeave);
+            this.btnQuitaImg.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnQuitaImg_MouseMove);
             // 
             // btnRegistrar
             // 
@@ -524,6 +528,8 @@
             this.btnRegistrar.Text = "REGISTRARSE";
             this.btnRegistrar.UseVisualStyleBackColor = false;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            this.btnRegistrar.MouseLeave += new System.EventHandler(this.btnRegistrar_MouseLeave);
+            this.btnRegistrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRegistrar_MouseMove);
             // 
             // btnCancelar
             // 
@@ -540,6 +546,8 @@
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancelar.MouseLeave += new System.EventHandler(this.btnCancelar_MouseLeave);
+            this.btnCancelar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCancelar_MouseMove);
             // 
             // imgMuestra1
             // 

@@ -76,15 +76,14 @@
             this.lbTitulo.Font = new System.Drawing.Font("Reem Kufi", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitulo.Location = new System.Drawing.Point(134, 9);
             this.lbTitulo.Name = "lbTitulo";
-            this.lbTitulo.Size = new System.Drawing.Size(168, 67);
+            this.lbTitulo.Size = new System.Drawing.Size(339, 67);
             this.lbTitulo.TabIndex = 2;
-            this.lbTitulo.Text = "TITULO";
+            this.lbTitulo.Text = "CONFIRMACIÓN";
             // 
             // descripcion
             // 
             this.descripcion.BackColor = System.Drawing.Color.White;
             this.descripcion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.descripcion.Enabled = false;
             this.descripcion.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descripcion.Location = new System.Drawing.Point(146, 89);
             this.descripcion.Name = "descripcion";
@@ -101,7 +100,7 @@
             this.codigo1.Size = new System.Drawing.Size(61, 48);
             this.codigo1.TabIndex = 5;
             this.codigo1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.codigo1.MaskChanged += new System.EventHandler(this.codigo1_MaskChanged);
+            this.codigo1.TextChanged += new System.EventHandler(this.codigo1_TextChanged);
             // 
             // codigo2
             // 
@@ -112,7 +111,7 @@
             this.codigo2.Size = new System.Drawing.Size(61, 48);
             this.codigo2.TabIndex = 6;
             this.codigo2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.codigo2.MaskChanged += new System.EventHandler(this.codigo2_MaskChanged);
+            this.codigo2.TextChanged += new System.EventHandler(this.codigo2_TextChanged);
             // 
             // codigo3
             // 
@@ -123,7 +122,7 @@
             this.codigo3.Size = new System.Drawing.Size(61, 48);
             this.codigo3.TabIndex = 7;
             this.codigo3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.codigo3.MaskChanged += new System.EventHandler(this.codigo3_MaskChanged);
+            this.codigo3.TextChanged += new System.EventHandler(this.codigo3_TextChanged);
             // 
             // codigo4
             // 
@@ -134,7 +133,7 @@
             this.codigo4.Size = new System.Drawing.Size(61, 48);
             this.codigo4.TabIndex = 8;
             this.codigo4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.codigo4.MaskChanged += new System.EventHandler(this.codigo4_MaskChanged);
+            this.codigo4.TextChanged += new System.EventHandler(this.codigo4_TextChanged);
             // 
             // codigo5
             // 
@@ -145,7 +144,7 @@
             this.codigo5.Size = new System.Drawing.Size(61, 48);
             this.codigo5.TabIndex = 9;
             this.codigo5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.codigo5.MaskChanged += new System.EventHandler(this.codigo5_MaskChanged);
+            this.codigo5.TextChanged += new System.EventHandler(this.codigo5_TextChanged);
             // 
             // btnAceptar
             // 
@@ -199,6 +198,8 @@
             this.bloqueoCodigo.TabIndex = 0;
             this.bloqueoCodigo.TabStop = false;
             this.bloqueoCodigo.Click += new System.EventHandler(this.bloqueoCodigo_Click);
+            this.bloqueoCodigo.MouseLeave += new System.EventHandler(this.bloqueoCodigo_MouseLeave);
+            this.bloqueoCodigo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bloqueoCodigo_MouseMove);
             // 
             // FormCodigo
             // 

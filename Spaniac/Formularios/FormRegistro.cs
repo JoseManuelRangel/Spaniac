@@ -26,14 +26,18 @@ namespace Spaniac.Formularios
         /* Variable que controla el formulario anterior para no generar nuevos formularios en caso de querer cancelar el inicio de sesión. */
         FormPrincipal principal;
 
+        /* Variables estáticas boolenas que controlan que los controles de registros están rellenos correctamente. */
         static bool dniCorrect = false, nombreCorrect = false, ap1Correct = false, ap2Correct = false, usuarioCorrect = false, 
             claveCorrect = false, confCorrect = false, rolCorrect = false, emailCorrect = false, imgCorrect = false;
 
+        /* Determina si se ha encontrado el usuario u otro dato importante en la base de datos previamente registrado. */
         bool encontrado;
 
+        /* Variables que registran el código y sus 5 números. */
         static string codigo;
         static int num1, num2, num3, num4, num5;
 
+        /* Ruta de conexión para la base de datos. */
         string conection = "server=localhost; database=Spaniac; integrated security = true";
 
         /*-------------------------------------------------------------------------------------------------*/
@@ -75,16 +79,6 @@ namespace Spaniac.Formularios
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-
-        /*-------------------------------------------------------------------------------------------------*/
-        /*                             GESTIÓN DE EVENTOS DEL BOTÓN CANCELAR                               */
-        /*-------------------------------------------------------------------------------------------------*/
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            principal.Visible = true;
         }
 
 
@@ -372,7 +366,7 @@ namespace Spaniac.Formularios
         private void btnCargaImg_Click(object sender, EventArgs e)
         {
             OpenFileDialog buscador = new OpenFileDialog();
-            buscador.Filter = "*.jpg | *.png";
+            buscador.Filter = "Archivos de imagen | *.jpg";
             buscador.FileName = "";
             buscador.Title = "Cargar imagen de perfil";
             buscador.InitialDirectory = "C:\\";
@@ -391,6 +385,16 @@ namespace Spaniac.Formularios
             }
         }
 
+        private void btnCargaImg_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnCargaImg_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
         private void btnQuitaImg_Click(object sender, EventArgs e)
         {
             if (imgPerfil.Image != null)
@@ -402,6 +406,16 @@ namespace Spaniac.Formularios
 
                 imgCorrect = false;
             }
+        }
+
+        private void btnQuitaImg_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnQuitaImg_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
         }
 
         /*-------------------------------------------------------------------------------------------------*/
@@ -418,7 +432,6 @@ namespace Spaniac.Formularios
                     {
                         Random r = new Random();
                         string emailCompleto = txtEmail.Text.ToString() + cbEmail.Text.ToString();
-                        int num1, num2, num3, num4, num5;
 
                         num1 = r.Next(0, 10);
                         num2 = r.Next(0, 10);
@@ -477,6 +490,36 @@ namespace Spaniac.Formularios
                     MessageBox.Show(ex.Message);
                 }      
             }
+        }
+
+        private void btnRegistrar_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnRegistrar_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                             GESTIÓN DE EVENTOS DEL BOTÓN CANCELAR                               */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            principal.Visible = true;
+        }
+
+        private void btnCancelar_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnCancelar_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
         }
 
 
@@ -557,10 +600,44 @@ namespace Spaniac.Formularios
                 dniCorrect = false;
             } else if(dni.Length == 9 && Char.IsLetter(dni, (dni.Length - 1)) && !dni.Equals("DNI"))
             {
-                lbErrorDNI.Text = "";
-                lbErrorDNI.Visible = false;
-                lbDNI.ForeColor = Color.Green;
-                dniCorrect = true;
+                string sql = "SELECT * FROM Usuario";
+
+                SqlConnection cnx = new SqlConnection(conection);
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    if (lector.GetString(0).Equals(dni))
+                    {
+                        encontrado = true;
+                    }
+                    else
+                    {
+                        encontrado = false;
+                    }
+                }
+
+                if (encontrado == true)
+                {
+                    lbErrorDNI.Text = "Este usuario ya existe.";
+                    lbErrorDNI.Visible = true;
+
+                    lbDNI.ForeColor = Color.Red;
+
+                    dniCorrect = false;
+                }
+                else
+                {
+                    lbErrorDNI.Text = "";
+                    lbErrorDNI.Visible = false;
+
+                    lbDNI.ForeColor = Color.Green;
+
+                    dniCorrect = true;
+                }
             } else if(dni.Equals("DNI"))
             {
                 lbErrorDNI.Text = "";

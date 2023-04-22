@@ -47,6 +47,7 @@
             this.panelIzquierdo.Name = "panelIzquierdo";
             this.panelIzquierdo.Size = new System.Drawing.Size(117, 216);
             this.panelIzquierdo.TabIndex = 0;
+            this.panelIzquierdo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelIzquierdo_MouseDown);
             // 
             // logoEmpresa
             // 
@@ -94,8 +95,10 @@
             this.btnAceptar.Text = "ACEPTAR";
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            this.btnAceptar.MouseLeave += new System.EventHandler(this.btnAceptar_MouseLeave);
+            this.btnAceptar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAceptar_MouseMove);
             // 
-            // Notificaciones
+            // FormNotificaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -106,9 +109,10 @@
             this.Controls.Add(this.lbTitulo);
             this.Controls.Add(this.panelIzquierdo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Notificaciones";
+            this.Name = "FormNotificaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notificaciones";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormNotificaciones_MouseDown);
             this.panelIzquierdo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).EndInit();
             this.ResumeLayout(false);

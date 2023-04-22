@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spaniac.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,15 +24,16 @@ namespace Spaniac.Formularios
         FormRegistro registro;
 
         /* Variables booleanas que controlan si se han rellenado los tramos de código del formulario. */
-        bool c1 = false, c2 = false, c3 = false, c4 = false, c5 = false;
+        static bool c1 = false, c2 = false, c3 = false, c4 = false, c5 = false;
 
         /* Números del código generado. */
-        int numero1, numero2, numero3, numero4, numero5;
+        static int numero1, numero2, numero3, numero4, numero5;
 
+        /* Datos de inserción del usuario que entra en la verificación de registro. */
         string dni, nombre, ap1, ap2, usuario, clave, rol, email;
         byte[] imagen;
 
-       
+
         /*-------------------------------------------------------------------------------------------------*/
         /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
         /*-------------------------------------------------------------------------------------------------*/
@@ -48,7 +50,15 @@ namespace Spaniac.Formularios
             numero4 = num4;
             numero5 = num5;
 
-
+            dni = campo1;
+            nombre = campo2;
+            ap1 = campo3;
+            ap2 = campo4;
+            usuario = campo5;
+            clave = campo6;
+            rol = campo7;
+            email = campo8;
+            imagen = campo9;
 
             lbTitulo.Text = "CONFIRMACIÓN";
             descripcion.Text = "Antes de completar el registro de la cuenta, tenemos que mandar al correo electrónico proporcionado" +
@@ -91,11 +101,21 @@ namespace Spaniac.Formularios
             panelBloqueo.Visible = false;
         }
 
+        private void bloqueoCodigo_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void bloqueoCodigo_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                 GESTIÓN DE EVENTOS DE LOS MASKTEXTBOX DE LOS NÚMEROS DEL CÓDIGO                 */
         /*-------------------------------------------------------------------------------------------------*/
-        private void codigo1_MaskChanged(object sender, EventArgs e)
+        private void codigo1_TextChanged(object sender, EventArgs e)
         {
             if (codigo1.Text.Length == 1)
             {
@@ -105,7 +125,7 @@ namespace Spaniac.Formularios
             habilitaAceptar();
         }
 
-        private void codigo2_MaskChanged(object sender, EventArgs e)
+        private void codigo2_TextChanged(object sender, EventArgs e)
         {
             if (codigo2.Text.Length == 1)
             {
@@ -115,7 +135,7 @@ namespace Spaniac.Formularios
             habilitaAceptar();
         }
 
-        private void codigo3_MaskChanged(object sender, EventArgs e)
+        private void codigo3_TextChanged(object sender, EventArgs e)
         {
             if (codigo3.Text.Length == 1)
             {
@@ -125,7 +145,7 @@ namespace Spaniac.Formularios
             habilitaAceptar();
         }
 
-        private void codigo4_MaskChanged(object sender, EventArgs e)
+        private void codigo4_TextChanged(object sender, EventArgs e)
         {
             if (codigo4.Text.Length == 1)
             {
@@ -135,7 +155,7 @@ namespace Spaniac.Formularios
             habilitaAceptar();
         }
 
-        private void codigo5_MaskChanged(object sender, EventArgs e)
+        private void codigo5_TextChanged(object sender, EventArgs e)
         {
             if (codigo5.Text.Length == 1)
             {
@@ -151,7 +171,33 @@ namespace Spaniac.Formularios
         /*-------------------------------------------------------------------------------------------------*/
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            int cod1, cod2, cod3, cod4, cod5;
 
+            cod1 = int.Parse(codigo1.Text.ToString());
+            cod2 = int.Parse(codigo2.Text.ToString());
+            cod3 = int.Parse(codigo3.Text.ToString());
+            cod4 = int.Parse(codigo4.Text.ToString());
+            cod5 = int.Parse(codigo5.Text.ToString());
+
+            if(cod1 == numero1 && cod2 == numero2 && cod3 == numero3 && cod4 == numero4 && cod5 == numero5)
+            {
+                DatosUsuario datosNuevoUser = new DatosUsuario();
+                datosNuevoUser.Dni = dni;
+                datosNuevoUser.Nombre = nombre;
+                datosNuevoUser.Ap1 = ap1;
+                datosNuevoUser.Ap2 = ap2;
+                datosNuevoUser.Usuario = usuario;
+                datosNuevoUser.Clave = clave;
+                datosNuevoUser.Rol = rol;
+                datosNuevoUser.Email = email;
+                datosNuevoUser.Imagen = imagen;
+                datosNuevoUser.guardarCambios();
+
+                FormNotificaciones form = new FormNotificaciones("Usuario registrado correctamente.");
+                form.Show();
+                this.Close();
+            }
+            
         }
 
 
@@ -170,7 +216,7 @@ namespace Spaniac.Formularios
         /*-------------------------------------------------------------------------------------------------*/
         private void habilitaAceptar()
         {
-            if(c1 && c2 && c3 && c4 && c5)
+            if(c1 == true && c2 == true && c3 == true && c4 == true && c5 == true)
             {
                 btnAceptar.Enabled = true;
             }

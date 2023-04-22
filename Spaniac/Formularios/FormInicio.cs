@@ -179,7 +179,7 @@ namespace Spaniac.Formularios
                 {
                     if(lector.GetString(4).Equals(usuario) && lector.GetString(5).Equals(clave)) 
                     {
-                        FormMenu form = new FormMenu();
+                        FormCarga form = new FormCarga(this, usuario);
                         form.Show();
                         this.Visible = false;
 
@@ -202,6 +202,15 @@ namespace Spaniac.Formularios
             }
         }
 
+        private void btnEntrar_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnEntrar_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                             GESTIÓN DE EVENTOS DEL BOTÓN CANCELAR                               */
@@ -212,6 +221,14 @@ namespace Spaniac.Formularios
             principal.Visible = true;
         }
 
-       
+        private void btnCancelar_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnCancelar_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        } 
     }
 }
