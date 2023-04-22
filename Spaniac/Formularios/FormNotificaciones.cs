@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Spaniac.Formularios
 {
-    public partial class Notificaciones : Form
+    public partial class FormNotificaciones : Form
     {
-        public Notificaciones(string mensaje)
+        public FormNotificaciones(string mensaje)
         {
             InitializeComponent();
 

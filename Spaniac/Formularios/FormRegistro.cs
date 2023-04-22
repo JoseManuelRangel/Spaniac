@@ -4,7 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +15,7 @@ using System.Windows.Forms;
 
 namespace Spaniac.Formularios
 {
-    public partial class Registro : Form
+    public partial class FormRegistro : Form
     {
         /* Código que permite arrastrar el formulario. */
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -21,17 +24,22 @@ namespace Spaniac.Formularios
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         /* Variable que controla el formulario anterior para no generar nuevos formularios en caso de querer cancelar el inicio de sesión. */
-        MenuPrincipal principal;
+        FormPrincipal principal;
 
-        bool dniCorrect = false, nombreCorrect = false, ap1Correct = false, ap2Correct = false, usuarioCorrect = false, 
+        static bool dniCorrect = false, nombreCorrect = false, ap1Correct = false, ap2Correct = false, usuarioCorrect = false, 
             claveCorrect = false, confCorrect = false, rolCorrect = false, emailCorrect = false, imgCorrect = false;
+
+        bool encontrado;
+
+        static string codigo;
+        static int num1, num2, num3, num4, num5;
 
         string conection = "server=localhost; database=Spaniac; integrated security = true";
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
         /*-------------------------------------------------------------------------------------------------*/
-        public Registro(MenuPrincipal form)
+        public FormRegistro(FormPrincipal form)
         {
             InitializeComponent();
             principal = form;
@@ -43,7 +51,7 @@ namespace Spaniac.Formularios
             imgMuestra2.Image = Image.FromFile("ojoAbierto.png");
 
             /* Inicializando errores de registro. */
-            lbErrorRol.Text = "Error, selecciona un rol.";
+            lbErrorRol.Text = "Selecciona un rol.";
             lbErrorRol.Visible = true;
 
             lbErrorEmail.Text = "Selecciona una extensión.";
@@ -321,12 +329,12 @@ namespace Spaniac.Formularios
             {
                 lbErrorRol.Text = "";
                 lbErrorRol.Visible = false;
-                rolCorrect = false;
+                rolCorrect = true;
             } else
             {
-                lbErrorRol.Text = "Error, selecciona un rol.";
+                lbErrorRol.Text = "Selecciona un rol.";
                 lbErrorRol.Visible = true;
-                rolCorrect = true;
+                rolCorrect = false;
             }
         }
 
@@ -355,6 +363,120 @@ namespace Spaniac.Formularios
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
             compruebaEmail();
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                   GESTIÓN DE EVENTOS DE LOS BOTONES CARGAR Y QUITAR IMAGEN                      */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void btnCargaImg_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog buscador = new OpenFileDialog();
+            buscador.Filter = "*.jpg | *.png";
+            buscador.FileName = "";
+            buscador.Title = "Cargar imagen de perfil";
+            buscador.InitialDirectory = "C:\\";
+
+            if(buscador.ShowDialog() == DialogResult.OK)
+            {
+                String direccion = buscador.FileName;
+
+                imgPerfil.ImageLocation = direccion;
+                imgPerfil.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                lbErrorImg.Text = "";
+                lbErrorImg.Visible = false;
+
+                imgCorrect = true;
+            }
+        }
+
+        private void btnQuitaImg_Click(object sender, EventArgs e)
+        {
+            if (imgPerfil.Image != null)
+            {
+                imgPerfil.Image = null;
+
+                lbErrorImg.Text = "Selecciona una imagen de perfil.";
+                lbErrorImg.Visible = true;
+
+                imgCorrect = false;
+            }
+        }
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                                  EVENTO CLICK DEL BOTÓN REGISTRAR                               */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            if (dniCorrect == true && nombreCorrect == true && ap1Correct == true && ap2Correct == true && usuarioCorrect == true
+                && claveCorrect == true && confCorrect == true && rolCorrect == true && emailCorrect == true && imgCorrect == true)
+            {
+                try
+                {
+                    using (MailMessage correo = new MailMessage())
+                    {
+                        Random r = new Random();
+                        string emailCompleto = txtEmail.Text.ToString() + cbEmail.Text.ToString();
+                        int num1, num2, num3, num4, num5;
+
+                        num1 = r.Next(0, 10);
+                        num2 = r.Next(0, 10);
+                        num3 = r.Next(0, 10);
+                        num4 = r.Next(0, 10);
+                        num5 = r.Next(0, 10);
+
+                        codigo = (num1 + "" + num2 + "" + num3 + "" + num4 + "" + num5);
+
+                        /* Destinatario del mensaje. */
+                        correo.To.Add(emailCompleto);
+
+                        /* Asunto del mensaje. */
+                        correo.Subject = "Confirmación para completar el registro de usuario en Spaniac™.";
+
+                        /* Cuerpo del mensaje. */
+                        correo.Body = "El código que debes introducir es: " + codigo;
+                        correo.IsBodyHtml = false;
+
+                        /* Remitente del mensaje */
+                        correo.From = new MailAddress("rangelmunozjosemanuel@gmail.com", "Spaniac™");
+
+                        using (SmtpClient cliente = new SmtpClient())
+                        {
+                            /* Contraseñas */
+                            cliente.UseDefaultCredentials = false;
+                            cliente.Credentials = new NetworkCredential("rangelmunozjosemanuel@gmail.com", "lwaxtqchwjvtqwjp");
+                            cliente.Port = 587;
+                            cliente.EnableSsl = true;
+
+                            /* Host */
+                            cliente.Host = "smtp.gmail.com";
+                            cliente.Send(correo);
+                        }
+                    }
+
+                    string dni, nombre, ap1, ap2, usuario, clave, rol, email;
+                    byte[] imagen;
+
+                    dni = txtDNI.Text.ToString();
+                    nombre = txtNombre.Text.ToString();
+                    ap1 = txtAp1.Text.ToString();
+                    ap2 = txtAp2.Text.ToString();
+                    usuario = txtUsuario.Text.ToString();
+                    clave = txtClave.Text.ToString();
+                    rol = cbRol.Text.ToString();
+                    email = txtEmail.Text.ToString();
+                    imagen = convertirImagen();
+
+                    FormCodigo form = new FormCodigo(num1, num2, num3, num4, num5,
+                        dni, nombre, ap1, ap2, usuario, clave, rol, email, imagen, this);
+                    form.Show();
+                    this.Visible = false;
+                } catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }      
+            }
         }
 
 
@@ -421,47 +543,6 @@ namespace Spaniac.Formularios
 
 
         /*-------------------------------------------------------------------------------------------------*/
-        /*                   GESTIÓN DE EVENTOS DE LOS BOTONES CARGAR Y QUITAR IMAGEN                      */
-        /*-------------------------------------------------------------------------------------------------*/
-        private void btnCargaImg_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog buscador = new OpenFileDialog();
-            buscador.Filter = "*.jpg | *.png";
-            buscador.FileName = "";
-            buscador.Title = "Cargar imagen de perfil";
-            buscador.InitialDirectory = "C:\\";
-
-            if(buscador.ShowDialog() == DialogResult.OK)
-            {
-                String direccion = buscador.FileName;
-
-                imgPerfil.ImageLocation = direccion;
-                imgPerfil.SizeMode = PictureBoxSizeMode.StretchImage;
-
-                lbErrorImg.Text = "";
-                lbErrorImg.Visible = false;
-
-                imgCorrect = true;
-            }
-        }
-
-        private void btnQuitaImg_Click(object sender, EventArgs e)
-        {
-            if (imgPerfil.Image != null)
-            {
-                imgPerfil.Image = null;
-
-                lbErrorImg.Text = "Selecciona una imagen de perfil.";
-                lbErrorImg.Visible = true;
-
-                imgCorrect = false;
-            }
-        }
-
-
-
-
-        /*-------------------------------------------------------------------------------------------------*/
         /*                                    MÉTODOS PRIVADOS DEL FORMULARIO                              */
         /*-------------------------------------------------------------------------------------------------*/
         private void compruebaDNI()
@@ -488,8 +569,6 @@ namespace Spaniac.Formularios
                 dniCorrect = false;
             }
         }
-
-        
 
         private void compruebaNombre()
         {
@@ -631,24 +710,32 @@ namespace Spaniac.Formularios
                     {
                         if(lector.GetString(4).Equals(usuario))
                         {
-                            lbErrorUsuario.Text = "El usuario ya existe.";
-                            lbErrorUsuario.Visible = true;
-
-                            lbUsuario.ForeColor = Color.Red;
-
-                            usuarioCorrect = false;
+                            encontrado = true;
                         } else
                         {
-                            lbErrorUsuario.Text = "";
-                            lbErrorUsuario.Visible = false;
-
-                            lbUsuario.ForeColor = Color.Green;
-
-                            usuarioCorrect = true;
+                            encontrado = false;
                         }
                     }
+
+                    if(encontrado == true)
+                    {
+                        lbErrorUsuario.Text = "El usuario ya existe.";
+                        lbErrorUsuario.Visible = true;
+
+                        lbUsuario.ForeColor = Color.Red;
+
+                        usuarioCorrect = false;
+                    } else
+                    {
+                        lbErrorUsuario.Text = "";
+                        lbErrorUsuario.Visible = false;
+
+                        lbUsuario.ForeColor = Color.Green;
+
+                        usuarioCorrect = true;
+                    }
                 }
-                else if (usuario.Equals("Usuario"))
+                else if(usuario.Equals("Usuario"))
                 {
                     lbErrorUsuario.Text = "";
                     lbErrorUsuario.Visible = false;
@@ -657,7 +744,7 @@ namespace Spaniac.Formularios
                 }
             } catch(Exception ex)
             {
-                Notificaciones form = new Notificaciones(ex.Message);
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
                 form.Show();
             }
         }
@@ -771,6 +858,7 @@ namespace Spaniac.Formularios
                         lbErrorEmail.Text = "";
                         lbErrorEmail.Visible = false;
                         lbEmail.ForeColor = Color.Green;
+                        emailCorrect = true;
                     }
                 }
             }
@@ -805,6 +893,15 @@ namespace Spaniac.Formularios
             }
 
             return false;
+        }
+
+        private byte[] convertirImagen()
+        {
+            MemoryStream ms = new MemoryStream();
+
+            imgPerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            return ms.GetBuffer();
         }
     }
 }

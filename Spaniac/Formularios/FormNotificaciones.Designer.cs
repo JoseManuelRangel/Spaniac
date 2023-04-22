@@ -1,6 +1,6 @@
 ﻿namespace Spaniac.Formularios
 {
-    partial class Notificaciones
+    partial class FormNotificaciones
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Notificaciones));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNotificaciones));
             this.panelIzquierdo = new System.Windows.Forms.Panel();
             this.logoEmpresa = new System.Windows.Forms.PictureBox();
             this.lbTitulo = new System.Windows.Forms.Label();

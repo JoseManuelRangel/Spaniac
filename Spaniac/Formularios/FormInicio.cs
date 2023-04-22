@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Spaniac.Formularios
 {
-    public partial class InicioSesion : Form
+    public partial class FormInicio : Form
     {
         /* Variable que almacena la conexión con la BD. */
         string conection = "server=localhost; database=Spaniac; integrated security = true";
@@ -24,7 +24,7 @@ namespace Spaniac.Formularios
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         /* Variable que controla el formulario anterior para no generar nuevos formularios en caso de querer cancelar el inicio de sesión. */
-        MenuPrincipal principal;
+        FormPrincipal principal;
 
         /* Variable que muestra con "true" o "false" si ha encontrado al usuario que realiza el login. */
         bool encontrado;
@@ -32,7 +32,7 @@ namespace Spaniac.Formularios
         /*-------------------------------------------------------------------------------------------------*/
         /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
         /*-------------------------------------------------------------------------------------------------*/
-        public InicioSesion(MenuPrincipal form)
+        public FormInicio(FormPrincipal form)
         {
             InitializeComponent();
             principal = form;
@@ -179,7 +179,7 @@ namespace Spaniac.Formularios
                 {
                     if(lector.GetString(4).Equals(usuario) && lector.GetString(5).Equals(clave)) 
                     {
-                        MenuPrograma form = new MenuPrograma();
+                        FormMenu form = new FormMenu();
                         form.Show();
                         this.Visible = false;
 
@@ -197,7 +197,7 @@ namespace Spaniac.Formularios
                 }
             } catch (Exception ex)
             {
-                Notificaciones form = new Notificaciones(ex.Message);
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
                 form.Show();
             }
         }

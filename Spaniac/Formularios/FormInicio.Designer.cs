@@ -1,6 +1,6 @@
 ﻿namespace Spaniac.Formularios
 {
-    partial class InicioSesion
+    partial class FormInicio
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InicioSesion));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInicio));
             this.panelIzquierdo = new System.Windows.Forms.Panel();
             this.logoEmpresa = new System.Windows.Forms.PictureBox();
             this.lbInicio = new System.Windows.Forms.Label();
@@ -216,7 +216,7 @@
             this.panel2.Size = new System.Drawing.Size(385, 1);
             this.panel2.TabIndex = 14;
             // 
-            // InicioSesion
+            // FormInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -236,7 +236,7 @@
             this.Controls.Add(this.lbInicio);
             this.Controls.Add(this.panelIzquierdo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "InicioSesion";
+            this.Name = "FormInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioSesion";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.InicioSesion_MouseDown);

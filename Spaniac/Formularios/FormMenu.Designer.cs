@@ -1,6 +1,6 @@
 ﻿namespace Spaniac.Formularios
 {
-    partial class MenuPrograma
+    partial class FormMenu
     {
         /// <summary>
         /// Required designer variable.

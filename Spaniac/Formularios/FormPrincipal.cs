@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Spaniac
 {
-    public partial class MenuPrincipal : Form
+    public partial class FormPrincipal : Form
     {
         /* Código que permite arrastrar el formulario. */
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -26,7 +26,7 @@ namespace Spaniac
         /*-------------------------------------------------------------------------------------------------*/
         /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
         /*-------------------------------------------------------------------------------------------------*/
-        public MenuPrincipal()
+        public FormPrincipal()
         {
             InitializeComponent();
 
@@ -118,7 +118,7 @@ namespace Spaniac
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            InicioSesion form = new InicioSesion(this);
+            FormInicio form = new FormInicio(this);
             form.Show();
             this.Visible = false;
         }
@@ -144,7 +144,7 @@ namespace Spaniac
 
         private void btnRegistrarse_Click(object sender, EventArgs e)
         {
-            Registro form = new Registro(this);
+            FormRegistro form = new FormRegistro(this);
             form.Show();
             this.Visible = false;
         }

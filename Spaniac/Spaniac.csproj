@@ -46,35 +46,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formularios\InicioSesion.cs">
+    <Compile Include="Formularios\FormCodigo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\InicioSesion.Designer.cs">
-      <DependentUpon>InicioSesion.cs</DependentUpon>
+    <Compile Include="Formularios\FormCodigo.Designer.cs">
+      <DependentUpon>FormCodigo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\MenuPrincipal.cs">
+    <Compile Include="Formularios\FormInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\MenuPrincipal.Designer.cs">
-      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    <Compile Include="Formularios\FormInicio.Designer.cs">
+      <DependentUpon>FormInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\MenuPrograma.cs">
+    <Compile Include="Formularios\FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\MenuPrograma.Designer.cs">
-      <DependentUpon>MenuPrograma.cs</DependentUpon>
+    <Compile Include="Formularios\FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Notificaciones.cs">
+    <Compile Include="Formularios\FormMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Notificaciones.Designer.cs">
-      <DependentUpon>Notificaciones.cs</DependentUpon>
+    <Compile Include="Formularios\FormMenu.Designer.cs">
+      <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Registro.cs">
+    <Compile Include="Formularios\FormNotificaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Registro.Designer.cs">
-      <DependentUpon>Registro.cs</DependentUpon>
+    <Compile Include="Formularios\FormNotificaciones.Designer.cs">
+      <DependentUpon>FormNotificaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormRegistro.Designer.cs">
+      <DependentUpon>FormRegistro.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\DatosAlmacen.cs" />
     <Compile Include="Modelos\DatosCategoria.cs" />
@@ -91,20 +97,23 @@
     <Compile Include="Modelos\Repositorio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Formularios\InicioSesion.resx">
-      <DependentUpon>InicioSesion.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\FormCodigo.resx">
+      <DependentUpon>FormCodigo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\MenuPrincipal.resx">
-      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\FormInicio.resx">
+      <DependentUpon>FormInicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\MenuPrograma.resx">
-      <DependentUpon>MenuPrograma.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Notificaciones.resx">
-      <DependentUpon>Notificaciones.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\FormMenu.resx">
+      <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Registro.resx">
-      <DependentUpon>Registro.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\FormNotificaciones.resx">
+      <DependentUpon>FormNotificaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormRegistro.resx">
+      <DependentUpon>FormRegistro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

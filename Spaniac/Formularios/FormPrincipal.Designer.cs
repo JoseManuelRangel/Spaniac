@@ -1,6 +1,6 @@
 ﻿namespace Spaniac
 {
-    partial class MenuPrincipal
+    partial class FormPrincipal
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.imgMinimizar = new System.Windows.Forms.PictureBox();
             this.imgCerrar = new System.Windows.Forms.PictureBox();
             this.logoEmpresa = new System.Windows.Forms.PictureBox();

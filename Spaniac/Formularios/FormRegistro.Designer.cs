@@ -1,6 +1,6 @@
 ﻿namespace Spaniac.Formularios
 {
-    partial class Registro
+    partial class FormRegistro
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registro));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistro));
             this.panelIzquierdo = new System.Windows.Forms.Panel();
             this.logoEmpresa = new System.Windows.Forms.PictureBox();
             this.lbInicio = new System.Windows.Forms.Label();
@@ -523,6 +523,7 @@
             this.btnRegistrar.TabIndex = 1;
             this.btnRegistrar.Text = "REGISTRARSE";
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // btnCancelar
             // 
@@ -566,7 +567,7 @@
             this.imgMuestra2.MouseLeave += new System.EventHandler(this.imgMuestra2_MouseLeave);
             this.imgMuestra2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imgMuestra2_MouseMove);
             // 
-            // Registro
+            // FormRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -610,7 +611,7 @@
             this.Controls.Add(this.lbInicio);
             this.Controls.Add(this.panelIzquierdo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Registro";
+            this.Name = "FormRegistro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Registro_MouseDown);
