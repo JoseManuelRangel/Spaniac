@@ -39,7 +39,7 @@ namespace Spaniac.Formularios
                 aparece.Stop();
                 this.Visible = false;
 
-                FormMenu form = new FormMenu();
+                FormMenu form = new FormMenu(this, user);
                 form.Show();
             }
         }
