@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Spaniac.Formularios.FormulariosInternos;
+using Spaniac.Formularios.FormulariosInternos.FormulariosProductos;
 
 namespace Spaniac.Formularios
 {
@@ -81,6 +82,24 @@ namespace Spaniac.Formularios
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                       GESTIÓN DE EVENTOS DEL BOTÓN DEL PANEL DE CONTROL                         */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void btnPanel_Click(object sender, EventArgs e)
+        {
+            abrirFormEnPanel(new FormPanel());
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                            GESTIÓN DE EVENTOS DEL BOTÓN DE PRODUCTOS                            */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            abrirFormEnPanel(new FormProductos());
         }
 
 

@@ -76,10 +76,9 @@ namespace Spaniac.Modelos
 
         public void guardarCategoria()
         {
-            string transactSql = "INSERT INTO Categoria VALUES (@id, @nombre, @productos, @idAlmacen)";
+            string transactSql = "INSERT INTO Categoria VALUES (@nombre, @productos, @idAlmacen)";
             parametros = new List<SqlParameter>();
 
-            parametros.Add(new SqlParameter("@id", id));
             parametros.Add(new SqlParameter("@nombre", nombre));
             parametros.Add(new SqlParameter("@productos", productos));
             parametros.Add(new SqlParameter("@idAlmacen", idAlmacen));

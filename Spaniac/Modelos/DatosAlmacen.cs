@@ -46,10 +46,9 @@ namespace Spaniac.Modelos
 
         public void guardarAlmacen()
         {
-            string transactSql = "INSERT INTO Almacen VALUES (@id, @activo)";
+            string transactSql = "INSERT INTO Almacen VALUES (@activo)";
             parametros = new List<SqlParameter>();
 
-            parametros.Add(new SqlParameter("@id", id));
             parametros.Add(new SqlParameter("@activo", activo));
 
             executeNonQuery(transactSql);

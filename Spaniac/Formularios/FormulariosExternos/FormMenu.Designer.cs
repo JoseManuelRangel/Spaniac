@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.panelIzquierdo = new System.Windows.Forms.Panel();
+            this.lbRol = new System.Windows.Forms.Label();
+            this.iconoRol = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.iconoPerfil = new System.Windows.Forms.PictureBox();
             this.lbUser = new System.Windows.Forms.Label();
@@ -47,13 +49,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelCuerpo = new System.Windows.Forms.Panel();
-            this.iconoRol = new System.Windows.Forms.PictureBox();
-            this.lbRol = new System.Windows.Forms.Label();
             this.panelIzquierdo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconoRol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconoPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconoRol)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSuperior
@@ -91,6 +91,29 @@
             this.panelIzquierdo.Size = new System.Drawing.Size(200, 900);
             this.panelIzquierdo.TabIndex = 1;
             this.panelIzquierdo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelIzquierdo_MouseDown);
+            // 
+            // lbRol
+            // 
+            this.lbRol.AutoSize = true;
+            this.lbRol.BackColor = System.Drawing.Color.Transparent;
+            this.lbRol.Font = new System.Drawing.Font("Reem Kufi", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRol.ForeColor = System.Drawing.Color.White;
+            this.lbRol.Location = new System.Drawing.Point(61, 812);
+            this.lbRol.Name = "lbRol";
+            this.lbRol.Size = new System.Drawing.Size(28, 22);
+            this.lbRol.TabIndex = 16;
+            this.lbRol.Text = "Rol";
+            // 
+            // iconoRol
+            // 
+            this.iconoRol.BackColor = System.Drawing.Color.Transparent;
+            this.iconoRol.Image = ((System.Drawing.Image)(resources.GetObject("iconoRol.Image")));
+            this.iconoRol.Location = new System.Drawing.Point(28, 812);
+            this.iconoRol.Name = "iconoRol";
+            this.iconoRol.Size = new System.Drawing.Size(27, 27);
+            this.iconoRol.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.iconoRol.TabIndex = 15;
+            this.iconoRol.TabStop = false;
             // 
             // btnSalir
             // 
@@ -252,6 +275,7 @@
             this.btnProductos.Text = "PRODUCTOS";
             this.btnProductos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnProductos.UseVisualStyleBackColor = false;
+            this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
             // 
             // btnInventario
             // 
@@ -284,6 +308,7 @@
             this.btnPanel.Size = new System.Drawing.Size(105, 74);
             this.btnPanel.TabIndex = 2;
             this.btnPanel.UseVisualStyleBackColor = false;
+            this.btnPanel.Click += new System.EventHandler(this.btnPanel_Click);
             // 
             // panel1
             // 
@@ -312,29 +337,6 @@
             this.panelCuerpo.TabIndex = 2;
             this.panelCuerpo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelCuerpo_MouseDown);
             // 
-            // iconoRol
-            // 
-            this.iconoRol.BackColor = System.Drawing.Color.Transparent;
-            this.iconoRol.Image = ((System.Drawing.Image)(resources.GetObject("iconoRol.Image")));
-            this.iconoRol.Location = new System.Drawing.Point(28, 812);
-            this.iconoRol.Name = "iconoRol";
-            this.iconoRol.Size = new System.Drawing.Size(27, 27);
-            this.iconoRol.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.iconoRol.TabIndex = 15;
-            this.iconoRol.TabStop = false;
-            // 
-            // lbRol
-            // 
-            this.lbRol.AutoSize = true;
-            this.lbRol.BackColor = System.Drawing.Color.Transparent;
-            this.lbRol.Font = new System.Drawing.Font("Reem Kufi", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRol.ForeColor = System.Drawing.Color.White;
-            this.lbRol.Location = new System.Drawing.Point(61, 812);
-            this.lbRol.Name = "lbRol";
-            this.lbRol.Size = new System.Drawing.Size(28, 22);
-            this.lbRol.TabIndex = 16;
-            this.lbRol.Text = "Rol";
-            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,10 +352,10 @@
             this.Text = "MenuPrograma";
             this.panelIzquierdo.ResumeLayout(false);
             this.panelIzquierdo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconoRol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconoPerfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconoRol)).EndInit();
             this.ResumeLayout(false);
 
         }

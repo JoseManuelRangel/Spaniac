@@ -75,7 +75,7 @@
             this.lbHora.AutoSize = true;
             this.lbHora.Font = new System.Drawing.Font("Reem Kufi", 18F, System.Drawing.FontStyle.Bold);
             this.lbHora.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lbHora.Location = new System.Drawing.Point(1349, 54);
+            this.lbHora.Location = new System.Drawing.Point(1345, 54);
             this.lbHora.Name = "lbHora";
             this.lbHora.Size = new System.Drawing.Size(91, 44);
             this.lbHora.TabIndex = 4;
@@ -87,7 +87,7 @@
             this.lbFecha.AutoSize = true;
             this.lbFecha.Font = new System.Drawing.Font("Reem Kufi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFecha.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lbFecha.Location = new System.Drawing.Point(1202, 92);
+            this.lbFecha.Location = new System.Drawing.Point(1217, 92);
             this.lbFecha.Name = "lbFecha";
             this.lbFecha.Size = new System.Drawing.Size(98, 27);
             this.lbFecha.TabIndex = 5;

@@ -13,11 +13,18 @@ namespace Spaniac.Formularios.FormulariosInternos
 {
     public partial class FormPanel : Form
     {
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
+        /*-------------------------------------------------------------------------------------------------*/
         public FormPanel()
         {
             InitializeComponent();
         }
 
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                        GESTION DE EVENTOS DEL TIMER DE LA HORA Y LA FECHA                       */
+        /*-------------------------------------------------------------------------------------------------*/
         private void horafecha_Tick(object sender, EventArgs e)
         {
             lbHora.Text = DateTime.Now.ToLongTimeString();

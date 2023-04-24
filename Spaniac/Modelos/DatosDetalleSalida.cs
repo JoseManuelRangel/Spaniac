@@ -166,10 +166,9 @@ namespace Spaniac.Modelos
 
         public void guardarDetalleSalida()
         {
-            string transactSql = "INSERT INTO DetalleSalida VALUES (@idDetalle, @idSalida, @idProducto, @nomProducto, @almProducto, @precioVenta, @cantidad, @subtotal, @impuesto, @descuento)";
+            string transactSql = "INSERT INTO DetalleSalida VALUES (@idSalida, @idProducto, @nomProducto, @almProducto, @precioVenta, @cantidad, @subtotal, @impuesto, @descuento)";
             parametros = new List<SqlParameter>();
 
-            parametros.Add(new SqlParameter("@idDetalle", idDetalle));
             parametros.Add(new SqlParameter("@idSalida", idSalida));
             parametros.Add(new SqlParameter("@idProducto", idProducto));
             parametros.Add(new SqlParameter("@nomProducto", nomProducto));

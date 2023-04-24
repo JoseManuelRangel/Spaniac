@@ -181,10 +181,9 @@ namespace Spaniac.Modelos
 
         public void guardarDetalleEntrada()
         {
-            string transactSql = "INSERT INTO DetalleEntrada VALUES (@idDetalle, @idEntrada, @idProducto, @nomProducto, @almProducto, @precioCompra, @precioVenta, @cantidad, @impuesto, @subtotal, @descuento)";
+            string transactSql = "INSERT INTO DetalleEntrada VALUES (@idEntrada, @idProducto, @nomProducto, @almProducto, @precioCompra, @precioVenta, @cantidad, @impuesto, @subtotal, @descuento)";
             parametros = new List<SqlParameter>();
 
-            parametros.Add(new SqlParameter("@idDetalle", idDetalle));
             parametros.Add(new SqlParameter("@idEntrada", idEntrada));
             parametros.Add(new SqlParameter("@idProducto", idProducto));
             parametros.Add(new SqlParameter("@nomProducto", nomProducto));
@@ -195,7 +194,6 @@ namespace Spaniac.Modelos
             parametros.Add(new SqlParameter("@impuesto", impuesto));
             parametros.Add(new SqlParameter("@subtotal", subtotal));
             parametros.Add(new SqlParameter("@descuento", descuento));
-
 
             executeNonQuery(transactSql);
         }
