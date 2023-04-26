@@ -20,6 +20,9 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
         /* Variables booleanas que controlan si los datos de la categoría están rellenos para realizar la inserción. */
         bool nomCat = false, almCat = false;
 
+        /* Variables booleanas que controlan si los datos de la categoría están rellenos para realizar la modificación. */
+        bool idCatMod = false, nomCatMod = false, almCatMod = false;
+
         /*-------------------------------------------------------------------------------------------------*/
         /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
         /*-------------------------------------------------------------------------------------------------*/
@@ -30,13 +33,24 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
             rellenaTablaCategorias();
             rellenaComboBoxAlmacenes();
             rellenaCbDatosCategoria();
+            rellenaComboBoxIDCat();
 
+            /* Elementos del panel derecho de la sección de categorías. */
             imgLimpiar.Image = Image.FromFile("Goma.png");
 
+            /* Elementos del subpanel de adición de categorías. */
             lbErrorAlmC.Text = "Selecciona un almacén.";
             lbErrorAlmC.Visible = true;
-        }
 
+
+            /* Elementos del subpanel de modificación de categorías. */
+            lbErrorIdCMod.Text = "Selecciona un ID para buscar categoría.";
+            lbErrorIdCMod.Visible = true;
+
+            txtNombreCMod.Enabled = false;
+            txtProdCMod.Enabled = false;
+            cbAlmacenCMod.Enabled = false;
+        }
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                        GESTION DE EVENTOS DEL TIMER DE LA HORA Y LA FECHA                       */
@@ -47,28 +61,55 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
             lbFecha.Text = DateTime.Now.ToLongDateString().ToUpper();
         }
 
-
         /*-------------------------------------------------------------------------------------------------*/
-        /*                        GESTION DE EVENTOS DEL BOTÓN DE CATEGORÍAS                               */
+        /*                          GESTION DE EVENTOS DEL BOTÓN DE CATEGORÍAS                             */
         /*-------------------------------------------------------------------------------------------------*/
         private void btnCategorias_Click(object sender, EventArgs e)
         {
             panelCategorias.Visible = true;
         }
 
-
         /*-------------------------------------------------------------------------------------------------*/
-        /*                     GESTION DE EVENTOS DEL BOTÓN DE AÑADIR CATEGORÍAS                           */
+        /*                           ELEMENTOS DEL PANEL IZQUIERDO DE CATEGORÍAS                           */
         /*-------------------------------------------------------------------------------------------------*/
+        /*             Gestión de eventos del botón que abre el panel para añadir una categoría.           */
         private void btnAñadirC_Click(object sender, EventArgs e)
         {
             panelAñadirC.Visible = true;
         }
 
+        private void btnAñadirC_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnAñadirC_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*           Gestión de eventos del botón que abre el panel para modificar una categoría.          */
+        private void btnModificarC_Click(object sender, EventArgs e)
+        {
+            panelModificarC.Visible = true;
+        }
+
+        private void btnModificarC_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnModificarC_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
 
         /*-------------------------------------------------------------------------------------------------*/
-        /*                   GESTION DE EVENTOS DEL TEXTBOX DEL NOMBRE DE LA CATEGORÍA                     */
+        /*                         ELEMENTOS DEL SUBPANEL QUE AÑADE UNA CATEGORÍA                          */
         /*-------------------------------------------------------------------------------------------------*/
+        /*               Gestión de eventos del textbox del nombre de la categoría a añadir                */
         private void txtNombreC_Enter(object sender, EventArgs e)
         {
             if (txtNombreC.Text.Equals("Nombre"))
@@ -92,32 +133,36 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
 
         private void txtNombreC_TextChanged(object sender, EventArgs e)
         {
-            compruebaNombreCategoria();
+            compruebaNombreCategoria("Añadir");
         }
 
 
-        /*-------------------------------------------------------------------------------------------------*/
-        /*                 GESTION DE EVENTOS DEL COMBOBOX DE ALMACENES DE LA CATEGORÍA                    */
-        /*-------------------------------------------------------------------------------------------------*/
+        /*               Gestión de eventos del textbox del nombre de la categoría a añadir                */
         private void cbAlmacenC_SelectedIndexChanged(object sender, EventArgs e)
         {
-            compruebaAlmacenCategoria();
+            compruebaAlmacenCategoria("Añadir");
         }
 
 
-        /*-------------------------------------------------------------------------------------------------*/
-        /*              GESTION DE EVENTOS DEL BOTÓN DE LIMPIAR DEL PANEL DE AÑADIR CATEGORÍA              */
-        /*-------------------------------------------------------------------------------------------------*/
+        /*             Gestión de eventos del botón que limpia los datos de la categoría a añadir.         */
         private void btnLimpiarC_Click(object sender, EventArgs e)
         {
             txtNombreC.Text = "";
             cbAlmacenC.SelectedIndex = 0;
         }
 
+        private void btnLimpiarC_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
 
-        /*-------------------------------------------------------------------------------------------------*/
-        /*              GESTION DE EVENTOS DEL BOTÓN DE AÑADIR DEL PANEL DE AÑADIR CATEGORÍA               */
-        /*-------------------------------------------------------------------------------------------------*/
+        private void btnLimpiarC_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*           Gestión de eventos del botón que registra una categoría en la base de datos.          */
         private void btnAñadeC_Click(object sender, EventArgs e)
         {
             if(nomCat == true && almCat == true)
@@ -128,38 +173,160 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                 datosNuevaCat.IdAlmacen = cbAlmacenC.SelectedIndex;
                 datosNuevaCat.guardarCambios();
 
+                txtNombreC.Text = "";
+                cbAlmacenC.SelectedIndex = 0;
+
                 FormNotificaciones form = new FormNotificaciones("Categoría registrada correctamente.");
                 form.Show();
+
+                rellenaTablaCategorias();
+            }
+        }
+
+        private void btnAñadeC_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnAñadeC_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                      ELEMENTOS DEL SUBPANEL QUE MODIFICA UNA CATEGORÍA                          */
+        /*-------------------------------------------------------------------------------------------------*/
+        /*         Gestión de eventos del combobox que selecciona el ID de la categoría a modificar.       */
+        private void cbIdCMod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbIdCMod.SelectedIndex != 0)
+            {
+                string sql = "SELECT * FROM Categoria WHERE id=" + cbIdCMod.SelectedIndex;
+                SqlConnection cnx = new SqlConnection(conection);
+
+                try
+                {
+                    cnx.Open();
+
+                    SqlCommand command = new SqlCommand(sql, cnx);
+                    SqlDataReader lector = command.ExecuteReader();
+
+                    txtNombreCMod.Text = lector.GetString(1);
+                    txtProdCMod.Text = lector.GetString(2);
+                    cbAlmacenCMod.SelectedIndex = lector.GetInt32(3);
+
+                    txtNombreCMod.Enabled = true;
+                    txtProdCMod.Enabled = true;
+                    cbAlmacenCMod.Enabled = true;
+
+                    lbErrorIdCMod.Text = "";
+                    lbErrorIdCMod.Visible = false;
+
+                    idCatMod = true;
+
+                    command.Dispose();
+                    cnx.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            } else
+            {
+                txtNombreCMod.Enabled = true;
+                txtNombreCMod.Text = "";
+                
+                txtProdCMod.Enabled = true;
+                txtProdCMod.Text = "";
+
+                cbAlmacenCMod.Enabled = true;
+                cbAlmacenCMod.SelectedIndex = 0;
+
+                lbErrorIdCMod.Text = "Selecciona un ID para buscar categoría.";
+                lbErrorIdCMod.Visible = true;
+
+                idCatMod = false;
+            }
+        }
+
+
+        /*              Gestión de eventos del textbox de nombre que modifica la categoría                 */
+        private void txtNombreCMod_TextChanged(object sender, EventArgs e)
+        {
+            compruebaNombreCategoria("Modificar");
+        }
+
+
+        /*              Gestión de eventos del textbox de nombre que modifica la categoría                 */
+        private void cbAlmacenCMod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            compruebaAlmacenCategoria("Modificar");
+        }
+
+
+        /*           Gestión de eventos del botón que acepta la modificación de la categoría               */
+        private void btnAceptarCMod_Click(object sender, EventArgs e)
+        {
+            if(idCatMod == true && nomCatMod == true && almCatMod == true)
+            {
+                try 
+                {
+                    string nombre = txtNombreCMod.Text;
+                    int almacen = cbAlmacenCMod.SelectedIndex;
+
+                    string sql = "UPDATE Categoria SET nombre='" + nombre + "', almacen=" + almacen + " WHERE id=" + cbIdCMod.SelectedIndex;
+                    SqlConnection cnx = new SqlConnection(conection);
+
+                    cnx.Open();
+                    SqlCommand command = new SqlCommand(sql, cnx);
+                    command.ExecuteNonQuery();
+                } catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                } finally
+                {
+                    this.Close();
+                    rellenaTablaCategorias();
+                }
             }
         }
 
 
         /*-------------------------------------------------------------------------------------------------*/
-        /*          GESTION DE EVENTOS DEL COMBOBOX DE TIPOS DE DATOS DE CATEGORÍA PARA EL FILTRADO        */
+        /*                           ELEMENTOS DEL PANEL DERECHO DE LAS CATEGORÍAS                         */
         /*-------------------------------------------------------------------------------------------------*/
-        private void cbDatosC_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            filtroDatos();
-        }
-
-
-        /*-------------------------------------------------------------------------------------------------*/
-        /*            GESTION DE EVENTOS DEL TEXTBOX DEL FILTRO PARA EL DATAGRIDVIEW DE CATEGORÍA          */
-        /*-------------------------------------------------------------------------------------------------*/
+        /*           Gestión de eventos del textbox que filtra el datagridview de las categorías           */
         private void txtFiltroC_TextChanged(object sender, EventArgs e)
         {
             filtroDatos();
         }
 
 
-        /*-------------------------------------------------------------------------------------------------*/
-        /*                     GESTION DE EVENTOS DEL PICTUREBOX QUE LIMPIA EL FILTRO                      */
-        /*-------------------------------------------------------------------------------------------------*/
+        /*          Gestión de eventos del picturebox que limpia el textbox del filtro de la tabla         */
         private void imgLimpiar_Click(object sender, EventArgs e)
         {
             txtFiltroC.Text = "";
             cbDatosC.SelectedIndex = 0;
         }
+
+        private void imgLimpiar_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void imgLimpiar_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+
+
+
+
+
+
 
 
         /*-------------------------------------------------------------------------------------------------*/
@@ -197,6 +364,7 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
         private void rellenaComboBoxAlmacenes()
         {
             cbAlmacenC.Items.Add(" ");
+            cbAlmacenCMod.Items.Add(" ");
 
             string sql = "SELECT * FROM Almacen";
             SqlConnection cnx = new SqlConnection(conection);
@@ -211,6 +379,7 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                 while(lector.Read())
                 {
                     cbAlmacenC.Items.Add(lector.GetInt32(0));
+                    cbAlmacenCMod.Items.Add(lector.GetInt32(0));                   
                 }
             } catch(Exception ex)
             {
@@ -218,57 +387,136 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
             }
         }
 
-        private void compruebaNombreCategoria()
+        private void rellenaComboBoxIDCat()
         {
-            string nombre = txtNombreC.Text.ToString();
+            cbIdCMod.Items.Add(" ");
 
-            if (nombre.Length == 0 || nombre.Length > 50)
+            string sql = "SELECT * FROM Categoria";
+            SqlConnection cnx = new SqlConnection(conection);
+
+            try
             {
-                lbErrorNomC.Visible = true;
-                lbNombreC.ForeColor = Color.Red;
+                cnx.Open();
 
-                if (nombre.Length == 0)
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                while(lector.Read()) 
                 {
-                    lbErrorNomC.Text = "El nombre no puede estar vacío.";
+                    cbIdCMod.Items.Add(lector.GetInt32(0));
                 }
-                else if (nombre.Length > 50)
-                {
-                    lbErrorNomC.Text = "El nombre es demasiado largo.";
-                }
-
-                nomCat = false;
-            }
-            else if (nombre.Length > 0 && !nombre.Equals("Nombre"))
+            } catch(Exception ex)
             {
-                lbErrorNomC.Text = "";
-                lbErrorNomC.Visible = false;
-                lbNombreC.ForeColor = Color.Green;
-                nomCat = true;
-            }
-            else if (nombre.Equals("Nombre"))
-            {
-                lbErrorNomC.Text = "";
-                lbErrorNomC.Visible = false;
-                lbNombreC.ForeColor = Color.Black;
-                nomCat = false;
+                MessageBox.Show(ex.Message);
             }
         }
 
-        private void compruebaAlmacenCategoria()
+        private void compruebaNombreCategoria(string opcion)
         {
-            int almacen = cbAlmacenC.SelectedIndex;
-
-            if(almacen == 0)
-            { 
-                lbErrorAlmC.Text = "Selecciona un almacén.";
-                lbErrorAlmC.Visible = true;
-                almCat = false;
-            } else
+            switch(opcion)
             {
-                lbErrorAlmC.Text = "";
-                lbErrorAlmC.Visible = false;
-                almCat = true;
+                case "Añadir":
+                    string nombre = txtNombreC.Text.ToString();
+
+                    if (nombre.Length == 0 || nombre.Length > 50)
+                    {
+                        lbErrorNomC.Visible = true;
+                        lbNombreC.ForeColor = Color.Red;
+
+                        if (nombre.Length == 0)
+                        {
+                            lbErrorNomC.Text = "El nombre no puede estar vacío.";
+                        }
+                        else if (nombre.Length > 50)
+                        {
+                            lbErrorNomC.Text = "El nombre es demasiado largo.";
+                        }
+
+                        nomCat = false;
+                    }
+                    else if (nombre.Length > 0 && !nombre.Equals("Nombre"))
+                    {
+                        lbErrorNomC.Text = "";
+                        lbErrorNomC.Visible = false;
+                        lbNombreC.ForeColor = Color.Green;
+                        nomCat = true;
+                    }
+                    else if (nombre.Equals("Nombre"))
+                    {
+                        lbErrorNomC.Text = "";
+                        lbErrorNomC.Visible = false;
+                        lbNombreC.ForeColor = Color.Black;
+                        nomCat = false;
+                    }
+                    break;
+                case "Modificar":
+                    string nombreMod = txtNombreCMod.Text.ToString();
+
+                    if (nombreMod.Length == 0 || nombreMod.Length > 50)
+                    {
+                        lbErrorNomCMod.Visible = true;
+                        lbNombreCMod.ForeColor = Color.Red;
+
+                        if (nombreMod.Length == 0)
+                        {
+                            lbErrorNomCMod.Text = "El nombre no puede estar vacío.";
+                        }
+                        else if (nombreMod.Length > 50)
+                        {
+                            lbErrorNomCMod.Text = "El nombre es demasiado largo.";
+                        }
+
+                        nomCatMod = false;
+                    }
+                    else if (nombreMod.Length > 0 && !nombreMod.Equals("Nombre"))
+                    {
+                        lbErrorNomCMod.Text = "";
+                        lbErrorNomCMod.Visible = false;
+                        lbNombreCMod.ForeColor = Color.Green;
+                        nomCatMod = true;
+                    }
+                    break;
             }
+            
+        }
+
+        private void compruebaAlmacenCategoria(string opcion)
+        {
+            switch(opcion)
+            {
+                case "Añadir":
+                    int almacen = cbAlmacenC.SelectedIndex;
+
+                    if (almacen == 0)
+                    {
+                        lbErrorAlmC.Text = "Selecciona un almacén.";
+                        lbErrorAlmC.Visible = true;
+                        almCat = false;
+                    }
+                    else
+                    {
+                        lbErrorAlmC.Text = "";
+                        lbErrorAlmC.Visible = false;
+                        almCat = true;
+                    }
+                    break;
+                case "Modificar":
+                    int almacenMod = cbAlmacenCMod.SelectedIndex;
+
+                    if (almacenMod == 0)
+                    {
+                        lbErrorAlmCMod.Text = "Selecciona un almacén.";
+                        lbErrorAlmCMod.Visible = true;
+                        almCatMod = false;
+                    } else
+                    {
+                        lbErrorAlmCMod.Text = "";
+                        lbErrorAlmCMod.Visible = false;
+                        almCatMod = true;
+                    }
+                    break;
+            }
+            
         }
 
         private void rellenaCbDatosCategoria()
@@ -283,11 +531,31 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
             cbDatosC.SelectedIndex = 0;
         }
 
-        
-
         private void filtroDatos()
         {
-            
+            if(cbDatosC.SelectedIndex != 0)
+            {
+                try
+                {
+                    string sql = "SELECT * FROM Categoria WHERE " + cbDatosC.Text + " LIKE '%' + @filtro + '%'";
+                    SqlConnection cnx = new SqlConnection(conection);
+                    cnx.Open();
+
+                    SqlCommand command = new SqlCommand(sql, cnx);
+                    command.Parameters.AddWithValue("@filtro", txtFiltroC.Text);
+
+                    SqlDataReader lector = command.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(lector);
+                    dgvCategorias.DataSource = dt;
+
+                    command.Dispose();
+                    cnx.Close();
+                } catch(Exception ex) 
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }
