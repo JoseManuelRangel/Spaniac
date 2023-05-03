@@ -89,6 +89,9 @@
             this.imgMuestra2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgMuestra2.TabIndex = 53;
             this.imgMuestra2.TabStop = false;
+            this.imgMuestra2.Click += new System.EventHandler(this.imgMuestra2_Click);
+            this.imgMuestra2.MouseLeave += new System.EventHandler(this.imgMuestra2_MouseLeave);
+            this.imgMuestra2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imgMuestra2_MouseMove);
             // 
             // imgMuestra1
             // 
@@ -99,6 +102,9 @@
             this.imgMuestra1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgMuestra1.TabIndex = 52;
             this.imgMuestra1.TabStop = false;
+            this.imgMuestra1.Click += new System.EventHandler(this.imgMuestra1_Click);
+            this.imgMuestra1.MouseLeave += new System.EventHandler(this.imgMuestra1_MouseLeave);
+            this.imgMuestra1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imgMuestra1_MouseMove);
             // 
             // lbErrorConfirma
             // 

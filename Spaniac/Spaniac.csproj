@@ -101,6 +101,12 @@
     <Compile Include="Formularios\Externos\FormRegistro.Designer.cs">
       <DependentUpon>FormRegistro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Internos\Almacenes\FormAlmacenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Internos\Almacenes\FormAlmacenes.Designer.cs">
+      <DependentUpon>FormAlmacenes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Internos\FormPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Externos\FormRegistro.resx">
       <DependentUpon>FormRegistro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Internos\Almacenes\FormAlmacenes.resx">
+      <DependentUpon>FormAlmacenes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\FormPanel.resx">
       <DependentUpon>FormPanel.cs</DependentUpon>

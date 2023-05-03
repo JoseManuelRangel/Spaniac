@@ -28,7 +28,6 @@ namespace Spaniac.Formularios
 
             /* Carga de imágenes en tiempo de ejecución. */
             logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
-            panelIzquierdo.BackgroundImage = Image.FromFile("Fondo.png");
 
             lbDescAviso.Text = mensaje;
         }

@@ -12,12 +12,21 @@ namespace Spaniac.Formularios
 {
     public partial class FormCarga : Form
     {
+        /* Cadena que representa el usuario que se ha logueado. */
         string user;
+
+        /* Formulario que representa el formulario anterior. */
         FormInicio login;
 
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
+        /*-------------------------------------------------------------------------------------------------*/
         public FormCarga(FormInicio formInicio, string usuario)
         {
             InitializeComponent();
+
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
 
             login = formInicio;
             user = usuario;
@@ -25,6 +34,10 @@ namespace Spaniac.Formularios
             aparece.Start();
         }
 
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                  GESTIÓN DE EVENTOS DEL TIMER QUE HACE APARECER EL FORMULARIO                   */
+        /*-------------------------------------------------------------------------------------------------*/
         private void aparece_Tick(object sender, EventArgs e)
         {
             if(this.Opacity < 1)
@@ -44,6 +57,10 @@ namespace Spaniac.Formularios
             }
         }
 
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                 GESTIÓN DE EVENTOS DEL TIMER QUE HACE DESAPARECER EL FORMULARIO                 */
+        /*-------------------------------------------------------------------------------------------------*/
         private void desaparece_Tick(object sender, EventArgs e)
         {
             this.Opacity -= 0.1;

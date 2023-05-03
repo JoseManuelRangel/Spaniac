@@ -48,22 +48,15 @@ namespace Spaniac.Formularios
             InitializeComponent();
             principal = form;
 
-            /* Carga de imágenes en tiempo de ejecución. */
-            panelIzquierdo.BackgroundImage = Image.FromFile("Fondo.png");
-            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
-            imgMuestra1.Image = Image.FromFile("ojoAbierto.png");
-            imgMuestra2.Image = Image.FromFile("ojoAbierto.png");
-
-            /* Inicializando errores de registro. */
-            lbErrorRol.Text = "Selecciona un rol.";
-            lbErrorRol.Visible = true;
-
-            lbErrorEmail.Text = "Selecciona una extensión.";
-            lbErrorEmail.Visible = true;
-
-            lbErrorImg.Text = "Selecciona una imagen de perfil.";
-            lbErrorImg.Visible = true;
+            inicializaControles();
         }
+
+        public FormRegistro()
+        {
+            InitializeComponent();
+            inicializaControles();
+        }
+
 
         private void Registro_MouseDown(object sender, MouseEventArgs e)
         {
@@ -487,7 +480,8 @@ namespace Spaniac.Formularios
                     this.Visible = false;
                 } catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    FormNotificaciones form = new FormNotificaciones(ex.Message);
+                    form.Show();
                 }      
             }
         }
@@ -979,6 +973,25 @@ namespace Spaniac.Formularios
             imgPerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
 
             return ms.GetBuffer();
+        }
+
+        private void inicializaControles()
+        {
+            /* Carga de imágenes en tiempo de ejecución. */
+            panelIzquierdo.BackgroundImage = Image.FromFile("Fondo.png");
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+            imgMuestra1.Image = Image.FromFile("ojoAbierto.png");
+            imgMuestra2.Image = Image.FromFile("ojoAbierto.png");
+
+            /* Inicializando errores de registro. */
+            lbErrorRol.Text = "Selecciona un rol.";
+            lbErrorRol.Visible = true;
+
+            lbErrorEmail.Text = "Selecciona una extensión.";
+            lbErrorEmail.Visible = true;
+
+            lbErrorImg.Text = "Selecciona una imagen de perfil.";
+            lbErrorImg.Visible = true;
         }
     }
 }

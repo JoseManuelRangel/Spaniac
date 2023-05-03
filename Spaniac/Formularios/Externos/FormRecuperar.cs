@@ -41,6 +41,10 @@ namespace Spaniac.Formularios.Externos
 
             confirma = form;
 
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+            imgMuestra1.Image = Image.FromFile("ojoAbierto.png");
+            imgMuestra2.Image = Image.FromFile("ojoAbierto.png");
+
             correoUser = correo;
         }
 
@@ -142,6 +146,68 @@ namespace Spaniac.Formularios.Externos
 
 
         /*-------------------------------------------------------------------------------------------------*/
+        /*                   GESTIÓN DE EVENTOS DEL PICTUREBOX DE MOSTRAR CONTRASEÑA 1                     */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void imgMuestra1_Click(object sender, EventArgs e)
+        {
+            if (!txtClave.Text.Equals("Contraseña"))
+            {
+                if (txtClave.UseSystemPasswordChar == false)
+                {
+                    txtClave.UseSystemPasswordChar = true;
+                    imgMuestra1.Image = Image.FromFile("ojoAbierto.png");
+                }
+                else if (txtClave.UseSystemPasswordChar == true)
+                {
+                    txtClave.UseSystemPasswordChar = false;
+                    imgMuestra1.Image = Image.FromFile("ojoCerrado.png");
+                }
+            }
+        }
+
+        private void imgMuestra1_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void imgMuestra1_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                   GESTIÓN DE EVENTOS DEL PICTUREBOX DE MOSTRAR CONTRASEÑA 2                     */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void imgMuestra2_Click(object sender, EventArgs e)
+        {
+            if (!txtConfirma.Text.Equals("Confirmar contraseña"))
+            {
+                if (txtConfirma.UseSystemPasswordChar == false)
+                {
+                    txtConfirma.UseSystemPasswordChar = true;
+                    imgMuestra2.Image = Image.FromFile("ojoAbierto.png");
+                }
+                else if (txtConfirma.UseSystemPasswordChar == true)
+                {
+                    txtConfirma.UseSystemPasswordChar = false;
+                    imgMuestra2.Image = Image.FromFile("ojoCerrado.png");
+                }
+            }
+        }
+
+        private void imgMuestra2_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void imgMuestra2_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
         /*                              GESTIÓN DE EVENTOS DEL BOTÓN CAMBIAR                               */
         /*-------------------------------------------------------------------------------------------------*/
         private void btnCambiar_Click(object sender, EventArgs e)
@@ -160,7 +226,8 @@ namespace Spaniac.Formularios.Externos
                     command.ExecuteNonQuery();
                 } catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    FormNotificaciones form = new FormNotificaciones(ex.Message);
+                    form.Show();
 
                 } finally
                 {
@@ -282,6 +349,7 @@ namespace Spaniac.Formularios.Externos
                 confCorrect = false;
             }
         }
+
 
         private bool algoritmoContraseña(string contraseña)
         {

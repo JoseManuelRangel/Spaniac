@@ -172,7 +172,5 @@ namespace Spaniac
             }
             btnSalir.BackColor = c_botones;
         }
-
-        
     }
 }

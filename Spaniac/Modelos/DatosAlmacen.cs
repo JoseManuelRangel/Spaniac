@@ -11,6 +11,7 @@ namespace Spaniac.Modelos
     {
         private int id;
         private int activo;
+        private string nombre;
 
         public int ID
         {
@@ -38,18 +39,33 @@ namespace Spaniac.Modelos
             }
         }
 
+        public string Nombre
+        {
+            get
+            {
+                return nombre;
+            }
+
+            set
+            {
+                nombre = value;
+            }
+        }
+
         public DatosAlmacen()
         {
             id = ID;
             activo = Activo;
+            nombre = Nombre;
         }
 
         public void guardarAlmacen()
         {
-            string transactSql = "INSERT INTO Almacen VALUES (@activo)";
+            string transactSql = "INSERT INTO Almacen VALUES (@activo, @nombre)";
             parametros = new List<SqlParameter>();
 
             parametros.Add(new SqlParameter("@activo", activo));
+            parametros.Add(new SqlParameter("@nombre", nombre));
 
             executeNonQuery(transactSql);
         }

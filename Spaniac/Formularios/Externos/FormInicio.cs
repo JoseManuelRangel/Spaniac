@@ -231,7 +231,15 @@ namespace Spaniac.Formularios
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            principal.Visible = true;
+
+            if(principal != null)
+            {
+                principal.Visible = true;
+            } else
+            {
+                FormPrincipal form = new FormPrincipal();
+                form.Show();
+            }   
         }
 
         private void btnCancelar_MouseMove(object sender, MouseEventArgs e)

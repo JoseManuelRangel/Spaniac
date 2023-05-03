@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProductos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbHora = new System.Windows.Forms.Label();
             this.lbInicio = new System.Windows.Forms.Label();
             this.barra1 = new System.Windows.Forms.Panel();
@@ -59,17 +59,18 @@
             this.btnEliminarC = new System.Windows.Forms.Button();
             this.btnModificarC = new System.Windows.Forms.Button();
             this.horafecha = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panelModificarC = new System.Windows.Forms.Panel();
+            this.lbErrorIdCMod = new System.Windows.Forms.Label();
+            this.cbIdCMod = new System.Windows.Forms.ComboBox();
+            this.lbProdCMod = new System.Windows.Forms.Label();
+            this.txtProdCMod = new System.Windows.Forms.TextBox();
             this.lbErrorNomCMod = new System.Windows.Forms.Label();
             this.btnAceptarCMod = new System.Windows.Forms.Button();
             this.lbErrorAlmCMod = new System.Windows.Forms.Label();
             this.cbAlmacenCMod = new System.Windows.Forms.ComboBox();
             this.txtNombreCMod = new System.Windows.Forms.TextBox();
             this.lbNombreCMod = new System.Windows.Forms.Label();
-            this.txtProdCMod = new System.Windows.Forms.TextBox();
-            this.lbProdCMod = new System.Windows.Forms.Label();
-            this.cbIdCMod = new System.Windows.Forms.ComboBox();
-            this.lbErrorIdCMod = new System.Windows.Forms.Label();
             this.panelCategorias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).BeginInit();
@@ -231,25 +232,25 @@
             // 
             this.dgvCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCategorias.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Reem Kufi", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Reem Kufi", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategorias.Location = new System.Drawing.Point(429, 76);
             this.dgvCategorias.Name = "dgvCategorias";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Reem Kufi", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCategorias.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Reem Kufi", 8.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCategorias.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvCategorias.Size = new System.Drawing.Size(930, 453);
             this.dgvCategorias.TabIndex = 1;
             // 
@@ -268,6 +269,7 @@
             // 
             // panelAñadirC
             // 
+            this.panelAñadirC.Controls.Add(this.textBox1);
             this.panelAñadirC.Controls.Add(this.lbErrorNomC);
             this.panelAñadirC.Controls.Add(this.btnLimpiarC);
             this.panelAñadirC.Controls.Add(this.btnAñadeC);
@@ -286,7 +288,7 @@
             this.lbErrorNomC.BackColor = System.Drawing.Color.White;
             this.lbErrorNomC.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbErrorNomC.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorNomC.Location = new System.Drawing.Point(12, 84);
+            this.lbErrorNomC.Location = new System.Drawing.Point(12, 137);
             this.lbErrorNomC.Name = "lbErrorNomC";
             this.lbErrorNomC.Size = new System.Drawing.Size(41, 23);
             this.lbErrorNomC.TabIndex = 37;
@@ -301,7 +303,7 @@
             this.btnLimpiarC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiarC.Font = new System.Drawing.Font("Reem Kufi", 8F, System.Drawing.FontStyle.Bold);
             this.btnLimpiarC.ForeColor = System.Drawing.Color.White;
-            this.btnLimpiarC.Location = new System.Drawing.Point(158, 207);
+            this.btnLimpiarC.Location = new System.Drawing.Point(158, 260);
             this.btnLimpiarC.Name = "btnLimpiarC";
             this.btnLimpiarC.Size = new System.Drawing.Size(147, 30);
             this.btnLimpiarC.TabIndex = 36;
@@ -319,7 +321,7 @@
             this.btnAñadeC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAñadeC.Font = new System.Drawing.Font("Reem Kufi", 8F, System.Drawing.FontStyle.Bold);
             this.btnAñadeC.ForeColor = System.Drawing.Color.White;
-            this.btnAñadeC.Location = new System.Drawing.Point(13, 207);
+            this.btnAñadeC.Location = new System.Drawing.Point(13, 260);
             this.btnAñadeC.Name = "btnAñadeC";
             this.btnAñadeC.Size = new System.Drawing.Size(147, 30);
             this.btnAñadeC.TabIndex = 35;
@@ -335,7 +337,7 @@
             this.lbErrorAlmC.BackColor = System.Drawing.Color.White;
             this.lbErrorAlmC.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbErrorAlmC.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorAlmC.Location = new System.Drawing.Point(12, 168);
+            this.lbErrorAlmC.Location = new System.Drawing.Point(12, 221);
             this.lbErrorAlmC.Name = "lbErrorAlmC";
             this.lbErrorAlmC.Size = new System.Drawing.Size(41, 23);
             this.lbErrorAlmC.TabIndex = 34;
@@ -348,7 +350,7 @@
             this.cbAlmacenC.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbAlmacenC.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbAlmacenC.FormattingEnabled = true;
-            this.cbAlmacenC.Location = new System.Drawing.Point(16, 129);
+            this.cbAlmacenC.Location = new System.Drawing.Point(16, 182);
             this.cbAlmacenC.Name = "cbAlmacenC";
             this.cbAlmacenC.Size = new System.Drawing.Size(289, 36);
             this.cbAlmacenC.TabIndex = 33;
@@ -359,7 +361,7 @@
             this.txtNombreC.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreC.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreC.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.txtNombreC.Location = new System.Drawing.Point(13, 34);
+            this.txtNombreC.Location = new System.Drawing.Point(13, 87);
             this.txtNombreC.Multiline = true;
             this.txtNombreC.Name = "txtNombreC";
             this.txtNombreC.Size = new System.Drawing.Size(292, 33);
@@ -373,7 +375,7 @@
             // 
             this.lbNombreC.AutoSize = true;
             this.lbNombreC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNombreC.Location = new System.Drawing.Point(13, 59);
+            this.lbNombreC.Location = new System.Drawing.Point(13, 112);
             this.lbNombreC.Name = "lbNombreC";
             this.lbNombreC.Size = new System.Drawing.Size(294, 13);
             this.lbNombreC.TabIndex = 6;
@@ -435,6 +437,19 @@
             this.horafecha.Enabled = true;
             this.horafecha.Tick += new System.EventHandler(this.horafecha_Tick);
             // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBox1.Location = new System.Drawing.Point(13, 27);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(292, 33);
+            this.textBox1.TabIndex = 38;
+            this.textBox1.Text = "ID Autogenerado";
+            // 
             // panelModificarC
             // 
             this.panelModificarC.Controls.Add(this.lbErrorIdCMod);
@@ -450,7 +465,52 @@
             this.panelModificarC.Location = new System.Drawing.Point(3, 4);
             this.panelModificarC.Name = "panelModificarC";
             this.panelModificarC.Size = new System.Drawing.Size(318, 419);
-            this.panelModificarC.TabIndex = 13;
+            this.panelModificarC.TabIndex = 14;
+            // 
+            // lbErrorIdCMod
+            // 
+            this.lbErrorIdCMod.AutoSize = true;
+            this.lbErrorIdCMod.BackColor = System.Drawing.Color.White;
+            this.lbErrorIdCMod.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorIdCMod.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorIdCMod.Location = new System.Drawing.Point(12, 61);
+            this.lbErrorIdCMod.Name = "lbErrorIdCMod";
+            this.lbErrorIdCMod.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorIdCMod.TabIndex = 41;
+            this.lbErrorIdCMod.Text = "Error";
+            this.lbErrorIdCMod.Visible = false;
+            // 
+            // cbIdCMod
+            // 
+            this.cbIdCMod.BackColor = System.Drawing.Color.White;
+            this.cbIdCMod.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbIdCMod.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIdCMod.FormattingEnabled = true;
+            this.cbIdCMod.Location = new System.Drawing.Point(13, 20);
+            this.cbIdCMod.Name = "cbIdCMod";
+            this.cbIdCMod.Size = new System.Drawing.Size(294, 36);
+            this.cbIdCMod.TabIndex = 40;
+            // 
+            // lbProdCMod
+            // 
+            this.lbProdCMod.AutoSize = true;
+            this.lbProdCMod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbProdCMod.Location = new System.Drawing.Point(11, 217);
+            this.lbProdCMod.Name = "lbProdCMod";
+            this.lbProdCMod.Size = new System.Drawing.Size(294, 13);
+            this.lbProdCMod.TabIndex = 39;
+            this.lbProdCMod.Text = "_________________________________________";
+            // 
+            // txtProdCMod
+            // 
+            this.txtProdCMod.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtProdCMod.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdCMod.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtProdCMod.Location = new System.Drawing.Point(16, 190);
+            this.txtProdCMod.Multiline = true;
+            this.txtProdCMod.Name = "txtProdCMod";
+            this.txtProdCMod.Size = new System.Drawing.Size(289, 33);
+            this.txtProdCMod.TabIndex = 38;
             // 
             // lbErrorNomCMod
             // 
@@ -473,13 +533,12 @@
             this.btnAceptarCMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptarCMod.Font = new System.Drawing.Font("Reem Kufi", 8F, System.Drawing.FontStyle.Bold);
             this.btnAceptarCMod.ForeColor = System.Drawing.Color.White;
-            this.btnAceptarCMod.Location = new System.Drawing.Point(13, 340);
+            this.btnAceptarCMod.Location = new System.Drawing.Point(13, 364);
             this.btnAceptarCMod.Name = "btnAceptarCMod";
             this.btnAceptarCMod.Size = new System.Drawing.Size(292, 30);
             this.btnAceptarCMod.TabIndex = 35;
             this.btnAceptarCMod.Text = "ACEPTAR";
             this.btnAceptarCMod.UseVisualStyleBackColor = false;
-            this.btnAceptarCMod.Click += new System.EventHandler(this.btnAceptarCMod_Click);
             // 
             // lbErrorAlmCMod
             // 
@@ -504,7 +563,6 @@
             this.cbAlmacenCMod.Name = "cbAlmacenCMod";
             this.cbAlmacenCMod.Size = new System.Drawing.Size(292, 36);
             this.cbAlmacenCMod.TabIndex = 33;
-            this.cbAlmacenCMod.SelectedIndexChanged += new System.EventHandler(this.cbAlmacenCMod_SelectedIndexChanged);
             // 
             // txtNombreCMod
             // 
@@ -516,7 +574,6 @@
             this.txtNombreCMod.Name = "txtNombreCMod";
             this.txtNombreCMod.Size = new System.Drawing.Size(292, 33);
             this.txtNombreCMod.TabIndex = 7;
-            this.txtNombreCMod.TextChanged += new System.EventHandler(this.txtNombreCMod_TextChanged);
             // 
             // lbNombreCMod
             // 
@@ -527,52 +584,6 @@
             this.lbNombreCMod.Size = new System.Drawing.Size(294, 13);
             this.lbNombreCMod.TabIndex = 6;
             this.lbNombreCMod.Text = "_________________________________________";
-            // 
-            // txtProdCMod
-            // 
-            this.txtProdCMod.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtProdCMod.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProdCMod.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.txtProdCMod.Location = new System.Drawing.Point(16, 190);
-            this.txtProdCMod.Multiline = true;
-            this.txtProdCMod.Name = "txtProdCMod";
-            this.txtProdCMod.Size = new System.Drawing.Size(289, 33);
-            this.txtProdCMod.TabIndex = 38;
-            // 
-            // lbProdCMod
-            // 
-            this.lbProdCMod.AutoSize = true;
-            this.lbProdCMod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProdCMod.Location = new System.Drawing.Point(11, 217);
-            this.lbProdCMod.Name = "lbProdCMod";
-            this.lbProdCMod.Size = new System.Drawing.Size(294, 13);
-            this.lbProdCMod.TabIndex = 39;
-            this.lbProdCMod.Text = "_________________________________________";
-            // 
-            // cbIdCMod
-            // 
-            this.cbIdCMod.BackColor = System.Drawing.Color.White;
-            this.cbIdCMod.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbIdCMod.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbIdCMod.FormattingEnabled = true;
-            this.cbIdCMod.Location = new System.Drawing.Point(13, 20);
-            this.cbIdCMod.Name = "cbIdCMod";
-            this.cbIdCMod.Size = new System.Drawing.Size(294, 36);
-            this.cbIdCMod.TabIndex = 40;
-            this.cbIdCMod.SelectedIndexChanged += new System.EventHandler(this.cbIdCMod_SelectedIndexChanged);
-            // 
-            // lbErrorIdCMod
-            // 
-            this.lbErrorIdCMod.AutoSize = true;
-            this.lbErrorIdCMod.BackColor = System.Drawing.Color.White;
-            this.lbErrorIdCMod.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbErrorIdCMod.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorIdCMod.Location = new System.Drawing.Point(12, 61);
-            this.lbErrorIdCMod.Name = "lbErrorIdCMod";
-            this.lbErrorIdCMod.Size = new System.Drawing.Size(41, 23);
-            this.lbErrorIdCMod.TabIndex = 41;
-            this.lbErrorIdCMod.Text = "Error";
-            this.lbErrorIdCMod.Visible = false;
             // 
             // FormProductos
             // 
@@ -634,15 +645,16 @@
         private System.Windows.Forms.Timer horafecha;
         private System.Windows.Forms.Label lbErrorNomC;
         private System.Windows.Forms.Panel panelModificarC;
+        private System.Windows.Forms.Label lbErrorIdCMod;
+        private System.Windows.Forms.ComboBox cbIdCMod;
+        private System.Windows.Forms.Label lbProdCMod;
+        private System.Windows.Forms.TextBox txtProdCMod;
         private System.Windows.Forms.Label lbErrorNomCMod;
         private System.Windows.Forms.Button btnAceptarCMod;
         private System.Windows.Forms.Label lbErrorAlmCMod;
         private System.Windows.Forms.ComboBox cbAlmacenCMod;
         private System.Windows.Forms.TextBox txtNombreCMod;
         private System.Windows.Forms.Label lbNombreCMod;
-        private System.Windows.Forms.Label lbErrorIdCMod;
-        private System.Windows.Forms.ComboBox cbIdCMod;
-        private System.Windows.Forms.Label lbProdCMod;
-        private System.Windows.Forms.TextBox txtProdCMod;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

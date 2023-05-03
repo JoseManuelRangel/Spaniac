@@ -30,23 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCarga));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.logoEmpresa = new System.Windows.Forms.PictureBox();
             this.aparece = new System.Windows.Forms.Timer(this.components);
             this.desaparece = new System.Windows.Forms.Timer(this.components);
             this.barra = new System.Windows.Forms.ProgressBar();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // logoEmpresa
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(21, 17);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(127, 111);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.logoEmpresa.BackColor = System.Drawing.Color.Transparent;
+            this.logoEmpresa.Image = ((System.Drawing.Image)(resources.GetObject("logoEmpresa.Image")));
+            this.logoEmpresa.Location = new System.Drawing.Point(21, 17);
+            this.logoEmpresa.Name = "logoEmpresa";
+            this.logoEmpresa.Size = new System.Drawing.Size(127, 111);
+            this.logoEmpresa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoEmpresa.TabIndex = 0;
+            this.logoEmpresa.TabStop = false;
             // 
             // aparece
             // 
@@ -74,19 +74,19 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(171, 170);
             this.Controls.Add(this.barra);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.logoEmpresa);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormCarga";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCarga";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox logoEmpresa;
         private System.Windows.Forms.Timer aparece;
         private System.Windows.Forms.Timer desaparece;
         private System.Windows.Forms.ProgressBar barra;

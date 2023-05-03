@@ -45,6 +45,9 @@ namespace Spaniac.Formularios.Externos
 
             inicio = form;
 
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+            imgCorreo.Image = Image.FromFile("persona.png");
+
             btnEnviar.Enabled = false;
         }
 
@@ -150,7 +153,8 @@ namespace Spaniac.Formularios.Externos
                     }
                 } catch(Exception ex) 
                 {
-                    MessageBox.Show(ex.Message);
+                    FormNotificaciones form = new FormNotificaciones(ex.Message);
+                    form.Show();
                 }
             }
         }
@@ -172,7 +176,15 @@ namespace Spaniac.Formularios.Externos
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            inicio.Visible = true;
+
+            if(inicio != null)
+            {
+                inicio.Visible = true;
+            } else
+            {
+                FormInicio form = new FormInicio();
+                form.Show();
+            }  
         }
 
         private void btnCancelar_MouseMove(object sender, MouseEventArgs e)

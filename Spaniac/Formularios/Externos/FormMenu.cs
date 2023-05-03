@@ -39,6 +39,8 @@ namespace Spaniac.Formularios
             userLog = usuario;
             formCarga = carga;
 
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+
             abrirFormEnPanel(new FormPanel());
 
             cargarDatosUsuario(userLog);
@@ -149,7 +151,8 @@ namespace Spaniac.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
             }
         }
     }

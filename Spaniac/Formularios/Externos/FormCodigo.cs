@@ -51,6 +51,9 @@ namespace Spaniac.Formularios
             InitializeComponent();
             registro = form;
 
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+            bloqueoCodigo.Image = Image.FromFile("Candado.png");
+
             numero1 = num1;
             numero2 = num2;
             numero3 = num3;
@@ -79,6 +82,9 @@ namespace Spaniac.Formularios
         {
             InitializeComponent();
             recuperar = form;
+
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+            bloqueoCodigo.Image = Image.FromFile("Candado.png");
 
             numero1 = num1;
             numero2 = num2;
@@ -209,11 +215,17 @@ namespace Spaniac.Formularios
         /*                               GESTIÓN DE EVENTOS DEL BOTÓN CANCELAR                             */
         /*-------------------------------------------------------------------------------------------------*/
         private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            FormInicio formInicio = new FormInicio();
-            formInicio.Show();
-
+        {     
             this.Close();
+
+            if(registro != null)
+            {
+                registro.Visible = true;
+            } else
+            {
+                FormInicio form = new FormInicio();
+                form.Show();
+            }
         }
 
 
