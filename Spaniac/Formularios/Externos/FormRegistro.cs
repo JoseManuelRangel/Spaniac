@@ -478,7 +478,7 @@ namespace Spaniac.Formularios
                     usuario = txtUsuario.Text.ToString();
                     clave = txtClave.Text.ToString();
                     rol = cbRol.Text.ToString();
-                    email = txtEmail.Text.ToString();
+                    email = txtEmail.Text.ToString() + "" + cbEmail.Text.ToString();
                     imagen = convertirImagen();
 
                     FormCodigo form = new FormCodigo(num1, num2, num3, num4, num5,

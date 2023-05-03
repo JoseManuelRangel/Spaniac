@@ -1,4 +1,5 @@
-﻿using Spaniac.Modelos;
+﻿using Spaniac.Formularios.Externos;
+using Spaniac.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,8 +21,14 @@ namespace Spaniac.Formularios
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
+        string orden;
+        static string correoUser;
+
         /* Formulario anterior. */
         FormRegistro registro;
+
+        /* Formulario anterior 2. */
+        FormOlvidoClave recuperar;
 
         /* Variables booleanas que controlan si se han rellenado los tramos de código del formulario. */
         static bool c1 = false, c2 = false, c3 = false, c4 = false, c5 = false;
@@ -64,6 +71,29 @@ namespace Spaniac.Formularios
             descripcion.Text = "Antes de completar el registro de la cuenta, tenemos que mandar al correo electrónico proporcionado" +
                 "un código de verificación para completar el registro. Desbloquea el candado pinchando sobre él e introduce los 5 " +
                 "números del código generado.";
+
+            orden = "Registro";
+        }
+
+        public FormCodigo(int num1, int num2, int num3, int num4, int num5, string correo, FormOlvidoClave form)
+        {
+            InitializeComponent();
+            recuperar = form;
+
+            numero1 = num1;
+            numero2 = num2;
+            numero3 = num3;
+            numero4 = num4;
+            numero5 = num5;
+
+            correoUser = correo;
+
+            lbTitulo.Text = "RECUPERACIÓN";
+            descripcion.Text = "Antes de recuperar tu contraseña, tenemos que mandar al correo electrónico un código de verificación " +
+                "para completar la recuperación. Desbloquea el candado pinchando sobre él e introduce los números " +
+                "del código generado.";
+
+            orden = "Recuperar";
         }
 
         private void FormCodigo_MouseDown(object sender, MouseEventArgs e)
@@ -171,33 +201,7 @@ namespace Spaniac.Formularios
         /*-------------------------------------------------------------------------------------------------*/
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            int cod1, cod2, cod3, cod4, cod5;
-
-            cod1 = int.Parse(codigo1.Text.ToString());
-            cod2 = int.Parse(codigo2.Text.ToString());
-            cod3 = int.Parse(codigo3.Text.ToString());
-            cod4 = int.Parse(codigo4.Text.ToString());
-            cod5 = int.Parse(codigo5.Text.ToString());
-
-            if(cod1 == numero1 && cod2 == numero2 && cod3 == numero3 && cod4 == numero4 && cod5 == numero5)
-            {
-                DatosUsuario datosNuevoUser = new DatosUsuario();
-                datosNuevoUser.Dni = dni;
-                datosNuevoUser.Nombre = nombre;
-                datosNuevoUser.Ap1 = ap1;
-                datosNuevoUser.Ap2 = ap2;
-                datosNuevoUser.Usuario = usuario;
-                datosNuevoUser.Clave = clave;
-                datosNuevoUser.Rol = rol;
-                datosNuevoUser.Email = email;
-                datosNuevoUser.Imagen = imagen;
-                datosNuevoUser.guardarCambios();
-
-                FormNotificaciones form = new FormNotificaciones("Usuario registrado correctamente.");
-                form.Show();
-                this.Close();
-            }
-            
+            funcionBotonAceptar(orden);
         }
 
 
@@ -206,7 +210,9 @@ namespace Spaniac.Formularios
         /*-------------------------------------------------------------------------------------------------*/
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            registro.Visible = true;
+            FormInicio formInicio = new FormInicio();
+            formInicio.Show();
+
             this.Close();
         }
 
@@ -237,6 +243,59 @@ namespace Spaniac.Formularios
                 return true;
             } else {
                 return false;
+            }
+        }
+
+        private void funcionBotonAceptar(string orden)
+        {
+            switch(orden)
+            {
+                case "Registro":
+                    int cod1, cod2, cod3, cod4, cod5;
+
+                    cod1 = int.Parse(codigo1.Text.ToString());
+                    cod2 = int.Parse(codigo2.Text.ToString());
+                    cod3 = int.Parse(codigo3.Text.ToString());
+                    cod4 = int.Parse(codigo4.Text.ToString());
+                    cod5 = int.Parse(codigo5.Text.ToString());
+
+                    if (cod1 == numero1 && cod2 == numero2 && cod3 == numero3 && cod4 == numero4 && cod5 == numero5)
+                    {
+                        DatosUsuario datosNuevoUser = new DatosUsuario();
+                        datosNuevoUser.Dni = dni;
+                        datosNuevoUser.Nombre = nombre;
+                        datosNuevoUser.Ap1 = ap1;
+                        datosNuevoUser.Ap2 = ap2;
+                        datosNuevoUser.Usuario = usuario;
+                        datosNuevoUser.Clave = clave;
+                        datosNuevoUser.Rol = rol;
+                        datosNuevoUser.Email = email;
+                        datosNuevoUser.Imagen = imagen;
+                        datosNuevoUser.guardarCambios();
+
+                        FormNotificaciones form = new FormNotificaciones("Usuario registrado correctamente.");
+                        form.Show();
+                        this.Close();
+                    }
+
+                    break;
+                case "Recuperar":
+                    int rec1, rec2, rec3, rec4, rec5;
+
+                    rec1 = int.Parse(codigo1.Text.ToString());
+                    rec2 = int.Parse(codigo2.Text.ToString());
+                    rec3 = int.Parse(codigo3.Text.ToString());
+                    rec4 = int.Parse(codigo4.Text.ToString());
+                    rec5 = int.Parse(codigo5.Text.ToString());
+
+                    if(rec1 == numero1 && rec2 == numero2 && rec3 == numero3 && rec4 == numero4 &&  rec5 == numero5)
+                    {
+                        FormRecuperar form = new FormRecuperar(this, correoUser);
+                        form.Show();
+                        this.Visible = false;
+                    }
+
+                    break;
             }
         }
     }

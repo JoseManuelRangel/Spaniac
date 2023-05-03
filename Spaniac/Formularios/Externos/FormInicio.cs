@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spaniac.Formularios.Externos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,6 +37,18 @@ namespace Spaniac.Formularios
         {
             InitializeComponent();
             principal = form;
+
+            /* Carga de imágenes en tiempo de ejecución. */
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+            imgUsuario.Image = Image.FromFile("persona.png");
+            imgClave.Image = Image.FromFile("Candado.png");
+            imgMuestra.Image = Image.FromFile("ojoAbierto.png");
+            panelIzquierdo.BackgroundImage = Image.FromFile("Fondo.png");
+        }
+
+        public FormInicio()
+        {
+            InitializeComponent();
 
             /* Carga de imágenes en tiempo de ejecución. */
             logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
@@ -229,6 +242,17 @@ namespace Spaniac.Formularios
         private void btnCancelar_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
-        } 
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                        GESTIÓN DE EVENTOS DEL LINK DE OLVIDO DE CONTRASEÑA                      */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void linkLabel1_Click(object sender, EventArgs e)
+        {
+            FormOlvidoClave form = new FormOlvidoClave(this);
+            form.Show();
+            this.Visible = false;
+        }
     }
 }

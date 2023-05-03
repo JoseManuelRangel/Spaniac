@@ -47,58 +47,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formularios\FormulariosExternos\FormCarga.cs">
+    <Compile Include="Formularios\Externos\FormCarga.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormCarga.Designer.cs">
+    <Compile Include="Formularios\Externos\FormCarga.Designer.cs">
       <DependentUpon>FormCarga.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormCodigo.cs">
+    <Compile Include="Formularios\Externos\FormCodigo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormCodigo.Designer.cs">
+    <Compile Include="Formularios\Externos\FormCodigo.Designer.cs">
       <DependentUpon>FormCodigo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormInicio.cs">
+    <Compile Include="Formularios\Externos\FormInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormInicio.Designer.cs">
+    <Compile Include="Formularios\Externos\FormInicio.Designer.cs">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormPrincipal.cs">
+    <Compile Include="Formularios\Externos\FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormPrincipal.Designer.cs">
+    <Compile Include="Formularios\Externos\FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormMenu.cs">
+    <Compile Include="Formularios\Externos\FormMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormMenu.Designer.cs">
+    <Compile Include="Formularios\Externos\FormMenu.Designer.cs">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormNotificaciones.cs">
+    <Compile Include="Formularios\Externos\FormNotificaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormNotificaciones.Designer.cs">
+    <Compile Include="Formularios\Externos\FormNotificaciones.Designer.cs">
       <DependentUpon>FormNotificaciones.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormRegistro.cs">
+    <Compile Include="Formularios\Externos\FormOlvidoClave.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormulariosExternos\FormRegistro.Designer.cs">
+    <Compile Include="Formularios\Externos\FormOlvidoClave.Designer.cs">
+      <DependentUpon>FormOlvidoClave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Externos\FormRecuperar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Externos\FormRecuperar.Designer.cs">
+      <DependentUpon>FormRecuperar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Externos\FormRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Externos\FormRegistro.Designer.cs">
       <DependentUpon>FormRegistro.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormulariosInternos\FormPanel.cs">
+    <Compile Include="Formularios\Internos\FormPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormulariosInternos\FormPanel.Designer.cs">
+    <Compile Include="Formularios\Internos\FormPanel.Designer.cs">
       <DependentUpon>FormPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FormulariosInternos\FormulariosProductos\FormProductos.cs">
+    <Compile Include="Formularios\Internos\Productos\FormProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FormulariosInternos\FormulariosProductos\FormProductos.Designer.cs">
+    <Compile Include="Formularios\Internos\Productos\FormProductos.Designer.cs">
       <DependentUpon>FormProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\DatosAlmacen.cs" />
@@ -116,31 +128,37 @@
     <Compile Include="Modelos\Repositorio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Formularios\FormulariosExternos\FormCarga.resx">
+    <EmbeddedResource Include="Formularios\Externos\FormCarga.resx">
       <DependentUpon>FormCarga.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormulariosExternos\FormCodigo.resx">
+    <EmbeddedResource Include="Formularios\Externos\FormCodigo.resx">
       <DependentUpon>FormCodigo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormulariosExternos\FormInicio.resx">
+    <EmbeddedResource Include="Formularios\Externos\FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormulariosExternos\FormPrincipal.resx">
+    <EmbeddedResource Include="Formularios\Externos\FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormulariosExternos\FormMenu.resx">
+    <EmbeddedResource Include="Formularios\Externos\FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormulariosExternos\FormNotificaciones.resx">
+    <EmbeddedResource Include="Formularios\Externos\FormNotificaciones.resx">
       <DependentUpon>FormNotificaciones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormulariosExternos\FormRegistro.resx">
+    <EmbeddedResource Include="Formularios\Externos\FormOlvidoClave.resx">
+      <DependentUpon>FormOlvidoClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Externos\FormRecuperar.resx">
+      <DependentUpon>FormRecuperar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Externos\FormRegistro.resx">
       <DependentUpon>FormRegistro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormulariosInternos\FormPanel.resx">
+    <EmbeddedResource Include="Formularios\Internos\FormPanel.resx">
       <DependentUpon>FormPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FormulariosInternos\FormulariosProductos\FormProductos.resx">
+    <EmbeddedResource Include="Formularios\Internos\Productos\FormProductos.resx">
       <DependentUpon>FormProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
