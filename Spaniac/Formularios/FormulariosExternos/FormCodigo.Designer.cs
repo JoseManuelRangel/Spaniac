@@ -153,7 +153,7 @@
             this.btnAceptar.Enabled = false;
             this.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnAceptar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
             this.btnAceptar.Location = new System.Drawing.Point(146, 287);
             this.btnAceptar.Name = "btnAceptar";
@@ -169,7 +169,7 @@
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(339, 287);
             this.btnCancelar.Name = "btnCancelar";

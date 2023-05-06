@@ -28,6 +28,7 @@ namespace Spaniac.Formularios
 
             /* Carga de imágenes en tiempo de ejecución. */
             logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+            panelIzquierdo.BackgroundImage = Image.FromFile("Fondo.png");
 
             lbDescAviso.Text = mensaje;
         }
@@ -53,6 +54,8 @@ namespace Spaniac.Formularios
         /*-------------------------------------------------------------------------------------------------*/
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            FormPrincipal principal = new FormPrincipal();
+            principal.Show();
             this.Close();
         }
 

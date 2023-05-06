@@ -137,7 +137,7 @@
             this.btnEntrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEntrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEntrar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnEntrar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEntrar.ForeColor = System.Drawing.Color.White;
             this.btnEntrar.Location = new System.Drawing.Point(146, 240);
             this.btnEntrar.Name = "btnEntrar";
@@ -155,7 +155,7 @@
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(342, 240);
             this.btnCancelar.Name = "btnCancelar";
@@ -177,7 +177,6 @@
             this.linkLabel1.TabIndex = 0;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "¿Olvidaste la contraseña?. Haz click aquí";
-            this.linkLabel1.Click += new System.EventHandler(this.linkLabel1_Click);
             // 
             // imgMuestra
             // 
@@ -196,11 +195,11 @@
             // 
             this.lbError.AutoSize = true;
             this.lbError.BackColor = System.Drawing.Color.White;
-            this.lbError.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbError.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbError.ForeColor = System.Drawing.Color.Red;
             this.lbError.Location = new System.Drawing.Point(145, 206);
             this.lbError.Name = "lbError";
-            this.lbError.Size = new System.Drawing.Size(43, 25);
+            this.lbError.Size = new System.Drawing.Size(35, 16);
             this.lbError.TabIndex = 12;
             this.lbError.Text = "Error";
             this.lbError.Visible = false;

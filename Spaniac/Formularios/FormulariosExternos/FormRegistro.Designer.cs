@@ -483,7 +483,7 @@
             this.btnCargaImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCargaImg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnCargaImg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCargaImg.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCargaImg.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargaImg.ForeColor = System.Drawing.Color.White;
             this.btnCargaImg.Location = new System.Drawing.Point(618, 500);
             this.btnCargaImg.Name = "btnCargaImg";
@@ -501,7 +501,7 @@
             this.btnQuitaImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnQuitaImg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnQuitaImg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuitaImg.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnQuitaImg.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitaImg.ForeColor = System.Drawing.Color.White;
             this.btnQuitaImg.Location = new System.Drawing.Point(781, 500);
             this.btnQuitaImg.Name = "btnQuitaImg";
@@ -519,7 +519,7 @@
             this.btnRegistrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRegistrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrar.Font = new System.Drawing.Font("Reem Kufi", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnRegistrar.Font = new System.Drawing.Font("Reem Kufi", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.Color.White;
             this.btnRegistrar.Location = new System.Drawing.Point(153, 634);
             this.btnRegistrar.Name = "btnRegistrar";
@@ -537,7 +537,7 @@
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Reem Kufi", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.Font = new System.Drawing.Font("Reem Kufi", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(587, 634);
             this.btnCancelar.Name = "btnCancelar";

@@ -47,13 +47,13 @@
             this.btnInventario = new System.Windows.Forms.Button();
             this.btnPanel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.logoEmpresa = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelCuerpo = new System.Windows.Forms.Panel();
             this.panelIzquierdo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconoRol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconoPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSuperior
@@ -84,7 +84,7 @@
             this.panelIzquierdo.Controls.Add(this.btnInventario);
             this.panelIzquierdo.Controls.Add(this.btnPanel);
             this.panelIzquierdo.Controls.Add(this.panel1);
-            this.panelIzquierdo.Controls.Add(this.logoEmpresa);
+            this.panelIzquierdo.Controls.Add(this.pictureBox1);
             this.panelIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.panelIzquierdo.Name = "panelIzquierdo";
@@ -96,11 +96,11 @@
             // 
             this.lbRol.AutoSize = true;
             this.lbRol.BackColor = System.Drawing.Color.Transparent;
-            this.lbRol.Font = new System.Drawing.Font("Reem Kufi", 9F);
+            this.lbRol.Font = new System.Drawing.Font("Reem Kufi", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRol.ForeColor = System.Drawing.Color.White;
             this.lbRol.Location = new System.Drawing.Point(61, 812);
             this.lbRol.Name = "lbRol";
-            this.lbRol.Size = new System.Drawing.Size(28, 23);
+            this.lbRol.Size = new System.Drawing.Size(26, 15);
             this.lbRol.TabIndex = 16;
             this.lbRol.Text = "Rol";
             // 
@@ -146,11 +146,11 @@
             // 
             this.lbUser.AutoSize = true;
             this.lbUser.BackColor = System.Drawing.Color.Transparent;
-            this.lbUser.Font = new System.Drawing.Font("Reem Kufi", 9F);
+            this.lbUser.Font = new System.Drawing.Font("Reem Kufi", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUser.ForeColor = System.Drawing.Color.White;
             this.lbUser.Location = new System.Drawing.Point(61, 761);
             this.lbUser.Name = "lbUser";
-            this.lbUser.Size = new System.Drawing.Size(53, 23);
+            this.lbUser.Size = new System.Drawing.Size(51, 15);
             this.lbUser.TabIndex = 12;
             this.lbUser.Text = "Usuario";
             // 
@@ -259,7 +259,6 @@
             this.btnAlmacenes.Text = "ALMACENES";
             this.btnAlmacenes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnAlmacenes.UseVisualStyleBackColor = false;
-            this.btnAlmacenes.Click += new System.EventHandler(this.btnAlmacenes_Click);
             // 
             // btnProductos
             // 
@@ -318,17 +317,17 @@
             this.panel1.Size = new System.Drawing.Size(140, 5);
             this.panel1.TabIndex = 1;
             // 
-            // logoEmpresa
+            // pictureBox1
             // 
-            this.logoEmpresa.BackColor = System.Drawing.Color.Transparent;
-            this.logoEmpresa.Image = ((System.Drawing.Image)(resources.GetObject("logoEmpresa.Image")));
-            this.logoEmpresa.Location = new System.Drawing.Point(21, 12);
-            this.logoEmpresa.Name = "logoEmpresa";
-            this.logoEmpresa.Size = new System.Drawing.Size(157, 124);
-            this.logoEmpresa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logoEmpresa.TabIndex = 0;
-            this.logoEmpresa.TabStop = false;
-            this.logoEmpresa.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(21, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(157, 124);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             // 
             // panelCuerpo
             // 
@@ -356,7 +355,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconoRol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconoPerfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -365,7 +364,7 @@
 
         private System.Windows.Forms.Panel panelSuperior;
         private System.Windows.Forms.Panel panelIzquierdo;
-        private System.Windows.Forms.PictureBox logoEmpresa;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnPanel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnInventario;

@@ -32,8 +32,8 @@
             this.panelIzquierdo = new System.Windows.Forms.Panel();
             this.logoEmpresa = new System.Windows.Forms.PictureBox();
             this.lbTitulo = new System.Windows.Forms.Label();
+            this.lbDescAviso = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.lbDescAviso = new System.Windows.Forms.RichTextBox();
             this.panelIzquierdo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).BeginInit();
             this.SuspendLayout();
@@ -45,7 +45,7 @@
             this.panelIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.panelIzquierdo.Name = "panelIzquierdo";
-            this.panelIzquierdo.Size = new System.Drawing.Size(117, 242);
+            this.panelIzquierdo.Size = new System.Drawing.Size(117, 216);
             this.panelIzquierdo.TabIndex = 0;
             this.panelIzquierdo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelIzquierdo_MouseDown);
             // 
@@ -66,9 +66,19 @@
             this.lbTitulo.Font = new System.Drawing.Font("Reem Kufi", 27.75F, System.Drawing.FontStyle.Bold);
             this.lbTitulo.Location = new System.Drawing.Point(134, 9);
             this.lbTitulo.Name = "lbTitulo";
-            this.lbTitulo.Size = new System.Drawing.Size(144, 67);
+            this.lbTitulo.Size = new System.Drawing.Size(149, 71);
             this.lbTitulo.TabIndex = 1;
             this.lbTitulo.Text = "AVISO";
+            // 
+            // lbDescAviso
+            // 
+            this.lbDescAviso.AutoSize = true;
+            this.lbDescAviso.Font = new System.Drawing.Font("Reem Kufi", 12F);
+            this.lbDescAviso.Location = new System.Drawing.Point(141, 87);
+            this.lbDescAviso.Name = "lbDescAviso";
+            this.lbDescAviso.Size = new System.Drawing.Size(159, 30);
+            this.lbDescAviso.TabIndex = 2;
+            this.lbDescAviso.Text = "Descripción del aviso";
             // 
             // btnAceptar
             // 
@@ -76,9 +86,9 @@
             this.btnAceptar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnAceptar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
-            this.btnAceptar.Location = new System.Drawing.Point(146, 180);
+            this.btnAceptar.Location = new System.Drawing.Point(146, 147);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(159, 40);
             this.btnAceptar.TabIndex = 41;
@@ -88,24 +98,14 @@
             this.btnAceptar.MouseLeave += new System.EventHandler(this.btnAceptar_MouseLeave);
             this.btnAceptar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAceptar_MouseMove);
             // 
-            // lbDescAviso
-            // 
-            this.lbDescAviso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbDescAviso.Font = new System.Drawing.Font("Reem Kufi", 12F);
-            this.lbDescAviso.Location = new System.Drawing.Point(146, 79);
-            this.lbDescAviso.Name = "lbDescAviso";
-            this.lbDescAviso.Size = new System.Drawing.Size(280, 86);
-            this.lbDescAviso.TabIndex = 42;
-            this.lbDescAviso.Text = "";
-            // 
             // FormNotificaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(484, 242);
-            this.Controls.Add(this.lbDescAviso);
+            this.ClientSize = new System.Drawing.Size(484, 216);
             this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.lbDescAviso);
             this.Controls.Add(this.lbTitulo);
             this.Controls.Add(this.panelIzquierdo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -125,7 +125,7 @@
         private System.Windows.Forms.Panel panelIzquierdo;
         private System.Windows.Forms.PictureBox logoEmpresa;
         private System.Windows.Forms.Label lbTitulo;
+        private System.Windows.Forms.Label lbDescAviso;
         private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.RichTextBox lbDescAviso;
     }
 }

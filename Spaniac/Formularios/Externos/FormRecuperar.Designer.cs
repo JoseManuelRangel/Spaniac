@@ -73,10 +73,10 @@
             // lbRecupera
             // 
             this.lbRecupera.AutoSize = true;
-            this.lbRecupera.Font = new System.Drawing.Font("Reem Kufi", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRecupera.Font = new System.Drawing.Font("Reem Kufi", 27.75F, System.Drawing.FontStyle.Bold);
             this.lbRecupera.Location = new System.Drawing.Point(141, 21);
             this.lbRecupera.Name = "lbRecupera";
-            this.lbRecupera.Size = new System.Drawing.Size(532, 67);
+            this.lbRecupera.Size = new System.Drawing.Size(547, 71);
             this.lbRecupera.TabIndex = 3;
             this.lbRecupera.Text = "CONFIRMAR NUEVA CLAVE";
             // 
@@ -110,11 +110,11 @@
             // 
             this.lbErrorConfirma.AutoSize = true;
             this.lbErrorConfirma.BackColor = System.Drawing.Color.White;
-            this.lbErrorConfirma.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorConfirma.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
             this.lbErrorConfirma.ForeColor = System.Drawing.Color.Red;
             this.lbErrorConfirma.Location = new System.Drawing.Point(150, 245);
             this.lbErrorConfirma.Name = "lbErrorConfirma";
-            this.lbErrorConfirma.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorConfirma.Size = new System.Drawing.Size(43, 25);
             this.lbErrorConfirma.TabIndex = 51;
             this.lbErrorConfirma.Text = "Error";
             this.lbErrorConfirma.Visible = false;
@@ -126,7 +126,7 @@
             this.txtConfirma.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtConfirma.Location = new System.Drawing.Point(154, 202);
             this.txtConfirma.Name = "txtConfirma";
-            this.txtConfirma.Size = new System.Drawing.Size(361, 24);
+            this.txtConfirma.Size = new System.Drawing.Size(361, 31);
             this.txtConfirma.TabIndex = 50;
             this.txtConfirma.Text = "Confirmar contraseña";
             this.txtConfirma.TextChanged += new System.EventHandler(this.txtConfirma_TextChanged);
@@ -147,11 +147,11 @@
             // 
             this.lbErrorClave.AutoSize = true;
             this.lbErrorClave.BackColor = System.Drawing.Color.White;
-            this.lbErrorClave.Font = new System.Drawing.Font("Reem Kufi", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorClave.Font = new System.Drawing.Font("Reem Kufi", 9F);
             this.lbErrorClave.ForeColor = System.Drawing.Color.Red;
             this.lbErrorClave.Location = new System.Drawing.Point(149, 157);
             this.lbErrorClave.Name = "lbErrorClave";
-            this.lbErrorClave.Size = new System.Drawing.Size(40, 22);
+            this.lbErrorClave.Size = new System.Drawing.Size(40, 23);
             this.lbErrorClave.TabIndex = 48;
             this.lbErrorClave.Text = "Error";
             this.lbErrorClave.Visible = false;
@@ -163,7 +163,7 @@
             this.txtClave.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtClave.Location = new System.Drawing.Point(153, 114);
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(361, 24);
+            this.txtClave.Size = new System.Drawing.Size(361, 31);
             this.txtClave.TabIndex = 47;
             this.txtClave.Text = "Contraseña";
             this.txtClave.TextChanged += new System.EventHandler(this.txtClave_TextChanged);
@@ -186,7 +186,7 @@
             this.btnCambiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCambiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnCambiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCambiar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
             this.btnCambiar.ForeColor = System.Drawing.Color.White;
             this.btnCambiar.Location = new System.Drawing.Point(154, 299);
             this.btnCambiar.Name = "btnCambiar";
@@ -204,7 +204,7 @@
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(374, 299);
             this.btnCancelar.Name = "btnCancelar";

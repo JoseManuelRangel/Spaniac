@@ -48,15 +48,22 @@ namespace Spaniac.Formularios
             InitializeComponent();
             principal = form;
 
-            inicializaControles();
-        }
+            /* Carga de imágenes en tiempo de ejecución. */
+            panelIzquierdo.BackgroundImage = Image.FromFile("Fondo.png");
+            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
+            imgMuestra1.Image = Image.FromFile("ojoAbierto.png");
+            imgMuestra2.Image = Image.FromFile("ojoAbierto.png");
 
-        public FormRegistro()
-        {
-            InitializeComponent();
-            inicializaControles();
-        }
+            /* Inicializando errores de registro. */
+            lbErrorRol.Text = "Selecciona un rol.";
+            lbErrorRol.Visible = true;
 
+            lbErrorEmail.Text = "Selecciona una extensión.";
+            lbErrorEmail.Visible = true;
+
+            lbErrorImg.Text = "Selecciona una imagen de perfil.";
+            lbErrorImg.Visible = true;
+        }
 
         private void Registro_MouseDown(object sender, MouseEventArgs e)
         {
@@ -471,7 +478,7 @@ namespace Spaniac.Formularios
                     usuario = txtUsuario.Text.ToString();
                     clave = txtClave.Text.ToString();
                     rol = cbRol.Text.ToString();
-                    email = txtEmail.Text.ToString() + "" + cbEmail.Text.ToString();
+                    email = txtEmail.Text.ToString();
                     imagen = convertirImagen();
 
                     FormCodigo form = new FormCodigo(num1, num2, num3, num4, num5,
@@ -480,8 +487,7 @@ namespace Spaniac.Formularios
                     this.Visible = false;
                 } catch(Exception ex)
                 {
-                    FormNotificaciones form = new FormNotificaciones(ex.Message);
-                    form.Show();
+                    MessageBox.Show(ex.Message);
                 }      
             }
         }
@@ -788,7 +794,7 @@ namespace Spaniac.Formularios
                         }
                     }
 
-                    if(encontrado)
+                    if(encontrado == true)
                     {
                         lbErrorUsuario.Text = "El usuario ya existe.";
                         lbErrorUsuario.Visible = true;
@@ -973,25 +979,6 @@ namespace Spaniac.Formularios
             imgPerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
 
             return ms.GetBuffer();
-        }
-
-        private void inicializaControles()
-        {
-            /* Carga de imágenes en tiempo de ejecución. */
-            panelIzquierdo.BackgroundImage = Image.FromFile("Fondo.png");
-            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
-            imgMuestra1.Image = Image.FromFile("ojoAbierto.png");
-            imgMuestra2.Image = Image.FromFile("ojoAbierto.png");
-
-            /* Inicializando errores de registro. */
-            lbErrorRol.Text = "Selecciona un rol.";
-            lbErrorRol.Visible = true;
-
-            lbErrorEmail.Text = "Selecciona una extensión.";
-            lbErrorEmail.Visible = true;
-
-            lbErrorImg.Text = "Selecciona una imagen de perfil.";
-            lbErrorImg.Visible = true;
         }
     }
 }

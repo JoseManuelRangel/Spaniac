@@ -165,7 +165,7 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
         /*           Gestión de eventos del botón que registra una categoría en la base de datos.          */
         private void btnAñadeC_Click(object sender, EventArgs e)
         {
-            if(nomCat && almCat)
+            if(nomCat == true && almCat == true)
             {
                 DatosCategoria datosNuevaCat = new DatosCategoria();
                 datosNuevaCat.Nombre = txtNombreC.Text.ToString();
@@ -268,7 +268,7 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
         /*           Gestión de eventos del botón que acepta la modificación de la categoría               */
         private void btnAceptarCMod_Click(object sender, EventArgs e)
         {
-            if(idCatMod && nomCatMod && almCatMod)
+            if(idCatMod == true && nomCatMod == true && almCatMod == true)
             {
                 try 
                 {
@@ -281,16 +281,13 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                     cnx.Open();
                     SqlCommand command = new SqlCommand(sql, cnx);
                     command.ExecuteNonQuery();
-
-                    FormNotificaciones form = new FormNotificaciones("Categoría modificada correctamente.");
-                    form.Show();
-
-                    rellenaTablaCategorias();
-
-
                 } catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                } finally
+                {
+                    this.Close();
+                    rellenaTablaCategorias();
                 }
             }
         }
@@ -324,6 +321,14 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
         }
 
 
+
+
+
+
+
+
+
+
         /*-------------------------------------------------------------------------------------------------*/
         /*                            METODOS USADOS EN EL CÓDIGO DEL FORMULARIO                           */
         /*-------------------------------------------------------------------------------------------------*/
@@ -352,8 +357,7 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                 cnx.Close();
             } catch (Exception ex)
             {
-                FormNotificaciones form = new FormNotificaciones(ex.Message);
-                form.Show();
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -379,8 +383,7 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                 }
             } catch(Exception ex)
             {
-                FormNotificaciones form = new FormNotificaciones(ex.Message);
-                form.Show();
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -404,21 +407,8 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                 }
             } catch(Exception ex)
             {
-                FormNotificaciones form = new FormNotificaciones(ex.Message);
-                form.Show();
+                MessageBox.Show(ex.Message);
             }
-        }
-
-        private void rellenaCbDatosCategoria()
-        {
-            cbDatosC.Items.Add("");
-
-            foreach (DataGridViewColumn col in dgvCategorias.Columns)
-            {
-                cbDatosC.Items.Add(col.HeaderText);
-            }
-
-            cbDatosC.SelectedIndex = 0;
         }
 
         private void compruebaNombreCategoria(string opcion)
@@ -529,6 +519,17 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
             
         }
 
+        private void rellenaCbDatosCategoria()
+        {
+            cbDatosC.Items.Add("");
+
+            foreach(DataGridViewColumn col in dgvCategorias.Columns)
+            {
+                cbDatosC.Items.Add(col.HeaderText);
+            }
+
+            cbDatosC.SelectedIndex = 0;
+        }
 
         private void filtroDatos()
         {
@@ -552,8 +553,7 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                     cnx.Close();
                 } catch(Exception ex) 
                 {
-                    FormNotificaciones form = new FormNotificaciones(ex.Message);
-                    form.Show();
+                    MessageBox.Show(ex.Message);
                 }
             }
         }

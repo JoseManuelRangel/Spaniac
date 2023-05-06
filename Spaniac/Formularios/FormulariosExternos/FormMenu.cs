@@ -12,8 +12,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Spaniac.Formularios.FormulariosInternos;
 using Spaniac.Formularios.FormulariosInternos.FormulariosProductos;
-using Spaniac.Formularios.Internos.Almacenes;
-using Spaniac.Formularios.Externos;
 
 namespace Spaniac.Formularios
 {
@@ -40,8 +38,6 @@ namespace Spaniac.Formularios
 
             userLog = usuario;
             formCarga = carga;
-
-            logoEmpresa.Image = Image.FromFile("LogoSpaniac.png");
 
             abrirFormEnPanel(new FormPanel());
 
@@ -108,15 +104,6 @@ namespace Spaniac.Formularios
 
 
         /*-------------------------------------------------------------------------------------------------*/
-        /*                            GESTIÓN DE EVENTOS DEL BOTÓN DE PRODUCTOS                            */
-        /*-------------------------------------------------------------------------------------------------*/
-        private void btnAlmacenes_Click(object sender, EventArgs e)
-        {
-            abrirFormEnPanel(new FormAlmacenes());
-        }
-
-
-        /*-------------------------------------------------------------------------------------------------*/
         /*                              METODOS USADOS EN EL CÓDIGO DEL FORMULARIO                         */
         /*-------------------------------------------------------------------------------------------------*/
         private void abrirFormEnPanel(object formHijo)
@@ -162,11 +149,8 @@ namespace Spaniac.Formularios
             }
             catch (Exception ex)
             {
-                FormNotificaciones form = new FormNotificaciones(ex.Message);
-                form.Show();
+                MessageBox.Show(ex.Message);
             }
         }
-
-       
     }
 }

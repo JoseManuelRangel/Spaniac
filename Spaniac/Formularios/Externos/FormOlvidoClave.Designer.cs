@@ -70,10 +70,10 @@
             // lbRecupera
             // 
             this.lbRecupera.AutoSize = true;
-            this.lbRecupera.Font = new System.Drawing.Font("Reem Kufi", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRecupera.Font = new System.Drawing.Font("Reem Kufi", 27.75F, System.Drawing.FontStyle.Bold);
             this.lbRecupera.Location = new System.Drawing.Point(134, 9);
             this.lbRecupera.Name = "lbRecupera";
-            this.lbRecupera.Size = new System.Drawing.Size(387, 67);
+            this.lbRecupera.Size = new System.Drawing.Size(396, 71);
             this.lbRecupera.TabIndex = 2;
             this.lbRecupera.Text = "RECUPERAR CLAVE";
             // 
@@ -114,11 +114,11 @@
             // 
             this.lbError.AutoSize = true;
             this.lbError.BackColor = System.Drawing.Color.White;
-            this.lbError.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbError.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
             this.lbError.ForeColor = System.Drawing.Color.Red;
             this.lbError.Location = new System.Drawing.Point(142, 170);
             this.lbError.Name = "lbError";
-            this.lbError.Size = new System.Drawing.Size(41, 23);
+            this.lbError.Size = new System.Drawing.Size(43, 25);
             this.lbError.TabIndex = 17;
             this.lbError.Text = "Error";
             this.lbError.Visible = false;
@@ -129,7 +129,7 @@
             this.btnEnviar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEnviar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnviar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnviar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
             this.btnEnviar.ForeColor = System.Drawing.Color.White;
             this.btnEnviar.Location = new System.Drawing.Point(146, 213);
             this.btnEnviar.Name = "btnEnviar";
@@ -147,7 +147,7 @@
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(342, 213);
             this.btnCancelar.Name = "btnCancelar";
@@ -163,11 +163,11 @@
             // 
             this.textoRecupera.AutoSize = true;
             this.textoRecupera.BackColor = System.Drawing.Color.White;
-            this.textoRecupera.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoRecupera.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
             this.textoRecupera.ForeColor = System.Drawing.Color.Black;
             this.textoRecupera.Location = new System.Drawing.Point(142, 76);
             this.textoRecupera.Name = "textoRecupera";
-            this.textoRecupera.Size = new System.Drawing.Size(418, 23);
+            this.textoRecupera.Size = new System.Drawing.Size(420, 25);
             this.textoRecupera.TabIndex = 20;
             this.textoRecupera.Text = "Introduce el correo y haz click en el botón enviar para generar un código.";
             this.textoRecupera.Visible = false;
