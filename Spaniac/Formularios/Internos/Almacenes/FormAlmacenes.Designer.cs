@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlmacenes));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbInicio = new System.Windows.Forms.Label();
             this.barra1 = new System.Windows.Forms.Panel();
             this.lbFecha = new System.Windows.Forms.Label();
@@ -60,7 +60,28 @@
             this.lbBuscarA = new System.Windows.Forms.Label();
             this.barra4 = new System.Windows.Forms.Panel();
             this.panelIzquierdo = new System.Windows.Forms.Panel();
+            this.panelBorrarAlmacen = new System.Windows.Forms.Panel();
+            this.panelConfBorr = new System.Windows.Forms.Panel();
+            this.btnNoBorr = new System.Windows.Forms.Button();
+            this.btnSiBorr = new System.Windows.Forms.Button();
+            this.lbb = new System.Windows.Forms.Label();
+            this.descBorr = new System.Windows.Forms.RichTextBox();
+            this.btnAceptarBorrar = new System.Windows.Forms.Button();
+            this.lbErrorIDABorr = new System.Windows.Forms.Label();
+            this.cbIDABorr = new System.Windows.Forms.ComboBox();
+            this.panelModificarAlmacen = new System.Windows.Forms.Panel();
+            this.btnGuardarMod = new System.Windows.Forms.Button();
+            this.lbErrorIDAMod = new System.Windows.Forms.Label();
+            this.cbIDAMod = new System.Windows.Forms.ComboBox();
+            this.lbErrorEstadoMod = new System.Windows.Forms.Label();
+            this.btnLimpiarMod = new System.Windows.Forms.Button();
+            this.cbAct2Mod = new System.Windows.Forms.CheckBox();
+            this.cbAct1Mod = new System.Windows.Forms.CheckBox();
+            this.lbErrorNombreAMod = new System.Windows.Forms.Label();
+            this.txtNombreAMod = new System.Windows.Forms.TextBox();
+            this.lbNombreAMod = new System.Windows.Forms.Label();
             this.panelAñadirAlmacen = new System.Windows.Forms.Panel();
+            this.lbErrorEstado = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnAceptarAAdd = new System.Windows.Forms.Button();
             this.cbAct2 = new System.Windows.Forms.CheckBox();
@@ -69,12 +90,11 @@
             this.lbErrorNom = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lbNombre = new System.Windows.Forms.Label();
-            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnBorra = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAñadir = new System.Windows.Forms.Button();
             this.barra3 = new System.Windows.Forms.Panel();
             this.horafecha = new System.Windows.Forms.Timer(this.components);
-            this.lbErrorEstado = new System.Windows.Forms.Label();
             this.panelAlmacenes.SuspendLayout();
             this.panelMenuExcel.SuspendLayout();
             this.panelMenuJSON.SuspendLayout();
@@ -82,6 +102,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).BeginInit();
             this.panelIzquierdo.SuspendLayout();
+            this.panelBorrarAlmacen.SuspendLayout();
+            this.panelConfBorr.SuspendLayout();
+            this.panelModificarAlmacen.SuspendLayout();
             this.panelAñadirAlmacen.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,7 +167,7 @@
             this.panelAlmacenes.Controls.Add(this.lbBuscarA);
             this.panelAlmacenes.Controls.Add(this.barra4);
             this.panelAlmacenes.Controls.Add(this.panelIzquierdo);
-            this.panelAlmacenes.Controls.Add(this.btnEliminar);
+            this.panelAlmacenes.Controls.Add(this.btnBorra);
             this.panelAlmacenes.Controls.Add(this.btnModificar);
             this.panelAlmacenes.Controls.Add(this.btnAñadir);
             this.panelAlmacenes.Controls.Add(this.barra3);
@@ -327,6 +350,9 @@
             this.btnListarXML.TabIndex = 47;
             this.btnListarXML.Text = "LISTAR XML";
             this.btnListarXML.UseVisualStyleBackColor = false;
+            this.btnListarXML.Click += new System.EventHandler(this.btnListarXML_Click);
+            this.btnListarXML.MouseLeave += new System.EventHandler(this.btnListarXML_MouseLeave);
+            this.btnListarXML.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnListarXML_MouseMove);
             // 
             // btnGenXML
             // 
@@ -343,6 +369,9 @@
             this.btnGenXML.TabIndex = 46;
             this.btnGenXML.Text = "GENERAR XML";
             this.btnGenXML.UseVisualStyleBackColor = false;
+            this.btnGenXML.Click += new System.EventHandler(this.btnGenXML_Click);
+            this.btnGenXML.MouseLeave += new System.EventHandler(this.btnGenXML_MouseLeave);
+            this.btnGenXML.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnGenXML_MouseMove);
             // 
             // btnImpXML
             // 
@@ -380,36 +409,37 @@
             // 
             this.dgvAlmacenes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAlmacenes.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlmacenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Reem Kufi", 12F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlmacenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvAlmacenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Reem Kufi", 11F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAlmacenes.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Reem Kufi", 12F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAlmacenes.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvAlmacenes.Enabled = false;
             this.dgvAlmacenes.Location = new System.Drawing.Point(539, 88);
             this.dgvAlmacenes.Name = "dgvAlmacenes";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlmacenes.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlmacenes.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvAlmacenes.Size = new System.Drawing.Size(838, 522);
             this.dgvAlmacenes.TabIndex = 42;
+            this.dgvAlmacenes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAlmacenes_CellFormatting);
             // 
             // imgLimpiar
             // 
@@ -466,11 +496,289 @@
             // panelIzquierdo
             // 
             this.panelIzquierdo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelIzquierdo.Controls.Add(this.panelBorrarAlmacen);
+            this.panelIzquierdo.Controls.Add(this.panelModificarAlmacen);
             this.panelIzquierdo.Controls.Add(this.panelAñadirAlmacen);
             this.panelIzquierdo.Location = new System.Drawing.Point(8, 20);
             this.panelIzquierdo.Name = "panelIzquierdo";
             this.panelIzquierdo.Size = new System.Drawing.Size(321, 507);
             this.panelIzquierdo.TabIndex = 16;
+            // 
+            // panelBorrarAlmacen
+            // 
+            this.panelBorrarAlmacen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBorrarAlmacen.Controls.Add(this.panelConfBorr);
+            this.panelBorrarAlmacen.Controls.Add(this.descBorr);
+            this.panelBorrarAlmacen.Controls.Add(this.btnAceptarBorrar);
+            this.panelBorrarAlmacen.Controls.Add(this.lbErrorIDABorr);
+            this.panelBorrarAlmacen.Controls.Add(this.cbIDABorr);
+            this.panelBorrarAlmacen.Location = new System.Drawing.Point(8, 12);
+            this.panelBorrarAlmacen.Name = "panelBorrarAlmacen";
+            this.panelBorrarAlmacen.Size = new System.Drawing.Size(303, 480);
+            this.panelBorrarAlmacen.TabIndex = 55;
+            // 
+            // panelConfBorr
+            // 
+            this.panelConfBorr.Controls.Add(this.btnNoBorr);
+            this.panelConfBorr.Controls.Add(this.btnSiBorr);
+            this.panelConfBorr.Controls.Add(this.lbb);
+            this.panelConfBorr.Location = new System.Drawing.Point(10, 98);
+            this.panelConfBorr.Name = "panelConfBorr";
+            this.panelConfBorr.Size = new System.Drawing.Size(273, 147);
+            this.panelConfBorr.TabIndex = 52;
+            this.panelConfBorr.Visible = false;
+            // 
+            // btnNoBorr
+            // 
+            this.btnNoBorr.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnNoBorr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNoBorr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnNoBorr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNoBorr.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnNoBorr.ForeColor = System.Drawing.Color.White;
+            this.btnNoBorr.Location = new System.Drawing.Point(150, 72);
+            this.btnNoBorr.Name = "btnNoBorr";
+            this.btnNoBorr.Size = new System.Drawing.Size(115, 30);
+            this.btnNoBorr.TabIndex = 52;
+            this.btnNoBorr.Text = "NO";
+            this.btnNoBorr.UseVisualStyleBackColor = false;
+            this.btnNoBorr.Click += new System.EventHandler(this.btnNoBorr_Click);
+            this.btnNoBorr.MouseLeave += new System.EventHandler(this.btnNoBorr_MouseLeave);
+            this.btnNoBorr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnNoBorr_MouseMove);
+            // 
+            // btnSiBorr
+            // 
+            this.btnSiBorr.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnSiBorr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSiBorr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnSiBorr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSiBorr.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnSiBorr.ForeColor = System.Drawing.Color.White;
+            this.btnSiBorr.Location = new System.Drawing.Point(8, 72);
+            this.btnSiBorr.Name = "btnSiBorr";
+            this.btnSiBorr.Size = new System.Drawing.Size(115, 30);
+            this.btnSiBorr.TabIndex = 51;
+            this.btnSiBorr.Text = "SÍ";
+            this.btnSiBorr.UseVisualStyleBackColor = false;
+            this.btnSiBorr.Click += new System.EventHandler(this.btnSiBorr_Click);
+            this.btnSiBorr.MouseLeave += new System.EventHandler(this.btnSiBorr_MouseLeave);
+            this.btnSiBorr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnSiBorr_MouseMove);
+            // 
+            // lbb
+            // 
+            this.lbb.AutoSize = true;
+            this.lbb.Font = new System.Drawing.Font("Reem Kufi", 10F);
+            this.lbb.Location = new System.Drawing.Point(3, 31);
+            this.lbb.Name = "lbb";
+            this.lbb.Size = new System.Drawing.Size(262, 26);
+            this.lbb.TabIndex = 0;
+            this.lbb.Text = "¿Seguro que quieres eliminar el almacén?";
+            // 
+            // descBorr
+            // 
+            this.descBorr.Enabled = false;
+            this.descBorr.Font = new System.Drawing.Font("Reem Kufi", 9.7F);
+            this.descBorr.Location = new System.Drawing.Point(10, 255);
+            this.descBorr.Name = "descBorr";
+            this.descBorr.Size = new System.Drawing.Size(273, 158);
+            this.descBorr.TabIndex = 51;
+            this.descBorr.Text = "Una vez borrado el almacén, no se podrá recuperar.\n\nSi el almacen contiene produc" +
+    "tos, no se podrá eliminar.\n\nAl hacer click en el botón de borrar, se te pedirá u" +
+    "na confirmación.";
+            // 
+            // btnAceptarBorrar
+            // 
+            this.btnAceptarBorrar.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnAceptarBorrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAceptarBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnAceptarBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptarBorrar.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnAceptarBorrar.ForeColor = System.Drawing.Color.White;
+            this.btnAceptarBorrar.Location = new System.Drawing.Point(11, 431);
+            this.btnAceptarBorrar.Name = "btnAceptarBorrar";
+            this.btnAceptarBorrar.Size = new System.Drawing.Size(277, 30);
+            this.btnAceptarBorrar.TabIndex = 50;
+            this.btnAceptarBorrar.Text = "BORRAR";
+            this.btnAceptarBorrar.UseVisualStyleBackColor = false;
+            this.btnAceptarBorrar.Click += new System.EventHandler(this.btnAceptarBorrar_Click);
+            this.btnAceptarBorrar.MouseLeave += new System.EventHandler(this.btnAceptarBorrar_MouseLeave);
+            this.btnAceptarBorrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAceptarBorrar_MouseMove);
+            // 
+            // lbErrorIDABorr
+            // 
+            this.lbErrorIDABorr.AutoSize = true;
+            this.lbErrorIDABorr.BackColor = System.Drawing.Color.White;
+            this.lbErrorIDABorr.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbErrorIDABorr.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorIDABorr.Location = new System.Drawing.Point(9, 61);
+            this.lbErrorIDABorr.Name = "lbErrorIDABorr";
+            this.lbErrorIDABorr.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorIDABorr.TabIndex = 48;
+            this.lbErrorIDABorr.Text = "Error";
+            this.lbErrorIDABorr.Visible = false;
+            // 
+            // cbIDABorr
+            // 
+            this.cbIDABorr.BackColor = System.Drawing.Color.White;
+            this.cbIDABorr.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbIDABorr.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIDABorr.FormattingEnabled = true;
+            this.cbIDABorr.Location = new System.Drawing.Point(10, 15);
+            this.cbIDABorr.Name = "cbIDABorr";
+            this.cbIDABorr.Size = new System.Drawing.Size(273, 36);
+            this.cbIDABorr.TabIndex = 47;
+            this.cbIDABorr.SelectedIndexChanged += new System.EventHandler(this.cbIDABorr_SelectedIndexChanged);
+            // 
+            // panelModificarAlmacen
+            // 
+            this.panelModificarAlmacen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelModificarAlmacen.Controls.Add(this.btnGuardarMod);
+            this.panelModificarAlmacen.Controls.Add(this.lbErrorIDAMod);
+            this.panelModificarAlmacen.Controls.Add(this.cbIDAMod);
+            this.panelModificarAlmacen.Controls.Add(this.lbErrorEstadoMod);
+            this.panelModificarAlmacen.Controls.Add(this.btnLimpiarMod);
+            this.panelModificarAlmacen.Controls.Add(this.cbAct2Mod);
+            this.panelModificarAlmacen.Controls.Add(this.cbAct1Mod);
+            this.panelModificarAlmacen.Controls.Add(this.lbErrorNombreAMod);
+            this.panelModificarAlmacen.Controls.Add(this.txtNombreAMod);
+            this.panelModificarAlmacen.Controls.Add(this.lbNombreAMod);
+            this.panelModificarAlmacen.Location = new System.Drawing.Point(8, 12);
+            this.panelModificarAlmacen.Name = "panelModificarAlmacen";
+            this.panelModificarAlmacen.Size = new System.Drawing.Size(303, 480);
+            this.panelModificarAlmacen.TabIndex = 53;
+            // 
+            // btnGuardarMod
+            // 
+            this.btnGuardarMod.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnGuardarMod.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGuardarMod.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnGuardarMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarMod.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnGuardarMod.ForeColor = System.Drawing.Color.White;
+            this.btnGuardarMod.Location = new System.Drawing.Point(10, 397);
+            this.btnGuardarMod.Name = "btnGuardarMod";
+            this.btnGuardarMod.Size = new System.Drawing.Size(277, 30);
+            this.btnGuardarMod.TabIndex = 49;
+            this.btnGuardarMod.Text = "GUARDAR";
+            this.btnGuardarMod.UseVisualStyleBackColor = false;
+            this.btnGuardarMod.Click += new System.EventHandler(this.btnGuardarMod_Click);
+            this.btnGuardarMod.MouseLeave += new System.EventHandler(this.btnGuardarMod_MouseLeave);
+            this.btnGuardarMod.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnGuardarMod_MouseMove);
+            // 
+            // lbErrorIDAMod
+            // 
+            this.lbErrorIDAMod.AutoSize = true;
+            this.lbErrorIDAMod.BackColor = System.Drawing.Color.White;
+            this.lbErrorIDAMod.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbErrorIDAMod.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorIDAMod.Location = new System.Drawing.Point(9, 61);
+            this.lbErrorIDAMod.Name = "lbErrorIDAMod";
+            this.lbErrorIDAMod.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorIDAMod.TabIndex = 48;
+            this.lbErrorIDAMod.Text = "Error";
+            this.lbErrorIDAMod.Visible = false;
+            // 
+            // cbIDAMod
+            // 
+            this.cbIDAMod.BackColor = System.Drawing.Color.White;
+            this.cbIDAMod.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbIDAMod.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIDAMod.FormattingEnabled = true;
+            this.cbIDAMod.Location = new System.Drawing.Point(10, 15);
+            this.cbIDAMod.Name = "cbIDAMod";
+            this.cbIDAMod.Size = new System.Drawing.Size(273, 36);
+            this.cbIDAMod.TabIndex = 47;
+            this.cbIDAMod.SelectedIndexChanged += new System.EventHandler(this.cbIDAMod_SelectedIndexChanged);
+            // 
+            // lbErrorEstadoMod
+            // 
+            this.lbErrorEstadoMod.AutoSize = true;
+            this.lbErrorEstadoMod.BackColor = System.Drawing.Color.White;
+            this.lbErrorEstadoMod.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbErrorEstadoMod.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorEstadoMod.Location = new System.Drawing.Point(9, 240);
+            this.lbErrorEstadoMod.Name = "lbErrorEstadoMod";
+            this.lbErrorEstadoMod.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorEstadoMod.TabIndex = 46;
+            this.lbErrorEstadoMod.Text = "Error";
+            this.lbErrorEstadoMod.Visible = false;
+            // 
+            // btnLimpiarMod
+            // 
+            this.btnLimpiarMod.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnLimpiarMod.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnLimpiarMod.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnLimpiarMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiarMod.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnLimpiarMod.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiarMod.Location = new System.Drawing.Point(10, 433);
+            this.btnLimpiarMod.Name = "btnLimpiarMod";
+            this.btnLimpiarMod.Size = new System.Drawing.Size(277, 30);
+            this.btnLimpiarMod.TabIndex = 44;
+            this.btnLimpiarMod.Text = "LIMPIAR";
+            this.btnLimpiarMod.UseVisualStyleBackColor = false;
+            this.btnLimpiarMod.Click += new System.EventHandler(this.btnLimpiarMod_Click);
+            this.btnLimpiarMod.MouseLeave += new System.EventHandler(this.btnLimpiarMod_MouseLeave);
+            this.btnLimpiarMod.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnLimpiarMod_MouseMove);
+            // 
+            // cbAct2Mod
+            // 
+            this.cbAct2Mod.AutoSize = true;
+            this.cbAct2Mod.Font = new System.Drawing.Font("Reem Kufi", 12F);
+            this.cbAct2Mod.Location = new System.Drawing.Point(154, 200);
+            this.cbAct2Mod.Name = "cbAct2Mod";
+            this.cbAct2Mod.Size = new System.Drawing.Size(88, 32);
+            this.cbAct2Mod.TabIndex = 43;
+            this.cbAct2Mod.Text = "Inactivo";
+            this.cbAct2Mod.UseVisualStyleBackColor = true;
+            this.cbAct2Mod.CheckedChanged += new System.EventHandler(this.cbAct2Mod_CheckedChanged);
+            // 
+            // cbAct1Mod
+            // 
+            this.cbAct1Mod.AutoSize = true;
+            this.cbAct1Mod.Font = new System.Drawing.Font("Reem Kufi", 12F);
+            this.cbAct1Mod.Location = new System.Drawing.Point(57, 200);
+            this.cbAct1Mod.Name = "cbAct1Mod";
+            this.cbAct1Mod.Size = new System.Drawing.Size(76, 32);
+            this.cbAct1Mod.TabIndex = 42;
+            this.cbAct1Mod.Text = "Activo";
+            this.cbAct1Mod.UseVisualStyleBackColor = true;
+            this.cbAct1Mod.CheckedChanged += new System.EventHandler(this.cbAct1Mod_CheckedChanged);
+            // 
+            // lbErrorNombreAMod
+            // 
+            this.lbErrorNombreAMod.AutoSize = true;
+            this.lbErrorNombreAMod.BackColor = System.Drawing.Color.White;
+            this.lbErrorNombreAMod.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbErrorNombreAMod.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorNombreAMod.Location = new System.Drawing.Point(9, 147);
+            this.lbErrorNombreAMod.Name = "lbErrorNombreAMod";
+            this.lbErrorNombreAMod.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorNombreAMod.TabIndex = 40;
+            this.lbErrorNombreAMod.Text = "Error";
+            this.lbErrorNombreAMod.Visible = false;
+            // 
+            // txtNombreAMod
+            // 
+            this.txtNombreAMod.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombreAMod.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreAMod.ForeColor = System.Drawing.Color.Black;
+            this.txtNombreAMod.Location = new System.Drawing.Point(10, 97);
+            this.txtNombreAMod.Multiline = true;
+            this.txtNombreAMod.Name = "txtNombreAMod";
+            this.txtNombreAMod.Size = new System.Drawing.Size(277, 33);
+            this.txtNombreAMod.TabIndex = 39;
+            this.txtNombreAMod.TextChanged += new System.EventHandler(this.txtNombreAMod_TextChanged);
+            // 
+            // lbNombreAMod
+            // 
+            this.lbNombreAMod.AutoSize = true;
+            this.lbNombreAMod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNombreAMod.Location = new System.Drawing.Point(10, 122);
+            this.lbNombreAMod.Name = "lbNombreAMod";
+            this.lbNombreAMod.Size = new System.Drawing.Size(273, 13);
+            this.lbNombreAMod.TabIndex = 38;
+            this.lbNombreAMod.Text = "______________________________________";
             // 
             // panelAñadirAlmacen
             // 
@@ -488,6 +796,19 @@
             this.panelAñadirAlmacen.Name = "panelAñadirAlmacen";
             this.panelAñadirAlmacen.Size = new System.Drawing.Size(302, 480);
             this.panelAñadirAlmacen.TabIndex = 0;
+            // 
+            // lbErrorEstado
+            // 
+            this.lbErrorEstado.AutoSize = true;
+            this.lbErrorEstado.BackColor = System.Drawing.Color.White;
+            this.lbErrorEstado.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbErrorEstado.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorEstado.Location = new System.Drawing.Point(9, 232);
+            this.lbErrorEstado.Name = "lbErrorEstado";
+            this.lbErrorEstado.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorEstado.TabIndex = 46;
+            this.lbErrorEstado.Text = "Error";
+            this.lbErrorEstado.Visible = false;
             // 
             // richTextBox1
             // 
@@ -593,16 +914,19 @@
             this.lbNombre.TabIndex = 38;
             this.lbNombre.Text = "______________________________________";
             // 
-            // btnEliminar
+            // btnBorra
             // 
-            this.btnEliminar.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
-            this.btnEliminar.Location = new System.Drawing.Point(234, 546);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(85, 64);
-            this.btnEliminar.TabIndex = 15;
-            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnBorra.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnBorra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBorra.Image = ((System.Drawing.Image)(resources.GetObject("btnBorra.Image")));
+            this.btnBorra.Location = new System.Drawing.Point(234, 546);
+            this.btnBorra.Name = "btnBorra";
+            this.btnBorra.Size = new System.Drawing.Size(85, 64);
+            this.btnBorra.TabIndex = 15;
+            this.btnBorra.UseVisualStyleBackColor = false;
+            this.btnBorra.Click += new System.EventHandler(this.btnBorra_Click);
+            this.btnBorra.MouseLeave += new System.EventHandler(this.btnBorra_MouseLeave);
+            this.btnBorra.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnBorra_MouseMove);
             // 
             // btnModificar
             // 
@@ -614,6 +938,9 @@
             this.btnModificar.Size = new System.Drawing.Size(85, 64);
             this.btnModificar.TabIndex = 14;
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnModificar.MouseLeave += new System.EventHandler(this.btnModificar_MouseLeave);
+            this.btnModificar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnModificar_MouseMove);
             // 
             // btnAñadir
             // 
@@ -642,19 +969,6 @@
             this.horafecha.Enabled = true;
             this.horafecha.Tick += new System.EventHandler(this.horafecha_Tick);
             // 
-            // lbErrorEstado
-            // 
-            this.lbErrorEstado.AutoSize = true;
-            this.lbErrorEstado.BackColor = System.Drawing.Color.White;
-            this.lbErrorEstado.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
-            this.lbErrorEstado.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorEstado.Location = new System.Drawing.Point(9, 232);
-            this.lbErrorEstado.Name = "lbErrorEstado";
-            this.lbErrorEstado.Size = new System.Drawing.Size(41, 23);
-            this.lbErrorEstado.TabIndex = 46;
-            this.lbErrorEstado.Text = "Error";
-            this.lbErrorEstado.Visible = false;
-            // 
             // FormAlmacenes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -678,6 +992,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).EndInit();
             this.panelIzquierdo.ResumeLayout(false);
+            this.panelBorrarAlmacen.ResumeLayout(false);
+            this.panelBorrarAlmacen.PerformLayout();
+            this.panelConfBorr.ResumeLayout(false);
+            this.panelConfBorr.PerformLayout();
+            this.panelModificarAlmacen.ResumeLayout(false);
+            this.panelModificarAlmacen.PerformLayout();
             this.panelAñadirAlmacen.ResumeLayout(false);
             this.panelAñadirAlmacen.PerformLayout();
             this.ResumeLayout(false);
@@ -695,7 +1015,7 @@
         private System.Windows.Forms.Panel barra3;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAñadir;
-        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnBorra;
         private System.Windows.Forms.Panel panelIzquierdo;
         private System.Windows.Forms.Panel panelAñadirAlmacen;
         private System.Windows.Forms.Label lbErrorNom;
@@ -729,5 +1049,25 @@
         private System.Windows.Forms.Button btnMenuExcel;
         private System.Windows.Forms.Timer horafecha;
         private System.Windows.Forms.Label lbErrorEstado;
+        private System.Windows.Forms.Panel panelModificarAlmacen;
+        private System.Windows.Forms.Button btnGuardarMod;
+        private System.Windows.Forms.Label lbErrorIDAMod;
+        private System.Windows.Forms.ComboBox cbIDAMod;
+        private System.Windows.Forms.Label lbErrorEstadoMod;
+        private System.Windows.Forms.Button btnLimpiarMod;
+        private System.Windows.Forms.CheckBox cbAct2Mod;
+        private System.Windows.Forms.CheckBox cbAct1Mod;
+        private System.Windows.Forms.Label lbErrorNombreAMod;
+        private System.Windows.Forms.TextBox txtNombreAMod;
+        private System.Windows.Forms.Label lbNombreAMod;
+        private System.Windows.Forms.Panel panelBorrarAlmacen;
+        private System.Windows.Forms.Panel panelConfBorr;
+        private System.Windows.Forms.Button btnNoBorr;
+        private System.Windows.Forms.Button btnSiBorr;
+        private System.Windows.Forms.Label lbb;
+        private System.Windows.Forms.RichTextBox descBorr;
+        private System.Windows.Forms.Button btnAceptarBorrar;
+        private System.Windows.Forms.Label lbErrorIDABorr;
+        private System.Windows.Forms.ComboBox cbIDABorr;
     }
 }

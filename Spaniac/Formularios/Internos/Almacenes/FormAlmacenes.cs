@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Spaniac.Formularios.Internos.Almacenes
 {
@@ -23,10 +25,19 @@ namespace Spaniac.Formularios.Internos.Almacenes
         /* Variables booleanas que controlan si los datos del almacén están rellenos para realizar la inserción. */
         bool nomAlm = false, actAlm = false;
 
+        /* Variables booleanas sque controlan si los datos del almacén están completos para realizar la modificación. */
+        bool idAlmMod = false, nomAlmMod = false, actAlmMod = false;
+
+        /* Variables booleanas sque controlan si los datos del almacén están completos para realizar la eliminación. */
+        bool idAlmBorr = false;
+
         /* Determina si se ha encontrado el almacen u otro dato importante en la base de datos previamente registrado. */
         static bool encontrado = false;
 
+        static List<String> nodosXML = new List<string>();
+
         static int estadoEscogido;
+        static int estadoEscogidoMod;
 
 
         /*-------------------------------------------------------------------------------------------------*/
@@ -38,7 +49,8 @@ namespace Spaniac.Formularios.Internos.Almacenes
             inicializarControles();
 
             rellenaTablaAlmacenes();
-            rellenaCbDatosCategoria();
+            rellenaCbDatosAlmacen();
+            rellenaComboBoxIDAlm();
         }
 
 
@@ -93,6 +105,8 @@ namespace Spaniac.Formularios.Internos.Almacenes
         private void btnAñadir_Click(object sender, EventArgs e)
         {
             panelAñadirAlmacen.Visible = true;
+            panelModificarAlmacen.Visible = false;
+            panelBorrarAlmacen.Visible = false;
             inicializaDatos();
         }
 
@@ -102,6 +116,46 @@ namespace Spaniac.Formularios.Internos.Almacenes
         }
 
         private void btnAñadir_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*            Gestión de eventos del botón que abre el panel para modificar una almacén.           */
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            panelModificarAlmacen.Visible = true;
+            panelAñadirAlmacen.Visible = false;
+            panelBorrarAlmacen.Visible = false;
+            inicializaDatos();
+        }
+
+        private void btnModificar_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnModificar_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*            Gestión de eventos del botón que abre el panel para borrar una almacén.           */
+        private void btnBorra_Click(object sender, EventArgs e)
+        {
+            panelBorrarAlmacen.Visible = true;
+            panelModificarAlmacen.Visible = false;
+            panelAñadirAlmacen.Visible = false;
+            inicializaDatos();
+        }
+
+        private void btnBorra_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnBorra_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
         }
@@ -145,8 +199,6 @@ namespace Spaniac.Formularios.Internos.Almacenes
             {
                 lbErrorEstado.Text = "";
                 lbErrorEstado.Visible = false;
-                /* 1 significa que el almacén está activo. */
-                estadoEscogido = 1;
 
                 actAlm = true;
             }
@@ -154,6 +206,8 @@ namespace Spaniac.Formularios.Internos.Almacenes
             if(cbAct1.Checked)
             {
                 cbAct2.Checked = false;
+                /* 1 significa que el almacén está activo. */
+                estadoEscogido = 1;
             }
 
             if (!cbAct1.Checked && !cbAct2.Checked)
@@ -171,8 +225,6 @@ namespace Spaniac.Formularios.Internos.Almacenes
             {
                 lbErrorEstado.Text = "";
                 lbErrorEstado.Visible = false;
-                /* 0 significa que el almacén está inactivo. */
-                estadoEscogido = 0;
 
                 actAlm = true;
             }
@@ -180,6 +232,8 @@ namespace Spaniac.Formularios.Internos.Almacenes
             if(cbAct2.Checked)
             {
                 cbAct1.Checked = false;
+                /* 0 significa que el almacén está inactivo. */
+                estadoEscogido = 0;
             }
 
             if(!cbAct1.Checked && !cbAct2.Checked)
@@ -211,6 +265,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
                 form.Show();
 
                 rellenaTablaAlmacenes();
+                rellenaComboBoxIDAlm();
                 inicializaDatos();
             }
         }
@@ -221,6 +276,324 @@ namespace Spaniac.Formularios.Internos.Almacenes
         }
 
         private void btnAceptarAAdd_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                       ELEMENTOS DEL SUBPANEL QUE MODIFICA UN ALMACÉN                            */
+        /*-------------------------------------------------------------------------------------------------*/
+        /*         Gestión de eventos del combobox que selecciona el ID del almacén a modificar.           */
+        private void cbIDAMod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbIDAMod.SelectedIndex != 0)
+            {
+                try
+                {
+                    string sql = "SELECT * FROM Almacen WHERE id=" + int.Parse(cbIDAMod.Text);
+                    SqlConnection cnx = new SqlConnection(conection);
+                    cnx.Open();
+
+                    SqlCommand command = new SqlCommand(sql, cnx);
+                    SqlDataReader lector = command.ExecuteReader();
+
+                    while(lector.Read())
+                    {
+                        txtNombreAMod.Text = lector.GetString(2);
+                        bool est = lector.GetBoolean(1);
+
+                        if (est == false)
+                        {
+                            cbAct2Mod.Checked = true;
+                        }
+                        else
+                        {
+                            cbAct1Mod.Checked = true;
+                        }
+                    }
+
+                    txtNombreAMod.Enabled = true;
+                    cbAct1Mod.Enabled = true;
+                    cbAct2Mod.Enabled = true;
+
+                    lbErrorIDAMod.Text = "";
+                    lbErrorIDAMod.Visible = false;
+
+                    idAlmMod = true;
+
+                    command.Dispose();
+                    cnx.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    FormNotificaciones form = new FormNotificaciones(ex.Message);
+                    form.Show();
+                }
+            } else
+            {
+                txtNombreAMod.Enabled = true;
+                txtNombreAMod.Text = "";
+
+                cbAct1Mod.Enabled = false;
+                cbAct2Mod.Enabled = false;
+
+                lbErrorIDAMod.Text = "Selecciona un almacén a modificar.";
+                lbErrorIDAMod.Visible = true;
+
+                idAlmMod = false;
+            }
+        }
+
+        /*                   Gestión de eventos del textbox de nombre que modifica el almacén            */
+        private void txtNombreAMod_TextChanged(object sender, EventArgs e)
+        {
+            compruebaNombreAlmacen("Modificar");
+        }
+
+        /*               Gestión de eventos de los checkbox del estado del almacén a modificar.          */
+        private void cbAct1Mod_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbAct1Mod.Checked || cbAct2Mod.Checked)
+            {
+                lbErrorEstadoMod.Text = "";
+                lbErrorEstadoMod.Visible = false;
+
+                actAlmMod = true;
+            }
+
+            if (cbAct1Mod.Checked)
+            {
+                cbAct2Mod.Checked = false;
+                /* 1 significa que el almacén está activo. */
+                estadoEscogidoMod = 1;
+            }
+
+            if (!cbAct1Mod.Checked && !cbAct2Mod.Checked)
+            {
+                lbErrorEstadoMod.Text = "Selecciona si el almacén está activo o inactivo.";
+                lbErrorEstadoMod.Visible = true;
+
+                actAlm = false;
+            }
+        }
+
+        private void cbAct2Mod_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbAct1Mod.Checked || cbAct2Mod.Checked)
+            {
+                lbErrorEstadoMod.Text = "";
+                lbErrorEstadoMod.Visible = false;
+
+                actAlmMod = true;
+            }
+
+            if (cbAct2Mod.Checked)
+            {
+                cbAct1Mod.Checked = false;
+                /* 0 significa que el almacén está inactivo. */
+                estadoEscogidoMod = 0;
+            }
+
+            if (!cbAct1Mod.Checked && !cbAct2Mod.Checked)
+            {
+                lbErrorEstadoMod.Text = "Selecciona si el almacén está activo o inactivo.";
+                lbErrorEstadoMod.Visible = true;
+
+                actAlmMod = false;
+            }
+        }
+
+
+        /*             Gestión de eventos del botón limpiar datos de la modificación del almacén.          */
+        private void btnLimpiarMod_Click(object sender, EventArgs e)
+        {
+            cbIDAMod.SelectedIndex = 0;
+            txtNombreAMod.Text = "";
+            cbAct1Mod.Checked = false;
+            cbAct2Mod.Checked = false;
+        }
+
+        private void btnLimpiarMod_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnLimpiarMod_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*           Gestión de eventos del botón que acepta la modificación de la categoría               */
+        private void btnGuardarMod_Click(object sender, EventArgs e)
+        {
+            if(idAlmMod && nomAlmMod && actAlmMod)
+            {
+                try
+                {
+                    string nombreMod = txtNombreAMod.Text;
+                    int estadoMod = estadoEscogidoMod;
+
+                    string sql = "UPDATE Almacen SET nombre='" + nombreMod + "', activo=" + estadoMod + "WHERE id=" + cbIDAMod.SelectedIndex;
+                    SqlConnection cnx = new SqlConnection(conection);
+
+                    cnx.Open();
+                    SqlCommand command = new SqlCommand(sql, cnx);
+                    command.ExecuteNonQuery();
+
+                    FormNotificaciones form = new FormNotificaciones("Almacen modificado correctamente.");
+                    form.Show();
+
+                    rellenaTablaAlmacenes();
+                } catch(Exception ex)
+                {
+                    FormNotificaciones form = new FormNotificaciones(ex.Message);
+                    form.Show();
+                }
+            }
+        }
+
+        private void btnGuardarMod_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnGuardarMod_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                        ELEMENTOS DEL SUBPANEL QUE ELIMINA UN ALMACÉN                            */
+        /*-------------------------------------------------------------------------------------------------*/
+        /*          Gestión de eventos del combobox que selecciona el ID del almacén a eliminar.           */
+        private void cbIDABorr_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbIDABorr.SelectedIndex != 0)
+            {
+                try
+                {
+                    int contProductos = 0;
+                    string sql = "SELECT * FROM Producto WHERE idAlmacen=" + cbIDABorr.SelectedIndex;
+                    SqlConnection cnx = new SqlConnection(conection);
+                    cnx.Open();
+
+                    SqlCommand command = new SqlCommand(sql, cnx);
+                    SqlDataReader lector = command.ExecuteReader();
+
+                    while(lector.Read())
+                    {
+                        contProductos++;
+                    }
+
+                    if(contProductos == 0)
+                    {
+                        lbErrorIDABorr.Text = "";
+                        lbErrorIDABorr.Visible = false;
+
+                        idAlmBorr = true;
+                    } else
+                    {
+                        lbErrorIDABorr.Text = "Este almacén tiene productos asociados.";
+                        lbErrorIDABorr.Visible = true;
+
+                        idAlmBorr = false;
+                    }
+
+                    command.Dispose();
+                    cnx.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    FormNotificaciones form = new FormNotificaciones(ex.Message);
+                    form.Show();
+                }
+            }
+            else
+            { 
+                lbErrorIDABorr.Text = "Selecciona un ID para buscar almacén.";
+                lbErrorIDABorr.Visible = true;
+
+                idAlmBorr = false;
+            }
+        }
+
+
+        /*       Gestión de eventos del botón que abre el panel de confirmación de borrado de almacén      */
+        private void btnAceptarBorrar_Click(object sender, EventArgs e)
+        {
+            if(idAlmBorr)
+            {
+                panelConfBorr.Visible = true;
+            }
+        }
+
+        private void btnAceptarBorrar_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnAceptarBorrar_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*              Gestión de eventos del botón sí del panel de confirmación de borrado               */
+        private void btnSiBorr_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int almacen = cbIDABorr.SelectedIndex;
+
+                string sql = "DELETE FROM Almacen WHERE id=" + almacen;
+                SqlConnection cnx = new SqlConnection(conection);
+
+                cnx.Open();
+                SqlCommand command = new SqlCommand(sql, cnx);
+                command.ExecuteNonQuery();
+
+                FormNotificaciones form = new FormNotificaciones("Almacén borrado correctamente.");
+                form.Show();
+
+                panelConfBorr.Visible = false;
+
+                rellenaTablaAlmacenes();
+            }
+            catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void btnSiBorr_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnSiBorr_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*              Gestión de eventos del botón no del panel de confirmación de borrado               */
+        private void btnNoBorr_Click(object sender, EventArgs e)
+        {
+            panelConfBorr.Visible = false;
+        }
+
+        private void btnNoBorr_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnNoBorr_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
         }
@@ -252,7 +625,24 @@ namespace Spaniac.Formularios.Internos.Almacenes
             this.Cursor = Cursors.Default;
         }
 
-
+        /*                         Gestión de eventos del datagridview de almacenes                        */
+        private void dgvAlmacenes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (this.dgvAlmacenes.Columns[e.ColumnIndex].Name == "activo")
+            {
+                if(e.Value != null)
+                {
+                    bool estado = (bool) e.Value;
+                    if(estado == false)
+                    {
+                        e.CellStyle.BackColor = Color.Crimson;
+                    } else
+                    {
+                        e.CellStyle.BackColor = Color.LimeGreen;
+                    }
+                }
+            }
+        }
 
 
         /*-------------------------------------------------------------------------------------------------*/
@@ -271,7 +661,50 @@ namespace Spaniac.Formularios.Internos.Almacenes
             }
         }
 
-        
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                       ELEMENTOS DEL PANEL CENTRAL DE MENÚS DE ALMACENES                         */
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                      Gestión de eventos del botón generar XML del menú XML                      */
+        private void btnGenXML_Click(object sender, EventArgs e)
+        {
+            generaXML();
+        }
+
+        private void btnGenXML_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            btnGenXML.ForeColor = Color.White;
+        }
+
+        private void btnGenXML_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            btnGenXML.ForeColor = Color.MidnightBlue;
+        }
+
+
+        /*                        Gestión de eventos del botón leer XML del menú XML                       */
+        private void btnListarXML_Click(object sender, EventArgs e)
+        {
+            compruebaXML();
+        }
+
+        private void btnListarXML_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            btnListarXML.ForeColor = Color.White;
+        }
+
+        private void btnListarXML_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            btnListarXML.ForeColor = Color.MidnightBlue;
+        }
+
+
+
 
 
         /*-------------------------------------------------------------------------------------------------*/
@@ -279,8 +712,25 @@ namespace Spaniac.Formularios.Internos.Almacenes
         /*-------------------------------------------------------------------------------------------------*/
         private void inicializarControles()
         {
+            panelAñadirAlmacen.Visible = false;
             lbErrorEstado.Text = "Selecciona si el almacén está activo o inactivo.";
             lbErrorEstado.Visible = true;
+
+            panelModificarAlmacen.Visible = false;
+            lbErrorIDAMod.Text = "Selecciona un almacén a modificar.";
+            lbErrorIDAMod.Visible = true;
+            txtNombreAMod.Enabled = false;
+            cbAct1Mod.Enabled = false;
+            cbAct2Mod.Enabled = false;
+            lbErrorEstadoMod.Text = "Selecciona si el almacén está activo o inactivo.";
+            lbErrorEstadoMod.Visible = true;
+
+            panelBorrarAlmacen.Visible = false;
+            lbErrorIDABorr.Text = "Selecciona un almacén a eliminar.";
+            lbErrorIDABorr.Visible = true;
+            panelConfBorr.Visible = false;
+            descBorr.Enabled = false;
+
             panelMenuExcel.Visible = false;
             panelMenuJSON.Visible = false;
             panelMenuXml.Visible = false;
@@ -291,6 +741,14 @@ namespace Spaniac.Formularios.Internos.Almacenes
             txtNombre.Text = "";
             cbAct1.Checked = false;
             cbAct2.Checked = false;
+
+            cbDatosA.SelectedIndex = 0;
+            cbIDAMod.SelectedIndex = 0;
+
+            txtNombreAMod.Text = "";
+            txtNombreAMod.Enabled = false;
+            cbAct1Mod.Checked = false;
+            cbAct2Mod.Checked = false;
         }
 
         private void filtroDatos()
@@ -352,7 +810,37 @@ namespace Spaniac.Formularios.Internos.Almacenes
             }
         }
 
-        private void rellenaCbDatosCategoria()
+        private void rellenaComboBoxIDAlm()
+        {
+            cbIDAMod.Items.Clear();
+            cbIDAMod.Items.Add(" ");
+
+            cbIDABorr.Items.Clear();
+            cbIDABorr.Items.Add(" ");
+
+            string sql = "SELECT * FROM Almacen";
+            SqlConnection cnx = new SqlConnection(conection);
+
+            try
+            {
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                while(lector.Read())
+                {
+                    cbIDAMod.Items.Add(lector.GetInt32(0));
+                    cbIDABorr.Items.Add(lector.GetInt32(0));
+                }
+            } catch(Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void rellenaCbDatosAlmacen()
         {
             cbDatosA.Items.Add("");
 
@@ -362,6 +850,113 @@ namespace Spaniac.Formularios.Internos.Almacenes
             }
 
             cbDatosA.SelectedIndex = 0;
+        }
+
+        private void generaXML()
+        {
+            try
+            {
+                string sql = "SELECT * FROM Almacen";
+                SqlConnection cnx = new SqlConnection(conection);
+
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                string hora = DateTime.Now.ToShortTimeString().ToUpper().Trim();
+                string fecha = DateTime.Now.ToShortDateString().ToUpper().Trim() + hora;
+
+                XmlWriter listAlm = XmlWriter.Create("Almacenes.xml");
+                listAlm.WriteStartDocument();
+                listAlm.WriteStartElement("Almacenes");
+
+                while(lector.Read())
+                {
+                    listAlm.WriteStartElement("Almacen");
+
+                    listAlm.WriteStartElement("ID");
+                    listAlm.WriteValue((lector.GetInt32(0)));
+                    listAlm.WriteEndElement();
+
+                    listAlm.WriteStartElement("Activo");
+                    listAlm.WriteValue((lector.GetBoolean(1)));
+                    listAlm.WriteEndElement();
+
+                    listAlm.WriteStartElement("Nombre");
+                    listAlm.WriteString((lector.GetString(2)));
+                    listAlm.WriteEndElement();
+
+                    listAlm.WriteEndElement();
+                }
+
+                listAlm.WriteEndElement();
+                listAlm.WriteEndDocument();
+                listAlm.Close();
+
+                FormNotificaciones form = new FormNotificaciones("XML generado correctamente.");
+                form.Show();
+            } catch(Exception ex) 
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void compruebaXML()
+        {
+            nodosXML.Clear();
+
+            try
+            {
+                OpenFileDialog buscador = new OpenFileDialog();
+                buscador.Filter = "Archivos XML | *.xml";
+                buscador.FileName = "";
+                buscador.Title = "Cargar archivo xml";
+                buscador.InitialDirectory = "C:\\";
+
+                if (buscador.ShowDialog() == DialogResult.OK)
+                {
+                    string nombre = buscador.FileName;
+
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(nombre);
+
+                    foreach (XmlNode n1 in doc.DocumentElement.ChildNodes)
+                    {
+                        if (n1.HasChildNodes)
+                        {
+                            foreach (XmlNode n2 in n1.ChildNodes)
+                            {
+                                if (n2.Name.Equals("ID") || n2.Name.Equals("Activo") || n2.Name.Equals("Nombre"))
+                                {
+                                    if (!nodosXML.Contains(n2.Name))
+                                    {
+                                        nodosXML.Add(n2.Name);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (nodosXML.Count == 3)
+                    {
+                        /* Redirige al formulario de lectura XML. */
+                        FormXMLAlmacenes form = new FormXMLAlmacenes();
+                        form.Show();
+                    }
+                    else
+                    {
+                        FormNotificaciones form = new FormNotificaciones("Error, XML incorrecto.");
+                        form.Show();
+                    }
+                }
+            } catch(Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+            
         }
 
         private void compruebaNombreAlmacen(string opcion)
@@ -429,6 +1024,32 @@ namespace Spaniac.Formularios.Internos.Almacenes
                         nomAlm = false;
                      }
                      break;
+                case "Modificar":
+                    string nombreMod = txtNombreAMod.Text.ToString();
+
+                    if(nombreMod.Length == 0 || nombreMod.Length > 50)
+                    {
+                        lbErrorNombreAMod.Visible = true;
+                        lbNombreAMod.ForeColor = Color.Red;
+
+                        if(nombreMod.Length == 0)
+                        {
+                            lbErrorNombreAMod.Text = "El nombre no puede estar vacío.";
+                        } else if(nombreMod.Length > 50) 
+                        {
+                            lbErrorNombreAMod.Text = "El nombre es demasiado largo.";
+                        }
+
+                        nomAlmMod = false;
+                    } else if(nombreMod.Length > 0 && !nombreMod.Equals("Nombre"))
+                    {
+                        lbErrorNombreAMod.Text = "";
+                        lbErrorNombreAMod.Visible = false;
+                        lbNombreAMod.ForeColor = Color.Green;
+                        nomAlmMod = true;
+                    }
+
+                    break;
             }
         }
     }

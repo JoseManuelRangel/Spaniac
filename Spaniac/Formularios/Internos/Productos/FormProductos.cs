@@ -230,7 +230,8 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    FormNotificaciones form = new FormNotificaciones(ex.Message);
+                    form.Show();
                 }
             } else
             {
@@ -286,11 +287,10 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                     form.Show();
 
                     rellenaTablaCategorias();
-
-
                 } catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    FormNotificaciones form = new FormNotificaciones(ex.Message);
+                    form.Show();
                 }
             }
         }
