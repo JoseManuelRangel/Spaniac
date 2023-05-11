@@ -1,10 +1,14 @@
-﻿using Spaniac.Modelos;
+﻿using Newtonsoft.Json;
+using Spaniac.Clases;
+using Spaniac.Modelos;
+using SpreadsheetLight;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +38,19 @@ namespace Spaniac.Formularios.Internos.Almacenes
         /* Determina si se ha encontrado el almacen u otro dato importante en la base de datos previamente registrado. */
         static bool encontrado = false;
 
-        static List<String> nodosXML = new List<string>();
+        /* Listas. */
+        static List<string> nodosXML = new List<string>();
 
+        /* Listas que proporcionan los datos XML de todos los IDS, activos y nombres de los almacenes del archivo XML cargado. */
+        static List<string> idsXML = new List<string>();
+        static List<string> activosXML = new List<string>();
+        static List<string> nombresXML = new List<string>();
+
+        /* Variable cadena que almacena el JSON cargado. */
+        static string almacenesJSON;
+
+
+        /* Variables enteras que controlan el estado del almacen en la opción de añadir almacén y modificar almacén. */
         static int estadoEscogido;
         static int estadoEscogidoMod;
 
@@ -107,6 +122,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
             panelAñadirAlmacen.Visible = true;
             panelModificarAlmacen.Visible = false;
             panelBorrarAlmacen.Visible = false;
+            panelPortada.Visible = false;
             inicializaDatos();
         }
 
@@ -127,6 +143,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
             panelModificarAlmacen.Visible = true;
             panelAñadirAlmacen.Visible = false;
             panelBorrarAlmacen.Visible = false;
+            panelPortada.Visible = false;
             inicializaDatos();
         }
 
@@ -147,6 +164,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
             panelBorrarAlmacen.Visible = true;
             panelModificarAlmacen.Visible = false;
             panelAñadirAlmacen.Visible = false;
+            panelPortada.Visible = false;
             inicializaDatos();
         }
 
@@ -638,7 +656,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
                         e.CellStyle.BackColor = Color.Crimson;
                     } else
                     {
-                        e.CellStyle.BackColor = Color.LimeGreen;
+                        e.CellStyle.BackColor = Color.SpringGreen;
                     }
                 }
             }
@@ -704,6 +722,80 @@ namespace Spaniac.Formularios.Internos.Almacenes
         }
 
 
+        /*                      Gestión de eventos del botón generar JSON del menú JSON                    */
+        private void btnGenJSON_Click(object sender, EventArgs e)
+        {
+            generaJSON();
+        }
+
+        private void btnGenJSON_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            btnGenJSON.ForeColor = Color.White;
+        }
+
+        private void btnGenJSON_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            btnGenJSON.ForeColor = Color.MidnightBlue;
+        }
+
+
+        /*                       Gestión de eventos del botón leer JSON del menú JSON                      */
+        private void btnListarJSON_Click(object sender, EventArgs e)
+        {
+            compruebaJSON();
+        }
+
+        private void btnListarJSON_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            btnListarJSON.ForeColor = Color.White;
+        }
+
+        private void btnListarJSON_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            btnListarJSON.ForeColor = Color.MidnightBlue;
+        }
+
+
+        /*                    Gestión de eventos del botón generar EXCEL del menú EXCEL                    */
+        private void btnGenEXCEL_Click(object sender, EventArgs e)
+        {
+            generaExcel();
+        }
+
+        private void btnGenEXCEL_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            btnGenEXCEL.ForeColor = Color.White;
+        }
+
+        private void btnGenEXCEL_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            btnGenEXCEL.ForeColor = Color.MidnightBlue;
+        }
+
+
+        /*                       Gestión de eventos del botón leer JSON del menú JSON                      */
+        private void btnListarEXCEL_Click(object sender, EventArgs e)
+        {
+            compruebaExcel();
+        }
+
+        private void btnListarEXCEL_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            btnListarEXCEL.ForeColor = Color.White;
+        }
+
+        private void btnListarEXCEL_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            btnListarEXCEL.ForeColor = Color.MidnightBlue;
+        }
 
 
 
@@ -712,6 +804,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
         /*-------------------------------------------------------------------------------------------------*/
         private void inicializarControles()
         {
+            panelPortada.Visible = true;
             panelAñadirAlmacen.Visible = false;
             lbErrorEstado.Text = "Selecciona si el almacén está activo o inactivo.";
             lbErrorEstado.Visible = true;
@@ -731,9 +824,9 @@ namespace Spaniac.Formularios.Internos.Almacenes
             panelConfBorr.Visible = false;
             descBorr.Enabled = false;
 
-            panelMenuExcel.Visible = false;
-            panelMenuJSON.Visible = false;
-            panelMenuXml.Visible = false;
+            panelMenuExcel.Visible = true;
+            panelMenuJSON.Visible = true;
+            panelMenuXml.Visible = true;
         }
 
         private void inicializaDatos()
@@ -751,107 +844,6 @@ namespace Spaniac.Formularios.Internos.Almacenes
             cbAct2Mod.Checked = false;
         }
 
-        private void filtroDatos()
-        {
-            if(cbDatosA.SelectedIndex != 0)
-            {
-                try
-                {
-                    string sql = "SELECT * FROM Almacen WHERE " + cbDatosA.Text + " LIKE '%' + @filtro + '%'";
-                    SqlConnection cnx = new SqlConnection(conection);
-                    cnx.Open();
-
-                    SqlCommand command = new SqlCommand(sql, cnx);
-                    command.Parameters.AddWithValue("@filtro", txtFiltroA.Text);
-
-                    SqlDataReader lector = command.ExecuteReader();
-                    DataTable dt = new DataTable();
-                    dt.Load(lector);
-                    dgvAlmacenes.DataSource = dt;
-
-                    command.Dispose();
-                    cnx.Close();
-                }
-                catch (Exception ex)
-                {
-                    FormNotificaciones form = new FormNotificaciones(ex.Message);
-                    form.Show();
-                }
-            }
-        }
-
-        private void rellenaTablaAlmacenes()
-        {
-            string sql = "SELECT * FROM Almacen";
-            SqlConnection cnx = new SqlConnection(conection);
-
-            try
-            {
-                cnx.Open();
-
-                SqlCommand command = new SqlCommand(sql, cnx);
-                SqlDataReader lector = command.ExecuteReader();
-
-                DataTable dt = new DataTable();
-                dt.Load(lector);
-                dgvAlmacenes.DataSource = dt;
-
-                foreach(DataGridViewColumn col in dgvAlmacenes.Columns)
-                {
-                    col.HeaderText = col.HeaderText.ToUpper();
-                }
-
-                command.Dispose();
-                cnx.Close();
-            } catch(Exception ex)
-            {
-                FormNotificaciones form = new FormNotificaciones(ex.Message);
-                form.Show();
-            }
-        }
-
-        private void rellenaComboBoxIDAlm()
-        {
-            cbIDAMod.Items.Clear();
-            cbIDAMod.Items.Add(" ");
-
-            cbIDABorr.Items.Clear();
-            cbIDABorr.Items.Add(" ");
-
-            string sql = "SELECT * FROM Almacen";
-            SqlConnection cnx = new SqlConnection(conection);
-
-            try
-            {
-                cnx.Open();
-
-                SqlCommand command = new SqlCommand(sql, cnx);
-                SqlDataReader lector = command.ExecuteReader();
-
-                while(lector.Read())
-                {
-                    cbIDAMod.Items.Add(lector.GetInt32(0));
-                    cbIDABorr.Items.Add(lector.GetInt32(0));
-                }
-            } catch(Exception ex)
-            {
-                FormNotificaciones form = new FormNotificaciones(ex.Message);
-                form.Show();
-            }
-        }
-
-        private void rellenaCbDatosAlmacen()
-        {
-            cbDatosA.Items.Add("");
-
-            foreach (DataGridViewColumn col in dgvAlmacenes.Columns)
-            {
-                cbDatosA.Items.Add(col.HeaderText);
-            }
-
-            cbDatosA.SelectedIndex = 0;
-        }
-
         private void generaXML()
         {
             try
@@ -867,35 +859,44 @@ namespace Spaniac.Formularios.Internos.Almacenes
                 string hora = DateTime.Now.ToShortTimeString().ToUpper().Trim();
                 string fecha = DateTime.Now.ToShortDateString().ToUpper().Trim() + hora;
 
-                XmlWriter listAlm = XmlWriter.Create("Almacenes.xml");
-                listAlm.WriteStartDocument();
-                listAlm.WriteStartElement("Almacenes");
-
-                while(lector.Read())
+                if(!System.IO.File.Exists("Almacenes.xml"))
                 {
-                    listAlm.WriteStartElement("Almacen");
+                    XmlWriter listAlm = XmlWriter.Create("Almacenes.xml");
+                    listAlm.WriteStartDocument();
+                    listAlm.WriteStartElement("Almacenes");
 
-                    listAlm.WriteStartElement("ID");
-                    listAlm.WriteValue((lector.GetInt32(0)));
+                    while (lector.Read())
+                    {
+                        listAlm.WriteStartElement("Almacen");
+
+                        listAlm.WriteStartElement("ID");
+                        listAlm.WriteValue((lector.GetInt32(0)));
+                        listAlm.WriteEndElement();
+
+                        listAlm.WriteStartElement("Activo");
+                        listAlm.WriteValue((lector.GetBoolean(1)));
+                        listAlm.WriteEndElement();
+
+                        listAlm.WriteStartElement("Nombre");
+                        listAlm.WriteString((lector.GetString(2)));
+                        listAlm.WriteEndElement();
+
+                        listAlm.WriteEndElement();
+                    }
+
                     listAlm.WriteEndElement();
+                    listAlm.WriteEndDocument();
+                    listAlm.Close();
 
-                    listAlm.WriteStartElement("Activo");
-                    listAlm.WriteValue((lector.GetBoolean(1)));
-                    listAlm.WriteEndElement();
+                    FormNotificaciones form = new FormNotificaciones("XML generado correctamente.");
+                    form.Show();
 
-                    listAlm.WriteStartElement("Nombre");
-                    listAlm.WriteString((lector.GetString(2)));
-                    listAlm.WriteEndElement();
-
-                    listAlm.WriteEndElement();
-                }
-
-                listAlm.WriteEndElement();
-                listAlm.WriteEndDocument();
-                listAlm.Close();
-
-                FormNotificaciones form = new FormNotificaciones("XML generado correctamente.");
-                form.Show();
+                    cnx.Close();
+                } else
+                {
+                    FormNotificaciones form2 = new FormNotificaciones("Ya hay un documento XML. Muévelo o cambialo de nombre para poder generar otro.");
+                    form2.Show();
+                }    
             } catch(Exception ex) 
             {
                 FormNotificaciones form = new FormNotificaciones(ex.Message);
@@ -942,7 +943,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
                     if (nodosXML.Count == 3)
                     {
                         /* Redirige al formulario de lectura XML. */
-                        FormXMLAlmacenes form = new FormXMLAlmacenes();
+                        FormListarAlmacenes form = new FormListarAlmacenes(nombre);
                         form.Show();
                     }
                     else
@@ -956,7 +957,174 @@ namespace Spaniac.Formularios.Internos.Almacenes
                 FormNotificaciones form = new FormNotificaciones(ex.Message);
                 form.Show();
             }
-            
+        }
+
+        private void generaJSON()
+        {
+            try
+            {
+                List<Almacen> listaAlmacenes = new List<Almacen>();
+                string sql = "SELECT * FROM Almacen";
+                SqlConnection cnx = new SqlConnection(conection);
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    Almacen a = new Almacen(lector.GetInt32(0), lector.GetBoolean(1), lector.GetString(2));
+                    listaAlmacenes.Add(a);
+                }
+
+                if (!File.Exists("Almacenes.json"))
+                {
+                    string jsonAlm = JsonConvert.SerializeObject(listaAlmacenes.ToArray(), Newtonsoft.Json.Formatting.Indented);
+                    File.WriteAllText("Almacenes.json", jsonAlm);
+
+                    FormNotificaciones form = new FormNotificaciones("JSON generado correctamente.");
+                    form.Show();
+                }
+                else
+                {
+                    FormNotificaciones form2 = new FormNotificaciones("Ya hay un documento XML. Muévelo o cambialo de nombre para poder generar otro.");
+                    form2.Show();
+                }
+
+                cnx.Close();
+            }
+            catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void compruebaJSON()
+        {
+            try
+            {
+                OpenFileDialog buscador = new OpenFileDialog();
+                buscador.Filter = "Archivos JSON | *.json";
+                buscador.FileName = "";
+                buscador.Title = "Cargar archivo json";
+                buscador.InitialDirectory = "C:\\";
+
+                if (buscador.ShowDialog() == DialogResult.OK)
+                {
+                    string ruta = buscador.FileName;
+
+                    JsonSerializer serializer = new JsonSerializer();
+                    List<Almacen> listaAlm = new List<Almacen>();
+
+                    using(var streamReader = new StreamReader(ruta)) 
+                    using(var textReader = new JsonTextReader(streamReader))
+                    {
+                        listaAlm = serializer.Deserialize<List<Almacen>>(textReader);
+                    }
+
+                    FormListarAlmacenes form = new FormListarAlmacenes(almacenesJSON, listaAlm);
+                    form.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void generaExcel()
+        {
+            try
+            {
+                List<Almacen> listaAlmacenes = new List<Almacen>();
+                string sql = "SELECT * FROM Almacen";
+                string ruta = AppDomain.CurrentDomain.BaseDirectory + "Almacenes.xlsx";
+                SqlConnection cnx = new SqlConnection(conection);
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    Almacen a = new Almacen(lector.GetInt32(0), lector.GetBoolean(1), lector.GetString(2));
+                    listaAlmacenes.Add(a);
+                }
+
+                if(!File.Exists(ruta))
+                {
+                    SLDocument excel = new SLDocument();
+
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("ID", typeof(int));
+                    dt.Columns.Add("Activo", typeof(string));
+                    dt.Columns.Add("Nombre", typeof(string));
+
+                    foreach (Almacen almacen in  listaAlmacenes)
+                    {
+                        dt.Rows.Add(almacen.ID, almacen.Activo.ToString(), almacen.Nombre);
+                    }
+
+                    excel.ImportDataTable(1, 1, dt, true);
+                    excel.SaveAs(ruta);
+
+                    FormNotificaciones form = new FormNotificaciones("Excel generado correctamente.");
+                    form.Show();
+                } else
+                {
+                    FormNotificaciones form = new FormNotificaciones("Ya existe un excel con ese nombre.");
+                    form.Show();
+                }
+            } catch(Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void compruebaExcel()
+        {
+            try
+            {
+                OpenFileDialog buscador = new OpenFileDialog();
+                buscador.Filter = "Archivos EXCEL | *.xlsx";
+                buscador.FileName = "";
+                buscador.Title = "Cargar archivo excel";
+                buscador.InitialDirectory = "C:\\";
+
+                if (buscador.ShowDialog() == DialogResult.OK)
+                {
+                    List<Almacen> almacenesExcel = new List<Almacen>();
+                    string ruta = buscador.FileName;
+
+                    SLDocument sl = new SLDocument(ruta);
+                    int numFila = 1;
+
+                    while(!string.IsNullOrEmpty(sl.GetCellValueAsString(numFila, 1)))
+                    {
+                        if(numFila != 1)
+                        {
+                            int id = sl.GetCellValueAsInt32(numFila, 1);
+                            string activo = sl.GetCellValueAsString(numFila, 2);
+                            string nombre = sl.GetCellValueAsString(numFila, 3);
+
+                            Almacen a = new Almacen(id, bool.Parse(activo), nombre);
+                            almacenesExcel.Add(a);
+                        }
+                        numFila++;
+                    }
+
+                    FormListarAlmacenes form = new FormListarAlmacenes(almacenesExcel);
+                    form.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
         }
 
         private void compruebaNombreAlmacen(string opcion)
@@ -1051,6 +1219,111 @@ namespace Spaniac.Formularios.Internos.Almacenes
 
                     break;
             }
+        }
+
+        private void filtroDatos()
+        {
+            if (cbDatosA.SelectedIndex != 0)
+            {
+                try
+                {
+                    string sql = "SELECT * FROM Almacen WHERE " + cbDatosA.Text + " LIKE '%' + @filtro + '%'";
+                    SqlConnection cnx = new SqlConnection(conection);
+                    cnx.Open();
+
+                    SqlCommand command = new SqlCommand(sql, cnx);
+                    command.Parameters.AddWithValue("@filtro", txtFiltroA.Text);
+
+                    SqlDataReader lector = command.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(lector);
+                    dgvAlmacenes.DataSource = dt;
+
+                    command.Dispose();
+                    cnx.Close();
+                }
+                catch (Exception ex)
+                {
+                    FormNotificaciones form = new FormNotificaciones(ex.Message);
+                    form.Show();
+                }
+            }
+        }
+
+        private void rellenaTablaAlmacenes()
+        {
+            string sql = "SELECT * FROM Almacen";
+            SqlConnection cnx = new SqlConnection(conection);
+
+            try
+            {
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                DataTable dt = new DataTable();
+                dt.Load(lector);
+                dgvAlmacenes.DataSource = dt;
+
+                foreach (DataGridViewColumn col in dgvAlmacenes.Columns)
+                {
+                    col.HeaderText = col.HeaderText.ToUpper();
+                }
+
+                command.Dispose();
+                cnx.Close();
+            }
+            catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void rellenaComboBoxIDAlm()
+        {
+            cbIDAMod.Items.Clear();
+            cbIDAMod.Items.Add(" ");
+
+            cbIDABorr.Items.Clear();
+            cbIDABorr.Items.Add(" ");
+
+            string sql = "SELECT * FROM Almacen";
+            SqlConnection cnx = new SqlConnection(conection);
+
+            try
+            {
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    cbIDAMod.Items.Add(lector.GetInt32(0));
+                    cbIDABorr.Items.Add(lector.GetInt32(0));
+                }
+
+                cnx.Close();
+            }
+            catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void rellenaCbDatosAlmacen()
+        {
+            cbDatosA.Items.Add("");
+
+            foreach (DataGridViewColumn col in dgvAlmacenes.Columns)
+            {
+                cbDatosA.Items.Add(col.HeaderText);
+            }
+
+            cbDatosA.SelectedIndex = 0;
         }
     }
 }

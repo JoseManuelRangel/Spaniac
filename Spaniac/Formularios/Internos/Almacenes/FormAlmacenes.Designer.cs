@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlmacenes));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbInicio = new System.Windows.Forms.Label();
             this.barra1 = new System.Windows.Forms.Panel();
             this.lbFecha = new System.Windows.Forms.Label();
@@ -41,17 +41,14 @@
             this.panelMenuExcel = new System.Windows.Forms.Panel();
             this.btnListarEXCEL = new System.Windows.Forms.Button();
             this.btnGenEXCEL = new System.Windows.Forms.Button();
-            this.btnImpEXCEL = new System.Windows.Forms.Button();
             this.btnMenuExcel = new System.Windows.Forms.Button();
             this.panelMenuJSON = new System.Windows.Forms.Panel();
             this.btnListarJSON = new System.Windows.Forms.Button();
             this.btnGenJSON = new System.Windows.Forms.Button();
-            this.btnImpJSON = new System.Windows.Forms.Button();
             this.btnMenuJSON = new System.Windows.Forms.Button();
             this.panelMenuXml = new System.Windows.Forms.Panel();
             this.btnListarXML = new System.Windows.Forms.Button();
             this.btnGenXML = new System.Windows.Forms.Button();
-            this.btnImpXML = new System.Windows.Forms.Button();
             this.btnMenuXml = new System.Windows.Forms.Button();
             this.dgvAlmacenes = new System.Windows.Forms.DataGridView();
             this.imgLimpiar = new System.Windows.Forms.PictureBox();
@@ -95,6 +92,8 @@
             this.btnAñadir = new System.Windows.Forms.Button();
             this.barra3 = new System.Windows.Forms.Panel();
             this.horafecha = new System.Windows.Forms.Timer(this.components);
+            this.panelPortada = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelAlmacenes.SuspendLayout();
             this.panelMenuExcel.SuspendLayout();
             this.panelMenuJSON.SuspendLayout();
@@ -106,6 +105,8 @@
             this.panelConfBorr.SuspendLayout();
             this.panelModificarAlmacen.SuspendLayout();
             this.panelAñadirAlmacen.SuspendLayout();
+            this.panelPortada.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbInicio
@@ -181,10 +182,9 @@
             // 
             this.panelMenuExcel.Controls.Add(this.btnListarEXCEL);
             this.panelMenuExcel.Controls.Add(this.btnGenEXCEL);
-            this.panelMenuExcel.Controls.Add(this.btnImpEXCEL);
-            this.panelMenuExcel.Location = new System.Drawing.Point(342, 524);
+            this.panelMenuExcel.Location = new System.Drawing.Point(343, 546);
             this.panelMenuExcel.Name = "panelMenuExcel";
-            this.panelMenuExcel.Size = new System.Drawing.Size(180, 92);
+            this.panelMenuExcel.Size = new System.Drawing.Size(180, 62);
             this.panelMenuExcel.TabIndex = 50;
             // 
             // btnListarEXCEL
@@ -196,12 +196,15 @@
             this.btnListarEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListarEXCEL.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnListarEXCEL.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnListarEXCEL.Location = new System.Drawing.Point(2, 60);
+            this.btnListarEXCEL.Location = new System.Drawing.Point(2, 30);
             this.btnListarEXCEL.Name = "btnListarEXCEL";
             this.btnListarEXCEL.Size = new System.Drawing.Size(177, 30);
             this.btnListarEXCEL.TabIndex = 47;
             this.btnListarEXCEL.Text = "LISTAR EXCEL";
             this.btnListarEXCEL.UseVisualStyleBackColor = false;
+            this.btnListarEXCEL.Click += new System.EventHandler(this.btnListarEXCEL_Click);
+            this.btnListarEXCEL.MouseLeave += new System.EventHandler(this.btnListarEXCEL_MouseLeave);
+            this.btnListarEXCEL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnListarEXCEL_MouseMove);
             // 
             // btnGenEXCEL
             // 
@@ -212,28 +215,15 @@
             this.btnGenEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenEXCEL.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnGenEXCEL.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnGenEXCEL.Location = new System.Drawing.Point(2, 30);
+            this.btnGenEXCEL.Location = new System.Drawing.Point(2, 0);
             this.btnGenEXCEL.Name = "btnGenEXCEL";
             this.btnGenEXCEL.Size = new System.Drawing.Size(177, 30);
             this.btnGenEXCEL.TabIndex = 46;
             this.btnGenEXCEL.Text = "GENERAR EXCEL";
             this.btnGenEXCEL.UseVisualStyleBackColor = false;
-            // 
-            // btnImpEXCEL
-            // 
-            this.btnImpEXCEL.BackColor = System.Drawing.Color.White;
-            this.btnImpEXCEL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnImpEXCEL.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
-            this.btnImpEXCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnImpEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImpEXCEL.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnImpEXCEL.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnImpEXCEL.Location = new System.Drawing.Point(2, 0);
-            this.btnImpEXCEL.Name = "btnImpEXCEL";
-            this.btnImpEXCEL.Size = new System.Drawing.Size(177, 30);
-            this.btnImpEXCEL.TabIndex = 45;
-            this.btnImpEXCEL.Text = "IMPORTAR EXCEL";
-            this.btnImpEXCEL.UseVisualStyleBackColor = false;
+            this.btnGenEXCEL.Click += new System.EventHandler(this.btnGenEXCEL_Click);
+            this.btnGenEXCEL.MouseLeave += new System.EventHandler(this.btnGenEXCEL_MouseLeave);
+            this.btnGenEXCEL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnGenEXCEL_MouseMove);
             // 
             // btnMenuExcel
             // 
@@ -244,7 +234,7 @@
             this.btnMenuExcel.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
             this.btnMenuExcel.ForeColor = System.Drawing.Color.White;
             this.btnMenuExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuExcel.Image")));
-            this.btnMenuExcel.Location = new System.Drawing.Point(342, 431);
+            this.btnMenuExcel.Location = new System.Drawing.Point(343, 453);
             this.btnMenuExcel.Name = "btnMenuExcel";
             this.btnMenuExcel.Size = new System.Drawing.Size(181, 94);
             this.btnMenuExcel.TabIndex = 49;
@@ -255,10 +245,9 @@
             // 
             this.panelMenuJSON.Controls.Add(this.btnListarJSON);
             this.panelMenuJSON.Controls.Add(this.btnGenJSON);
-            this.panelMenuJSON.Controls.Add(this.btnImpJSON);
-            this.panelMenuJSON.Location = new System.Drawing.Point(344, 322);
+            this.panelMenuJSON.Location = new System.Drawing.Point(344, 330);
             this.panelMenuJSON.Name = "panelMenuJSON";
-            this.panelMenuJSON.Size = new System.Drawing.Size(180, 92);
+            this.panelMenuJSON.Size = new System.Drawing.Size(181, 62);
             this.panelMenuJSON.TabIndex = 48;
             // 
             // btnListarJSON
@@ -270,12 +259,15 @@
             this.btnListarJSON.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListarJSON.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnListarJSON.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnListarJSON.Location = new System.Drawing.Point(2, 60);
+            this.btnListarJSON.Location = new System.Drawing.Point(2, 30);
             this.btnListarJSON.Name = "btnListarJSON";
-            this.btnListarJSON.Size = new System.Drawing.Size(177, 30);
+            this.btnListarJSON.Size = new System.Drawing.Size(178, 30);
             this.btnListarJSON.TabIndex = 47;
             this.btnListarJSON.Text = "LISTAR JSON";
             this.btnListarJSON.UseVisualStyleBackColor = false;
+            this.btnListarJSON.Click += new System.EventHandler(this.btnListarJSON_Click);
+            this.btnListarJSON.MouseLeave += new System.EventHandler(this.btnListarJSON_MouseLeave);
+            this.btnListarJSON.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnListarJSON_MouseMove);
             // 
             // btnGenJSON
             // 
@@ -286,28 +278,15 @@
             this.btnGenJSON.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenJSON.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnGenJSON.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnGenJSON.Location = new System.Drawing.Point(2, 30);
+            this.btnGenJSON.Location = new System.Drawing.Point(2, 0);
             this.btnGenJSON.Name = "btnGenJSON";
-            this.btnGenJSON.Size = new System.Drawing.Size(177, 30);
+            this.btnGenJSON.Size = new System.Drawing.Size(178, 30);
             this.btnGenJSON.TabIndex = 46;
             this.btnGenJSON.Text = "GENERAR JSON";
             this.btnGenJSON.UseVisualStyleBackColor = false;
-            // 
-            // btnImpJSON
-            // 
-            this.btnImpJSON.BackColor = System.Drawing.Color.White;
-            this.btnImpJSON.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnImpJSON.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
-            this.btnImpJSON.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnImpJSON.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImpJSON.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnImpJSON.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnImpJSON.Location = new System.Drawing.Point(2, 0);
-            this.btnImpJSON.Name = "btnImpJSON";
-            this.btnImpJSON.Size = new System.Drawing.Size(177, 30);
-            this.btnImpJSON.TabIndex = 45;
-            this.btnImpJSON.Text = "IMPORTAR JSON";
-            this.btnImpJSON.UseVisualStyleBackColor = false;
+            this.btnGenJSON.Click += new System.EventHandler(this.btnGenJSON_Click);
+            this.btnGenJSON.MouseLeave += new System.EventHandler(this.btnGenJSON_MouseLeave);
+            this.btnGenJSON.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnGenJSON_MouseMove);
             // 
             // btnMenuJSON
             // 
@@ -318,7 +297,7 @@
             this.btnMenuJSON.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
             this.btnMenuJSON.ForeColor = System.Drawing.Color.White;
             this.btnMenuJSON.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuJSON.Image")));
-            this.btnMenuJSON.Location = new System.Drawing.Point(344, 229);
+            this.btnMenuJSON.Location = new System.Drawing.Point(344, 237);
             this.btnMenuJSON.Name = "btnMenuJSON";
             this.btnMenuJSON.Size = new System.Drawing.Size(181, 94);
             this.btnMenuJSON.TabIndex = 47;
@@ -329,10 +308,9 @@
             // 
             this.panelMenuXml.Controls.Add(this.btnListarXML);
             this.panelMenuXml.Controls.Add(this.btnGenXML);
-            this.panelMenuXml.Controls.Add(this.btnImpXML);
             this.panelMenuXml.Location = new System.Drawing.Point(344, 116);
             this.panelMenuXml.Name = "panelMenuXml";
-            this.panelMenuXml.Size = new System.Drawing.Size(180, 92);
+            this.panelMenuXml.Size = new System.Drawing.Size(180, 62);
             this.panelMenuXml.TabIndex = 46;
             // 
             // btnListarXML
@@ -344,7 +322,7 @@
             this.btnListarXML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListarXML.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnListarXML.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnListarXML.Location = new System.Drawing.Point(2, 60);
+            this.btnListarXML.Location = new System.Drawing.Point(2, 30);
             this.btnListarXML.Name = "btnListarXML";
             this.btnListarXML.Size = new System.Drawing.Size(177, 30);
             this.btnListarXML.TabIndex = 47;
@@ -363,7 +341,7 @@
             this.btnGenXML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenXML.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnGenXML.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnGenXML.Location = new System.Drawing.Point(2, 30);
+            this.btnGenXML.Location = new System.Drawing.Point(2, 0);
             this.btnGenXML.Name = "btnGenXML";
             this.btnGenXML.Size = new System.Drawing.Size(177, 30);
             this.btnGenXML.TabIndex = 46;
@@ -372,22 +350,6 @@
             this.btnGenXML.Click += new System.EventHandler(this.btnGenXML_Click);
             this.btnGenXML.MouseLeave += new System.EventHandler(this.btnGenXML_MouseLeave);
             this.btnGenXML.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnGenXML_MouseMove);
-            // 
-            // btnImpXML
-            // 
-            this.btnImpXML.BackColor = System.Drawing.Color.White;
-            this.btnImpXML.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnImpXML.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
-            this.btnImpXML.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnImpXML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImpXML.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnImpXML.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnImpXML.Location = new System.Drawing.Point(2, 0);
-            this.btnImpXML.Name = "btnImpXML";
-            this.btnImpXML.Size = new System.Drawing.Size(177, 30);
-            this.btnImpXML.TabIndex = 45;
-            this.btnImpXML.Text = "IMPORTAR XML";
-            this.btnImpXML.UseVisualStyleBackColor = false;
             // 
             // btnMenuXml
             // 
@@ -409,34 +371,34 @@
             // 
             this.dgvAlmacenes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAlmacenes.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Reem Kufi", 12F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlmacenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlmacenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvAlmacenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Reem Kufi", 12F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAlmacenes.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAlmacenes.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvAlmacenes.Enabled = false;
             this.dgvAlmacenes.Location = new System.Drawing.Point(539, 88);
             this.dgvAlmacenes.Name = "dgvAlmacenes";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlmacenes.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlmacenes.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvAlmacenes.Size = new System.Drawing.Size(838, 522);
             this.dgvAlmacenes.TabIndex = 42;
             this.dgvAlmacenes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAlmacenes_CellFormatting);
@@ -496,6 +458,7 @@
             // panelIzquierdo
             // 
             this.panelIzquierdo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelIzquierdo.Controls.Add(this.panelPortada);
             this.panelIzquierdo.Controls.Add(this.panelBorrarAlmacen);
             this.panelIzquierdo.Controls.Add(this.panelModificarAlmacen);
             this.panelIzquierdo.Controls.Add(this.panelAñadirAlmacen);
@@ -918,11 +881,16 @@
             // 
             this.btnBorra.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnBorra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBorra.Font = new System.Drawing.Font("Reem Kufi", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBorra.ForeColor = System.Drawing.Color.White;
             this.btnBorra.Image = ((System.Drawing.Image)(resources.GetObject("btnBorra.Image")));
+            this.btnBorra.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBorra.Location = new System.Drawing.Point(234, 546);
             this.btnBorra.Name = "btnBorra";
-            this.btnBorra.Size = new System.Drawing.Size(85, 64);
+            this.btnBorra.Size = new System.Drawing.Size(85, 74);
             this.btnBorra.TabIndex = 15;
+            this.btnBorra.Text = "BORRAR";
+            this.btnBorra.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBorra.UseVisualStyleBackColor = false;
             this.btnBorra.Click += new System.EventHandler(this.btnBorra_Click);
             this.btnBorra.MouseLeave += new System.EventHandler(this.btnBorra_MouseLeave);
@@ -932,11 +900,16 @@
             // 
             this.btnModificar.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Font = new System.Drawing.Font("Reem Kufi", 9F);
+            this.btnModificar.ForeColor = System.Drawing.Color.White;
             this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
+            this.btnModificar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnModificar.Location = new System.Drawing.Point(124, 546);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(85, 64);
+            this.btnModificar.Size = new System.Drawing.Size(85, 74);
             this.btnModificar.TabIndex = 14;
+            this.btnModificar.Text = "EDITAR";
+            this.btnModificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             this.btnModificar.MouseLeave += new System.EventHandler(this.btnModificar_MouseLeave);
@@ -946,11 +919,16 @@
             // 
             this.btnAñadir.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnAñadir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAñadir.Font = new System.Drawing.Font("Reem Kufi", 9F);
+            this.btnAñadir.ForeColor = System.Drawing.Color.White;
             this.btnAñadir.Image = ((System.Drawing.Image)(resources.GetObject("btnAñadir.Image")));
+            this.btnAñadir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAñadir.Location = new System.Drawing.Point(17, 546);
             this.btnAñadir.Name = "btnAñadir";
-            this.btnAñadir.Size = new System.Drawing.Size(85, 64);
+            this.btnAñadir.Size = new System.Drawing.Size(85, 74);
             this.btnAñadir.TabIndex = 13;
+            this.btnAñadir.Text = "AÑADIR";
+            this.btnAñadir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAñadir.UseVisualStyleBackColor = false;
             this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
             this.btnAñadir.MouseLeave += new System.EventHandler(this.btnAñadir_MouseLeave);
@@ -968,6 +946,26 @@
             // 
             this.horafecha.Enabled = true;
             this.horafecha.Tick += new System.EventHandler(this.horafecha_Tick);
+            // 
+            // panelPortada
+            // 
+            this.panelPortada.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panelPortada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPortada.Controls.Add(this.pictureBox1);
+            this.panelPortada.Location = new System.Drawing.Point(8, 12);
+            this.panelPortada.Name = "panelPortada";
+            this.panelPortada.Size = new System.Drawing.Size(303, 480);
+            this.panelPortada.TabIndex = 57;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(52, 125);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(196, 176);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // FormAlmacenes
             // 
@@ -1000,6 +998,8 @@
             this.panelModificarAlmacen.PerformLayout();
             this.panelAñadirAlmacen.ResumeLayout(false);
             this.panelAñadirAlmacen.PerformLayout();
+            this.panelPortada.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1035,17 +1035,14 @@
         private System.Windows.Forms.Button btnMenuXml;
         private System.Windows.Forms.DataGridView dgvAlmacenes;
         private System.Windows.Forms.Button btnGenXML;
-        private System.Windows.Forms.Button btnImpXML;
         private System.Windows.Forms.Panel panelMenuJSON;
         private System.Windows.Forms.Button btnListarJSON;
         private System.Windows.Forms.Button btnGenJSON;
-        private System.Windows.Forms.Button btnImpJSON;
         private System.Windows.Forms.Button btnMenuJSON;
         private System.Windows.Forms.Button btnListarXML;
         private System.Windows.Forms.Panel panelMenuExcel;
         private System.Windows.Forms.Button btnListarEXCEL;
         private System.Windows.Forms.Button btnGenEXCEL;
-        private System.Windows.Forms.Button btnImpEXCEL;
         private System.Windows.Forms.Button btnMenuExcel;
         private System.Windows.Forms.Timer horafecha;
         private System.Windows.Forms.Label lbErrorEstado;
@@ -1069,5 +1066,7 @@
         private System.Windows.Forms.Button btnAceptarBorrar;
         private System.Windows.Forms.Label lbErrorIDABorr;
         private System.Windows.Forms.ComboBox cbIDABorr;
+        private System.Windows.Forms.Panel panelPortada;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

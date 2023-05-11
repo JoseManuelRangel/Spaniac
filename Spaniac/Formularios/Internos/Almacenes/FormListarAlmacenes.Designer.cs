@@ -1,6 +1,6 @@
 ﻿namespace Spaniac.Formularios.Internos.Almacenes
 {
-    partial class FormXMLAlmacenes
+    partial class FormListarAlmacenes
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormXMLAlmacenes));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormListarAlmacenes));
             this.panelIzquierdo = new System.Windows.Forms.Panel();
             this.logoEmpresa = new System.Windows.Forms.PictureBox();
             this.lbInicio = new System.Windows.Forms.Label();
-            this.xmlCompleto = new System.Windows.Forms.RichTextBox();
+            this.listadoCompleto = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -80,13 +80,14 @@
             this.lbInicio.TabIndex = 2;
             this.lbInicio.Text = "ALMACENES";
             // 
-            // xmlCompleto
+            // listadoCompleto
             // 
-            this.xmlCompleto.Location = new System.Drawing.Point(152, 99);
-            this.xmlCompleto.Name = "xmlCompleto";
-            this.xmlCompleto.Size = new System.Drawing.Size(381, 326);
-            this.xmlCompleto.TabIndex = 3;
-            this.xmlCompleto.Text = "";
+            this.listadoCompleto.Font = new System.Drawing.Font("Reem Kufi", 10F);
+            this.listadoCompleto.Location = new System.Drawing.Point(152, 99);
+            this.listadoCompleto.Name = "listadoCompleto";
+            this.listadoCompleto.Size = new System.Drawing.Size(381, 326);
+            this.listadoCompleto.TabIndex = 3;
+            this.listadoCompleto.Text = "";
             // 
             // label1
             // 
@@ -132,6 +133,9 @@
             this.btnAnterior.TabIndex = 9;
             this.btnAnterior.Text = "ANTERIOR";
             this.btnAnterior.UseVisualStyleBackColor = false;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            this.btnAnterior.MouseLeave += new System.EventHandler(this.btnAnterior_MouseLeave);
+            this.btnAnterior.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAnterior_MouseMove);
             // 
             // btnSiguiente
             // 
@@ -147,6 +151,9 @@
             this.btnSiguiente.TabIndex = 10;
             this.btnSiguiente.Text = "SIGUIENTE";
             this.btnSiguiente.UseVisualStyleBackColor = false;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            this.btnSiguiente.MouseLeave += new System.EventHandler(this.btnSiguiente_MouseLeave);
+            this.btnSiguiente.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnSiguiente_MouseMove);
             // 
             // btnPrimero
             // 
@@ -162,6 +169,9 @@
             this.btnPrimero.TabIndex = 11;
             this.btnPrimero.Text = "PRIMERO";
             this.btnPrimero.UseVisualStyleBackColor = false;
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
+            this.btnPrimero.MouseLeave += new System.EventHandler(this.btnPrimero_MouseLeave);
+            this.btnPrimero.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnPrimero_MouseMove);
             // 
             // btnUltimo
             // 
@@ -177,6 +187,9 @@
             this.btnUltimo.TabIndex = 12;
             this.btnUltimo.Text = "ÚLTIMO";
             this.btnUltimo.UseVisualStyleBackColor = false;
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
+            this.btnUltimo.MouseLeave += new System.EventHandler(this.btnUltimo_MouseLeave);
+            this.btnUltimo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnUltimo_MouseMove);
             // 
             // btnSalir
             // 
@@ -192,6 +205,9 @@
             this.btnSalir.TabIndex = 13;
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnSalir.MouseLeave += new System.EventHandler(this.btnSalir_MouseLeave);
+            this.btnSalir.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnSalir_MouseMove);
             // 
             // txtID
             // 
@@ -223,11 +239,11 @@
             this.txtNombre.Size = new System.Drawing.Size(239, 36);
             this.txtNombre.TabIndex = 16;
             // 
-            // FormXMLAlmacenes
+            // FormListarAlmacenes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(967, 463);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtActivo);
@@ -240,13 +256,14 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.xmlCompleto);
+            this.Controls.Add(this.listadoCompleto);
             this.Controls.Add(this.lbInicio);
             this.Controls.Add(this.panelIzquierdo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormXMLAlmacenes";
+            this.Name = "FormListarAlmacenes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormXMLAlmacenes";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormXMLAlmacenes_MouseDown);
             this.panelIzquierdo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).EndInit();
             this.ResumeLayout(false);
@@ -259,7 +276,7 @@
         private System.Windows.Forms.Panel panelIzquierdo;
         private System.Windows.Forms.PictureBox logoEmpresa;
         private System.Windows.Forms.Label lbInicio;
-        private System.Windows.Forms.RichTextBox xmlCompleto;
+        private System.Windows.Forms.RichTextBox listadoCompleto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
