@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Spaniac.Formularios.FormulariosInternos;
 using Spaniac.Formularios.FormulariosInternos.FormulariosProductos;
+using Spaniac.Formularios.Internos.Clientes;
 using Spaniac.Formularios.Internos.Almacenes;
 using Spaniac.Formularios.Externos;
 
@@ -108,13 +109,21 @@ namespace Spaniac.Formularios
 
 
         /*-------------------------------------------------------------------------------------------------*/
-        /*                            GESTIÓN DE EVENTOS DEL BOTÓN DE PRODUCTOS                            */
+        /*                            GESTIÓN DE EVENTOS DEL BOTÓN DE ALMACENES                            */
         /*-------------------------------------------------------------------------------------------------*/
         private void btnAlmacenes_Click(object sender, EventArgs e)
         {
             abrirFormEnPanel(new FormAlmacenes());
         }
 
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                             GESTIÓN DE EVENTOS DEL BOTÓN DE CLIENTES                            */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            abrirFormEnPanel(new FormClientes());
+        }
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                              METODOS USADOS EN EL CÓDIGO DEL FORMULARIO                         */
@@ -167,6 +176,5 @@ namespace Spaniac.Formularios
             }
         }
 
-       
     }
 }

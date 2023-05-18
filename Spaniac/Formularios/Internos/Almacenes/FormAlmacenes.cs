@@ -95,6 +95,43 @@ namespace Spaniac.Formularios.Internos.Almacenes
             }
         }
 
+        /*                      Gestión de eventos del botón generar XML del menú XML                      */
+        private void btnGenXML_Click(object sender, EventArgs e)
+        {
+            generaXML();
+        }
+
+        private void btnGenXML_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            btnGenXML.ForeColor = Color.White;
+        }
+
+        private void btnGenXML_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            btnGenXML.ForeColor = Color.MidnightBlue;
+        }
+
+
+        /*                        Gestión de eventos del botón leer XML del menú XML                       */
+        private void btnListarXML_Click(object sender, EventArgs e)
+        {
+            compruebaXML();
+        }
+
+        private void btnListarXML_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            btnListarXML.ForeColor = Color.White;
+        }
+
+        private void btnListarXML_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            btnListarXML.ForeColor = Color.MidnightBlue;
+        }
+
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                           GESTIÓN DE EVENTOS DEL BOTÓN DEL MENÚ JSON                            */
@@ -111,6 +148,100 @@ namespace Spaniac.Formularios.Internos.Almacenes
                 pJson = false;
             }
         }
+
+        /*                      Gestión de eventos del botón generar JSON del menú JSON                    */
+        private void btnGenJSON_Click(object sender, EventArgs e)
+        {
+            generaJSON();
+        }
+
+        private void btnGenJSON_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            btnGenJSON.ForeColor = Color.White;
+        }
+
+        private void btnGenJSON_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            btnGenJSON.ForeColor = Color.MidnightBlue;
+        }
+
+
+        /*                       Gestión de eventos del botón leer JSON del menú JSON                      */
+        private void btnListarJSON_Click(object sender, EventArgs e)
+        {
+            compruebaJSON();
+        }
+
+        private void btnListarJSON_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            btnListarJSON.ForeColor = Color.White;
+        }
+
+        private void btnListarJSON_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            btnListarJSON.ForeColor = Color.MidnightBlue;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                           GESTIÓN DE EVENTOS DEL BOTÓN DEL MENÚ EXCEL                           */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void btnMenuExcel_Click(object sender, EventArgs e)
+        {
+            if (pExcel == false)
+            {
+                panelMenuExcel.Visible = true;
+                pExcel = true;
+            }
+            else
+            {
+                panelMenuExcel.Visible = false;
+                pExcel = false;
+            }
+        }
+
+
+        /*                    Gestión de eventos del botón generar EXCEL del menú EXCEL                    */
+        private void btnGenEXCEL_Click(object sender, EventArgs e)
+        {
+            generaExcel();
+        }
+
+        private void btnGenEXCEL_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            btnGenEXCEL.ForeColor = Color.White;
+        }
+
+        private void btnGenEXCEL_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            btnGenEXCEL.ForeColor = Color.MidnightBlue;
+        }
+
+
+        /*                       Gestión de eventos del botón leer JSON del menú JSON                      */
+        private void btnListarEXCEL_Click(object sender, EventArgs e)
+        {
+            compruebaExcel();
+        }
+
+        private void btnListarEXCEL_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            btnListarEXCEL.ForeColor = Color.White;
+        }
+
+        private void btnListarEXCEL_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            btnListarEXCEL.ForeColor = Color.MidnightBlue;
+        }
+
 
 
         /*-------------------------------------------------------------------------------------------------*/
@@ -664,142 +795,6 @@ namespace Spaniac.Formularios.Internos.Almacenes
 
 
         /*-------------------------------------------------------------------------------------------------*/
-        /*                           GESTIÓN DE EVENTOS DEL BOTÓN DEL MENÚ EXCEL                           */
-        /*-------------------------------------------------------------------------------------------------*/
-        private void btnMenuExcel_Click(object sender, EventArgs e)
-        {
-            if(pExcel == false)
-            {
-                panelMenuExcel.Visible = true;
-                pExcel = true;
-            } else
-            {
-                panelMenuExcel.Visible = false;
-                pExcel = false;
-            }
-        }
-
-
-
-        /*-------------------------------------------------------------------------------------------------*/
-        /*                       ELEMENTOS DEL PANEL CENTRAL DE MENÚS DE ALMACENES                         */
-        /*-------------------------------------------------------------------------------------------------*/
-        /*                      Gestión de eventos del botón generar XML del menú XML                      */
-        private void btnGenXML_Click(object sender, EventArgs e)
-        {
-            generaXML();
-        }
-
-        private void btnGenXML_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-            btnGenXML.ForeColor = Color.White;
-        }
-
-        private void btnGenXML_MouseLeave(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-            btnGenXML.ForeColor = Color.MidnightBlue;
-        }
-
-
-        /*                        Gestión de eventos del botón leer XML del menú XML                       */
-        private void btnListarXML_Click(object sender, EventArgs e)
-        {
-            compruebaXML();
-        }
-
-        private void btnListarXML_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-            btnListarXML.ForeColor = Color.White;
-        }
-
-        private void btnListarXML_MouseLeave(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-            btnListarXML.ForeColor = Color.MidnightBlue;
-        }
-
-
-        /*                      Gestión de eventos del botón generar JSON del menú JSON                    */
-        private void btnGenJSON_Click(object sender, EventArgs e)
-        {
-            generaJSON();
-        }
-
-        private void btnGenJSON_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-            btnGenJSON.ForeColor = Color.White;
-        }
-
-        private void btnGenJSON_MouseLeave(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-            btnGenJSON.ForeColor = Color.MidnightBlue;
-        }
-
-
-        /*                       Gestión de eventos del botón leer JSON del menú JSON                      */
-        private void btnListarJSON_Click(object sender, EventArgs e)
-        {
-            compruebaJSON();
-        }
-
-        private void btnListarJSON_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-            btnListarJSON.ForeColor = Color.White;
-        }
-
-        private void btnListarJSON_MouseLeave(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-            btnListarJSON.ForeColor = Color.MidnightBlue;
-        }
-
-
-        /*                    Gestión de eventos del botón generar EXCEL del menú EXCEL                    */
-        private void btnGenEXCEL_Click(object sender, EventArgs e)
-        {
-            generaExcel();
-        }
-
-        private void btnGenEXCEL_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-            btnGenEXCEL.ForeColor = Color.White;
-        }
-
-        private void btnGenEXCEL_MouseLeave(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-            btnGenEXCEL.ForeColor = Color.MidnightBlue;
-        }
-
-
-        /*                       Gestión de eventos del botón leer JSON del menú JSON                      */
-        private void btnListarEXCEL_Click(object sender, EventArgs e)
-        {
-            compruebaExcel();
-        }
-
-        private void btnListarEXCEL_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-            btnListarEXCEL.ForeColor = Color.White;
-        }
-
-        private void btnListarEXCEL_MouseLeave(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-            btnListarEXCEL.ForeColor = Color.MidnightBlue;
-        }
-
-
-
-        /*-------------------------------------------------------------------------------------------------*/
         /*                                 MÉTODOS USADOS EN EL FORMULARIO                                 */
         /*-------------------------------------------------------------------------------------------------*/
         private void inicializarControles()
@@ -824,9 +819,9 @@ namespace Spaniac.Formularios.Internos.Almacenes
             panelConfBorr.Visible = false;
             descBorr.Enabled = false;
 
-            panelMenuExcel.Visible = true;
-            panelMenuJSON.Visible = true;
-            panelMenuXml.Visible = true;
+            panelMenuExcel.Visible = false;
+            panelMenuJSON.Visible = false;
+            panelMenuXml.Visible = false;
         }
 
         private void inicializaDatos()
@@ -855,9 +850,6 @@ namespace Spaniac.Formularios.Internos.Almacenes
 
                 SqlCommand command = new SqlCommand(sql, cnx);
                 SqlDataReader lector = command.ExecuteReader();
-
-                string hora = DateTime.Now.ToShortTimeString().ToUpper().Trim();
-                string fecha = DateTime.Now.ToShortDateString().ToUpper().Trim() + hora;
 
                 if(!System.IO.File.Exists("Almacenes.xml"))
                 {
@@ -987,7 +979,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
                 }
                 else
                 {
-                    FormNotificaciones form2 = new FormNotificaciones("Ya hay un documento XML. Muévelo o cambialo de nombre para poder generar otro.");
+                    FormNotificaciones form2 = new FormNotificaciones("Ya hay un documento JSON. Muévelo o cambialo de nombre para poder generar otro.");
                     form2.Show();
                 }
 

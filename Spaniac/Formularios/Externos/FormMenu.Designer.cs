@@ -100,7 +100,7 @@
             this.lbRol.ForeColor = System.Drawing.Color.White;
             this.lbRol.Location = new System.Drawing.Point(61, 812);
             this.lbRol.Name = "lbRol";
-            this.lbRol.Size = new System.Drawing.Size(28, 23);
+            this.lbRol.Size = new System.Drawing.Size(28, 22);
             this.lbRol.TabIndex = 16;
             this.lbRol.Text = "Rol";
             // 
@@ -150,7 +150,7 @@
             this.lbUser.ForeColor = System.Drawing.Color.White;
             this.lbUser.Location = new System.Drawing.Point(61, 761);
             this.lbUser.Name = "lbUser";
-            this.lbUser.Size = new System.Drawing.Size(53, 23);
+            this.lbUser.Size = new System.Drawing.Size(53, 22);
             this.lbUser.TabIndex = 12;
             this.lbUser.Text = "Usuario";
             // 
@@ -211,6 +211,7 @@
             this.btnClientes.Text = "CLIENTES";
             this.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnClientes.UseVisualStyleBackColor = false;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // btnEntradas
             // 

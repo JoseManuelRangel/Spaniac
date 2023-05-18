@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlmacenes));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbInicio = new System.Windows.Forms.Label();
             this.barra1 = new System.Windows.Forms.Panel();
             this.lbFecha = new System.Windows.Forms.Label();
@@ -57,6 +57,8 @@
             this.lbBuscarA = new System.Windows.Forms.Label();
             this.barra4 = new System.Windows.Forms.Panel();
             this.panelIzquierdo = new System.Windows.Forms.Panel();
+            this.panelPortada = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelBorrarAlmacen = new System.Windows.Forms.Panel();
             this.panelConfBorr = new System.Windows.Forms.Panel();
             this.btnNoBorr = new System.Windows.Forms.Button();
@@ -92,8 +94,6 @@
             this.btnAñadir = new System.Windows.Forms.Button();
             this.barra3 = new System.Windows.Forms.Panel();
             this.horafecha = new System.Windows.Forms.Timer(this.components);
-            this.panelPortada = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelAlmacenes.SuspendLayout();
             this.panelMenuExcel.SuspendLayout();
             this.panelMenuJSON.SuspendLayout();
@@ -101,12 +101,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).BeginInit();
             this.panelIzquierdo.SuspendLayout();
+            this.panelPortada.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelBorrarAlmacen.SuspendLayout();
             this.panelConfBorr.SuspendLayout();
             this.panelModificarAlmacen.SuspendLayout();
             this.panelAñadirAlmacen.SuspendLayout();
-            this.panelPortada.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbInicio
@@ -371,34 +371,34 @@
             // 
             this.dgvAlmacenes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAlmacenes.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlmacenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlmacenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAlmacenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAlmacenes.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAlmacenes.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAlmacenes.Enabled = false;
             this.dgvAlmacenes.Location = new System.Drawing.Point(539, 88);
             this.dgvAlmacenes.Name = "dgvAlmacenes";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlmacenes.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlmacenes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAlmacenes.Size = new System.Drawing.Size(838, 522);
             this.dgvAlmacenes.TabIndex = 42;
             this.dgvAlmacenes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAlmacenes_CellFormatting);
@@ -458,7 +458,6 @@
             // panelIzquierdo
             // 
             this.panelIzquierdo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelIzquierdo.Controls.Add(this.panelPortada);
             this.panelIzquierdo.Controls.Add(this.panelBorrarAlmacen);
             this.panelIzquierdo.Controls.Add(this.panelModificarAlmacen);
             this.panelIzquierdo.Controls.Add(this.panelAñadirAlmacen);
@@ -467,9 +466,30 @@
             this.panelIzquierdo.Size = new System.Drawing.Size(321, 507);
             this.panelIzquierdo.TabIndex = 16;
             // 
+            // panelPortada
+            // 
+            this.panelPortada.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panelPortada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPortada.Controls.Add(this.pictureBox1);
+            this.panelPortada.Location = new System.Drawing.Point(281, 15);
+            this.panelPortada.Name = "panelPortada";
+            this.panelPortada.Size = new System.Drawing.Size(303, 480);
+            this.panelPortada.TabIndex = 57;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(52, 125);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(196, 176);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // panelBorrarAlmacen
             // 
             this.panelBorrarAlmacen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBorrarAlmacen.Controls.Add(this.panelPortada);
             this.panelBorrarAlmacen.Controls.Add(this.panelConfBorr);
             this.panelBorrarAlmacen.Controls.Add(this.descBorr);
             this.panelBorrarAlmacen.Controls.Add(this.btnAceptarBorrar);
@@ -887,7 +907,7 @@
             this.btnBorra.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBorra.Location = new System.Drawing.Point(234, 546);
             this.btnBorra.Name = "btnBorra";
-            this.btnBorra.Size = new System.Drawing.Size(85, 74);
+            this.btnBorra.Size = new System.Drawing.Size(85, 67);
             this.btnBorra.TabIndex = 15;
             this.btnBorra.Text = "BORRAR";
             this.btnBorra.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -906,7 +926,7 @@
             this.btnModificar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnModificar.Location = new System.Drawing.Point(124, 546);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(85, 74);
+            this.btnModificar.Size = new System.Drawing.Size(85, 67);
             this.btnModificar.TabIndex = 14;
             this.btnModificar.Text = "EDITAR";
             this.btnModificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -925,7 +945,7 @@
             this.btnAñadir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAñadir.Location = new System.Drawing.Point(17, 546);
             this.btnAñadir.Name = "btnAñadir";
-            this.btnAñadir.Size = new System.Drawing.Size(85, 74);
+            this.btnAñadir.Size = new System.Drawing.Size(85, 67);
             this.btnAñadir.TabIndex = 13;
             this.btnAñadir.Text = "AÑADIR";
             this.btnAñadir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -946,26 +966,6 @@
             // 
             this.horafecha.Enabled = true;
             this.horafecha.Tick += new System.EventHandler(this.horafecha_Tick);
-            // 
-            // panelPortada
-            // 
-            this.panelPortada.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panelPortada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelPortada.Controls.Add(this.pictureBox1);
-            this.panelPortada.Location = new System.Drawing.Point(8, 12);
-            this.panelPortada.Name = "panelPortada";
-            this.panelPortada.Size = new System.Drawing.Size(303, 480);
-            this.panelPortada.TabIndex = 57;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(52, 125);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(196, 176);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // FormAlmacenes
             // 
@@ -990,6 +990,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).EndInit();
             this.panelIzquierdo.ResumeLayout(false);
+            this.panelPortada.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelBorrarAlmacen.ResumeLayout(false);
             this.panelBorrarAlmacen.PerformLayout();
             this.panelConfBorr.ResumeLayout(false);
@@ -998,8 +1000,6 @@
             this.panelModificarAlmacen.PerformLayout();
             this.panelAñadirAlmacen.ResumeLayout(false);
             this.panelAñadirAlmacen.PerformLayout();
-            this.panelPortada.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

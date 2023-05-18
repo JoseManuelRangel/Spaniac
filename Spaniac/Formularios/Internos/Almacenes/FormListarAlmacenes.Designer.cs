@@ -58,6 +58,7 @@
             this.panelIzquierdo.Name = "panelIzquierdo";
             this.panelIzquierdo.Size = new System.Drawing.Size(117, 463);
             this.panelIzquierdo.TabIndex = 1;
+            this.panelIzquierdo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelIzquierdo_MouseDown);
             // 
             // logoEmpresa
             // 

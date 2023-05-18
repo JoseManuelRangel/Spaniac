@@ -86,7 +86,7 @@
             this.lbHora.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lbHora.Location = new System.Drawing.Point(1345, 54);
             this.lbHora.Name = "lbHora";
-            this.lbHora.Size = new System.Drawing.Size(97, 46);
+            this.lbHora.Size = new System.Drawing.Size(91, 44);
             this.lbHora.TabIndex = 8;
             this.lbHora.Text = "HORA";
             this.lbHora.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -98,7 +98,7 @@
             this.lbInicio.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lbInicio.Location = new System.Drawing.Point(34, 23);
             this.lbInicio.Name = "lbInicio";
-            this.lbInicio.Size = new System.Drawing.Size(441, 75);
+            this.lbInicio.Size = new System.Drawing.Size(457, 116);
             this.lbInicio.TabIndex = 7;
             this.lbInicio.Text = "PRODUCTOS";
             // 
@@ -117,7 +117,7 @@
             this.lbFecha.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lbFecha.Location = new System.Drawing.Point(1220, 92);
             this.lbFecha.Name = "lbFecha";
-            this.lbFecha.Size = new System.Drawing.Size(98, 28);
+            this.lbFecha.Size = new System.Drawing.Size(98, 27);
             this.lbFecha.TabIndex = 9;
             this.lbFecha.Text = "DÍA ACTUAL";
             this.lbFecha.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -208,7 +208,7 @@
             this.cbDatosC.FormattingEnabled = true;
             this.cbDatosC.Location = new System.Drawing.Point(506, 31);
             this.cbDatosC.Name = "cbDatosC";
-            this.cbDatosC.Size = new System.Drawing.Size(289, 33);
+            this.cbDatosC.Size = new System.Drawing.Size(289, 31);
             this.cbDatosC.TabIndex = 34;
             // 
             // lbBuscarC
@@ -217,7 +217,7 @@
             this.lbBuscarC.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
             this.lbBuscarC.Location = new System.Drawing.Point(425, 34);
             this.lbBuscarC.Name = "lbBuscarC";
-            this.lbBuscarC.Size = new System.Drawing.Size(77, 25);
+            this.lbBuscarC.Size = new System.Drawing.Size(75, 23);
             this.lbBuscarC.TabIndex = 12;
             this.lbBuscarC.Text = "Buscar por: ";
             // 
@@ -293,7 +293,7 @@
             this.lbErrorIdCMod.ForeColor = System.Drawing.Color.Red;
             this.lbErrorIdCMod.Location = new System.Drawing.Point(12, 61);
             this.lbErrorIdCMod.Name = "lbErrorIdCMod";
-            this.lbErrorIdCMod.Size = new System.Drawing.Size(43, 25);
+            this.lbErrorIdCMod.Size = new System.Drawing.Size(41, 23);
             this.lbErrorIdCMod.TabIndex = 41;
             this.lbErrorIdCMod.Text = "Error";
             this.lbErrorIdCMod.Visible = false;
@@ -306,7 +306,7 @@
             this.cbIdCMod.FormattingEnabled = true;
             this.cbIdCMod.Location = new System.Drawing.Point(13, 20);
             this.cbIdCMod.Name = "cbIdCMod";
-            this.cbIdCMod.Size = new System.Drawing.Size(294, 38);
+            this.cbIdCMod.Size = new System.Drawing.Size(294, 36);
             this.cbIdCMod.TabIndex = 40;
             // 
             // lbProdCMod
@@ -338,7 +338,7 @@
             this.lbErrorNomCMod.ForeColor = System.Drawing.Color.Red;
             this.lbErrorNomCMod.Location = new System.Drawing.Point(12, 145);
             this.lbErrorNomCMod.Name = "lbErrorNomCMod";
-            this.lbErrorNomCMod.Size = new System.Drawing.Size(43, 25);
+            this.lbErrorNomCMod.Size = new System.Drawing.Size(41, 23);
             this.lbErrorNomCMod.TabIndex = 37;
             this.lbErrorNomCMod.Text = "Error";
             this.lbErrorNomCMod.Visible = false;
@@ -366,7 +366,7 @@
             this.lbErrorAlmCMod.ForeColor = System.Drawing.Color.Red;
             this.lbErrorAlmCMod.Location = new System.Drawing.Point(12, 300);
             this.lbErrorAlmCMod.Name = "lbErrorAlmCMod";
-            this.lbErrorAlmCMod.Size = new System.Drawing.Size(43, 25);
+            this.lbErrorAlmCMod.Size = new System.Drawing.Size(41, 23);
             this.lbErrorAlmCMod.TabIndex = 34;
             this.lbErrorAlmCMod.Text = "Error";
             this.lbErrorAlmCMod.Visible = false;
@@ -379,7 +379,7 @@
             this.cbAlmacenCMod.FormattingEnabled = true;
             this.cbAlmacenCMod.Location = new System.Drawing.Point(13, 260);
             this.cbAlmacenCMod.Name = "cbAlmacenCMod";
-            this.cbAlmacenCMod.Size = new System.Drawing.Size(292, 38);
+            this.cbAlmacenCMod.Size = new System.Drawing.Size(292, 36);
             this.cbAlmacenCMod.TabIndex = 33;
             // 
             // txtNombreCMod
@@ -439,7 +439,7 @@
             this.lbErrorNomC.ForeColor = System.Drawing.Color.Red;
             this.lbErrorNomC.Location = new System.Drawing.Point(12, 137);
             this.lbErrorNomC.Name = "lbErrorNomC";
-            this.lbErrorNomC.Size = new System.Drawing.Size(35, 16);
+            this.lbErrorNomC.Size = new System.Drawing.Size(41, 23);
             this.lbErrorNomC.TabIndex = 37;
             this.lbErrorNomC.Text = "Error";
             this.lbErrorNomC.Visible = false;
@@ -488,7 +488,7 @@
             this.lbErrorAlmC.ForeColor = System.Drawing.Color.Red;
             this.lbErrorAlmC.Location = new System.Drawing.Point(12, 221);
             this.lbErrorAlmC.Name = "lbErrorAlmC";
-            this.lbErrorAlmC.Size = new System.Drawing.Size(35, 16);
+            this.lbErrorAlmC.Size = new System.Drawing.Size(41, 23);
             this.lbErrorAlmC.TabIndex = 34;
             this.lbErrorAlmC.Text = "Error";
             this.lbErrorAlmC.Visible = false;
@@ -501,7 +501,7 @@
             this.cbAlmacenC.FormattingEnabled = true;
             this.cbAlmacenC.Location = new System.Drawing.Point(16, 182);
             this.cbAlmacenC.Name = "cbAlmacenC";
-            this.cbAlmacenC.Size = new System.Drawing.Size(289, 38);
+            this.cbAlmacenC.Size = new System.Drawing.Size(289, 36);
             this.cbAlmacenC.TabIndex = 33;
             this.cbAlmacenC.SelectedIndexChanged += new System.EventHandler(this.cbAlmacenC_SelectedIndexChanged);
             // 
@@ -602,6 +602,7 @@
             this.Controls.Add(this.barra1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormProductos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormProductos";
             this.panelCategorias.ResumeLayout(false);
             this.panelCategorias.PerformLayout();

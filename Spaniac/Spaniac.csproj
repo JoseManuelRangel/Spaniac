@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Almacen.cs" />
+    <Compile Include="Clases\Cliente.cs" />
     <Compile Include="Formularios\Externos\FormCarga.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +136,18 @@
     <Compile Include="Formularios\Internos\Almacenes\FormListarAlmacenes.Designer.cs">
       <DependentUpon>FormListarAlmacenes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Internos\Clientes\FormClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Internos\Clientes\FormClientes.Designer.cs">
+      <DependentUpon>FormClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Internos\Clientes\FormListarClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Internos\Clientes\FormListarClientes.Designer.cs">
+      <DependentUpon>FormListarClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Internos\FormPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +207,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\Almacenes\FormListarAlmacenes.resx">
       <DependentUpon>FormListarAlmacenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Internos\Clientes\FormClientes.resx">
+      <DependentUpon>FormClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Internos\Clientes\FormListarClientes.resx">
+      <DependentUpon>FormListarClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\FormPanel.resx">
       <DependentUpon>FormPanel.cs</DependentUpon>

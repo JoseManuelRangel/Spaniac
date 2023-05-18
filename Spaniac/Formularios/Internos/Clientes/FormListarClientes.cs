@@ -1,4 +1,5 @@
-﻿using Spaniac.Clases;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using Spaniac.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +12,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace Spaniac.Formularios.Internos.Almacenes
+namespace Spaniac.Formularios.Internos.Clientes
 {
-    public partial class FormListarAlmacenes : Form
+    public partial class FormListarClientes : Form
     {
         /* Código que permite arrastrar el formulario. */
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -28,87 +29,107 @@ namespace Spaniac.Formularios.Internos.Almacenes
         static string tipoArchivo;
 
         /* Listas que almacenan los datos del XML cargado y los muestra en los controles de texto. */
-        static List<string> listaIDS = new List<string>();
-        static List<string> listaActivos = new List<string>();
+        static List<string> listaDNIs = new List<string>();
         static List<string> listaNombres = new List<string>();
+        static List<string> listaFechas = new List<string>();
+        static List<string> listaLocalidades = new List<string>();
+        static List<string> listaDirecciones = new List<string>();
+        static List<string> listaTelefonos = new List<string>();
 
         /* Variables que controlan en que posición de las listas nos encontramos. */
         static int registroXML = 0;
         static int registroJSON = 0;
         static int registroExcel = 0;
 
-        /* Lista de Almacenes del fichero JSON. */
-        List<Almacen> almacenes = new List<Almacen>();
+        /* Lista de Clientes del fichero JSON y del fichero EXCEL. */
+        List<Cliente> clientes = new List<Cliente>();
 
         /* JSON Completo. */
-        static string almJSON;
+        static string cliJSON;
+
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
         /*-------------------------------------------------------------------------------------------------*/
-        public FormListarAlmacenes(string rutaXML)
+        public FormListarClientes(string rutaXML)
         {
             InitializeComponent();
             rutaxml = rutaXML;
             cargaXML();
             tipoArchivo = "XML";
 
-            if (listaIDS.Count > 0 && listaActivos.Count > 0 && listaNombres.Count > 0)
+            if (listaDNIs.Count > 0 && listaNombres.Count > 0 && listaFechas.Count > 0
+                && listaLocalidades.Count > 0 && listaDirecciones.Count > 0 && listaTelefonos.Count > 0)
             {
-                txtID.Text = listaIDS[0];
-                txtActivo.Text = listaActivos[0];
+                txtID.Text = listaDNIs[0];
                 txtNombre.Text = listaNombres[0];
+                txtFecha.Text = listaFechas[0];
+                txtLocalidad.Text = listaLocalidades[0];
+                txtDireccion.Text = listaDirecciones[0];
+                txtTelefono.Text = listaTelefonos[0];
             }
         }
 
-        public FormListarAlmacenes(string jsonCompleto, List<Almacen> listaAlm)
+        public FormListarClientes(string jsonCompleto, List<Cliente> listaCli)
         {
             InitializeComponent();
-            almJSON = jsonCompleto;
-            almacenes = listaAlm;
+            cliJSON = jsonCompleto;
+            clientes = listaCli;
             tipoArchivo = "JSON";
 
-            if(almacenes.Count > 0)
+            if (clientes.Count > 0)
             {
-                txtID.Text = almacenes[0].ID.ToString();
-                txtActivo.Text = almacenes[0].Activo.ToString();
-                txtNombre.Text = almacenes[0].Nombre.ToString();
+                txtID.Text = clientes[0].ID.ToString();
+                txtNombre.Text = clientes[0].Nombre.ToString();
+                txtFecha.Text = clientes[0].FechaRegistro.ToString();
+                txtLocalidad.Text = clientes[0].Localidad.ToString();
+                txtDireccion.Text = clientes[0].Direccion.ToString();
+                txtTelefono.Text = clientes[0].Telefono.ToString();
             }
 
-            for(int i = 0; i < almacenes.Count; i++)
+            for (int i = 0; i < clientes.Count; i++)
             {
                 int j = i + 1;
-                Almacen a = new Almacen(almacenes[i].ID, almacenes[i].Activo, almacenes[i].Nombre);
-                listadoCompleto.Text += "Almacen " + j + ": " + Environment.NewLine + "" +
-                    "ID: " + a.ID + Environment.NewLine + "Activo: " + a.Activo + Environment.NewLine +
-                    "Nombre: " + a.Nombre + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                Cliente c = new Cliente(clientes[i].ID, clientes[i].Nombre, clientes[i].FechaRegistro, clientes[i].Localidad, 
+                    clientes[i].Direccion, clientes[i].Telefono);
+                listadoCompleto.Text += "Cliente " + j + ": " + Environment.NewLine + "" +
+                    "ID: " + c.ID + Environment.NewLine + "Nombre: " + c.Nombre + Environment.NewLine +
+                    "Fecha Registro: " + c.FechaRegistro + Environment.NewLine + "Localidad: " + c.Localidad 
+                    + Environment.NewLine + "Direccion: " + c.Direccion + Environment.NewLine + "Telefono: " + c.Telefono
+                    + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             }
         }
 
-        public FormListarAlmacenes(List<Almacen> listaAlm)
+        public FormListarClientes(List<Cliente> listaCli)
         {
             InitializeComponent();
-            almacenes = listaAlm;
+            clientes = listaCli;
             tipoArchivo = "EXCEL";
 
-            if (almacenes.Count > 0)
+            if (clientes.Count > 0)
             {
-                txtID.Text = almacenes[0].ID.ToString();
-                txtActivo.Text = almacenes[0].Activo.ToString();
-                txtNombre.Text = almacenes[0].Nombre.ToString();
+                txtID.Text = clientes[0].ID.ToString();
+                txtNombre.Text = clientes[0].Nombre.ToString();
+                txtFecha.Text = clientes[0].FechaRegistro.ToString();
+                txtLocalidad.Text = clientes[0].Localidad.ToString();
+                txtDireccion.Text = clientes[0].Direccion.ToString();
+                txtTelefono.Text = clientes[0].Telefono.ToString();
             }
 
-            for (int i = 0; i < almacenes.Count; i++)
+            for (int i = 0; i < clientes.Count; i++)
             {
                 int j = i + 1;
-                Almacen a = new Almacen(almacenes[i].ID, almacenes[i].Activo, almacenes[i].Nombre);
-                listadoCompleto.Text += "Almacen " + j + ": " + Environment.NewLine + "" +
-                    "ID: " + a.ID + Environment.NewLine + "Activo: " + a.Activo + Environment.NewLine +
-                    "Nombre: " + a.Nombre + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                Cliente c = new Cliente(clientes[i].ID, clientes[i].Nombre, clientes[i].FechaRegistro, clientes[i].Localidad,
+                    clientes[i].Direccion, clientes[i].Telefono);
+                listadoCompleto.Text += "Cliente " + j + ": " + Environment.NewLine + "" +
+                    "ID: " + c.ID + Environment.NewLine + "Nombre: " + c.Nombre + Environment.NewLine +
+                    "Fecha Registro: " + c.FechaRegistro + Environment.NewLine + "Localidad: " + c.Localidad
+                    + Environment.NewLine + "Direccion: " + c.Direccion + Environment.NewLine + "Telefono: " + c.Telefono
+                    + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             }
         }
 
-        private void FormXMLAlmacenes_MouseDown(object sender, MouseEventArgs e)
+        private void FormListarClientes_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
@@ -130,13 +151,15 @@ namespace Spaniac.Formularios.Internos.Almacenes
         /*-------------------------------------------------------------------------------------------------*/
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-            if(tipoArchivo.Equals("XML"))
+            if (tipoArchivo.Equals("XML"))
             {
                 retrocedeUno("XML");
-            } else if(tipoArchivo.Equals("JSON"))
+            }
+            else if (tipoArchivo.Equals("JSON"))
             {
                 retrocedeUno("JSON");
-            } else if(tipoArchivo.Equals("EXCEL"))
+            }
+            else if (tipoArchivo.Equals("EXCEL"))
             {
                 retrocedeUno("EXCEL");
             }
@@ -281,14 +304,23 @@ namespace Spaniac.Formularios.Internos.Almacenes
                         {
                             switch (n2.Name)
                             {
-                                case "ID":
-                                    listaIDS.Add(n2.InnerText);
-                                    break;
-                                case "Activo":
-                                    listaActivos.Add(n2.InnerText);
+                                case "DNI":
+                                    listaDNIs.Add(n2.InnerText);
                                     break;
                                 case "Nombre":
                                     listaNombres.Add(n2.InnerText);
+                                    break;
+                                case "FechaRegistro":
+                                    listaFechas.Add(n2.InnerText);
+                                    break;
+                                case "Localidad":
+                                    listaLocalidades.Add(n2.InnerText);
+                                    break;
+                                case "Direccion":
+                                    listaDirecciones.Add(n2.InnerText);
+                                    break;
+                                case "Telefono":
+                                    listaTelefonos.Add(n2.InnerText);
                                     break;
                             }
                             listadoCompleto.Text += Environment.NewLine + "      <" + n2.Name + ">" + n2.InnerText + "</" + n2.Name + ">";
@@ -307,7 +339,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
 
         private void retrocedeUno(string orden)
         {
-            switch(orden)
+            switch (orden)
             {
                 case "XML":
                     if (registroXML > 0)
@@ -318,7 +350,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
                     }
                     break;
                 case "JSON":
-                    if(registroJSON > 0)
+                    if (registroJSON > 0)
                     {
                         registroJSON -= 1;
 
@@ -360,20 +392,20 @@ namespace Spaniac.Formularios.Internos.Almacenes
 
         private void ultimoReg(string orden)
         {
-            switch(orden)
+            switch (orden)
             {
                 case "XML":
-                    registroXML = listaIDS.Count - 1;
+                    registroXML = listaDNIs.Count - 1;
 
                     cambiaControles("XML");
                     break;
                 case "JSON":
-                    registroJSON = almacenes.Count - 1;
+                    registroJSON = clientes.Count - 1;
 
                     cambiaControles("JSON");
                     break;
                 case "EXCEL":
-                    registroExcel = almacenes.Count - 1;
+                    registroExcel = clientes.Count - 1;
 
                     cambiaControles("EXCEL");
                     break;
@@ -385,7 +417,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
             switch (orden)
             {
                 case "XML":
-                    if (registroXML < listaIDS.Count - 1)
+                    if (registroXML < listaDNIs.Count - 1)
                     {
                         registroXML += 1;
 
@@ -393,7 +425,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
                     }
                     break;
                 case "JSON":
-                    if (registroJSON < almacenes.Count - 1)
+                    if (registroJSON < clientes.Count - 1)
                     {
                         registroJSON += 1;
 
@@ -401,7 +433,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
                     }
                     break;
                 case "EXCEL":
-                    if (registroExcel < almacenes.Count - 1)
+                    if (registroExcel < clientes.Count - 1)
                     {
                         registroExcel += 1;
 
@@ -413,26 +445,34 @@ namespace Spaniac.Formularios.Internos.Almacenes
 
         private void cambiaControles(string orden)
         {
-            switch(orden)
+            switch (orden)
             {
                 case "XML":
-                    txtID.Text = listaIDS[registroXML];
-                    txtActivo.Text = listaActivos[registroXML];
+                    txtID.Text = listaDNIs[registroXML];
                     txtNombre.Text = listaNombres[registroXML];
+                    txtFecha.Text = listaFechas[registroXML];
+                    txtLocalidad.Text = listaLocalidades[registroXML];
+                    txtDireccion.Text = listaDirecciones[registroXML];
+                    txtTelefono.Text = listaTelefonos[registroXML];
                     break;
                 case "JSON":
-                    txtID.Text = almacenes[registroJSON].ID.ToString();
-                    txtActivo.Text = almacenes[registroJSON].Activo.ToString();
-                    txtNombre.Text = almacenes[registroJSON].Nombre;
+                    txtID.Text = clientes[registroJSON].ID.ToString();
+                    txtNombre.Text = clientes[registroJSON].Nombre.ToString();
+                    txtFecha.Text = clientes[registroJSON].FechaRegistro.ToString();
+                    txtLocalidad.Text = clientes[registroJSON].Localidad.ToString();
+                    txtDireccion.Text = clientes[registroJSON].Direccion.ToString();
+                    txtTelefono.Text = clientes[registroJSON].Telefono.ToString();
                     break;
                 case "EXCEL":
-                    txtID.Text = almacenes[registroExcel].ID.ToString();
-                    txtActivo.Text = almacenes[registroExcel].Activo.ToString();
-                    txtNombre.Text = almacenes[registroExcel].Nombre.ToString();
+                    txtID.Text = clientes[registroExcel].ID.ToString();
+                    txtNombre.Text = clientes[registroExcel].Nombre.ToString();
+                    txtFecha.Text = clientes[registroExcel].FechaRegistro.ToString();
+                    txtLocalidad.Text = clientes[registroExcel].Localidad.ToString();
+                    txtDireccion.Text = clientes[registroExcel].Direccion.ToString();
+                    txtTelefono.Text = clientes[registroExcel].Telefono.ToString();
                     break;
             }
         }
 
     }
-}  
-
+}
