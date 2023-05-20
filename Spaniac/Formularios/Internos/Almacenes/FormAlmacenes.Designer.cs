@@ -57,9 +57,9 @@
             this.lbBuscarA = new System.Windows.Forms.Label();
             this.barra4 = new System.Windows.Forms.Panel();
             this.panelIzquierdo = new System.Windows.Forms.Panel();
+            this.panelBorrarAlmacen = new System.Windows.Forms.Panel();
             this.panelPortada = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panelBorrarAlmacen = new System.Windows.Forms.Panel();
             this.panelConfBorr = new System.Windows.Forms.Panel();
             this.btnNoBorr = new System.Windows.Forms.Button();
             this.btnSiBorr = new System.Windows.Forms.Button();
@@ -101,9 +101,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).BeginInit();
             this.panelIzquierdo.SuspendLayout();
+            this.panelBorrarAlmacen.SuspendLayout();
             this.panelPortada.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panelBorrarAlmacen.SuspendLayout();
             this.panelConfBorr.SuspendLayout();
             this.panelModificarAlmacen.SuspendLayout();
             this.panelAñadirAlmacen.SuspendLayout();
@@ -466,26 +466,6 @@
             this.panelIzquierdo.Size = new System.Drawing.Size(321, 507);
             this.panelIzquierdo.TabIndex = 16;
             // 
-            // panelPortada
-            // 
-            this.panelPortada.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panelPortada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelPortada.Controls.Add(this.pictureBox1);
-            this.panelPortada.Location = new System.Drawing.Point(281, 15);
-            this.panelPortada.Name = "panelPortada";
-            this.panelPortada.Size = new System.Drawing.Size(303, 480);
-            this.panelPortada.TabIndex = 57;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(52, 125);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(196, 176);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // panelBorrarAlmacen
             // 
             this.panelBorrarAlmacen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -499,6 +479,26 @@
             this.panelBorrarAlmacen.Name = "panelBorrarAlmacen";
             this.panelBorrarAlmacen.Size = new System.Drawing.Size(303, 480);
             this.panelBorrarAlmacen.TabIndex = 55;
+            // 
+            // panelPortada
+            // 
+            this.panelPortada.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panelPortada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPortada.Controls.Add(this.pictureBox1);
+            this.panelPortada.Location = new System.Drawing.Point(3, 3);
+            this.panelPortada.Name = "panelPortada";
+            this.panelPortada.Size = new System.Drawing.Size(303, 480);
+            this.panelPortada.TabIndex = 57;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(52, 125);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(196, 176);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panelConfBorr
             // 
@@ -990,10 +990,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).EndInit();
             this.panelIzquierdo.ResumeLayout(false);
-            this.panelPortada.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelBorrarAlmacen.ResumeLayout(false);
             this.panelBorrarAlmacen.PerformLayout();
+            this.panelPortada.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelConfBorr.ResumeLayout(false);
             this.panelConfBorr.PerformLayout();
             this.panelModificarAlmacen.ResumeLayout(false);

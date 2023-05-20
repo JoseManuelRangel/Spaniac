@@ -1,5 +1,4 @@
-﻿using DocumentFormat.OpenXml.Wordprocessing;
-using Spaniac.Clases;
+﻿using Spaniac.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,9 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace Spaniac.Formularios.Internos.Clientes
+namespace Spaniac.Formularios.Internos.Proveedores
 {
-    public partial class FormListarClientes : Form
+    public partial class FormListarProveedores : Form
     {
         /* Código que permite arrastrar el formulario. */
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -31,6 +30,7 @@ namespace Spaniac.Formularios.Internos.Clientes
         /* Listas que almacenan los datos del XML cargado y los muestra en los controles de texto. */
         static List<string> listaDNIs = new List<string>();
         static List<string> listaNombres = new List<string>();
+        static List<string> listaTipos = new List<string>();
         static List<string> listaFechas = new List<string>();
         static List<string> listaLocalidades = new List<string>();
         static List<string> listaDirecciones = new List<string>();
@@ -41,28 +41,29 @@ namespace Spaniac.Formularios.Internos.Clientes
         static int registroJSON = 0;
         static int registroExcel = 0;
 
-        /* Lista de Clientes del fichero JSON y del fichero EXCEL. */
-        List<Cliente> clientes = new List<Cliente>();
+        /* Lista de Proveedores del fichero JSON y del fichero EXCEL. */
+        List<Proveedor> proveedores = new List<Proveedor>();
 
         /* JSON Completo. */
-        static string cliJSON;
+        static string provJSON;
 
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
         /*-------------------------------------------------------------------------------------------------*/
-        public FormListarClientes(string rutaXML)
+        public FormListarProveedores(string rutaXML)
         {
             InitializeComponent();
             rutaxml = rutaXML;
             cargaXML();
             tipoArchivo = "XML";
 
-            if (listaDNIs.Count > 0 && listaNombres.Count > 0 && listaFechas.Count > 0
+            if (listaDNIs.Count > 0 && listaNombres.Count > 0 && listaTipos.Count > 0 && listaFechas.Count > 0
                 && listaLocalidades.Count > 0 && listaDirecciones.Count > 0 && listaTelefonos.Count > 0)
             {
                 txtID.Text = listaDNIs[0];
                 txtNombre.Text = listaNombres[0];
+                txtTipoProv.Text = listaTipos[0];
                 txtFecha.Text = listaFechas[0];
                 txtLocalidad.Text = listaLocalidades[0];
                 txtDireccion.Text = listaDirecciones[0];
@@ -70,66 +71,68 @@ namespace Spaniac.Formularios.Internos.Clientes
             }
         }
 
-        public FormListarClientes(string jsonCompleto, List<Cliente> listaCli)
+        public FormListarProveedores(string jsonCompleto, List<Proveedor> listaProv)
         {
             InitializeComponent();
-            cliJSON = jsonCompleto;
-            clientes = listaCli;
+            provJSON = jsonCompleto;
+            proveedores = listaProv;
             tipoArchivo = "JSON";
 
-            if (clientes.Count > 0)
+            if (proveedores.Count > 0)
             {
-                txtID.Text = clientes[0].ID.ToString();
-                txtNombre.Text = clientes[0].Nombre.ToString();
-                txtFecha.Text = clientes[0].FechaRegistro.ToString();
-                txtLocalidad.Text = clientes[0].Localidad.ToString();
-                txtDireccion.Text = clientes[0].Direccion.ToString();
-                txtTelefono.Text = clientes[0].Telefono.ToString();
+                txtID.Text = proveedores[0].ID.ToString();
+                txtNombre.Text = proveedores[0].Nombre.ToString();
+                txtTipoProv.Text = proveedores[0].TipoProveedor.ToString();
+                txtFecha.Text = proveedores[0].FechaRegistro.ToString();
+                txtLocalidad.Text = proveedores[0].Localidad.ToString();
+                txtDireccion.Text = proveedores[0].Direccion.ToString();
+                txtTelefono.Text = proveedores[0].Telefono.ToString();
             }
 
-            for (int i = 0; i < clientes.Count; i++)
+            for (int i = 0; i < proveedores.Count; i++)
             {
                 int j = i + 1;
-                Cliente c = new Cliente(clientes[i].ID, clientes[i].Nombre, clientes[i].FechaRegistro, clientes[i].Localidad, 
-                    clientes[i].Direccion, clientes[i].Telefono);
-                listadoCompleto.Text += "Cliente " + j + ": " + Environment.NewLine + "" +
-                    "ID: " + c.ID + Environment.NewLine + "Nombre: " + c.Nombre + Environment.NewLine +
-                    "Fecha Registro: " + c.FechaRegistro + Environment.NewLine + "Localidad: " + c.Localidad 
-                    + Environment.NewLine + "Direccion: " + c.Direccion + Environment.NewLine + "Telefono: " + c.Telefono
+                Proveedor p = new Proveedor(proveedores[i].ID, proveedores[i].Nombre, proveedores[i].TipoProveedor, proveedores[i].FechaRegistro, proveedores[i].Localidad,
+                    proveedores[i].Direccion, proveedores[i].Telefono);
+                listadoCompleto.Text += "Proveedor " + j + ": " + Environment.NewLine + "" +
+                    "ID: " + p.ID + Environment.NewLine + "Nombre: " + p.Nombre + Environment.NewLine +
+                    "TipoProveedor: " + p.TipoProveedor + Environment.NewLine + "Fecha Registro: " + p.FechaRegistro + Environment.NewLine + "Localidad: " + p.Localidad
+                    + Environment.NewLine + "Direccion: " + p.Direccion + Environment.NewLine + "Telefono: " + p.Telefono
                     + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             }
         }
 
-        public FormListarClientes(List<Cliente> listaCli)
+        public FormListarProveedores(List<Proveedor> listaProv)
         {
             InitializeComponent();
-            clientes = listaCli;
+            proveedores = listaProv;
             tipoArchivo = "EXCEL";
 
-            if (clientes.Count > 0)
+            if (proveedores.Count > 0)
             {
-                txtID.Text = clientes[0].ID.ToString();
-                txtNombre.Text = clientes[0].Nombre.ToString();
-                txtFecha.Text = clientes[0].FechaRegistro.ToString();
-                txtLocalidad.Text = clientes[0].Localidad.ToString();
-                txtDireccion.Text = clientes[0].Direccion.ToString();
-                txtTelefono.Text = clientes[0].Telefono.ToString();
+                txtID.Text = proveedores[0].ID.ToString();
+                txtNombre.Text = proveedores[0].Nombre.ToString();
+                txtTipoProv.Text = proveedores[0].TipoProveedor.ToString();
+                txtFecha.Text = proveedores[0].FechaRegistro.ToString();
+                txtLocalidad.Text = proveedores[0].Localidad.ToString();
+                txtDireccion.Text = proveedores[0].Direccion.ToString();
+                txtTelefono.Text = proveedores[0].Telefono.ToString();
             }
 
-            for (int i = 0; i < clientes.Count; i++)
+            for (int i = 0; i < proveedores.Count; i++)
             {
                 int j = i + 1;
-                Cliente c = new Cliente(clientes[i].ID, clientes[i].Nombre, clientes[i].FechaRegistro, clientes[i].Localidad,
-                    clientes[i].Direccion, clientes[i].Telefono);
-                listadoCompleto.Text += "Cliente " + j + ": " + Environment.NewLine + "" +
-                    "ID: " + c.ID + Environment.NewLine + "Nombre: " + c.Nombre + Environment.NewLine +
-                    "Fecha Registro: " + c.FechaRegistro + Environment.NewLine + "Localidad: " + c.Localidad
-                    + Environment.NewLine + "Direccion: " + c.Direccion + Environment.NewLine + "Telefono: " + c.Telefono
+                Proveedor p = new Proveedor(proveedores[i].ID, proveedores[i].Nombre, proveedores[i].TipoProveedor, proveedores[i].FechaRegistro, proveedores[i].Localidad,
+                    proveedores[i].Direccion, proveedores[i].Telefono);
+                listadoCompleto.Text += "Proveedor " + j + ": " + Environment.NewLine + "" +
+                    "ID: " + p.ID + Environment.NewLine + "Nombre: " + p.Nombre + Environment.NewLine +
+                    "TipoProveedor: " + p.TipoProveedor + Environment.NewLine + "Fecha Registro: " + p.FechaRegistro + Environment.NewLine + "Localidad: " + p.Localidad
+                    + Environment.NewLine + "Direccion: " + p.Direccion + Environment.NewLine + "Telefono: " + p.Telefono
                     + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             }
         }
 
-        private void FormListarClientes_MouseDown(object sender, MouseEventArgs e)
+        private void FormListarProveedores_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
@@ -310,6 +313,9 @@ namespace Spaniac.Formularios.Internos.Clientes
                                 case "Nombre":
                                     listaNombres.Add(n2.InnerText);
                                     break;
+                                case "TipoProveedor":
+                                    listaTipos.Add(n2.InnerText);
+                                    break;
                                 case "FechaRegistro":
                                     listaFechas.Add(n2.InnerText);
                                     break;
@@ -400,12 +406,12 @@ namespace Spaniac.Formularios.Internos.Clientes
                     cambiaControles("XML");
                     break;
                 case "JSON":
-                    registroJSON = clientes.Count - 1;
+                    registroJSON = proveedores.Count - 1;
 
                     cambiaControles("JSON");
                     break;
                 case "EXCEL":
-                    registroExcel = clientes.Count - 1;
+                    registroExcel = proveedores.Count - 1;
 
                     cambiaControles("EXCEL");
                     break;
@@ -425,7 +431,7 @@ namespace Spaniac.Formularios.Internos.Clientes
                     }
                     break;
                 case "JSON":
-                    if (registroJSON < clientes.Count - 1)
+                    if (registroJSON < proveedores.Count - 1)
                     {
                         registroJSON += 1;
 
@@ -433,7 +439,7 @@ namespace Spaniac.Formularios.Internos.Clientes
                     }
                     break;
                 case "EXCEL":
-                    if (registroExcel < clientes.Count - 1)
+                    if (registroExcel < proveedores.Count - 1)
                     {
                         registroExcel += 1;
 
@@ -450,26 +456,29 @@ namespace Spaniac.Formularios.Internos.Clientes
                 case "XML":
                     txtID.Text = listaDNIs[registroXML];
                     txtNombre.Text = listaNombres[registroXML];
+                    txtTipoProv.Text = listaTipos[registroXML];
                     txtFecha.Text = listaFechas[registroXML];
                     txtLocalidad.Text = listaLocalidades[registroXML];
                     txtDireccion.Text = listaDirecciones[registroXML];
                     txtTelefono.Text = listaTelefonos[registroXML];
                     break;
                 case "JSON":
-                    txtID.Text = clientes[registroJSON].ID.ToString();
-                    txtNombre.Text = clientes[registroJSON].Nombre.ToString();
-                    txtFecha.Text = clientes[registroJSON].FechaRegistro.ToString();
-                    txtLocalidad.Text = clientes[registroJSON].Localidad.ToString();
-                    txtDireccion.Text = clientes[registroJSON].Direccion.ToString();
-                    txtTelefono.Text = clientes[registroJSON].Telefono.ToString();
+                    txtID.Text = proveedores[registroJSON].ID.ToString();
+                    txtNombre.Text = proveedores[registroJSON].Nombre.ToString();
+                    txtTipoProv.Text = proveedores[registroJSON].TipoProveedor.ToString();
+                    txtFecha.Text = proveedores[registroJSON].FechaRegistro.ToString();
+                    txtLocalidad.Text = proveedores[registroJSON].Localidad.ToString();
+                    txtDireccion.Text = proveedores[registroJSON].Direccion.ToString();
+                    txtTelefono.Text = proveedores[registroJSON].Telefono.ToString();
                     break;
                 case "EXCEL":
-                    txtID.Text = clientes[registroExcel].ID.ToString();
-                    txtNombre.Text = clientes[registroExcel].Nombre.ToString();
-                    txtFecha.Text = clientes[registroExcel].FechaRegistro.ToString();
-                    txtLocalidad.Text = clientes[registroExcel].Localidad.ToString();
-                    txtDireccion.Text = clientes[registroExcel].Direccion.ToString();
-                    txtTelefono.Text = clientes[registroExcel].Telefono.ToString();
+                    txtID.Text = proveedores[registroExcel].ID.ToString();
+                    txtNombre.Text = proveedores[registroExcel].Nombre.ToString();
+                    txtTipoProv.Text = proveedores[registroExcel].TipoProveedor.ToString();
+                    txtFecha.Text = proveedores[registroExcel].FechaRegistro.ToString();
+                    txtLocalidad.Text = proveedores[registroExcel].Localidad.ToString();
+                    txtDireccion.Text = proveedores[registroExcel].Direccion.ToString();
+                    txtTelefono.Text = proveedores[registroExcel].Telefono.ToString();
                     break;
             }
         }

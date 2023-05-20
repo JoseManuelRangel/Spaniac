@@ -1,7 +1,8 @@
-﻿using DocumentFormat.OpenXml.Drawing;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Newtonsoft.Json;
 using Spaniac.Clases;
-using Spaniac.Formularios.Internos.Almacenes;
+using Spaniac.Formularios.Internos.Clientes;
 using Spaniac.Modelos;
 using SpreadsheetLight;
 using System;
@@ -16,10 +17,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using Color = System.Drawing.Color;
 
-namespace Spaniac.Formularios.Internos.Clientes
+namespace Spaniac.Formularios.Internos.Proveedores
 {
-    public partial class FormClientes : Form
+    public partial class FormProveedores : Form
     {
         /* Ruta de conexión para la BD. */
         static string conection = "server=localhost; database=Spaniac; integrated security=true";
@@ -28,12 +30,12 @@ namespace Spaniac.Formularios.Internos.Clientes
         static bool pExcel = false, pJson = false, pXml = false;
 
         /* Variables boolenas que indican si los campos colocados en la inserción están bien. */
-        static bool idCorr = false, nomCorr = false, locCorr = false, dirCorr = false, telCorr = false;
+        static bool cifCorr = false, nomCorr = false, tipCorr = false, locCorr = false, dirCorr = false, telCorr = false;
 
         /* Variables booleanas que indican si los campos colocados en la modificación están bien. */
-        static bool idCorrMod = false, nomCorrMod = false, locCorrMod = false, dirCorrMod = false, telCorrMod = false;
+        static bool cifCorrMod = false, nomCorrMod = false, tipCorrMod = false, locCorrMod = false, dirCorrMod = false, telCorrMod = false;
 
-        /* Variables booleanas sque controlan si los datos del cliente están completos para realizar la eliminación. */
+        /* Variables booleanas sque controlan si los datos del proveedor están completos para realizar la eliminación. */
         bool idCorrBorr = false;
 
         /* Determina si se ha encontrado el cliente u otro dato importante en la base de datos previamente registrado. */
@@ -43,20 +45,18 @@ namespace Spaniac.Formularios.Internos.Clientes
         static List<string> nodosXML = new List<string>();
 
         /* Variable cadena que almacena el JSON cargado. */
-        static string clientesJSON;
-
+        static string proveedoresJSON;
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
         /*-------------------------------------------------------------------------------------------------*/
-        public FormClientes()
+        public FormProveedores()
         {
             InitializeComponent();
-            inicializarControles();
 
-            rellenaTablaClientes();
-            rellenaCbDatosCliente();
-            rellenaComboBoxIDCliente();
+            rellenaComboBoxCIFProveedor();
+            rellenaTablaProveedores();
+            rellenaCbDatosProveedores();
         }
 
 
@@ -75,11 +75,12 @@ namespace Spaniac.Formularios.Internos.Clientes
         /*-------------------------------------------------------------------------------------------------*/
         private void btnMenuXml_Click(object sender, EventArgs e)
         {
-            if(pXml == false)
+            if (pXml == false)
             {
                 panelMenuXml.Visible = true;
                 pXml = true;
-            } else
+            }
+            else
             {
                 panelMenuXml.Visible = false;
                 pXml = false;
@@ -91,7 +92,6 @@ namespace Spaniac.Formularios.Internos.Clientes
         {
             generaXML();
         }
-
         private void btnGenXML_MouseMove(object sender, MouseEventArgs e)
         {
             this.Cursor = Cursors.Hand;
@@ -103,7 +103,6 @@ namespace Spaniac.Formularios.Internos.Clientes
             this.Cursor = Cursors.Default;
             btnGenXML.ForeColor = Color.MidnightBlue;
         }
-
 
         /*                        Gestión de eventos del botón leer XML del menú XML                       */
         private void btnListarXML_Click(object sender, EventArgs e)
@@ -129,18 +128,19 @@ namespace Spaniac.Formularios.Internos.Clientes
         /*-------------------------------------------------------------------------------------------------*/
         private void btnMenuJSON_Click(object sender, EventArgs e)
         {
-            if(pJson == false)
+            if (pJson == false)
             {
                 panelMenuJson.Visible = true;
                 pJson = true;
-            } else
+            }
+            else
             {
                 panelMenuJson.Visible = false;
                 pJson = false;
             }
         }
 
-        /*                      Gestión de eventos del botón generar JSON del menú JSON                      */
+        /*                      Gestión de eventos del botón generar JSON del menú JSON                    */
         private void btnGenJSON_Click(object sender, EventArgs e)
         {
             generaJSON();
@@ -157,7 +157,6 @@ namespace Spaniac.Formularios.Internos.Clientes
             this.Cursor = Cursors.Default;
             btnGenJSON.ForeColor = Color.MidnightBlue;
         }
-
 
         /*                       Gestión de eventos del botón leer JSON del menú JSON                      */
         private void btnListarJSON_Click(object sender, EventArgs e)
@@ -183,11 +182,12 @@ namespace Spaniac.Formularios.Internos.Clientes
         /*-------------------------------------------------------------------------------------------------*/
         private void btnMenuEXCEL_Click(object sender, EventArgs e)
         {
-            if(pExcel == false)
+            if (pExcel == false)
             {
                 panelMenuExcel.Visible = true;
                 pExcel = true;
-            } else
+            }
+            else
             {
                 panelMenuExcel.Visible = false;
                 pExcel = false;
@@ -212,7 +212,7 @@ namespace Spaniac.Formularios.Internos.Clientes
             btnGenEXCEL.ForeColor = Color.MidnightBlue;
         }
 
-        /*                       Gestión de eventos del botón leer EXCEL del menú EXCEL                      */
+        /*                       Gestión de eventos del botón leer EXCEL del menú EXCEL                    */
         private void btnListarEXCEL_Click(object sender, EventArgs e)
         {
             compruebaExcel();
@@ -232,16 +232,17 @@ namespace Spaniac.Formularios.Internos.Clientes
 
 
         /*-------------------------------------------------------------------------------------------------*/
-        /*                           ELEMENTOS DEL PANEL IZQUIERDO DE CLIENTES                             */
+        /*                         ELEMENTOS DEL PANEL IZQUIERDO DE LOS PROVEEDORES                        */
         /*-------------------------------------------------------------------------------------------------*/
-        /*               Gestión de eventos del botón que abre el panel para añadir un cliente.            */
+        /*              Gestión de eventos del botón que abre el panel para añadir un proveedor.           */
         private void btnAñadir_Click(object sender, EventArgs e)
         {
-            panelAñadirCli.Visible = true;
-            panelModCli.Visible = false;
-            panelBorrCli.Visible = false;
+            panelAñadirPro.Visible = true;
+            panelModificarPro.Visible = false;
+            panelBorrarPro.Visible = false;
             panelPortada.Visible = false;
             inicializaDatos("Añadir");
+            
         }
 
         private void btnAñadir_MouseMove(object sender, MouseEventArgs e)
@@ -255,12 +256,12 @@ namespace Spaniac.Formularios.Internos.Clientes
         }
 
 
-        /*               Gestión de eventos del botón que abre el panel para modificar un cliente.            */
+        /*              Gestión de eventos del botón que abre el panel para editar un proveedor.           */
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            panelModCli.Visible = true;
-            panelAñadirCli.Visible = false;
-            panelBorrCli.Visible = false;
+            panelModificarPro.Visible = true;
+            panelAñadirPro.Visible = false;
+            panelBorrarPro.Visible = false;
             panelPortada.Visible = false;
             inicializaDatos("Modificar");
         }
@@ -279,9 +280,9 @@ namespace Spaniac.Formularios.Internos.Clientes
         /*            Gestión de eventos del botón que abre el panel para borrar una cliente.           */
         private void btnBorra_Click(object sender, EventArgs e)
         {
-            panelModCli.Visible = false;
-            panelAñadirCli.Visible = false;
-            panelBorrCli.Visible = true;
+            panelBorrarPro.Visible = true;
+            panelModificarPro.Visible = false;
+            panelAñadirPro.Visible = false;
             panelPortada.Visible = false;
             inicializaDatos("Borrar");
         }
@@ -297,53 +298,54 @@ namespace Spaniac.Formularios.Internos.Clientes
         }
 
 
+
         /*-------------------------------------------------------------------------------------------------*/
-        /*                           ELEMENTOS DEL SUBPANEL QUE AÑADE UN CLIENTE                           */
+        /*                          ELEMENTOS DEL SUBPANEL QUE AÑADE UN PROVEEDOR                          */
         /*-------------------------------------------------------------------------------------------------*/
-        /*                     Gestión de eventos del textbox del id de cliente a añadir                   */
-        private void txtID_Enter(object sender, EventArgs e)
+        /*                   Gestión de eventos del textbox del cif de proveedor a añadir                  */
+        private void txtCIF_Enter(object sender, EventArgs e)
         {
-            if (txtID.Text.Equals("ID"))
+            if (txtCIF.Text.Equals("CIF"))
             {
-                txtID.Text = "";
-                txtID.ForeColor = Color.Black;
+                txtCIF.Text = "";
+                txtCIF.ForeColor = Color.Black;
             }
         }
 
-        private void txtID_Leave(object sender, EventArgs e)
+        private void txtCIF_Leave(object sender, EventArgs e)
         {
-            if (txtID.Text.Equals(""))
+            if (txtCIF.Text.Equals(""))
             {
-                txtID.Text = "ID";
-                txtID.ForeColor = Color.DarkGray;
-                lbID.ForeColor = Color.Black;
-                lbErrorID.Text = "";
-                lbErrorID.Visible = false;
+                txtCIF.Text = "CIF";
+                txtCIF.ForeColor = Color.DarkGray;
+                lbCIF.ForeColor = Color.Black;
+                lbErrorCIF.Text = "";
+                lbErrorCIF.Visible = false;
             }
         }
 
-        private void txtID_TextChanged(object sender, EventArgs e)
+        private void txtCIF_TextChanged(object sender, EventArgs e)
         {
-            compruebaIDCliente();
+            compruebaCIFProveedor();
         }
 
 
-        /*                  Gestión de eventos del textbox del nombre del cliente a añadir                 */
+        /*                  Gestión de eventos del textbox del nombre del proveedor a añadir                 */
         private void txtNombre_Enter(object sender, EventArgs e)
         {
-            if (txtNombre.Text.Equals("Nombre"))
+            if (txtNombreProv.Text.Equals("Nombre"))
             {
-                txtNombre.Text = "";
-                txtNombre.ForeColor = Color.Black;
+                txtNombreProv.Text = "";
+                txtNombreProv.ForeColor = Color.Black;
             }
         }
 
         private void txtNombre_Leave(object sender, EventArgs e)
         {
-            if (txtNombre.Text.Equals(""))
+            if (txtNombreProv.Text.Equals(""))
             {
-                txtNombre.Text = "Nombre";
-                txtNombre.ForeColor = Color.DarkGray;
+                txtNombreProv.Text = "Nombre";
+                txtNombreProv.ForeColor = Color.DarkGray;
                 lbNombre.ForeColor = Color.Black;
                 lbErrorNom.Text = "";
                 lbErrorNom.Visible = false;
@@ -352,11 +354,30 @@ namespace Spaniac.Formularios.Internos.Clientes
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
-            compruebaNombreCliente("Añadir");
+            compruebaNombreProveedor("Añadir");
         }
 
 
-        /*                  Gestión de eventos del textbox de localidad del cliente a añadir                 */
+        /*                  Gestión de eventos del textbox de la prioridad del proveedor                 */
+        private void tipoProv_ValueChanged(object sender, EventArgs e)
+        {
+            if(tipoProv.Value != 0 && tipoProv.Value > 0)
+            {
+                lbErrorTipo.Text = "";
+                lbErrorTipo.Visible = false;
+
+                tipCorr = true;
+            } else
+            {
+                lbErrorTipo.Text = "Introduce un número válido.";
+                lbErrorTipo.Visible = true;
+
+                tipCorr = false;
+            }
+        }
+
+
+        /*                Gestión de eventos del textbox de localidad del proveedor a añadir                 */
         private void txtLocalidad_Enter(object sender, EventArgs e)
         {
             if (txtLocalidad.Text.Equals("Localidad"))
@@ -380,7 +401,7 @@ namespace Spaniac.Formularios.Internos.Clientes
 
         private void txtLocalidad_TextChanged(object sender, EventArgs e)
         {
-            compruebaLocalidadCliente("Añadir");
+            compruebaLocalidadProveedor("Añadir");
         }
 
 
@@ -408,7 +429,7 @@ namespace Spaniac.Formularios.Internos.Clientes
 
         private void txtDireccion_TextChanged(object sender, EventArgs e)
         {
-            compruebaDireccionCliente("Añadir");
+            compruebaDireccionProveedor("Añadir");
         }
 
 
@@ -436,15 +457,16 @@ namespace Spaniac.Formularios.Internos.Clientes
 
         private void txtTelefono_TextChanged(object sender, EventArgs e)
         {
-            compruebaTelefonoCliente("Añadir");
+            compruebaTelefonoProveedor("Añadir");
         }
 
 
-        /*            Gestión de eventos del botón limpiar datos de la inserción de cliente                 */
+        /*            Gestión de eventos del botón limpiar datos de la inserción de proveedor               */
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            txtID.Text = "";
-            txtNombre.Text = "";
+            txtCIF.Text = "";
+            txtNombreProv.Text = "";
+            tipoProv.Value = 0;
             txtLocalidad.Text = "";
             txtDireccion.Text = "";
             txtTelefono.Text = "";
@@ -461,25 +483,26 @@ namespace Spaniac.Formularios.Internos.Clientes
         }
 
 
-        /*  Gestión de eventos del botón que comprueba si todos los datos son correctos y añade un cliente  */
+        /* Gestión de eventos del botón que comprueba si todos los datos son correctos y añade un proveedor  */
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if(idCorr && nomCorr && locCorr && dirCorr && telCorr)
+            if(cifCorr && nomCorr && tipCorr && locCorr && dirCorr && telCorr)
             {
-                DatosCliente datosNuevoCli = new DatosCliente();
-                datosNuevoCli.ID = txtID.Text;
-                datosNuevoCli.Nombre = txtNombre.Text;
-                datosNuevoCli.FechaRegistro = DateTime.Parse(DateTime.UtcNow.ToString("d"));
-                datosNuevoCli.Localidad = txtLocalidad.Text;
-                datosNuevoCli.Direccion = txtDireccion.Text;
-                datosNuevoCli.Telefono = txtTelefono.Text;
-                datosNuevoCli.guardarCambios();
+                DatosProveedor datosNuevoPro = new DatosProveedor();
+                datosNuevoPro.Cif = txtCIF.Text;
+                datosNuevoPro.Nombre = txtNombreProv.Text;
+                datosNuevoPro.TipoProveedor = int.Parse(tipoProv.Value.ToString());
+                datosNuevoPro.FechaRegistro = DateTime.Parse(DateTime.UtcNow.ToString("d"));
+                datosNuevoPro.Localidad = txtLocalidad.Text;
+                datosNuevoPro.Direccion = txtDireccion.Text;
+                datosNuevoPro.Telefono = txtTelefono.Text;
+                datosNuevoPro.guardarCambios();
 
-                FormNotificaciones form = new FormNotificaciones("Cliente registrado correctamente.");
+                FormNotificaciones form = new FormNotificaciones("Proveedor registrado correctamente.");
                 form.Show();
 
-                rellenaTablaClientes();
-                rellenaComboBoxIDCliente();
+                rellenaTablaProveedores();
+                rellenaComboBoxCIFProveedor();
                 inicializaDatos("Añadir");
             }
         }
@@ -496,64 +519,100 @@ namespace Spaniac.Formularios.Internos.Clientes
 
 
         /*-------------------------------------------------------------------------------------------------*/
-        /*                         ELEMENTOS DEL SUBPANEL QUE MODIFICA UN CLIENTE                          */
+        /*                          ELEMENTOS DEL SUBPANEL QUE MODIFICA UN PROVEEDOR                       */
         /*-------------------------------------------------------------------------------------------------*/
-        /*                     Gestión de eventos del combobox del id de cliente a editar                  */
-        private void cbIDCliente_SelectedIndexChanged(object sender, EventArgs e)
+        /*                    Gestión de eventos del combobox del cif de proveedor a editar                */
+        private void cbIDProveedor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            compruebaClientes();
+            compruebaProveedores();
         }
 
-        /*                Gestión de eventos del textbox de nombre que modifica el cliente               */
+        /*                Gestión de eventos del textbox de nombre que modifica el proveedor               */
         private void txtNombreMod_TextChanged(object sender, EventArgs e)
         {
-            compruebaNombreCliente("Modificar");
+            compruebaNombreProveedor("Modificar");
         }
 
-        /*               Gestión de eventos del textbox de localidad que modifica el cliente             */
+        /*              Gestión de eventos del tipo de proveedor que modifica el cliente                   */
+        private void tipoProvMod_ValueChanged(object sender, EventArgs e)
+        {
+            if (tipoProvMod.Value != 0 && tipoProvMod.Value > 0)
+            {
+                lbErrorTipoProvMod.Text = "";
+                lbErrorTipoProvMod.Visible = false;
+
+                tipCorrMod = true;
+            }
+            else
+            {
+                lbErrorTipoProvMod.Text = "Introduce un número válido.";
+                lbErrorTipoProvMod.Visible = true;
+
+                tipCorrMod = false;
+            }
+        }
+
+        /*              Gestión de eventos del textbox de localidad que modifica el proveedor              */
         private void txtLocalidadMod_TextChanged(object sender, EventArgs e)
         {
-            compruebaLocalidadCliente("Modificar");
+            compruebaLocalidadProveedor("Modificar");
         }
 
-        /*              Gestión de eventos del textbox de direccion que modifica el cliente               */
+        /*             Gestión de eventos del textbox de direccion que modifica el proveedor               */
         private void txtDireccionMod_TextChanged(object sender, EventArgs e)
         {
-            compruebaDireccionCliente("Modificar");
+            compruebaDireccionProveedor("Modificar");
         }
 
-        /*              Gestión de eventos del textbox del teléfono que modifica el cliente               */
+        /*              Gestión de eventos del textbox del teléfono que modifica el proveedor               */
         private void txtTelefonoMod_TextChanged(object sender, EventArgs e)
         {
-            compruebaTelefonoCliente("Modificar");
+            compruebaTelefonoProveedor("Modificar");
+        }
+
+        /*         Gestión de eventos del botón que limpia los controles de edición de proveedor.          */
+        private void btnLimpiarMod_Click(object sender, EventArgs e)
+        {
+            inicializaDatos("Modificar");
+        }
+
+        private void btnLimpiarMod_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnLimpiarMod_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
         }
 
         /*              Gestión de eventos del botón que realiza la modificación del cliente.             */
-        private void btnModifica_Click(object sender, EventArgs e)
+        private void botonModificar_Click(object sender, EventArgs e)
         {
-            if (idCorrMod && nomCorrMod && locCorrMod && dirCorrMod && telCorrMod)
+            if(cifCorrMod && nomCorrMod && locCorrMod && dirCorrMod && tipCorrMod && telCorrMod)
             {
                 try
                 {
                     string nombreMod = txtNombreMod.Text;
+                    int tipoMod = int.Parse(tipoProvMod.Value.ToString());
                     string localidadMod = txtLocalidadMod.Text;
                     string direccionMod = txtDireccionMod.Text;
                     string telefonoMod = txtTelefonoMod.Text;
 
-                    string sql = "UPDATE Cliente SET nombre='" + nombreMod + "', localidad='" + localidadMod + "', direccion='" + direccionMod + "', telefono='" + telefonoMod + "' WHERE id='" + cbIDCliente.Text + "'";
+                    string sql = "UPDATE Proveedor SET nombre='" + nombreMod + "', tipoProveedor=" + tipoMod + ", localidad='" + localidadMod + "', direccion='" + direccionMod + "', telefono='" + telefonoMod + "' WHERE cif='" + cbIDProveedor.Text + "'";
                     SqlConnection cnx = new SqlConnection(conection);
 
                     cnx.Open();
                     SqlCommand command = new SqlCommand(sql, cnx);
                     command.ExecuteNonQuery();
 
-                    FormNotificaciones form = new FormNotificaciones("Cliente modificado correctamente.");
+                    FormNotificaciones form = new FormNotificaciones("Proveedor modificado correctamente.");
                     form.Show();
 
-                    rellenaTablaClientes();
+                    rellenaTablaProveedores();
                     inicializaDatos("Modificar");
-                }
-                catch (Exception ex)
+                } 
+                catch(Exception ex)
                 {
                     FormNotificaciones form = new FormNotificaciones(ex.Message);
                     form.Show();
@@ -561,62 +620,46 @@ namespace Spaniac.Formularios.Internos.Clientes
             }
         }
 
-        private void btnModifica_MouseMove(object sender, MouseEventArgs e)
+        private void botonModificar_MouseMove(object sender, MouseEventArgs e)
         {
             this.Cursor = Cursors.Hand;
         }
 
-        private void btnModifica_MouseLeave(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-        }
-
-
-        /*          Gestión de eventos del botón que limpia los controles de edición de cliente.           */
-        private void btnLimpiaMod_Click(object sender, EventArgs e)
-        {
-            inicializaDatos("Modificar");
-        }
-
-        private void btnLimpiaMod_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-        }
-
-        private void btnLimpiaMod_MouseLeave(object sender, EventArgs e)
+        private void botonModificar_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
         }
 
 
         /*-------------------------------------------------------------------------------------------------*/
-        /*                            ELEMENTOS DEL SUBPANEL QUE BORRA UN CLIENTE                          */
+        /*                           ELEMENTOS DEL SUBPANEL QUE BORRA UN PROVEEDOR                         */
         /*-------------------------------------------------------------------------------------------------*/
-        /*                     Gestión de eventos del combobox del id de cliente a borrar                  */
-        private void cbIDClienteBorr_SelectedIndexChanged(object sender, EventArgs e)
+        /*                   Gestión de eventos del combobox del cif de proveedor a borrar                 */
+        private void cbIDProvBorr_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbIDClienteBorr.SelectedIndex != 0)
+            if (cbIDProvBorr.SelectedIndex != 0)
             {
-                lbErrorIDBorr.Text = "";
-                lbErrorIDBorr.Visible = false;
+                lbErrorIDProv.Text = "";
+                lbErrorIDProv.Visible = false;
 
                 idCorrBorr = true;
             }
             else
             {
-                lbErrorIDBorr.Text = "Selecciona un cliente.";
-                lbErrorIDBorr.Visible = true;
+                lbErrorIDProv.Text = "Selecciona un proveedor.";
+                lbErrorIDProv.Visible = true;
 
                 idCorrBorr = false;
             }
         }
 
-        /*       Gestión de eventos del botón que abre el panel de confirmación de borrado de cliente      */
+
+        /*     Gestión de eventos del botón que abre el panel de confirmación de borrado de proveedor      */
         private void btnAceptarBorrar_Click(object sender, EventArgs e)
         {
-            if(idCorrBorr)
+            if (idCorrBorr)
             {
-                panelConfBorr.Visible = true;
+                panelConfBorrProv.Visible = true;
             }
         }
 
@@ -636,22 +679,23 @@ namespace Spaniac.Formularios.Internos.Clientes
         {
             try
             {
-                string cliente = cbIDClienteBorr.Text;
+                string proveedor = cbIDProvBorr.Text;
 
-                string sql = "DELETE FROM Cliente WHERE id='" + cliente + "'";
+                string sql = "DELETE FROM Proveedor WHERE cif='" + proveedor + "'";
                 SqlConnection cnx = new SqlConnection(conection);
 
                 cnx.Open();
                 SqlCommand command = new SqlCommand(sql, cnx);
                 command.ExecuteNonQuery();
 
-                FormNotificaciones form = new FormNotificaciones("Cliente borrado correctamente.");
+                FormNotificaciones form = new FormNotificaciones("Proveedor borrado correctamente.");
                 form.Show();
 
-                panelConfBorr.Visible = false;
+                panelConfBorrProv.Visible = false;
 
-                rellenaComboBoxIDCliente();
-                rellenaTablaClientes();
+                rellenaComboBoxCIFProveedor();
+                inicializaDatos("Borrar");
+                rellenaTablaProveedores();
             }
             catch (Exception ex)
             {
@@ -674,7 +718,7 @@ namespace Spaniac.Formularios.Internos.Clientes
         /*              Gestión de eventos del botón no del panel de confirmación de borrado               */
         private void btnNoBorr_Click(object sender, EventArgs e)
         {
-            panelConfBorr.Visible = false;
+            panelConfBorrProv.Visible = false;
         }
 
         private void btnNoBorr_MouseMove(object sender, MouseEventArgs e)
@@ -689,10 +733,10 @@ namespace Spaniac.Formularios.Internos.Clientes
 
 
         /*-------------------------------------------------------------------------------------------------*/
-        /*                            ELEMENTOS DEL PANEL DERECHO DE LOS CLIENTES                          */
+        /*                           ELEMENTOS DEL PANEL DERECHO DE LOS PROVEEDORES                        */
         /*-------------------------------------------------------------------------------------------------*/
-        /*             Gestión de eventos del textbox que filtra el datagridview de los clientes           */
-        private void txtFiltroCli_TextChanged(object sender, EventArgs e)
+        /*           Gestión de eventos del textbox que filtra el datagridview de los proveedores          */
+        private void txtFiltroPro_TextChanged(object sender, EventArgs e)
         {
             filtroDatos();
         }
@@ -700,8 +744,8 @@ namespace Spaniac.Formularios.Internos.Clientes
         /*          Gestión de eventos del picturebox que limpia el textbox del filtro de la tabla         */
         private void imgLimpiar_Click(object sender, EventArgs e)
         {
-            txtFiltroCli.Text = "";
-            cbDatosCli.SelectedIndex = 0;
+            txtFiltroPro.Text = "";
+            cbDatosPro.SelectedIndex = 0;
         }
 
         private void imgLimpiar_MouseMove(object sender, MouseEventArgs e)
@@ -718,190 +762,145 @@ namespace Spaniac.Formularios.Internos.Clientes
         /*-------------------------------------------------------------------------------------------------*/
         /*                                   MÉTODOS USADOS EN EL FORMULARIO                               */
         /*-------------------------------------------------------------------------------------------------*/
-        private void inicializarControles()
+        private void generaXML()
         {
-            panelPortada.Visible = true;
-
-            panelAñadirCli.Visible = false;
-
-            panelModCli.Visible = false;
-            lbErrorIDMod.Text = "Selecciona un cliente a modificar.";
-            lbErrorIDMod.Visible = true;
-
-            panelBorrCli.Visible = false;
-            lbErrorIDBorr.Text = "Selecciona un cliente a borrar.";
-            lbErrorIDBorr.Visible = true;
-
-            panelMenuExcel.Visible = false;
-            panelMenuJson.Visible = false;
-            panelMenuXml.Visible = false;
-        }
-
-        private void inicializaDatos(string opcion)
-        {
-            switch(opcion)
-            {
-                case "Añadir":
-                    txtID.Text = "";
-                    txtNombre.Text = "";
-                    txtLocalidad.Text = "";
-                    txtDireccion.Text = "";
-                    txtTelefono.Text = "";
-                    break;
-                case "Modificar":
-                    cbIDCliente.Text = "";
-                    txtNombreMod.Text = "";
-                    txtLocalidadMod.Text = "";
-                    txtDireccionMod.Text = "";
-                    txtTelefonoMod.Text = "";
-                    break;
-                case "Borrar":
-                    cbIDClienteBorr.SelectedIndex = 0;
-                    break;
-            }
-        }
-        private void rellenaTablaClientes()
-        {
-            string sql = "SELECT * FROM Cliente";
-            SqlConnection cnx = new SqlConnection(conection);
-
             try
             {
+                string sql = "SELECT * FROM Proveedor";
+                SqlConnection cnx = new SqlConnection(conection);
+
                 cnx.Open();
 
                 SqlCommand command = new SqlCommand(sql, cnx);
                 SqlDataReader lector = command.ExecuteReader();
 
-                DataTable dt = new DataTable(); 
-                dt.Load(lector);
-                dgvClientes.DataSource = dt;
-
-                foreach(DataGridViewColumn col in dgvClientes.Columns)
+                if (!System.IO.File.Exists("Proveedores.xml"))
                 {
-                    col.HeaderText = col.HeaderText.ToUpper();
-                }
+                    XmlWriter listProv = XmlWriter.Create("Proveedores.xml");
+                    listProv.WriteStartDocument();
+                    listProv.WriteStartElement("Proveedores");
 
-                command.Dispose();
-                cnx.Close();
-            } catch(Exception ex)
+                    while (lector.Read())
+                    {
+                        listProv.WriteStartElement("Proveedor");
+
+                        listProv.WriteStartElement("CIF");
+                        listProv.WriteValue((lector.GetString(0)));
+                        listProv.WriteEndElement();
+
+                        listProv.WriteStartElement("Nombre");
+                        listProv.WriteValue((lector.GetString(1)));
+                        listProv.WriteEndElement();
+
+                        listProv.WriteStartElement("TipoProveedor");
+                        listProv.WriteValue(lector.GetInt32(2));
+                        listProv.WriteEndElement();
+
+                        listProv.WriteStartElement("FechaRegistro");
+                        listProv.WriteValue((lector.GetDateTime(3)));
+                        listProv.WriteEndElement();
+
+                        listProv.WriteStartElement("Localidad");
+                        listProv.WriteValue((lector.GetString(4)));
+                        listProv.WriteEndElement();
+
+                        listProv.WriteStartElement("Direccion");
+                        listProv.WriteString((lector.GetString(5)));
+                        listProv.WriteEndElement();
+
+                        listProv.WriteStartElement("Telefono");
+                        listProv.WriteValue((lector.GetString(6)));
+                        listProv.WriteEndElement();
+
+                        listProv.WriteEndElement();
+                    }
+
+                    listProv.WriteEndElement();
+                    listProv.WriteEndDocument();
+                    listProv.Close();
+
+                    FormNotificaciones form = new FormNotificaciones("XML generado correctamente.");
+                    form.Show();
+
+                    cnx.Close();
+                }
+                else
+                {
+                    FormNotificaciones form2 = new FormNotificaciones("Ya hay un documento XML de Proveedores. Muévelo o cambialo de nombre para poder generar otro.");
+                    form2.Show();
+                }
+            }
+            catch (Exception ex)
             {
                 FormNotificaciones form = new FormNotificaciones(ex.Message);
                 form.Show();
             }
         }
 
-        private void rellenaCbDatosCliente()
+        private void compruebaXML()
         {
-            cbDatosCli.Items.Add("");
-
-            foreach(DataGridViewColumn col in dgvClientes.Columns)
-            {
-                cbDatosCli.Items.Add(col.HeaderText);
-            }
-            
-            cbDatosCli.SelectedIndex = 0;
-        }
-
-        private void filtroDatos()
-        {
-            if(cbDatosCli.SelectedIndex != 0)
-            {
-                try
-                {
-                    SqlConnection cnx = new SqlConnection(conection);
-                    cnx.Open();
-
-                    string sql = "SELECT * FROM Cliente WHERE " + cbDatosCli.Text + " LIKE '%' + @filtro + '%'";
-                    SqlCommand command = new SqlCommand(sql, cnx);
-                    command.Parameters.AddWithValue("@filtro", txtFiltroCli.Text);
-
-                    SqlDataReader lector = command.ExecuteReader();
-
-                    DataTable dt = new DataTable();
-                    dt.Load(lector);
-                    dgvClientes.DataSource = dt;
-
-                    command.Dispose();
-                    cnx.Close();
-                } catch(Exception ex)
-                {
-                    FormNotificaciones form = new FormNotificaciones(ex.Message);
-                    form.Show();
-                }
-            }
-        }
-
-        private void compruebaIDCliente()
-        {
-            string id = txtID.Text.ToString();
-
-            if(id.Length != 9)
-            {
-                lbID.ForeColor = Color.Red;
-
-                lbErrorID.Text = "ID Inválido.";
-                lbErrorID.Visible = true;
-
-                idCorr = false;
-            } else if(id.Length == 9 && !id.Equals("ID"))
-            {
-                if(Char.IsLetter(id, (id.Length - 1)) || Char.IsLetter(id, 0))
-                {
-                    string sql = "SELECT * FROM Cliente";
-
-                    SqlConnection cnx = new SqlConnection(conection);
-                    cnx.Open();
-
-                    SqlCommand command = new SqlCommand(sql, cnx);
-                    SqlDataReader lector = command.ExecuteReader();
-
-                    while (lector.Read())
-                    {
-                        if (lector.GetString(0).Equals(id))
-                        {
-                            encontrado = true;
-                            lbErrorID.Text = "El id ya se ha usado.";
-                            lbErrorID.Visible = true;
-                            lbID.ForeColor = Color.Red;
-
-                            idCorr = false;
-                        }
-                        else
-                        {
-                            encontrado = false;
-                            lbErrorID.Text = "";
-                            lbErrorID.Visible = false;
-
-                            lbID.ForeColor = Color.Green;
-
-                            idCorr = true;
-                        }
-                    }
-                } else
-                {
-                    lbID.ForeColor = Color.Red;
-
-                    lbErrorID.Text = "ID Inválido.";
-                    lbErrorID.Visible = true;
-
-                    idCorr = false;
-                }
-            }
-        }
-
-        private void rellenaComboBoxIDCliente()
-        {
-            cbIDCliente.Items.Clear();
-            cbIDCliente.Items.Add(" ");
-
-            cbIDClienteBorr.Items.Clear();
-            cbIDClienteBorr.Items.Add(" ");
-
-            string sql = "SELECT * FROM Cliente";
-            SqlConnection cnx = new SqlConnection(conection);
+            nodosXML.Clear();
 
             try
             {
+                OpenFileDialog buscador = new OpenFileDialog();
+                buscador.Filter = "Archivos XML | *.xml";
+                buscador.FileName = "";
+                buscador.Title = "Cargar archivo xml";
+                buscador.InitialDirectory = "C:\\";
+
+                if (buscador.ShowDialog() == DialogResult.OK)
+                {
+                    string nombre = buscador.FileName;
+
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(nombre);
+
+                    foreach (XmlNode n1 in doc.DocumentElement.ChildNodes)
+                    {
+                        if (n1.HasChildNodes)
+                        {
+                            foreach (XmlNode n2 in n1.ChildNodes)
+                            {
+                                if (n2.Name.Equals("ID") || n2.Name.Equals("Nombre") || n2.Name.Equals("TipoProveedor") || n2.Name.Equals("FechaRegistro")
+                                    || n2.Name.Equals("Localidad") || n2.Name.Equals("Direccion") || n2.Name.Equals("Telefono"))
+                                {
+                                    if (!nodosXML.Contains(n2.Name))
+                                    {
+                                        nodosXML.Add(n2.Name);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (nodosXML.Count == 7)
+                    {
+                        /* Redirige al formulario de lectura XML. */
+                        FormListarProveedores form = new FormListarProveedores(nombre);
+                        form.Show();
+                    }
+                    else
+                    {
+                        FormNotificaciones form = new FormNotificaciones("Error, XML incorrecto.");
+                        form.Show();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void generaJSON()
+        {
+            try
+            {
+                List<Proveedor> listaProveedores = new List<Proveedor>();
+                string sql = "SELECT * FROM Proveedor";
+                SqlConnection cnx = new SqlConnection(conection);
                 cnx.Open();
 
                 SqlCommand command = new SqlCommand(sql, cnx);
@@ -909,8 +908,23 @@ namespace Spaniac.Formularios.Internos.Clientes
 
                 while (lector.Read())
                 {
-                    cbIDCliente.Items.Add(lector.GetString(0));
-                    cbIDClienteBorr.Items.Add(lector.GetString(0));
+                    Proveedor p = new Proveedor(lector.GetString(0), lector.GetString(1), lector.GetInt32(2), lector.GetDateTime(3),
+                        lector.GetString(4), lector.GetString(5), lector.GetString(6));
+                    listaProveedores.Add(p);
+                }
+
+                if (!File.Exists("Proveedores.json"))
+                {
+                    string jsonProv = JsonConvert.SerializeObject(listaProveedores.ToArray(), Newtonsoft.Json.Formatting.Indented);
+                    File.WriteAllText("Proveedores.json", jsonProv);
+
+                    FormNotificaciones form = new FormNotificaciones("JSON generado correctamente.");
+                    form.Show();
+                }
+                else
+                {
+                    FormNotificaciones form2 = new FormNotificaciones("Ya hay un documento JSON de Proveedores. Muévelo o cambialo de nombre para poder generar otro.");
+                    form2.Show();
                 }
 
                 cnx.Close();
@@ -922,12 +936,236 @@ namespace Spaniac.Formularios.Internos.Clientes
             }
         }
 
-        private void compruebaNombreCliente(string opcion)
+        private void compruebaJSON()
+        {
+            try
+            {
+                OpenFileDialog buscador = new OpenFileDialog();
+                buscador.Filter = "Archivos JSON | *.json";
+                buscador.FileName = "";
+                buscador.Title = "Cargar archivo json";
+                buscador.InitialDirectory = "C:\\";
+
+                if (buscador.ShowDialog() == DialogResult.OK)
+                {
+                    string ruta = buscador.FileName;
+
+                    JsonSerializer serializer = new JsonSerializer();
+                    List<Proveedor> listaProv = new List<Proveedor>();
+
+                    using (var streamReader = new StreamReader(ruta))
+                    using (var textReader = new JsonTextReader(streamReader))
+                    {
+                        listaProv = serializer.Deserialize<List<Proveedor>>(textReader);
+                    }
+
+                    FormListarProveedores form = new FormListarProveedores(proveedoresJSON, listaProv);
+                    form.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void generaExcel()
+        {
+            try
+            {
+                List<Proveedor> listaProveedores = new List<Proveedor>();
+                string sql = "SELECT * FROM Proveedor";
+                string ruta = AppDomain.CurrentDomain.BaseDirectory + "Proveedores.xlsx";
+                SqlConnection cnx = new SqlConnection(conection);
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    Proveedor p = new Proveedor(lector.GetString(0), lector.GetString(1), lector.GetInt32(2), lector.GetDateTime(3),
+                        lector.GetString(4), lector.GetString(5), lector.GetString(6));
+                    listaProveedores.Add(p);
+                }
+
+                if (!File.Exists(ruta))
+                {
+                    SLDocument excel = new SLDocument();
+
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("ID", typeof(string));
+                    dt.Columns.Add("Nombre", typeof(string));
+                    dt.Columns.Add("Tipo Proveedor", typeof(int));
+                    dt.Columns.Add("Fecha Registro", typeof(string));
+                    dt.Columns.Add("Localidad", typeof(string));
+                    dt.Columns.Add("Direccion", typeof(string));
+                    dt.Columns.Add("Telefono", typeof(string));
+
+                    foreach (Proveedor proveedor in listaProveedores)
+                    {
+                        dt.Rows.Add(proveedor.ID, proveedor.Nombre, proveedor.TipoProveedor, proveedor.FechaRegistro, proveedor.Localidad, proveedor.Direccion, proveedor.Telefono);
+                    }
+
+                    excel.ImportDataTable(1, 1, dt, true);
+                    excel.SaveAs(ruta);
+
+                    FormNotificaciones form = new FormNotificaciones("Excel generado correctamente.");
+                    form.Show();
+                }
+                else
+                {
+                    FormNotificaciones form = new FormNotificaciones("Ya existe un excel de Proveedores con ese nombre.");
+                    form.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void compruebaExcel()
+        {
+            try
+            {
+                OpenFileDialog buscador = new OpenFileDialog();
+                buscador.Filter = "Archivos EXCEL | *.xlsx";
+                buscador.FileName = "";
+                buscador.Title = "Cargar archivo excel";
+                buscador.InitialDirectory = "C:\\";
+
+                if (buscador.ShowDialog() == DialogResult.OK)
+                {
+                    List<Proveedor> proveedoresExcel = new List<Proveedor>();
+                    string ruta = buscador.FileName;
+
+                    SLDocument sl = new SLDocument(ruta);
+                    int numFila = 1;
+
+                    while (!string.IsNullOrEmpty(sl.GetCellValueAsString(numFila, 1)))
+                    {
+                        if (numFila != 1)
+                        {
+                            string id = sl.GetCellValueAsString(numFila, 1);
+                            string nombre = sl.GetCellValueAsString(numFila, 2);
+                            int tipoProveedor = sl.GetCellValueAsInt32(numFila, 3);
+                            DateTime fecha = sl.GetCellValueAsDateTime(numFila, 4);
+                            string localidad = sl.GetCellValueAsString(numFila, 5);
+                            string direccion = sl.GetCellValueAsString(numFila, 6);
+                            string telefono = sl.GetCellValueAsString(numFila, 7);
+
+                            Proveedor p = new Proveedor(id, nombre, tipoProveedor, fecha, localidad, direccion, telefono);
+                            proveedoresExcel.Add(p);
+                        }
+                        numFila++;
+                    }
+
+                    FormListarProveedores form = new FormListarProveedores(proveedoresExcel);
+                    form.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void inicializaDatos(string opcion)
         {
             switch (opcion)
             {
                 case "Añadir":
-                    string nombre = txtNombre.Text.ToString();
+                    txtCIF.Text = "";
+                    txtNombreProv.Text = "";
+                    tipoProv.Value = 0;
+                    txtLocalidad.Text = "";
+                    txtDireccion.Text = "";
+                    txtTelefono.Text = "";
+                    break;
+                case "Modificar":
+                    cbIDProveedor.Text = "";
+                    txtNombreMod.Text = "";
+                    tipoProvMod.Value = 0;
+                    txtLocalidadMod.Text = "";
+                    txtDireccionMod.Text = "";
+                    txtTelefonoMod.Text = "";
+                    break;
+                case "Borrar":
+                    cbIDProvBorr.SelectedIndex = 0;
+                    break;
+            }
+        }
+
+        private void compruebaCIFProveedor()
+        {
+            string cif = txtCIF.Text.ToString();
+
+            if (cif.Length != 9)
+            {
+                lbCIF.ForeColor = Color.Red;
+
+                lbErrorCIF.Text = "CIF Inválido.";
+                lbErrorCIF.Visible = true;
+
+                cifCorr = false;
+            }
+            else if (cif.Length == 9 && !cif.Equals("CIF"))
+            {
+                if (Char.IsLetter(cif, 0))
+                {
+                    string sql = "SELECT * FROM Proveedor";
+
+                    SqlConnection cnx = new SqlConnection(conection);
+                    cnx.Open();
+
+                    SqlCommand command = new SqlCommand(sql, cnx);
+                    SqlDataReader lector = command.ExecuteReader();
+
+                    while (lector.Read())
+                    {
+                        if (lector.GetString(0).Equals(cif))
+                        {
+                            encontrado = true;
+                            lbErrorCIF.Text = "El CIF ya se ha usado.";
+                            lbErrorCIF.Visible = true;
+                            lbCIF.ForeColor = Color.Red;
+
+                            cifCorr = false;
+                        }
+                        else
+                        {
+                            encontrado = false;
+                            lbErrorCIF.Text = "";
+                            lbErrorCIF.Visible = false;
+
+                            lbCIF.ForeColor = Color.Green;
+
+                            cifCorr = true;
+                        }
+                    }
+                }
+                else
+                {
+                    lbCIF.ForeColor = Color.Red;
+
+                    lbErrorCIF.Text = "CIF Inválido.";
+                    lbErrorCIF.Visible = true;
+
+                    cifCorr = false;
+                }
+            }
+        }
+
+        private void compruebaNombreProveedor(string opcion)
+        {
+            switch (opcion)
+            {
+                case "Añadir":
+                    string nombre = txtNombreProv.Text.ToString();
 
                     if (nombre.Length == 0 || nombre.Length > 50)
                     {
@@ -947,7 +1185,7 @@ namespace Spaniac.Formularios.Internos.Clientes
                     }
                     else if (nombre.Length > 0 && !nombre.Equals("Nombre"))
                     {
-                        string sql = "SELECT * FROM Cliente";
+                        string sql = "SELECT * FROM Proveedor";
 
                         SqlConnection cnx = new SqlConnection(conection);
                         cnx.Open();
@@ -957,7 +1195,7 @@ namespace Spaniac.Formularios.Internos.Clientes
 
                         while (lector.Read())
                         {
-                            if (lector.GetString(2).Equals(nombre))
+                            if (lector.GetString(1).Equals(nombre))
                             {
                                 encontrado = true;
                                 lbErrorNom.Text = "El nombre ya se ha usado.";
@@ -1017,9 +1255,9 @@ namespace Spaniac.Formularios.Internos.Clientes
             }
         }
 
-        private void compruebaLocalidadCliente(string opcion)
+        private void compruebaLocalidadProveedor(string opcion)
         {
-            switch(opcion)
+            switch (opcion)
             {
                 case "Añadir":
                     string localidad = txtLocalidad.Text.ToString();
@@ -1084,12 +1322,12 @@ namespace Spaniac.Formularios.Internos.Clientes
                         locCorrMod = true;
                     }
                     break;
-            }  
+            }
         }
 
-        private void compruebaDireccionCliente(string opcion)
+        private void compruebaDireccionProveedor(string opcion)
         {
-            switch(opcion)
+            switch (opcion)
             {
                 case "Añadir":
                     string direccion = txtDireccion.Text.ToString();
@@ -1154,12 +1392,12 @@ namespace Spaniac.Formularios.Internos.Clientes
                         dirCorrMod = true;
                     }
                     break;
-            } 
+            }
         }
 
-        private void compruebaTelefonoCliente(string opcion)
+        private void compruebaTelefonoProveedor(string opcion)
         {
-            switch(opcion)
+            switch (opcion)
             {
                 case "Añadir":
                     string t = txtTelefono.Text.ToString();
@@ -1248,16 +1486,15 @@ namespace Spaniac.Formularios.Internos.Clientes
                     }
                     break;
             }
-            
         }
 
-        private void compruebaClientes()
+        private void compruebaProveedores()
         {
-            if (cbIDCliente.SelectedIndex != 0)
+            if (cbIDProveedor.SelectedIndex != 0)
             {
                 try
                 {
-                    string sql = "SELECT * FROM Cliente WHERE id='" + cbIDCliente.Text + "'";
+                    string sql = "SELECT * FROM Proveedor WHERE cif='" + cbIDProveedor.Text + "'";
                     SqlConnection cnx = new SqlConnection(conection);
                     cnx.Open();
 
@@ -1267,17 +1504,19 @@ namespace Spaniac.Formularios.Internos.Clientes
                     while (lector.Read())
                     {
                         txtNombreMod.Text = lector.GetString(1);
-                        txtLocalidadMod.Text = lector.GetString(3);
-                        txtDireccionMod.Text = lector.GetString(4);
-                        txtTelefonoMod.Text = lector.GetString(5);
+                        tipoProvMod.Value = lector.GetInt32(2);
+                        txtLocalidadMod.Text = lector.GetString(4);
+                        txtDireccionMod.Text = lector.GetString(5);
+                        txtTelefonoMod.Text = lector.GetString(6);
                     }
 
                     txtNombreMod.Enabled = true;
+                    tipoProvMod.Enabled = true;
                     txtLocalidadMod.Enabled = true;
                     txtDireccionMod.Enabled = true;
                     txtTelefonoMod.Enabled = true;
 
-                    idCorrMod = true;
+                    cifCorrMod = true;
 
                     command.Dispose();
                     cnx.Close();
@@ -1303,73 +1542,33 @@ namespace Spaniac.Formularios.Internos.Clientes
                 txtTelefonoMod.Enabled = false;
                 txtTelefonoMod.Text = "";
 
-                idCorrMod = false;
+                cifCorrMod = false;
             }
         }
 
-        private void generaXML()
+        private void rellenaTablaProveedores()
         {
+            string sql = "SELECT * FROM Proveedor";
+            SqlConnection cnx = new SqlConnection(conection);
+
             try
             {
-                string sql = "SELECT * FROM Cliente";
-                SqlConnection cnx = new SqlConnection(conection);
-
                 cnx.Open();
 
                 SqlCommand command = new SqlCommand(sql, cnx);
                 SqlDataReader lector = command.ExecuteReader();
 
-                if (!System.IO.File.Exists("Clientes.xml"))
+                DataTable dt = new DataTable();
+                dt.Load(lector);
+                dgvProveedores.DataSource = dt;
+
+                foreach (DataGridViewColumn col in dgvProveedores.Columns)
                 {
-                    XmlWriter listCli = XmlWriter.Create("Clientes.xml");
-                    listCli.WriteStartDocument();
-                    listCli.WriteStartElement("Clientes");
-
-                    while (lector.Read())
-                    {
-                        listCli.WriteStartElement("Cliente");
-
-                        listCli.WriteStartElement("ID");
-                        listCli.WriteValue((lector.GetString(0)));
-                        listCli.WriteEndElement();
-
-                        listCli.WriteStartElement("Nombre");
-                        listCli.WriteValue((lector.GetString(1)));
-                        listCli.WriteEndElement();
-
-                        listCli.WriteStartElement("FechaRegistro");
-                        listCli.WriteValue((lector.GetDateTime(2)));
-                        listCli.WriteEndElement();
-
-                        listCli.WriteStartElement("Localidad");
-                        listCli.WriteValue((lector.GetString(3)));
-                        listCli.WriteEndElement();
-
-                        listCli.WriteStartElement("Direccion");
-                        listCli.WriteString((lector.GetString(4)));
-                        listCli.WriteEndElement();
-
-                        listCli.WriteStartElement("Telefono");
-                        listCli.WriteValue((lector.GetString(5)));
-                        listCli.WriteEndElement();
-
-                        listCli.WriteEndElement();
-                    }
-
-                    listCli.WriteEndElement();
-                    listCli.WriteEndDocument();
-                    listCli.Close();
-
-                    FormNotificaciones form = new FormNotificaciones("XML generado correctamente.");
-                    form.Show();
-
-                    cnx.Close();
+                    col.HeaderText = col.HeaderText.ToUpper();
                 }
-                else
-                {
-                    FormNotificaciones form2 = new FormNotificaciones("Ya hay un documento XML de Clientes. Muévelo o cambialo de nombre para poder generar otro.");
-                    form2.Show();
-                }
+
+                command.Dispose();
+                cnx.Close();
             }
             catch (Exception ex)
             {
@@ -1378,70 +1577,19 @@ namespace Spaniac.Formularios.Internos.Clientes
             }
         }
 
-        private void compruebaXML()
+        private void rellenaComboBoxCIFProveedor()
         {
-            nodosXML.Clear();
+            cbIDProveedor.Items.Clear();
+            cbIDProveedor.Items.Add(" ");
+
+            cbIDProvBorr.Items.Clear();
+            cbIDProvBorr.Items.Add(" ");
+
+            string sql = "SELECT * FROM Proveedor";
+            SqlConnection cnx = new SqlConnection(conection);
 
             try
             {
-                OpenFileDialog buscador = new OpenFileDialog();
-                buscador.Filter = "Archivos XML | *.xml";
-                buscador.FileName = "";
-                buscador.Title = "Cargar archivo xml";
-                buscador.InitialDirectory = "C:\\";
-
-                if (buscador.ShowDialog() == DialogResult.OK)
-                {
-                    string nombre = buscador.FileName;
-
-                    XmlDocument doc = new XmlDocument();
-                    doc.Load(nombre);
-
-                    foreach (XmlNode n1 in doc.DocumentElement.ChildNodes)
-                    {
-                        if (n1.HasChildNodes)
-                        {
-                            foreach (XmlNode n2 in n1.ChildNodes)
-                            {
-                                if (n2.Name.Equals("ID") || n2.Name.Equals("Nombre") || n2.Name.Equals("FechaRegistro")
-                                    || n2.Name.Equals("Localidad") || n2.Name.Equals("Direccion") || n2.Name.Equals("Telefono"))
-                                {
-                                    if (!nodosXML.Contains(n2.Name))
-                                    {
-                                        nodosXML.Add(n2.Name);
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    if (nodosXML.Count == 6)
-                    {
-                        /* Redirige al formulario de lectura XML. */
-                        FormListarClientes form = new FormListarClientes(nombre);
-                        form.Show();
-                    }
-                    else
-                    {
-                        FormNotificaciones form = new FormNotificaciones("Error, XML incorrecto.");
-                        form.Show();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                FormNotificaciones form = new FormNotificaciones(ex.Message);
-                form.Show();
-            }
-        }
-
-        private void generaJSON()
-        {
-            try
-            {
-                List<Cliente> listaClientes = new List<Cliente>();
-                string sql = "SELECT * FROM Cliente";
-                SqlConnection cnx = new SqlConnection(conection);
                 cnx.Open();
 
                 SqlCommand command = new SqlCommand(sql, cnx);
@@ -1449,23 +1597,8 @@ namespace Spaniac.Formularios.Internos.Clientes
 
                 while (lector.Read())
                 {
-                    Cliente c = new Cliente(lector.GetString(0), lector.GetString(1), lector.GetDateTime(2), 
-                        lector.GetString(3), lector.GetString(4), lector.GetString(5));
-                    listaClientes.Add(c);
-                }
-
-                if (!File.Exists("Clientes.json"))
-                {
-                    string jsonAlm = JsonConvert.SerializeObject(listaClientes.ToArray(), Newtonsoft.Json.Formatting.Indented);
-                    File.WriteAllText("Clientes.json", jsonAlm);
-
-                    FormNotificaciones form = new FormNotificaciones("JSON generado correctamente.");
-                    form.Show();
-                }
-                else
-                {
-                    FormNotificaciones form2 = new FormNotificaciones("Ya hay un documento JSON de Clientes. Muévelo o cambialo de nombre para poder generar otro.");
-                    form2.Show();
+                    cbIDProveedor.Items.Add(lector.GetString(0));
+                    cbIDProvBorr.Items.Add(lector.GetString(0));
                 }
 
                 cnx.Close();
@@ -1477,141 +1610,47 @@ namespace Spaniac.Formularios.Internos.Clientes
             }
         }
 
-        private void compruebaJSON()
+
+        private void rellenaCbDatosProveedores()
         {
-            try
+            cbDatosPro.Items.Add("");
+
+            foreach (DataGridViewColumn col in dgvProveedores.Columns)
             {
-                OpenFileDialog buscador = new OpenFileDialog();
-                buscador.Filter = "Archivos JSON | *.json";
-                buscador.FileName = "";
-                buscador.Title = "Cargar archivo json";
-                buscador.InitialDirectory = "C:\\";
-
-                if (buscador.ShowDialog() == DialogResult.OK)
-                {
-                    string ruta = buscador.FileName;
-
-                    JsonSerializer serializer = new JsonSerializer();
-                    List<Cliente> listaCli = new List<Cliente>();
-
-                    using (var streamReader = new StreamReader(ruta))
-                    using (var textReader = new JsonTextReader(streamReader))
-                    {
-                        listaCli = serializer.Deserialize<List<Cliente>>(textReader);
-                    }
-
-                    FormListarClientes form = new FormListarClientes(clientesJSON, listaCli);
-                    form.Show();
-                }
+                cbDatosPro.Items.Add(col.HeaderText);
             }
-            catch (Exception ex)
-            {
-                FormNotificaciones form = new FormNotificaciones(ex.Message);
-                form.Show();
-            }
+
+            cbDatosPro.SelectedIndex = 0;
         }
 
-        private void generaExcel()
+        private void filtroDatos()
         {
-            try
+            if (cbDatosPro.SelectedIndex != 0)
             {
-                List<Cliente> listaClientes = new List<Cliente>();
-                string sql = "SELECT * FROM Cliente";
-                string ruta = AppDomain.CurrentDomain.BaseDirectory + "Clientes.xlsx";
-                SqlConnection cnx = new SqlConnection(conection);
-                cnx.Open();
-
-                SqlCommand command = new SqlCommand(sql, cnx);
-                SqlDataReader lector = command.ExecuteReader();
-
-                while (lector.Read())
+                try
                 {
-                    Cliente c = new Cliente(lector.GetString(0), lector.GetString(1), lector.GetDateTime(2),
-                        lector.GetString(3), lector.GetString(4), lector.GetString(5));
-                    listaClientes.Add(c);
-                }
+                    SqlConnection cnx = new SqlConnection(conection);
+                    cnx.Open();
 
-                if (!File.Exists(ruta))
-                {
-                    SLDocument excel = new SLDocument();
+                    string sql = "SELECT * FROM Proveedor WHERE " + cbDatosPro.Text + " LIKE '%' + @filtro + '%'";
+                    SqlCommand command = new SqlCommand(sql, cnx);
+                    command.Parameters.AddWithValue("@filtro", txtFiltroPro.Text);
+
+                    SqlDataReader lector = command.ExecuteReader();
 
                     DataTable dt = new DataTable();
-                    dt.Columns.Add("ID", typeof(string));
-                    dt.Columns.Add("Nombre", typeof(string));
-                    dt.Columns.Add("Fecha Registro", typeof(string));
-                    dt.Columns.Add("Localidad", typeof(string));
-                    dt.Columns.Add("Direccion", typeof(string));
-                    dt.Columns.Add("Telefono", typeof(string));
+                    dt.Load(lector);
+                    dgvProveedores.DataSource = dt;
 
-                    foreach (Cliente cliente in listaClientes)
-                    {
-                        dt.Rows.Add(cliente.ID, cliente.Nombre, cliente.FechaRegistro, cliente.Localidad, cliente.Direccion, cliente.Telefono);
-                    }
-
-                    excel.ImportDataTable(1, 1, dt, true);
-                    excel.SaveAs(ruta);
-
-                    FormNotificaciones form = new FormNotificaciones("Excel generado correctamente.");
-                    form.Show();
+                    command.Dispose();
+                    cnx.Close();
                 }
-                else
+                catch (Exception ex)
                 {
-                    FormNotificaciones form = new FormNotificaciones("Ya existe un excel con ese nombre.");
+                    FormNotificaciones form = new FormNotificaciones(ex.Message);
                     form.Show();
                 }
-            }
-            catch (Exception ex)
-            {
-                FormNotificaciones form = new FormNotificaciones(ex.Message);
-                form.Show();
             }
         }
-
-        private void compruebaExcel()
-        {
-            try
-            {
-                OpenFileDialog buscador = new OpenFileDialog();
-                buscador.Filter = "Archivos EXCEL | *.xlsx";
-                buscador.FileName = "";
-                buscador.Title = "Cargar archivo excel";
-                buscador.InitialDirectory = "C:\\";
-
-                if (buscador.ShowDialog() == DialogResult.OK)
-                {
-                    List<Cliente> clientesExcel = new List<Cliente>();
-                    string ruta = buscador.FileName;
-
-                    SLDocument sl = new SLDocument(ruta);
-                    int numFila = 1;
-
-                    while (!string.IsNullOrEmpty(sl.GetCellValueAsString(numFila, 1)))
-                    {
-                        if (numFila != 1)
-                        {
-                            string id = sl.GetCellValueAsString(numFila, 1);
-                            string nombre = sl.GetCellValueAsString(numFila, 2);
-                            DateTime fecha = sl.GetCellValueAsDateTime(numFila, 3);
-                            string localidad = sl.GetCellValueAsString(numFila, 4);
-                            string direccion = sl.GetCellValueAsString(numFila, 5);
-                            string telefono = sl.GetCellValueAsString(numFila, 6);
-
-                            Cliente c = new Cliente(id, nombre, fecha, localidad, direccion, telefono);
-                            clientesExcel.Add(c);
-                        }
-                        numFila++;
-                    }
-
-                    FormListarClientes form = new FormListarClientes(clientesExcel);
-                    form.Show();
-                }
-            }
-            catch (Exception ex)
-            {
-                FormNotificaciones form = new FormNotificaciones(ex.Message);
-                form.Show();
-            }
-        }
-
     }
 }

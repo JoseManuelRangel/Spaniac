@@ -38,7 +38,7 @@
             this.lbUser = new System.Windows.Forms.Label();
             this.imgPerfil = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnProveedores = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnEntradas = new System.Windows.Forms.Button();
             this.btnSalidas = new System.Windows.Forms.Button();
@@ -75,7 +75,7 @@
             this.panelIzquierdo.Controls.Add(this.lbUser);
             this.panelIzquierdo.Controls.Add(this.imgPerfil);
             this.panelIzquierdo.Controls.Add(this.button2);
-            this.panelIzquierdo.Controls.Add(this.button1);
+            this.panelIzquierdo.Controls.Add(this.btnProveedores);
             this.panelIzquierdo.Controls.Add(this.btnClientes);
             this.panelIzquierdo.Controls.Add(this.btnEntradas);
             this.panelIzquierdo.Controls.Add(this.btnSalidas);
@@ -180,21 +180,22 @@
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnProveedores
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(11)))), ((int)(((byte)(50)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Reem Kufi", 11F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(0, 546);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 46);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "PROVEEDORES";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(11)))), ((int)(((byte)(50)))));
+            this.btnProveedores.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnProveedores.FlatAppearance.BorderSize = 0;
+            this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProveedores.Font = new System.Drawing.Font("Reem Kufi", 11F);
+            this.btnProveedores.ForeColor = System.Drawing.Color.White;
+            this.btnProveedores.Location = new System.Drawing.Point(0, 546);
+            this.btnProveedores.Name = "btnProveedores";
+            this.btnProveedores.Size = new System.Drawing.Size(200, 46);
+            this.btnProveedores.TabIndex = 9;
+            this.btnProveedores.Text = "PROVEEDORES";
+            this.btnProveedores.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnProveedores.UseVisualStyleBackColor = false;
+            this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
             // 
             // btnClientes
             // 
@@ -371,7 +372,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnInventario;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnProveedores;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnEntradas;
         private System.Windows.Forms.Button btnSalidas;
