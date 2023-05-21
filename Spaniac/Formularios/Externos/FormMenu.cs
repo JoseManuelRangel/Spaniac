@@ -15,6 +15,7 @@ using Spaniac.Formularios.FormulariosInternos.FormulariosProductos;
 using Spaniac.Formularios.Internos.Clientes;
 using Spaniac.Formularios.Internos.Almacenes;
 using Spaniac.Formularios.Internos.Proveedores;
+using Spaniac.Formularios.Internos.Configuración;
 using Spaniac.Formularios.Externos;
 
 namespace Spaniac.Formularios
@@ -128,12 +129,22 @@ namespace Spaniac.Formularios
 
 
         /*-------------------------------------------------------------------------------------------------*/
-        /*                             GESTIÓN DE EVENTOS DEL BOTÓN DE CLIENTES                            */
+        /*                            GESTIÓN DE EVENTOS DEL BOTÓN DE PROVEEDORES                          */
         /*-------------------------------------------------------------------------------------------------*/
         private void btnProveedores_Click(object sender, EventArgs e)
         {
             abrirFormEnPanel(new FormProveedores());
         }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                            GESTIÓN DE EVENTOS DEL BOTÓN DE CONFIGURACIÓN                        */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void button2_Click(object sender, EventArgs e)
+        {
+            abrirFormEnPanel(new FormConfiguracion());
+        }
+
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                              METODOS USADOS EN EL CÓDIGO DEL FORMULARIO                         */

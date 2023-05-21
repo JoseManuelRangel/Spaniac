@@ -149,6 +149,12 @@
     <Compile Include="Formularios\Internos\Clientes\FormListarClientes.Designer.cs">
       <DependentUpon>FormListarClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Internos\Configuración\FormConfiguracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Internos\Configuración\FormConfiguracion.Designer.cs">
+      <DependentUpon>FormConfiguracion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Internos\FormPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\Clientes\FormListarClientes.resx">
       <DependentUpon>FormListarClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Internos\Configuración\FormConfiguracion.resx">
+      <DependentUpon>FormConfiguracion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\FormPanel.resx">
       <DependentUpon>FormPanel.cs</DependentUpon>
