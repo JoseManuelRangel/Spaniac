@@ -142,7 +142,7 @@ namespace Spaniac.Formularios
         /*-------------------------------------------------------------------------------------------------*/
         private void button2_Click(object sender, EventArgs e)
         {
-            abrirFormEnPanel(new FormConfiguracion());
+            abrirFormEnPanel(new FormConfiguracion(userLog));
         }
 
 

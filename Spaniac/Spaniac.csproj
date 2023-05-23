@@ -71,6 +71,7 @@
     <Compile Include="Clases\Almacen.cs" />
     <Compile Include="Clases\Cliente.cs" />
     <Compile Include="Clases\Proveedor.cs" />
+    <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Formularios\Externos\FormCarga.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +156,12 @@
     <Compile Include="Formularios\Internos\Configuración\FormConfiguracion.Designer.cs">
       <DependentUpon>FormConfiguracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Internos\Configuración\VerPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Internos\Configuración\VerPerfil.Designer.cs">
+      <DependentUpon>VerPerfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Internos\FormPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\Configuración\FormConfiguracion.resx">
       <DependentUpon>FormConfiguracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Internos\Configuración\VerPerfil.resx">
+      <DependentUpon>VerPerfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\FormPanel.resx">
       <DependentUpon>FormPanel.cs</DependentUpon>

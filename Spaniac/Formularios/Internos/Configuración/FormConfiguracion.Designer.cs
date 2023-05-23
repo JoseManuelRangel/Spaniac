@@ -34,11 +34,6 @@
             this.lbHora = new System.Windows.Forms.Label();
             this.lbInicio = new System.Windows.Forms.Label();
             this.barra1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -54,11 +49,19 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.modificarPerfil = new System.Windows.Forms.Button();
             this.editarRoles = new System.Windows.Forms.Button();
             this.borrarUsuario = new System.Windows.Forms.Button();
             this.creditos = new System.Windows.Forms.Button();
             this.horafecha = new System.Windows.Forms.Timer(this.components);
+            this.barra4 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.verPerfil = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbFecha
@@ -103,56 +106,6 @@
             this.barra1.Name = "barra1";
             this.barra1.Size = new System.Drawing.Size(1386, 5);
             this.barra1.TabIndex = 19;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(97, 420);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 28);
-            this.label1.TabIndex = 31;
-            this.label1.Text = "MODIFICAR PERFIL";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(50, 457);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(257, 23);
-            this.label2.TabIndex = 32;
-            this.label2.Text = "Pincha en el botón para acceder al menú de";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(50, 480);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(254, 23);
-            this.label3.TabIndex = 33;
-            this.label3.Text = "edición de usuario. Desde ahí podrás editar";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(50, 503);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(263, 23);
-            this.label4.TabIndex = 34;
-            this.label4.Text = "cualquiera de los datos del usuario con el que";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(50, 526);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(165, 23);
-            this.label5.TabIndex = 35;
-            this.label5.Text = "está accediendo al sistema.";
             // 
             // label6
             // 
@@ -304,17 +257,6 @@
             this.label16.TabIndex = 50;
             this.label16.Text = "Tras cada atribución habrá enlaces a sus páginas.";
             // 
-            // modificarPerfil
-            // 
-            this.modificarPerfil.BackColor = System.Drawing.Color.MidnightBlue;
-            this.modificarPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.modificarPerfil.Image = ((System.Drawing.Image)(resources.GetObject("modificarPerfil.Image")));
-            this.modificarPerfil.Location = new System.Drawing.Point(54, 190);
-            this.modificarPerfil.Name = "modificarPerfil";
-            this.modificarPerfil.Size = new System.Drawing.Size(259, 214);
-            this.modificarPerfil.TabIndex = 51;
-            this.modificarPerfil.UseVisualStyleBackColor = false;
-            // 
             // editarRoles
             // 
             this.editarRoles.BackColor = System.Drawing.Color.MidnightBlue;
@@ -353,16 +295,107 @@
             this.horafecha.Enabled = true;
             this.horafecha.Tick += new System.EventHandler(this.horafecha_Tick);
             // 
+            // barra4
+            // 
+            this.barra4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.barra4.Location = new System.Drawing.Point(372, 175);
+            this.barra4.Name = "barra4";
+            this.barra4.Size = new System.Drawing.Size(3, 590);
+            this.barra4.TabIndex = 55;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Location = new System.Drawing.Point(754, 175);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(3, 590);
+            this.panel1.TabIndex = 56;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel2.Location = new System.Drawing.Point(1128, 175);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(3, 590);
+            this.panel2.TabIndex = 57;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(50, 526);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(165, 23);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "está accediendo al sistema.";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(50, 503);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(263, 23);
+            this.label4.TabIndex = 34;
+            this.label4.Text = "cualquiera de los datos del usuario con el que";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(50, 457);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(257, 23);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Pincha en el botón para acceder al menú de";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(50, 480);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(228, 23);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "de usuario. Desde ahí podrás consultar";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(146, 420);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 28);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "PERFIL";
+            // 
+            // verPerfil
+            // 
+            this.verPerfil.BackColor = System.Drawing.Color.MidnightBlue;
+            this.verPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.verPerfil.Image = ((System.Drawing.Image)(resources.GetObject("verPerfil.Image")));
+            this.verPerfil.Location = new System.Drawing.Point(54, 190);
+            this.verPerfil.Name = "verPerfil";
+            this.verPerfil.Size = new System.Drawing.Size(259, 214);
+            this.verPerfil.TabIndex = 51;
+            this.verPerfil.UseVisualStyleBackColor = false;
+            this.verPerfil.Click += new System.EventHandler(this.verPerfil_Click);
+            this.verPerfil.MouseLeave += new System.EventHandler(this.verPerfil_MouseLeave);
+            this.verPerfil.MouseMove += new System.Windows.Forms.MouseEventHandler(this.verPerfil_MouseMove);
+            // 
             // FormConfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1505, 862);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.barra4);
             this.Controls.Add(this.creditos);
             this.Controls.Add(this.borrarUsuario);
             this.Controls.Add(this.editarRoles);
-            this.Controls.Add(this.modificarPerfil);
+            this.Controls.Add(this.verPerfil);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label18);
@@ -401,11 +434,6 @@
         private System.Windows.Forms.Label lbHora;
         private System.Windows.Forms.Label lbInicio;
         private System.Windows.Forms.Panel barra1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -421,10 +449,18 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button modificarPerfil;
         private System.Windows.Forms.Button editarRoles;
         private System.Windows.Forms.Button borrarUsuario;
         private System.Windows.Forms.Button creditos;
         private System.Windows.Forms.Timer horafecha;
+        private System.Windows.Forms.Panel barra4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button verPerfil;
     }
 }

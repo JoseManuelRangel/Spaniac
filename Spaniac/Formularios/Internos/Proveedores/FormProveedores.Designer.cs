@@ -53,6 +53,17 @@
             this.lbBuscarPro = new System.Windows.Forms.Label();
             this.barra4 = new System.Windows.Forms.Panel();
             this.panelIzquierdo = new System.Windows.Forms.Panel();
+            this.panelPortada = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelBorrarPro = new System.Windows.Forms.Panel();
+            this.descBorr = new System.Windows.Forms.RichTextBox();
+            this.btnAceptarBorrar = new System.Windows.Forms.Button();
+            this.panelConfBorrProv = new System.Windows.Forms.Panel();
+            this.btnNoBorr = new System.Windows.Forms.Button();
+            this.btnSiBorr = new System.Windows.Forms.Button();
+            this.lbb = new System.Windows.Forms.Label();
+            this.cbIDProvBorr = new System.Windows.Forms.ComboBox();
+            this.lbErrorIDProv = new System.Windows.Forms.Label();
             this.panelModificarPro = new System.Windows.Forms.Panel();
             this.cbIDProveedor = new System.Windows.Forms.ComboBox();
             this.lbErrorLocalidadMod = new System.Windows.Forms.Label();
@@ -100,17 +111,6 @@
             this.lbInicio = new System.Windows.Forms.Label();
             this.barra1 = new System.Windows.Forms.Panel();
             this.horafecha = new System.Windows.Forms.Timer(this.components);
-            this.panelBorrarPro = new System.Windows.Forms.Panel();
-            this.descBorr = new System.Windows.Forms.RichTextBox();
-            this.btnAceptarBorrar = new System.Windows.Forms.Button();
-            this.panelConfBorrProv = new System.Windows.Forms.Panel();
-            this.btnNoBorr = new System.Windows.Forms.Button();
-            this.btnSiBorr = new System.Windows.Forms.Button();
-            this.lbb = new System.Windows.Forms.Label();
-            this.cbIDProvBorr = new System.Windows.Forms.ComboBox();
-            this.lbErrorIDProv = new System.Windows.Forms.Label();
-            this.panelPortada = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelProveedores.SuspendLayout();
             this.panelMenuExcel.SuspendLayout();
             this.panelMenuJson.SuspendLayout();
@@ -118,14 +118,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).BeginInit();
             this.panelIzquierdo.SuspendLayout();
+            this.panelPortada.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelBorrarPro.SuspendLayout();
+            this.panelConfBorrProv.SuspendLayout();
             this.panelModificarPro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tipoProvMod)).BeginInit();
             this.panelAñadirPro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tipoProv)).BeginInit();
-            this.panelBorrarPro.SuspendLayout();
-            this.panelConfBorrProv.SuspendLayout();
-            this.panelPortada.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelProveedores
@@ -161,6 +161,7 @@
             this.panelMenuExcel.Name = "panelMenuExcel";
             this.panelMenuExcel.Size = new System.Drawing.Size(180, 62);
             this.panelMenuExcel.TabIndex = 52;
+            this.panelMenuExcel.Visible = false;
             // 
             // btnListarEXCEL
             // 
@@ -224,6 +225,7 @@
             this.panelMenuJson.Name = "panelMenuJson";
             this.panelMenuJson.Size = new System.Drawing.Size(180, 62);
             this.panelMenuJson.TabIndex = 50;
+            this.panelMenuJson.Visible = false;
             // 
             // btnListarJSON
             // 
@@ -287,6 +289,7 @@
             this.panelMenuXml.Name = "panelMenuXml";
             this.panelMenuXml.Size = new System.Drawing.Size(180, 62);
             this.panelMenuXml.TabIndex = 48;
+            this.panelMenuXml.Visible = false;
             // 
             // btnListarXML
             // 
@@ -348,7 +351,7 @@
             this.dgvProveedores.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Reem Kufi", 9F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -357,7 +360,7 @@
             this.dgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Reem Kufi", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -440,6 +443,148 @@
             this.panelIzquierdo.Name = "panelIzquierdo";
             this.panelIzquierdo.Size = new System.Drawing.Size(566, 342);
             this.panelIzquierdo.TabIndex = 16;
+            // 
+            // panelPortada
+            // 
+            this.panelPortada.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panelPortada.Controls.Add(this.pictureBox1);
+            this.panelPortada.Location = new System.Drawing.Point(3, 3);
+            this.panelPortada.Name = "panelPortada";
+            this.panelPortada.Size = new System.Drawing.Size(558, 334);
+            this.panelPortada.TabIndex = 58;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(157, 60);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(247, 193);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panelBorrarPro
+            // 
+            this.panelBorrarPro.Controls.Add(this.descBorr);
+            this.panelBorrarPro.Controls.Add(this.btnAceptarBorrar);
+            this.panelBorrarPro.Controls.Add(this.panelConfBorrProv);
+            this.panelBorrarPro.Controls.Add(this.cbIDProvBorr);
+            this.panelBorrarPro.Controls.Add(this.lbErrorIDProv);
+            this.panelBorrarPro.Location = new System.Drawing.Point(3, 3);
+            this.panelBorrarPro.Name = "panelBorrarPro";
+            this.panelBorrarPro.Size = new System.Drawing.Size(558, 334);
+            this.panelBorrarPro.TabIndex = 54;
+            // 
+            // descBorr
+            // 
+            this.descBorr.Enabled = false;
+            this.descBorr.Font = new System.Drawing.Font("Reem Kufi", 9.7F);
+            this.descBorr.Location = new System.Drawing.Point(19, 231);
+            this.descBorr.Name = "descBorr";
+            this.descBorr.Size = new System.Drawing.Size(516, 37);
+            this.descBorr.TabIndex = 71;
+            this.descBorr.Text = "Una vez borrado el proveedor, no se podrá recuperar.\n";
+            // 
+            // btnAceptarBorrar
+            // 
+            this.btnAceptarBorrar.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnAceptarBorrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAceptarBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnAceptarBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptarBorrar.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnAceptarBorrar.ForeColor = System.Drawing.Color.White;
+            this.btnAceptarBorrar.Location = new System.Drawing.Point(19, 274);
+            this.btnAceptarBorrar.Name = "btnAceptarBorrar";
+            this.btnAceptarBorrar.Size = new System.Drawing.Size(516, 30);
+            this.btnAceptarBorrar.TabIndex = 70;
+            this.btnAceptarBorrar.Text = "BORRAR";
+            this.btnAceptarBorrar.UseVisualStyleBackColor = false;
+            this.btnAceptarBorrar.Click += new System.EventHandler(this.btnAceptarBorrar_Click);
+            this.btnAceptarBorrar.MouseLeave += new System.EventHandler(this.btnAceptarBorrar_MouseLeave);
+            this.btnAceptarBorrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAceptarBorrar_MouseMove);
+            // 
+            // panelConfBorrProv
+            // 
+            this.panelConfBorrProv.Controls.Add(this.btnNoBorr);
+            this.panelConfBorrProv.Controls.Add(this.btnSiBorr);
+            this.panelConfBorrProv.Controls.Add(this.lbb);
+            this.panelConfBorrProv.Location = new System.Drawing.Point(19, 120);
+            this.panelConfBorrProv.Name = "panelConfBorrProv";
+            this.panelConfBorrProv.Size = new System.Drawing.Size(516, 93);
+            this.panelConfBorrProv.TabIndex = 69;
+            this.panelConfBorrProv.Visible = false;
+            // 
+            // btnNoBorr
+            // 
+            this.btnNoBorr.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnNoBorr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNoBorr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnNoBorr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNoBorr.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnNoBorr.ForeColor = System.Drawing.Color.White;
+            this.btnNoBorr.Location = new System.Drawing.Point(266, 50);
+            this.btnNoBorr.Name = "btnNoBorr";
+            this.btnNoBorr.Size = new System.Drawing.Size(199, 30);
+            this.btnNoBorr.TabIndex = 52;
+            this.btnNoBorr.Text = "NO";
+            this.btnNoBorr.UseVisualStyleBackColor = false;
+            this.btnNoBorr.Click += new System.EventHandler(this.btnNoBorr_Click);
+            this.btnNoBorr.MouseLeave += new System.EventHandler(this.btnNoBorr_MouseLeave);
+            this.btnNoBorr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnNoBorr_MouseMove);
+            // 
+            // btnSiBorr
+            // 
+            this.btnSiBorr.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnSiBorr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSiBorr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnSiBorr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSiBorr.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnSiBorr.ForeColor = System.Drawing.Color.White;
+            this.btnSiBorr.Location = new System.Drawing.Point(56, 50);
+            this.btnSiBorr.Name = "btnSiBorr";
+            this.btnSiBorr.Size = new System.Drawing.Size(204, 30);
+            this.btnSiBorr.TabIndex = 51;
+            this.btnSiBorr.Text = "SÍ";
+            this.btnSiBorr.UseVisualStyleBackColor = false;
+            this.btnSiBorr.Click += new System.EventHandler(this.btnSiBorr_Click);
+            this.btnSiBorr.MouseLeave += new System.EventHandler(this.btnSiBorr_MouseLeave);
+            this.btnSiBorr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnSiBorr_MouseMove);
+            // 
+            // lbb
+            // 
+            this.lbb.AutoSize = true;
+            this.lbb.Font = new System.Drawing.Font("Reem Kufi", 10F);
+            this.lbb.Location = new System.Drawing.Point(115, 11);
+            this.lbb.Name = "lbb";
+            this.lbb.Size = new System.Drawing.Size(272, 26);
+            this.lbb.TabIndex = 0;
+            this.lbb.Text = "¿Seguro que quieres eliminar el proveedor?";
+            // 
+            // cbIDProvBorr
+            // 
+            this.cbIDProvBorr.BackColor = System.Drawing.Color.White;
+            this.cbIDProvBorr.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbIDProvBorr.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIDProvBorr.FormattingEnabled = true;
+            this.cbIDProvBorr.Location = new System.Drawing.Point(19, 23);
+            this.cbIDProvBorr.Name = "cbIDProvBorr";
+            this.cbIDProvBorr.Size = new System.Drawing.Size(516, 36);
+            this.cbIDProvBorr.TabIndex = 68;
+            this.cbIDProvBorr.SelectedIndexChanged += new System.EventHandler(this.cbIDProvBorr_SelectedIndexChanged);
+            // 
+            // lbErrorIDProv
+            // 
+            this.lbErrorIDProv.AutoSize = true;
+            this.lbErrorIDProv.BackColor = System.Drawing.Color.White;
+            this.lbErrorIDProv.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbErrorIDProv.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorIDProv.Location = new System.Drawing.Point(19, 71);
+            this.lbErrorIDProv.Name = "lbErrorIDProv";
+            this.lbErrorIDProv.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorIDProv.TabIndex = 43;
+            this.lbErrorIDProv.Text = "Error";
+            this.lbErrorIDProv.Visible = false;
             // 
             // panelModificarPro
             // 
@@ -1073,148 +1218,6 @@
             this.horafecha.Enabled = true;
             this.horafecha.Tick += new System.EventHandler(this.horafecha_Tick);
             // 
-            // panelBorrarPro
-            // 
-            this.panelBorrarPro.Controls.Add(this.descBorr);
-            this.panelBorrarPro.Controls.Add(this.btnAceptarBorrar);
-            this.panelBorrarPro.Controls.Add(this.panelConfBorrProv);
-            this.panelBorrarPro.Controls.Add(this.cbIDProvBorr);
-            this.panelBorrarPro.Controls.Add(this.lbErrorIDProv);
-            this.panelBorrarPro.Location = new System.Drawing.Point(3, 3);
-            this.panelBorrarPro.Name = "panelBorrarPro";
-            this.panelBorrarPro.Size = new System.Drawing.Size(558, 334);
-            this.panelBorrarPro.TabIndex = 54;
-            // 
-            // descBorr
-            // 
-            this.descBorr.Enabled = false;
-            this.descBorr.Font = new System.Drawing.Font("Reem Kufi", 9.7F);
-            this.descBorr.Location = new System.Drawing.Point(19, 231);
-            this.descBorr.Name = "descBorr";
-            this.descBorr.Size = new System.Drawing.Size(516, 37);
-            this.descBorr.TabIndex = 71;
-            this.descBorr.Text = "Una vez borrado el proveedor, no se podrá recuperar.\n";
-            // 
-            // btnAceptarBorrar
-            // 
-            this.btnAceptarBorrar.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnAceptarBorrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAceptarBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnAceptarBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptarBorrar.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnAceptarBorrar.ForeColor = System.Drawing.Color.White;
-            this.btnAceptarBorrar.Location = new System.Drawing.Point(19, 274);
-            this.btnAceptarBorrar.Name = "btnAceptarBorrar";
-            this.btnAceptarBorrar.Size = new System.Drawing.Size(516, 30);
-            this.btnAceptarBorrar.TabIndex = 70;
-            this.btnAceptarBorrar.Text = "BORRAR";
-            this.btnAceptarBorrar.UseVisualStyleBackColor = false;
-            this.btnAceptarBorrar.Click += new System.EventHandler(this.btnAceptarBorrar_Click);
-            this.btnAceptarBorrar.MouseLeave += new System.EventHandler(this.btnAceptarBorrar_MouseLeave);
-            this.btnAceptarBorrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAceptarBorrar_MouseMove);
-            // 
-            // panelConfBorrProv
-            // 
-            this.panelConfBorrProv.Controls.Add(this.btnNoBorr);
-            this.panelConfBorrProv.Controls.Add(this.btnSiBorr);
-            this.panelConfBorrProv.Controls.Add(this.lbb);
-            this.panelConfBorrProv.Location = new System.Drawing.Point(19, 120);
-            this.panelConfBorrProv.Name = "panelConfBorrProv";
-            this.panelConfBorrProv.Size = new System.Drawing.Size(516, 93);
-            this.panelConfBorrProv.TabIndex = 69;
-            this.panelConfBorrProv.Visible = false;
-            // 
-            // btnNoBorr
-            // 
-            this.btnNoBorr.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnNoBorr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnNoBorr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnNoBorr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNoBorr.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnNoBorr.ForeColor = System.Drawing.Color.White;
-            this.btnNoBorr.Location = new System.Drawing.Point(266, 50);
-            this.btnNoBorr.Name = "btnNoBorr";
-            this.btnNoBorr.Size = new System.Drawing.Size(199, 30);
-            this.btnNoBorr.TabIndex = 52;
-            this.btnNoBorr.Text = "NO";
-            this.btnNoBorr.UseVisualStyleBackColor = false;
-            this.btnNoBorr.Click += new System.EventHandler(this.btnNoBorr_Click);
-            this.btnNoBorr.MouseLeave += new System.EventHandler(this.btnNoBorr_MouseLeave);
-            this.btnNoBorr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnNoBorr_MouseMove);
-            // 
-            // btnSiBorr
-            // 
-            this.btnSiBorr.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnSiBorr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSiBorr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnSiBorr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSiBorr.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnSiBorr.ForeColor = System.Drawing.Color.White;
-            this.btnSiBorr.Location = new System.Drawing.Point(56, 50);
-            this.btnSiBorr.Name = "btnSiBorr";
-            this.btnSiBorr.Size = new System.Drawing.Size(204, 30);
-            this.btnSiBorr.TabIndex = 51;
-            this.btnSiBorr.Text = "SÍ";
-            this.btnSiBorr.UseVisualStyleBackColor = false;
-            this.btnSiBorr.Click += new System.EventHandler(this.btnSiBorr_Click);
-            this.btnSiBorr.MouseLeave += new System.EventHandler(this.btnSiBorr_MouseLeave);
-            this.btnSiBorr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnSiBorr_MouseMove);
-            // 
-            // lbb
-            // 
-            this.lbb.AutoSize = true;
-            this.lbb.Font = new System.Drawing.Font("Reem Kufi", 10F);
-            this.lbb.Location = new System.Drawing.Point(115, 11);
-            this.lbb.Name = "lbb";
-            this.lbb.Size = new System.Drawing.Size(272, 26);
-            this.lbb.TabIndex = 0;
-            this.lbb.Text = "¿Seguro que quieres eliminar el proveedor?";
-            // 
-            // cbIDProvBorr
-            // 
-            this.cbIDProvBorr.BackColor = System.Drawing.Color.White;
-            this.cbIDProvBorr.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbIDProvBorr.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbIDProvBorr.FormattingEnabled = true;
-            this.cbIDProvBorr.Location = new System.Drawing.Point(19, 23);
-            this.cbIDProvBorr.Name = "cbIDProvBorr";
-            this.cbIDProvBorr.Size = new System.Drawing.Size(516, 36);
-            this.cbIDProvBorr.TabIndex = 68;
-            this.cbIDProvBorr.SelectedIndexChanged += new System.EventHandler(this.cbIDProvBorr_SelectedIndexChanged);
-            // 
-            // lbErrorIDProv
-            // 
-            this.lbErrorIDProv.AutoSize = true;
-            this.lbErrorIDProv.BackColor = System.Drawing.Color.White;
-            this.lbErrorIDProv.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
-            this.lbErrorIDProv.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorIDProv.Location = new System.Drawing.Point(19, 71);
-            this.lbErrorIDProv.Name = "lbErrorIDProv";
-            this.lbErrorIDProv.Size = new System.Drawing.Size(41, 23);
-            this.lbErrorIDProv.TabIndex = 43;
-            this.lbErrorIDProv.Text = "Error";
-            this.lbErrorIDProv.Visible = false;
-            // 
-            // panelPortada
-            // 
-            this.panelPortada.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panelPortada.Controls.Add(this.pictureBox1);
-            this.panelPortada.Location = new System.Drawing.Point(3, 3);
-            this.panelPortada.Name = "panelPortada";
-            this.panelPortada.Size = new System.Drawing.Size(558, 334);
-            this.panelPortada.TabIndex = 58;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(157, 60);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(247, 193);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // FormProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1237,18 +1240,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).EndInit();
             this.panelIzquierdo.ResumeLayout(false);
+            this.panelPortada.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelBorrarPro.ResumeLayout(false);
+            this.panelBorrarPro.PerformLayout();
+            this.panelConfBorrProv.ResumeLayout(false);
+            this.panelConfBorrProv.PerformLayout();
             this.panelModificarPro.ResumeLayout(false);
             this.panelModificarPro.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tipoProvMod)).EndInit();
             this.panelAñadirPro.ResumeLayout(false);
             this.panelAñadirPro.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tipoProv)).EndInit();
-            this.panelBorrarPro.ResumeLayout(false);
-            this.panelBorrarPro.PerformLayout();
-            this.panelConfBorrProv.ResumeLayout(false);
-            this.panelConfBorrProv.PerformLayout();
-            this.panelPortada.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

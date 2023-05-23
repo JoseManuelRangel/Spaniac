@@ -552,6 +552,7 @@ namespace Spaniac.Formularios.Internos.Clientes
 
                     rellenaTablaClientes();
                     inicializaDatos("Modificar");
+                    cnx.Close();
                 }
                 catch (Exception ex)
                 {
