@@ -93,5 +93,64 @@ namespace Spaniac.Formularios.Internos.Configuración
         }
 
 
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                            GESTION DE EVENTOS DEL BOTÓN EDITAR ROLES                            */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void editarRoles_Click(object sender, EventArgs e)
+        {
+            EditarRoles form = new EditarRoles(usuario);
+            form.Show();
+        }
+
+        private void editarRoles_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void editarRoles_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                            GESTION DE EVENTOS DEL BOTÓN BORRAR ROLES                            */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void borrarUsuario_Click(object sender, EventArgs e)
+        {
+            BorrarUsers form = new BorrarUsers(usuario);
+            form.Show();
+        }
+
+        private void borrarUsuario_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void borrarUsuario_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                            GESTION DE EVENTOS DEL BOTÓN CRÉDITOS                                */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void creditos_Click(object sender, EventArgs e)
+        {
+            Creditos form = new Creditos();
+            form.Show();
+        }
+
+        private void creditos_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void creditos_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
     }
 }

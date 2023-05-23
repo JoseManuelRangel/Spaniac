@@ -90,7 +90,7 @@
             // 
             // lbDescAviso
             // 
-            this.lbDescAviso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbDescAviso.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbDescAviso.Font = new System.Drawing.Font("Reem Kufi", 12F);
             this.lbDescAviso.Location = new System.Drawing.Point(146, 79);
             this.lbDescAviso.Name = "lbDescAviso";

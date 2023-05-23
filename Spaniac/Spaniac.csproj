@@ -150,6 +150,24 @@
     <Compile Include="Formularios\Internos\Clientes\FormListarClientes.Designer.cs">
       <DependentUpon>FormListarClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Internos\Configuración\BorrarUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Internos\Configuración\BorrarUsers.Designer.cs">
+      <DependentUpon>BorrarUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Internos\Configuración\Creditos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Internos\Configuración\Creditos.Designer.cs">
+      <DependentUpon>Creditos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Internos\Configuración\EditarRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Internos\Configuración\EditarRoles.Designer.cs">
+      <DependentUpon>EditarRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Internos\Configuración\FormConfiguracion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +257,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\Clientes\FormListarClientes.resx">
       <DependentUpon>FormListarClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Internos\Configuración\BorrarUsers.resx">
+      <DependentUpon>BorrarUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Internos\Configuración\Creditos.resx">
+      <DependentUpon>Creditos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Internos\Configuración\EditarRoles.resx">
+      <DependentUpon>EditarRoles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\Configuración\FormConfiguracion.resx">
       <DependentUpon>FormConfiguracion.cs</DependentUpon>

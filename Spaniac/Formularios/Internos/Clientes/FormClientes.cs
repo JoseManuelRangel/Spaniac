@@ -898,11 +898,10 @@ namespace Spaniac.Formularios.Internos.Clientes
             cbIDClienteBorr.Items.Clear();
             cbIDClienteBorr.Items.Add(" ");
 
-            string sql = "SELECT * FROM Cliente";
-            SqlConnection cnx = new SqlConnection(conection);
-
             try
             {
+                string sql = "SELECT * FROM Cliente";
+                SqlConnection cnx = new SqlConnection(conection);
                 cnx.Open();
 
                 SqlCommand command = new SqlCommand(sql, cnx);

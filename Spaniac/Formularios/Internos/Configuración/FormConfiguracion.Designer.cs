@@ -267,6 +267,9 @@
             this.editarRoles.Size = new System.Drawing.Size(259, 214);
             this.editarRoles.TabIndex = 52;
             this.editarRoles.UseVisualStyleBackColor = false;
+            this.editarRoles.Click += new System.EventHandler(this.editarRoles_Click);
+            this.editarRoles.MouseLeave += new System.EventHandler(this.editarRoles_MouseLeave);
+            this.editarRoles.MouseMove += new System.Windows.Forms.MouseEventHandler(this.editarRoles_MouseMove);
             // 
             // borrarUsuario
             // 
@@ -278,6 +281,9 @@
             this.borrarUsuario.Size = new System.Drawing.Size(259, 214);
             this.borrarUsuario.TabIndex = 53;
             this.borrarUsuario.UseVisualStyleBackColor = false;
+            this.borrarUsuario.Click += new System.EventHandler(this.borrarUsuario_Click);
+            this.borrarUsuario.MouseLeave += new System.EventHandler(this.borrarUsuario_MouseLeave);
+            this.borrarUsuario.MouseMove += new System.Windows.Forms.MouseEventHandler(this.borrarUsuario_MouseMove);
             // 
             // creditos
             // 
@@ -289,6 +295,9 @@
             this.creditos.Size = new System.Drawing.Size(259, 214);
             this.creditos.TabIndex = 54;
             this.creditos.UseVisualStyleBackColor = false;
+            this.creditos.Click += new System.EventHandler(this.creditos_Click);
+            this.creditos.MouseLeave += new System.EventHandler(this.creditos_MouseLeave);
+            this.creditos.MouseMove += new System.Windows.Forms.MouseEventHandler(this.creditos_MouseMove);
             // 
             // horafecha
             // 
