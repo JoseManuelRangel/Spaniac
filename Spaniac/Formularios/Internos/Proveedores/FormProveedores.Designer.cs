@@ -216,6 +216,8 @@
             this.btnMenuEXCEL.TabIndex = 51;
             this.btnMenuEXCEL.UseVisualStyleBackColor = false;
             this.btnMenuEXCEL.Click += new System.EventHandler(this.btnMenuEXCEL_Click);
+            this.btnMenuEXCEL.MouseLeave += new System.EventHandler(this.btnMenuEXCEL_MouseLeave);
+            this.btnMenuEXCEL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMenuEXCEL_MouseMove);
             // 
             // panelMenuJson
             // 
@@ -280,6 +282,8 @@
             this.btnMenuJSON.TabIndex = 49;
             this.btnMenuJSON.UseVisualStyleBackColor = false;
             this.btnMenuJSON.Click += new System.EventHandler(this.btnMenuJSON_Click);
+            this.btnMenuJSON.MouseLeave += new System.EventHandler(this.btnMenuJSON_MouseLeave);
+            this.btnMenuJSON.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMenuJSON_MouseMove);
             // 
             // panelMenuXml
             // 
@@ -344,6 +348,8 @@
             this.btnMenuXml.TabIndex = 47;
             this.btnMenuXml.UseVisualStyleBackColor = false;
             this.btnMenuXml.Click += new System.EventHandler(this.btnMenuXml_Click);
+            this.btnMenuXml.MouseLeave += new System.EventHandler(this.btnMenuXml_MouseLeave);
+            this.btnMenuXml.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMenuXml_MouseMove);
             // 
             // dgvProveedores
             // 

@@ -1,4 +1,5 @@
-﻿using Spaniac.Clases;
+﻿using DocumentFormat.OpenXml.Office2010.Drawing.Charts;
+using Spaniac.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,7 @@ namespace Spaniac.Formularios.Internos.Proveedores
         static string tipoArchivo;
 
         /* Listas que almacenan los datos del XML cargado y los muestra en los controles de texto. */
-        static List<string> listaDNIs = new List<string>();
+        static List<string> listaCIFs = new List<string>();
         static List<string> listaNombres = new List<string>();
         static List<string> listaTipos = new List<string>();
         static List<string> listaFechas = new List<string>();
@@ -58,10 +59,9 @@ namespace Spaniac.Formularios.Internos.Proveedores
             cargaXML();
             tipoArchivo = "XML";
 
-            if (listaDNIs.Count > 0 && listaNombres.Count > 0 && listaTipos.Count > 0 && listaFechas.Count > 0
-                && listaLocalidades.Count > 0 && listaDirecciones.Count > 0 && listaTelefonos.Count > 0)
+            if (listaCIFs.Count > 0)
             {
-                txtID.Text = listaDNIs[0];
+                txtID.Text = listaCIFs[0];
                 txtNombre.Text = listaNombres[0];
                 txtTipoProv.Text = listaTipos[0];
                 txtFecha.Text = listaFechas[0];
@@ -297,18 +297,19 @@ namespace Spaniac.Formularios.Internos.Proveedores
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(rutaxml);
+                int i = 1;
 
                 foreach (XmlNode n1 in doc.DocumentElement.ChildNodes)
                 {
-                    listadoCompleto.Text += "<" + n1.Name + ">";
+                    listadoCompleto.Text += "Proveedor " + i;
                     if (n1.HasChildNodes)
                     {
                         foreach (XmlNode n2 in n1.ChildNodes)
                         {
                             switch (n2.Name)
                             {
-                                case "DNI":
-                                    listaDNIs.Add(n2.InnerText);
+                                case "CIF":
+                                    listaCIFs.Add(n2.InnerText);
                                     break;
                                 case "Nombre":
                                     listaNombres.Add(n2.InnerText);
@@ -329,11 +330,11 @@ namespace Spaniac.Formularios.Internos.Proveedores
                                     listaTelefonos.Add(n2.InnerText);
                                     break;
                             }
-                            listadoCompleto.Text += Environment.NewLine + "      <" + n2.Name + ">" + n2.InnerText + "</" + n2.Name + ">";
+                            listadoCompleto.Text += Environment.NewLine + n2.Name + ": " + n2.InnerText;
                         }
                     }
-                    listadoCompleto.Text += Environment.NewLine + "</ " + n1.Name + ">" + Environment.NewLine + Environment.NewLine;
-
+                    listadoCompleto.Text += Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    i++;
                 }
             }
             catch (Exception ex)
@@ -401,7 +402,7 @@ namespace Spaniac.Formularios.Internos.Proveedores
             switch (orden)
             {
                 case "XML":
-                    registroXML = listaDNIs.Count - 1;
+                    registroXML = listaCIFs.Count - 1;
 
                     cambiaControles("XML");
                     break;
@@ -423,7 +424,7 @@ namespace Spaniac.Formularios.Internos.Proveedores
             switch (orden)
             {
                 case "XML":
-                    if (registroXML < listaDNIs.Count - 1)
+                    if (registroXML < listaCIFs.Count - 1)
                     {
                         registroXML += 1;
 
@@ -454,7 +455,7 @@ namespace Spaniac.Formularios.Internos.Proveedores
             switch (orden)
             {
                 case "XML":
-                    txtID.Text = listaDNIs[registroXML];
+                    txtID.Text = listaCIFs[registroXML];
                     txtNombre.Text = listaNombres[registroXML];
                     txtTipoProv.Text = listaTipos[registroXML];
                     txtFecha.Text = listaFechas[registroXML];

@@ -240,6 +240,8 @@
             this.btnMenuExcel.TabIndex = 49;
             this.btnMenuExcel.UseVisualStyleBackColor = false;
             this.btnMenuExcel.Click += new System.EventHandler(this.btnMenuExcel_Click);
+            this.btnMenuExcel.MouseLeave += new System.EventHandler(this.btnMenuExcel_MouseLeave);
+            this.btnMenuExcel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMenuExcel_MouseMove);
             // 
             // panelMenuJSON
             // 
@@ -303,6 +305,8 @@
             this.btnMenuJSON.TabIndex = 47;
             this.btnMenuJSON.UseVisualStyleBackColor = false;
             this.btnMenuJSON.Click += new System.EventHandler(this.btnMenuJSON_Click);
+            this.btnMenuJSON.MouseLeave += new System.EventHandler(this.btnMenuJSON_MouseLeave);
+            this.btnMenuJSON.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMenuJSON_MouseMove);
             // 
             // panelMenuXml
             // 
@@ -366,6 +370,8 @@
             this.btnMenuXml.TabIndex = 1;
             this.btnMenuXml.UseVisualStyleBackColor = false;
             this.btnMenuXml.Click += new System.EventHandler(this.btnMenuXml_Click);
+            this.btnMenuXml.MouseLeave += new System.EventHandler(this.btnMenuXml_MouseLeave);
+            this.btnMenuXml.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMenuXml_MouseMove);
             // 
             // dgvAlmacenes
             // 

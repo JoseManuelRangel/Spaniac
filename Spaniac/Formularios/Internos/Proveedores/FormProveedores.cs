@@ -53,10 +53,15 @@ namespace Spaniac.Formularios.Internos.Proveedores
         public FormProveedores()
         {
             InitializeComponent();
+            inicializarControles();
 
             rellenaComboBoxCIFProveedor();
             rellenaTablaProveedores();
             rellenaCbDatosProveedores();
+
+            EstilosTabla estilos = new EstilosTabla(this.dgvProveedores);
+            estilos.estiloCabecera();
+            estilos.estiloFila();
         }
 
 
@@ -86,6 +91,17 @@ namespace Spaniac.Formularios.Internos.Proveedores
                 pXml = false;
             }
         }
+
+        private void btnMenuXml_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnMenuXml_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
 
         /*                      Gestión de eventos del botón generar XML del menú XML                      */
         private void btnGenXML_Click(object sender, EventArgs e)
@@ -139,6 +155,17 @@ namespace Spaniac.Formularios.Internos.Proveedores
                 pJson = false;
             }
         }
+
+        private void btnMenuJSON_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnMenuJSON_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
 
         /*                      Gestión de eventos del botón generar JSON del menú JSON                    */
         private void btnGenJSON_Click(object sender, EventArgs e)
@@ -194,6 +221,17 @@ namespace Spaniac.Formularios.Internos.Proveedores
             }
         }
 
+        private void btnMenuEXCEL_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnMenuEXCEL_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
         /*                      Gestión de eventos del botón generar EXCEL del menú EXCEL                      */
         private void btnGenEXCEL_Click(object sender, EventArgs e)
         {
@@ -242,7 +280,6 @@ namespace Spaniac.Formularios.Internos.Proveedores
             panelBorrarPro.Visible = false;
             panelPortada.Visible = false;
             inicializaDatos("Añadir");
-            
         }
 
         private void btnAñadir_MouseMove(object sender, MouseEventArgs e)
@@ -862,7 +899,7 @@ namespace Spaniac.Formularios.Internos.Proveedores
                         {
                             foreach (XmlNode n2 in n1.ChildNodes)
                             {
-                                if (n2.Name.Equals("ID") || n2.Name.Equals("Nombre") || n2.Name.Equals("TipoProveedor") || n2.Name.Equals("FechaRegistro")
+                                if (n2.Name.Equals("CIF") || n2.Name.Equals("Nombre") || n2.Name.Equals("TipoProveedor") || n2.Name.Equals("FechaRegistro")
                                     || n2.Name.Equals("Localidad") || n2.Name.Equals("Direccion") || n2.Name.Equals("Telefono"))
                                 {
                                     if (!nodosXML.Contains(n2.Name))
@@ -1097,6 +1134,61 @@ namespace Spaniac.Formularios.Internos.Proveedores
                 case "Borrar":
                     cbIDProvBorr.SelectedIndex = 0;
                     break;
+            }
+        }
+
+        private void inicializarControles()
+        {
+            panelPortada.Visible = true;
+
+            panelAñadirPro.Visible = false;
+
+            panelModificarPro.Visible = false;
+            lbErrorCIFMod.Text = "Selecciona un proveedor a modificar.";
+            lbErrorCIFMod.Visible = true;
+
+            panelBorrarPro.Visible = false;
+
+            panelMenuXml.Visible = false;
+            panelMenuJson.Visible = false;
+            panelMenuExcel.Visible = false;
+
+            try
+            {
+                int contador = 0;
+                string sql = "SELECT * FROM Proveedor";
+                SqlConnection cnx = new SqlConnection(conection);
+
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    contador++;
+                }
+
+                if (contador == 0)
+                {
+                    DatosProveedor datosProveedor = new DatosProveedor();
+                    datosProveedor.Cif = "Z00000000";
+                    datosProveedor.Nombre = "Prueba";
+                    datosProveedor.TipoProveedor = 0;
+                    datosProveedor.FechaRegistro = DateTime.Parse(DateTime.UtcNow.ToString());
+                    datosProveedor.Localidad = "Prueba";
+                    datosProveedor.Direccion = "Prueba";
+                    datosProveedor.Telefono = "000000000";
+                    datosProveedor.guardarCambios();
+                    rellenaTablaProveedores();
+                }
+
+                cnx.Close();
+            }
+            catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
             }
         }
 

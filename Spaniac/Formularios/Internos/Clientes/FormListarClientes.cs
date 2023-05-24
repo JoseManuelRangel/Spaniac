@@ -29,7 +29,7 @@ namespace Spaniac.Formularios.Internos.Clientes
         static string tipoArchivo;
 
         /* Listas que almacenan los datos del XML cargado y los muestra en los controles de texto. */
-        static List<string> listaDNIs = new List<string>();
+        static List<string> listaIDS = new List<string>();
         static List<string> listaNombres = new List<string>();
         static List<string> listaFechas = new List<string>();
         static List<string> listaLocalidades = new List<string>();
@@ -58,10 +58,9 @@ namespace Spaniac.Formularios.Internos.Clientes
             cargaXML();
             tipoArchivo = "XML";
 
-            if (listaDNIs.Count > 0 && listaNombres.Count > 0 && listaFechas.Count > 0
-                && listaLocalidades.Count > 0 && listaDirecciones.Count > 0 && listaTelefonos.Count > 0)
+            if (listaIDS.Count > 0)
             {
-                txtID.Text = listaDNIs[0];
+                txtID.Text = listaIDS[0];
                 txtNombre.Text = listaNombres[0];
                 txtFecha.Text = listaFechas[0];
                 txtLocalidad.Text = listaLocalidades[0];
@@ -294,18 +293,19 @@ namespace Spaniac.Formularios.Internos.Clientes
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(rutaxml);
+                int i = 1;
 
                 foreach (XmlNode n1 in doc.DocumentElement.ChildNodes)
                 {
-                    listadoCompleto.Text += "<" + n1.Name + ">";
+                    listadoCompleto.Text += "Cliente " + i;
                     if (n1.HasChildNodes)
                     {
                         foreach (XmlNode n2 in n1.ChildNodes)
                         {
                             switch (n2.Name)
                             {
-                                case "DNI":
-                                    listaDNIs.Add(n2.InnerText);
+                                case "ID":
+                                    listaIDS.Add(n2.InnerText);
                                     break;
                                 case "Nombre":
                                     listaNombres.Add(n2.InnerText);
@@ -323,11 +323,11 @@ namespace Spaniac.Formularios.Internos.Clientes
                                     listaTelefonos.Add(n2.InnerText);
                                     break;
                             }
-                            listadoCompleto.Text += Environment.NewLine + "      <" + n2.Name + ">" + n2.InnerText + "</" + n2.Name + ">";
+                            listadoCompleto.Text += Environment.NewLine + n2.Name + ": " + n2.InnerText;
                         }
                     }
-                    listadoCompleto.Text += Environment.NewLine + "</ " + n1.Name + ">" + Environment.NewLine + Environment.NewLine;
-
+                    listadoCompleto.Text += Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    i++;
                 }
             }
             catch (Exception ex)
@@ -395,7 +395,7 @@ namespace Spaniac.Formularios.Internos.Clientes
             switch (orden)
             {
                 case "XML":
-                    registroXML = listaDNIs.Count - 1;
+                    registroXML = listaIDS.Count - 1;
 
                     cambiaControles("XML");
                     break;
@@ -417,7 +417,7 @@ namespace Spaniac.Formularios.Internos.Clientes
             switch (orden)
             {
                 case "XML":
-                    if (registroXML < listaDNIs.Count - 1)
+                    if (registroXML < listaIDS.Count - 1)
                     {
                         registroXML += 1;
 
@@ -448,7 +448,7 @@ namespace Spaniac.Formularios.Internos.Clientes
             switch (orden)
             {
                 case "XML":
-                    txtID.Text = listaDNIs[registroXML];
+                    txtID.Text = listaIDS[registroXML];
                     txtNombre.Text = listaNombres[registroXML];
                     txtFecha.Text = listaFechas[registroXML];
                     txtLocalidad.Text = listaLocalidades[registroXML];

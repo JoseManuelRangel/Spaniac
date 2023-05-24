@@ -76,6 +76,7 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
         private void btnAñadirC_Click(object sender, EventArgs e)
         {
             panelAñadirC.Visible = true;
+            panelModificarC.Visible = false;
         }
 
         private void btnAñadirC_MouseMove(object sender, MouseEventArgs e)
@@ -93,6 +94,7 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
         private void btnModificarC_Click(object sender, EventArgs e)
         {
             panelModificarC.Visible = true;
+            panelAñadirC.Visible = false;
         }
 
         private void btnModificarC_MouseMove(object sender, MouseEventArgs e)

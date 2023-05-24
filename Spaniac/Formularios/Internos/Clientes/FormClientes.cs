@@ -57,6 +57,10 @@ namespace Spaniac.Formularios.Internos.Clientes
             rellenaTablaClientes();
             rellenaCbDatosCliente();
             rellenaComboBoxIDCliente();
+
+            EstilosTabla estilos = new EstilosTabla(this.dgvClientes);
+            estilos.estiloCabecera();
+            estilos.estiloFila();
         }
 
 
@@ -85,6 +89,17 @@ namespace Spaniac.Formularios.Internos.Clientes
                 pXml = false;
             }
         }
+
+        private void btnMenuXml_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnMenuXml_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
 
         /*                      Gestión de eventos del botón generar XML del menú XML                      */
         private void btnGenXML_Click(object sender, EventArgs e)
@@ -140,6 +155,17 @@ namespace Spaniac.Formularios.Internos.Clientes
             }
         }
 
+        private void btnMenuJSON_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnMenuJSON_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
         /*                      Gestión de eventos del botón generar JSON del menú JSON                      */
         private void btnGenJSON_Click(object sender, EventArgs e)
         {
@@ -193,6 +219,17 @@ namespace Spaniac.Formularios.Internos.Clientes
                 pExcel = false;
             }
         }
+
+        private void btnMenuEXCEL_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnMenuEXCEL_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
 
         /*                      Gestión de eventos del botón generar EXCEL del menú EXCEL                      */
         private void btnGenEXCEL_Click(object sender, EventArgs e)
@@ -736,6 +773,43 @@ namespace Spaniac.Formularios.Internos.Clientes
             panelMenuExcel.Visible = false;
             panelMenuJson.Visible = false;
             panelMenuXml.Visible = false;
+
+            try
+            {
+                int contador = 0;
+                string sql = "SELECT * FROM Cliente";
+                SqlConnection cnx = new SqlConnection(conection);
+
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                while (lector.Read())
+                {
+                    contador++;
+                }
+
+                if (contador == 0)
+                {
+                    DatosCliente datosCliente = new DatosCliente();
+                    datosCliente.ID = "00000000Z";
+                    datosCliente.Nombre = "Prueba";
+                    datosCliente.FechaRegistro = DateTime.Parse(DateTime.UtcNow.ToString());
+                    datosCliente.Localidad = "Prueba";
+                    datosCliente.Direccion = "Prueba";
+                    datosCliente.Telefono = "000000000";
+                    datosCliente.guardarCambios();
+                    rellenaTablaClientes();
+                }
+
+                cnx.Close();
+            }
+            catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
         }
 
         private void inicializaDatos(string opcion)

@@ -66,6 +66,10 @@ namespace Spaniac.Formularios.Internos.Almacenes
             rellenaTablaAlmacenes();
             rellenaCbDatosAlmacen();
             rellenaComboBoxIDAlm();
+
+            EstilosTabla estilos = new EstilosTabla(this.dgvAlmacenes);
+            estilos.estiloCabecera();
+            estilos.estiloFila();
         }
 
 
@@ -94,6 +98,17 @@ namespace Spaniac.Formularios.Internos.Almacenes
                 pXml = false;
             }
         }
+
+        private void btnMenuXml_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnMenuXml_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
 
         /*                      Gestión de eventos del botón generar XML del menú XML                      */
         private void btnGenXML_Click(object sender, EventArgs e)
@@ -149,6 +164,17 @@ namespace Spaniac.Formularios.Internos.Almacenes
             }
         }
 
+        private void btnMenuJSON_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnMenuJSON_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
         /*                      Gestión de eventos del botón generar JSON del menú JSON                    */
         private void btnGenJSON_Click(object sender, EventArgs e)
         {
@@ -202,6 +228,16 @@ namespace Spaniac.Formularios.Internos.Almacenes
                 panelMenuExcel.Visible = false;
                 pExcel = false;
             }
+        }
+
+        private void btnMenuExcel_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnMenuExcel_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
         }
 
 
@@ -822,18 +858,50 @@ namespace Spaniac.Formularios.Internos.Almacenes
             panelMenuExcel.Visible = false;
             panelMenuJSON.Visible = false;
             panelMenuXml.Visible = false;
+
+            try
+            {
+                int contador = 0;
+                string sql = "SELECT * FROM Almacen";
+                SqlConnection cnx = new SqlConnection(conection);
+
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                while(lector.Read())
+                {
+                    contador++;
+                }
+
+                if(contador == 0)
+                {
+                    DatosAlmacen datosAlmacen = new DatosAlmacen();
+                    datosAlmacen.Activo = 0;
+                    datosAlmacen.Nombre = "Prueba";
+                    datosAlmacen.guardarCambios();
+                    rellenaTablaAlmacenes();
+                }
+
+                cnx.Close();
+            } catch(Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
         }
 
         private void inicializaDatos()
         {
-            txtNombre.Text = "";
+            txtNombre.Text = "Nombre";
             cbAct1.Checked = false;
             cbAct2.Checked = false;
 
             cbDatosA.SelectedIndex = 0;
             cbIDAMod.SelectedIndex = 0;
 
-            txtNombreAMod.Text = "";
+            txtNombreAMod.Text = "Nombre";
             txtNombreAMod.Enabled = false;
             cbAct1Mod.Checked = false;
             cbAct2Mod.Checked = false;

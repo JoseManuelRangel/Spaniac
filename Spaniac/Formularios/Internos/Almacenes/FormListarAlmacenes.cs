@@ -271,10 +271,11 @@ namespace Spaniac.Formularios.Internos.Almacenes
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(rutaxml);
+                int i = 1;
 
                 foreach (XmlNode n1 in doc.DocumentElement.ChildNodes)
                 {
-                    listadoCompleto.Text += "<" + n1.Name + ">";
+                    listadoCompleto.Text += "Almacen " + i;
                     if (n1.HasChildNodes)
                     {
                         foreach (XmlNode n2 in n1.ChildNodes)
@@ -291,11 +292,11 @@ namespace Spaniac.Formularios.Internos.Almacenes
                                     listaNombres.Add(n2.InnerText);
                                     break;
                             }
-                            listadoCompleto.Text += Environment.NewLine + "      <" + n2.Name + ">" + n2.InnerText + "</" + n2.Name + ">";
+                            listadoCompleto.Text += Environment.NewLine + n2.Name + ": " + n2.InnerText;
                         }
                     }
-                    listadoCompleto.Text += Environment.NewLine + "</ " + n1.Name + ">" + Environment.NewLine + Environment.NewLine;
-
+                    listadoCompleto.Text += Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    i++;
                 }
             }
             catch (Exception ex)

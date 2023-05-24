@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Clases\Almacen.cs" />
     <Compile Include="Clases\Cliente.cs" />
+    <Compile Include="Clases\EstilosTabla.cs" />
     <Compile Include="Clases\Proveedor.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Formularios\Externos\FormCarga.cs">
