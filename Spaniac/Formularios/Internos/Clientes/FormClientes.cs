@@ -1686,6 +1686,5 @@ namespace Spaniac.Formularios.Internos.Clientes
                 form.Show();
             }
         }
-
     }
 }
