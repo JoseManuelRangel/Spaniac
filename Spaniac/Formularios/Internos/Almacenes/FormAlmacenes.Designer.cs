@@ -56,57 +56,57 @@
             this.cbDatosA = new System.Windows.Forms.ComboBox();
             this.lbBuscarA = new System.Windows.Forms.Label();
             this.barra4 = new System.Windows.Forms.Panel();
-            this.panelIzquierdo = new System.Windows.Forms.Panel();
-            this.panelBorrarAlmacen = new System.Windows.Forms.Panel();
-            this.panelPortada = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panelConfBorr = new System.Windows.Forms.Panel();
-            this.btnNoBorr = new System.Windows.Forms.Button();
-            this.btnSiBorr = new System.Windows.Forms.Button();
-            this.lbb = new System.Windows.Forms.Label();
-            this.descBorr = new System.Windows.Forms.RichTextBox();
-            this.btnAceptarBorrar = new System.Windows.Forms.Button();
-            this.lbErrorIDABorr = new System.Windows.Forms.Label();
-            this.cbIDABorr = new System.Windows.Forms.ComboBox();
-            this.panelModificarAlmacen = new System.Windows.Forms.Panel();
-            this.btnGuardarMod = new System.Windows.Forms.Button();
-            this.lbErrorIDAMod = new System.Windows.Forms.Label();
-            this.cbIDAMod = new System.Windows.Forms.ComboBox();
-            this.lbErrorEstadoMod = new System.Windows.Forms.Label();
-            this.btnLimpiarMod = new System.Windows.Forms.Button();
-            this.cbAct2Mod = new System.Windows.Forms.CheckBox();
-            this.cbAct1Mod = new System.Windows.Forms.CheckBox();
-            this.lbErrorNombreAMod = new System.Windows.Forms.Label();
-            this.txtNombreAMod = new System.Windows.Forms.TextBox();
-            this.lbNombreAMod = new System.Windows.Forms.Label();
-            this.panelAñadirAlmacen = new System.Windows.Forms.Panel();
-            this.lbErrorEstado = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.btnAceptarAAdd = new System.Windows.Forms.Button();
-            this.cbAct2 = new System.Windows.Forms.CheckBox();
-            this.cbAct1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lbErrorNom = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.lbNombre = new System.Windows.Forms.Label();
             this.btnBorra = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAñadir = new System.Windows.Forms.Button();
             this.barra3 = new System.Windows.Forms.Panel();
             this.horafecha = new System.Windows.Forms.Timer(this.components);
+            this.panelAñadirAlmacen = new System.Windows.Forms.Panel();
+            this.lbNombre = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.lbErrorNom = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cbAct1 = new System.Windows.Forms.CheckBox();
+            this.cbAct2 = new System.Windows.Forms.CheckBox();
+            this.btnAceptarAAdd = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.lbErrorEstado = new System.Windows.Forms.Label();
+            this.panelModificarAlmacen = new System.Windows.Forms.Panel();
+            this.lbNombreAMod = new System.Windows.Forms.Label();
+            this.txtNombreAMod = new System.Windows.Forms.TextBox();
+            this.lbErrorNombreAMod = new System.Windows.Forms.Label();
+            this.cbAct1Mod = new System.Windows.Forms.CheckBox();
+            this.cbAct2Mod = new System.Windows.Forms.CheckBox();
+            this.btnLimpiarMod = new System.Windows.Forms.Button();
+            this.lbErrorEstadoMod = new System.Windows.Forms.Label();
+            this.cbIDAMod = new System.Windows.Forms.ComboBox();
+            this.lbErrorIDAMod = new System.Windows.Forms.Label();
+            this.btnGuardarMod = new System.Windows.Forms.Button();
+            this.panelBorrarAlmacen = new System.Windows.Forms.Panel();
+            this.cbIDABorr = new System.Windows.Forms.ComboBox();
+            this.lbErrorIDABorr = new System.Windows.Forms.Label();
+            this.btnAceptarBorrar = new System.Windows.Forms.Button();
+            this.descBorr = new System.Windows.Forms.RichTextBox();
+            this.panelConfBorr = new System.Windows.Forms.Panel();
+            this.lbb = new System.Windows.Forms.Label();
+            this.btnSiBorr = new System.Windows.Forms.Button();
+            this.btnNoBorr = new System.Windows.Forms.Button();
+            this.panelIzquierdo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelPortada = new System.Windows.Forms.Panel();
             this.panelAlmacenes.SuspendLayout();
             this.panelMenuExcel.SuspendLayout();
             this.panelMenuJSON.SuspendLayout();
             this.panelMenuXml.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).BeginInit();
-            this.panelIzquierdo.SuspendLayout();
-            this.panelBorrarAlmacen.SuspendLayout();
-            this.panelPortada.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panelConfBorr.SuspendLayout();
-            this.panelModificarAlmacen.SuspendLayout();
             this.panelAñadirAlmacen.SuspendLayout();
+            this.panelModificarAlmacen.SuspendLayout();
+            this.panelBorrarAlmacen.SuspendLayout();
+            this.panelConfBorr.SuspendLayout();
+            this.panelIzquierdo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelPortada.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbInicio
@@ -461,448 +461,6 @@
             this.barra4.Size = new System.Drawing.Size(3, 590);
             this.barra4.TabIndex = 17;
             // 
-            // panelIzquierdo
-            // 
-            this.panelIzquierdo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelIzquierdo.Controls.Add(this.panelBorrarAlmacen);
-            this.panelIzquierdo.Controls.Add(this.panelModificarAlmacen);
-            this.panelIzquierdo.Controls.Add(this.panelAñadirAlmacen);
-            this.panelIzquierdo.Location = new System.Drawing.Point(8, 20);
-            this.panelIzquierdo.Name = "panelIzquierdo";
-            this.panelIzquierdo.Size = new System.Drawing.Size(321, 507);
-            this.panelIzquierdo.TabIndex = 16;
-            // 
-            // panelBorrarAlmacen
-            // 
-            this.panelBorrarAlmacen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelBorrarAlmacen.Controls.Add(this.panelPortada);
-            this.panelBorrarAlmacen.Controls.Add(this.panelConfBorr);
-            this.panelBorrarAlmacen.Controls.Add(this.descBorr);
-            this.panelBorrarAlmacen.Controls.Add(this.btnAceptarBorrar);
-            this.panelBorrarAlmacen.Controls.Add(this.lbErrorIDABorr);
-            this.panelBorrarAlmacen.Controls.Add(this.cbIDABorr);
-            this.panelBorrarAlmacen.Location = new System.Drawing.Point(8, 12);
-            this.panelBorrarAlmacen.Name = "panelBorrarAlmacen";
-            this.panelBorrarAlmacen.Size = new System.Drawing.Size(303, 480);
-            this.panelBorrarAlmacen.TabIndex = 55;
-            // 
-            // panelPortada
-            // 
-            this.panelPortada.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panelPortada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelPortada.Controls.Add(this.pictureBox1);
-            this.panelPortada.Location = new System.Drawing.Point(3, 3);
-            this.panelPortada.Name = "panelPortada";
-            this.panelPortada.Size = new System.Drawing.Size(303, 480);
-            this.panelPortada.TabIndex = 57;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(52, 125);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(196, 176);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // panelConfBorr
-            // 
-            this.panelConfBorr.Controls.Add(this.btnNoBorr);
-            this.panelConfBorr.Controls.Add(this.btnSiBorr);
-            this.panelConfBorr.Controls.Add(this.lbb);
-            this.panelConfBorr.Location = new System.Drawing.Point(10, 98);
-            this.panelConfBorr.Name = "panelConfBorr";
-            this.panelConfBorr.Size = new System.Drawing.Size(273, 147);
-            this.panelConfBorr.TabIndex = 52;
-            this.panelConfBorr.Visible = false;
-            // 
-            // btnNoBorr
-            // 
-            this.btnNoBorr.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnNoBorr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnNoBorr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnNoBorr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNoBorr.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnNoBorr.ForeColor = System.Drawing.Color.White;
-            this.btnNoBorr.Location = new System.Drawing.Point(150, 72);
-            this.btnNoBorr.Name = "btnNoBorr";
-            this.btnNoBorr.Size = new System.Drawing.Size(115, 30);
-            this.btnNoBorr.TabIndex = 52;
-            this.btnNoBorr.Text = "NO";
-            this.btnNoBorr.UseVisualStyleBackColor = false;
-            this.btnNoBorr.Click += new System.EventHandler(this.btnNoBorr_Click);
-            this.btnNoBorr.MouseLeave += new System.EventHandler(this.btnNoBorr_MouseLeave);
-            this.btnNoBorr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnNoBorr_MouseMove);
-            // 
-            // btnSiBorr
-            // 
-            this.btnSiBorr.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnSiBorr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSiBorr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnSiBorr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSiBorr.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnSiBorr.ForeColor = System.Drawing.Color.White;
-            this.btnSiBorr.Location = new System.Drawing.Point(8, 72);
-            this.btnSiBorr.Name = "btnSiBorr";
-            this.btnSiBorr.Size = new System.Drawing.Size(115, 30);
-            this.btnSiBorr.TabIndex = 51;
-            this.btnSiBorr.Text = "SÍ";
-            this.btnSiBorr.UseVisualStyleBackColor = false;
-            this.btnSiBorr.Click += new System.EventHandler(this.btnSiBorr_Click);
-            this.btnSiBorr.MouseLeave += new System.EventHandler(this.btnSiBorr_MouseLeave);
-            this.btnSiBorr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnSiBorr_MouseMove);
-            // 
-            // lbb
-            // 
-            this.lbb.AutoSize = true;
-            this.lbb.Font = new System.Drawing.Font("Reem Kufi", 10F);
-            this.lbb.Location = new System.Drawing.Point(3, 31);
-            this.lbb.Name = "lbb";
-            this.lbb.Size = new System.Drawing.Size(262, 26);
-            this.lbb.TabIndex = 0;
-            this.lbb.Text = "¿Seguro que quieres eliminar el almacén?";
-            // 
-            // descBorr
-            // 
-            this.descBorr.Enabled = false;
-            this.descBorr.Font = new System.Drawing.Font("Reem Kufi", 9.7F);
-            this.descBorr.Location = new System.Drawing.Point(10, 255);
-            this.descBorr.Name = "descBorr";
-            this.descBorr.Size = new System.Drawing.Size(273, 158);
-            this.descBorr.TabIndex = 51;
-            this.descBorr.Text = "Una vez borrado el almacén, no se podrá recuperar.\n\nSi el almacen contiene produc" +
-    "tos, no se podrá eliminar.\n\nAl hacer click en el botón de borrar, se te pedirá u" +
-    "na confirmación.";
-            // 
-            // btnAceptarBorrar
-            // 
-            this.btnAceptarBorrar.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnAceptarBorrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAceptarBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnAceptarBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptarBorrar.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnAceptarBorrar.ForeColor = System.Drawing.Color.White;
-            this.btnAceptarBorrar.Location = new System.Drawing.Point(11, 431);
-            this.btnAceptarBorrar.Name = "btnAceptarBorrar";
-            this.btnAceptarBorrar.Size = new System.Drawing.Size(277, 30);
-            this.btnAceptarBorrar.TabIndex = 50;
-            this.btnAceptarBorrar.Text = "BORRAR";
-            this.btnAceptarBorrar.UseVisualStyleBackColor = false;
-            this.btnAceptarBorrar.Click += new System.EventHandler(this.btnAceptarBorrar_Click);
-            this.btnAceptarBorrar.MouseLeave += new System.EventHandler(this.btnAceptarBorrar_MouseLeave);
-            this.btnAceptarBorrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAceptarBorrar_MouseMove);
-            // 
-            // lbErrorIDABorr
-            // 
-            this.lbErrorIDABorr.AutoSize = true;
-            this.lbErrorIDABorr.BackColor = System.Drawing.Color.White;
-            this.lbErrorIDABorr.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
-            this.lbErrorIDABorr.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorIDABorr.Location = new System.Drawing.Point(9, 61);
-            this.lbErrorIDABorr.Name = "lbErrorIDABorr";
-            this.lbErrorIDABorr.Size = new System.Drawing.Size(41, 23);
-            this.lbErrorIDABorr.TabIndex = 48;
-            this.lbErrorIDABorr.Text = "Error";
-            this.lbErrorIDABorr.Visible = false;
-            // 
-            // cbIDABorr
-            // 
-            this.cbIDABorr.BackColor = System.Drawing.Color.White;
-            this.cbIDABorr.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbIDABorr.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbIDABorr.FormattingEnabled = true;
-            this.cbIDABorr.Location = new System.Drawing.Point(10, 15);
-            this.cbIDABorr.Name = "cbIDABorr";
-            this.cbIDABorr.Size = new System.Drawing.Size(273, 36);
-            this.cbIDABorr.TabIndex = 47;
-            this.cbIDABorr.SelectedIndexChanged += new System.EventHandler(this.cbIDABorr_SelectedIndexChanged);
-            // 
-            // panelModificarAlmacen
-            // 
-            this.panelModificarAlmacen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelModificarAlmacen.Controls.Add(this.btnGuardarMod);
-            this.panelModificarAlmacen.Controls.Add(this.lbErrorIDAMod);
-            this.panelModificarAlmacen.Controls.Add(this.cbIDAMod);
-            this.panelModificarAlmacen.Controls.Add(this.lbErrorEstadoMod);
-            this.panelModificarAlmacen.Controls.Add(this.btnLimpiarMod);
-            this.panelModificarAlmacen.Controls.Add(this.cbAct2Mod);
-            this.panelModificarAlmacen.Controls.Add(this.cbAct1Mod);
-            this.panelModificarAlmacen.Controls.Add(this.lbErrorNombreAMod);
-            this.panelModificarAlmacen.Controls.Add(this.txtNombreAMod);
-            this.panelModificarAlmacen.Controls.Add(this.lbNombreAMod);
-            this.panelModificarAlmacen.Location = new System.Drawing.Point(8, 12);
-            this.panelModificarAlmacen.Name = "panelModificarAlmacen";
-            this.panelModificarAlmacen.Size = new System.Drawing.Size(303, 480);
-            this.panelModificarAlmacen.TabIndex = 53;
-            // 
-            // btnGuardarMod
-            // 
-            this.btnGuardarMod.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnGuardarMod.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGuardarMod.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnGuardarMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarMod.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnGuardarMod.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarMod.Location = new System.Drawing.Point(10, 397);
-            this.btnGuardarMod.Name = "btnGuardarMod";
-            this.btnGuardarMod.Size = new System.Drawing.Size(277, 30);
-            this.btnGuardarMod.TabIndex = 49;
-            this.btnGuardarMod.Text = "GUARDAR";
-            this.btnGuardarMod.UseVisualStyleBackColor = false;
-            this.btnGuardarMod.Click += new System.EventHandler(this.btnGuardarMod_Click);
-            this.btnGuardarMod.MouseLeave += new System.EventHandler(this.btnGuardarMod_MouseLeave);
-            this.btnGuardarMod.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnGuardarMod_MouseMove);
-            // 
-            // lbErrorIDAMod
-            // 
-            this.lbErrorIDAMod.AutoSize = true;
-            this.lbErrorIDAMod.BackColor = System.Drawing.Color.White;
-            this.lbErrorIDAMod.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
-            this.lbErrorIDAMod.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorIDAMod.Location = new System.Drawing.Point(9, 61);
-            this.lbErrorIDAMod.Name = "lbErrorIDAMod";
-            this.lbErrorIDAMod.Size = new System.Drawing.Size(41, 23);
-            this.lbErrorIDAMod.TabIndex = 48;
-            this.lbErrorIDAMod.Text = "Error";
-            this.lbErrorIDAMod.Visible = false;
-            // 
-            // cbIDAMod
-            // 
-            this.cbIDAMod.BackColor = System.Drawing.Color.White;
-            this.cbIDAMod.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbIDAMod.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbIDAMod.FormattingEnabled = true;
-            this.cbIDAMod.Location = new System.Drawing.Point(10, 15);
-            this.cbIDAMod.Name = "cbIDAMod";
-            this.cbIDAMod.Size = new System.Drawing.Size(273, 36);
-            this.cbIDAMod.TabIndex = 47;
-            this.cbIDAMod.SelectedIndexChanged += new System.EventHandler(this.cbIDAMod_SelectedIndexChanged);
-            // 
-            // lbErrorEstadoMod
-            // 
-            this.lbErrorEstadoMod.AutoSize = true;
-            this.lbErrorEstadoMod.BackColor = System.Drawing.Color.White;
-            this.lbErrorEstadoMod.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
-            this.lbErrorEstadoMod.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorEstadoMod.Location = new System.Drawing.Point(9, 240);
-            this.lbErrorEstadoMod.Name = "lbErrorEstadoMod";
-            this.lbErrorEstadoMod.Size = new System.Drawing.Size(41, 23);
-            this.lbErrorEstadoMod.TabIndex = 46;
-            this.lbErrorEstadoMod.Text = "Error";
-            this.lbErrorEstadoMod.Visible = false;
-            // 
-            // btnLimpiarMod
-            // 
-            this.btnLimpiarMod.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnLimpiarMod.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnLimpiarMod.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnLimpiarMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiarMod.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnLimpiarMod.ForeColor = System.Drawing.Color.White;
-            this.btnLimpiarMod.Location = new System.Drawing.Point(10, 433);
-            this.btnLimpiarMod.Name = "btnLimpiarMod";
-            this.btnLimpiarMod.Size = new System.Drawing.Size(277, 30);
-            this.btnLimpiarMod.TabIndex = 44;
-            this.btnLimpiarMod.Text = "LIMPIAR";
-            this.btnLimpiarMod.UseVisualStyleBackColor = false;
-            this.btnLimpiarMod.Click += new System.EventHandler(this.btnLimpiarMod_Click);
-            this.btnLimpiarMod.MouseLeave += new System.EventHandler(this.btnLimpiarMod_MouseLeave);
-            this.btnLimpiarMod.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnLimpiarMod_MouseMove);
-            // 
-            // cbAct2Mod
-            // 
-            this.cbAct2Mod.AutoSize = true;
-            this.cbAct2Mod.Font = new System.Drawing.Font("Reem Kufi", 12F);
-            this.cbAct2Mod.Location = new System.Drawing.Point(154, 200);
-            this.cbAct2Mod.Name = "cbAct2Mod";
-            this.cbAct2Mod.Size = new System.Drawing.Size(88, 32);
-            this.cbAct2Mod.TabIndex = 43;
-            this.cbAct2Mod.Text = "Inactivo";
-            this.cbAct2Mod.UseVisualStyleBackColor = true;
-            this.cbAct2Mod.CheckedChanged += new System.EventHandler(this.cbAct2Mod_CheckedChanged);
-            // 
-            // cbAct1Mod
-            // 
-            this.cbAct1Mod.AutoSize = true;
-            this.cbAct1Mod.Font = new System.Drawing.Font("Reem Kufi", 12F);
-            this.cbAct1Mod.Location = new System.Drawing.Point(57, 200);
-            this.cbAct1Mod.Name = "cbAct1Mod";
-            this.cbAct1Mod.Size = new System.Drawing.Size(76, 32);
-            this.cbAct1Mod.TabIndex = 42;
-            this.cbAct1Mod.Text = "Activo";
-            this.cbAct1Mod.UseVisualStyleBackColor = true;
-            this.cbAct1Mod.CheckedChanged += new System.EventHandler(this.cbAct1Mod_CheckedChanged);
-            // 
-            // lbErrorNombreAMod
-            // 
-            this.lbErrorNombreAMod.AutoSize = true;
-            this.lbErrorNombreAMod.BackColor = System.Drawing.Color.White;
-            this.lbErrorNombreAMod.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
-            this.lbErrorNombreAMod.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorNombreAMod.Location = new System.Drawing.Point(9, 147);
-            this.lbErrorNombreAMod.Name = "lbErrorNombreAMod";
-            this.lbErrorNombreAMod.Size = new System.Drawing.Size(41, 23);
-            this.lbErrorNombreAMod.TabIndex = 40;
-            this.lbErrorNombreAMod.Text = "Error";
-            this.lbErrorNombreAMod.Visible = false;
-            // 
-            // txtNombreAMod
-            // 
-            this.txtNombreAMod.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNombreAMod.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreAMod.ForeColor = System.Drawing.Color.Black;
-            this.txtNombreAMod.Location = new System.Drawing.Point(10, 97);
-            this.txtNombreAMod.Multiline = true;
-            this.txtNombreAMod.Name = "txtNombreAMod";
-            this.txtNombreAMod.Size = new System.Drawing.Size(277, 33);
-            this.txtNombreAMod.TabIndex = 39;
-            this.txtNombreAMod.TextChanged += new System.EventHandler(this.txtNombreAMod_TextChanged);
-            // 
-            // lbNombreAMod
-            // 
-            this.lbNombreAMod.AutoSize = true;
-            this.lbNombreAMod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNombreAMod.Location = new System.Drawing.Point(10, 122);
-            this.lbNombreAMod.Name = "lbNombreAMod";
-            this.lbNombreAMod.Size = new System.Drawing.Size(273, 13);
-            this.lbNombreAMod.TabIndex = 38;
-            this.lbNombreAMod.Text = "______________________________________";
-            // 
-            // panelAñadirAlmacen
-            // 
-            this.panelAñadirAlmacen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelAñadirAlmacen.Controls.Add(this.lbErrorEstado);
-            this.panelAñadirAlmacen.Controls.Add(this.richTextBox1);
-            this.panelAñadirAlmacen.Controls.Add(this.btnAceptarAAdd);
-            this.panelAñadirAlmacen.Controls.Add(this.cbAct2);
-            this.panelAñadirAlmacen.Controls.Add(this.cbAct1);
-            this.panelAñadirAlmacen.Controls.Add(this.textBox1);
-            this.panelAñadirAlmacen.Controls.Add(this.lbErrorNom);
-            this.panelAñadirAlmacen.Controls.Add(this.txtNombre);
-            this.panelAñadirAlmacen.Controls.Add(this.lbNombre);
-            this.panelAñadirAlmacen.Location = new System.Drawing.Point(9, 12);
-            this.panelAñadirAlmacen.Name = "panelAñadirAlmacen";
-            this.panelAñadirAlmacen.Size = new System.Drawing.Size(302, 480);
-            this.panelAñadirAlmacen.TabIndex = 0;
-            // 
-            // lbErrorEstado
-            // 
-            this.lbErrorEstado.AutoSize = true;
-            this.lbErrorEstado.BackColor = System.Drawing.Color.White;
-            this.lbErrorEstado.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
-            this.lbErrorEstado.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorEstado.Location = new System.Drawing.Point(9, 232);
-            this.lbErrorEstado.Name = "lbErrorEstado";
-            this.lbErrorEstado.Size = new System.Drawing.Size(41, 23);
-            this.lbErrorEstado.TabIndex = 46;
-            this.lbErrorEstado.Text = "Error";
-            this.lbErrorEstado.Visible = false;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Enabled = false;
-            this.richTextBox1.Font = new System.Drawing.Font("Reem Kufi", 9.7F);
-            this.richTextBox1.Location = new System.Drawing.Point(13, 274);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(274, 139);
-            this.richTextBox1.TabIndex = 45;
-            this.richTextBox1.Text = "Una vez dado de alta el almacén, no se podrá modificar el ID del mismo.\n\nTampoco " +
-    "se podrá eliminar a menos que tenga permisos de administrador.";
-            // 
-            // btnAceptarAAdd
-            // 
-            this.btnAceptarAAdd.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnAceptarAAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAceptarAAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnAceptarAAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptarAAdd.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnAceptarAAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAceptarAAdd.Location = new System.Drawing.Point(10, 433);
-            this.btnAceptarAAdd.Name = "btnAceptarAAdd";
-            this.btnAceptarAAdd.Size = new System.Drawing.Size(277, 30);
-            this.btnAceptarAAdd.TabIndex = 44;
-            this.btnAceptarAAdd.Text = "ACEPTAR";
-            this.btnAceptarAAdd.UseVisualStyleBackColor = false;
-            this.btnAceptarAAdd.Click += new System.EventHandler(this.btnAceptarAAdd_Click);
-            this.btnAceptarAAdd.MouseLeave += new System.EventHandler(this.btnAceptarAAdd_MouseLeave);
-            this.btnAceptarAAdd.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAceptarAAdd_MouseMove);
-            // 
-            // cbAct2
-            // 
-            this.cbAct2.AutoSize = true;
-            this.cbAct2.Font = new System.Drawing.Font("Reem Kufi", 12F);
-            this.cbAct2.Location = new System.Drawing.Point(154, 187);
-            this.cbAct2.Name = "cbAct2";
-            this.cbAct2.Size = new System.Drawing.Size(88, 32);
-            this.cbAct2.TabIndex = 43;
-            this.cbAct2.Text = "Inactivo";
-            this.cbAct2.UseVisualStyleBackColor = true;
-            this.cbAct2.CheckedChanged += new System.EventHandler(this.cbAct2_CheckedChanged);
-            // 
-            // cbAct1
-            // 
-            this.cbAct1.AutoSize = true;
-            this.cbAct1.Font = new System.Drawing.Font("Reem Kufi", 12F);
-            this.cbAct1.Location = new System.Drawing.Point(57, 187);
-            this.cbAct1.Name = "cbAct1";
-            this.cbAct1.Size = new System.Drawing.Size(76, 32);
-            this.cbAct1.TabIndex = 42;
-            this.cbAct1.Text = "Activo";
-            this.cbAct1.UseVisualStyleBackColor = true;
-            this.cbAct1.CheckedChanged += new System.EventHandler(this.cbAct1_CheckedChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBox1.Location = new System.Drawing.Point(10, 22);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(277, 33);
-            this.textBox1.TabIndex = 41;
-            this.textBox1.Text = "ID Autogenerado";
-            // 
-            // lbErrorNom
-            // 
-            this.lbErrorNom.AutoSize = true;
-            this.lbErrorNom.BackColor = System.Drawing.Color.White;
-            this.lbErrorNom.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
-            this.lbErrorNom.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorNom.Location = new System.Drawing.Point(9, 132);
-            this.lbErrorNom.Name = "lbErrorNom";
-            this.lbErrorNom.Size = new System.Drawing.Size(41, 23);
-            this.lbErrorNom.TabIndex = 40;
-            this.lbErrorNom.Text = "Error";
-            this.lbErrorNom.Visible = false;
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNombre.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.txtNombre.Location = new System.Drawing.Point(10, 82);
-            this.txtNombre.Multiline = true;
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(277, 33);
-            this.txtNombre.TabIndex = 39;
-            this.txtNombre.Text = "Nombre";
-            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
-            this.txtNombre.Enter += new System.EventHandler(this.txtNombre_Enter);
-            this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
-            // 
-            // lbNombre
-            // 
-            this.lbNombre.AutoSize = true;
-            this.lbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNombre.Location = new System.Drawing.Point(10, 107);
-            this.lbNombre.Name = "lbNombre";
-            this.lbNombre.Size = new System.Drawing.Size(273, 13);
-            this.lbNombre.TabIndex = 38;
-            this.lbNombre.Text = "______________________________________";
-            // 
             // btnBorra
             // 
             this.btnBorra.BackColor = System.Drawing.Color.MidnightBlue;
@@ -973,6 +531,448 @@
             this.horafecha.Enabled = true;
             this.horafecha.Tick += new System.EventHandler(this.horafecha_Tick);
             // 
+            // panelAñadirAlmacen
+            // 
+            this.panelAñadirAlmacen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelAñadirAlmacen.Controls.Add(this.lbErrorEstado);
+            this.panelAñadirAlmacen.Controls.Add(this.richTextBox1);
+            this.panelAñadirAlmacen.Controls.Add(this.btnAceptarAAdd);
+            this.panelAñadirAlmacen.Controls.Add(this.cbAct2);
+            this.panelAñadirAlmacen.Controls.Add(this.cbAct1);
+            this.panelAñadirAlmacen.Controls.Add(this.textBox1);
+            this.panelAñadirAlmacen.Controls.Add(this.lbErrorNom);
+            this.panelAñadirAlmacen.Controls.Add(this.txtNombre);
+            this.panelAñadirAlmacen.Controls.Add(this.lbNombre);
+            this.panelAñadirAlmacen.Location = new System.Drawing.Point(9, 12);
+            this.panelAñadirAlmacen.Name = "panelAñadirAlmacen";
+            this.panelAñadirAlmacen.Size = new System.Drawing.Size(302, 480);
+            this.panelAñadirAlmacen.TabIndex = 0;
+            // 
+            // lbNombre
+            // 
+            this.lbNombre.AutoSize = true;
+            this.lbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNombre.Location = new System.Drawing.Point(10, 107);
+            this.lbNombre.Name = "lbNombre";
+            this.lbNombre.Size = new System.Drawing.Size(273, 13);
+            this.lbNombre.TabIndex = 38;
+            this.lbNombre.Text = "______________________________________";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombre.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtNombre.Location = new System.Drawing.Point(10, 82);
+            this.txtNombre.Multiline = true;
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(277, 33);
+            this.txtNombre.TabIndex = 39;
+            this.txtNombre.Text = "Nombre";
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
+            this.txtNombre.Enter += new System.EventHandler(this.txtNombre_Enter);
+            this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
+            // 
+            // lbErrorNom
+            // 
+            this.lbErrorNom.AutoSize = true;
+            this.lbErrorNom.BackColor = System.Drawing.Color.White;
+            this.lbErrorNom.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbErrorNom.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorNom.Location = new System.Drawing.Point(9, 132);
+            this.lbErrorNom.Name = "lbErrorNom";
+            this.lbErrorNom.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorNom.TabIndex = 40;
+            this.lbErrorNom.Text = "Error";
+            this.lbErrorNom.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBox1.Location = new System.Drawing.Point(10, 22);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(277, 33);
+            this.textBox1.TabIndex = 41;
+            this.textBox1.Text = "ID Autogenerado";
+            // 
+            // cbAct1
+            // 
+            this.cbAct1.AutoSize = true;
+            this.cbAct1.Font = new System.Drawing.Font("Reem Kufi", 12F);
+            this.cbAct1.Location = new System.Drawing.Point(57, 187);
+            this.cbAct1.Name = "cbAct1";
+            this.cbAct1.Size = new System.Drawing.Size(76, 32);
+            this.cbAct1.TabIndex = 42;
+            this.cbAct1.Text = "Activo";
+            this.cbAct1.UseVisualStyleBackColor = true;
+            this.cbAct1.CheckedChanged += new System.EventHandler(this.cbAct1_CheckedChanged);
+            // 
+            // cbAct2
+            // 
+            this.cbAct2.AutoSize = true;
+            this.cbAct2.Font = new System.Drawing.Font("Reem Kufi", 12F);
+            this.cbAct2.Location = new System.Drawing.Point(154, 187);
+            this.cbAct2.Name = "cbAct2";
+            this.cbAct2.Size = new System.Drawing.Size(88, 32);
+            this.cbAct2.TabIndex = 43;
+            this.cbAct2.Text = "Inactivo";
+            this.cbAct2.UseVisualStyleBackColor = true;
+            this.cbAct2.CheckedChanged += new System.EventHandler(this.cbAct2_CheckedChanged);
+            // 
+            // btnAceptarAAdd
+            // 
+            this.btnAceptarAAdd.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnAceptarAAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAceptarAAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnAceptarAAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptarAAdd.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnAceptarAAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAceptarAAdd.Location = new System.Drawing.Point(10, 433);
+            this.btnAceptarAAdd.Name = "btnAceptarAAdd";
+            this.btnAceptarAAdd.Size = new System.Drawing.Size(277, 30);
+            this.btnAceptarAAdd.TabIndex = 44;
+            this.btnAceptarAAdd.Text = "ACEPTAR";
+            this.btnAceptarAAdd.UseVisualStyleBackColor = false;
+            this.btnAceptarAAdd.Click += new System.EventHandler(this.btnAceptarAAdd_Click);
+            this.btnAceptarAAdd.MouseLeave += new System.EventHandler(this.btnAceptarAAdd_MouseLeave);
+            this.btnAceptarAAdd.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAceptarAAdd_MouseMove);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Enabled = false;
+            this.richTextBox1.Font = new System.Drawing.Font("Reem Kufi", 9.7F);
+            this.richTextBox1.Location = new System.Drawing.Point(13, 274);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(274, 139);
+            this.richTextBox1.TabIndex = 45;
+            this.richTextBox1.Text = "Una vez dado de alta el almacén, no se podrá modificar el ID del mismo.\n\nTampoco " +
+    "se podrá eliminar a menos que tenga permisos de administrador.";
+            // 
+            // lbErrorEstado
+            // 
+            this.lbErrorEstado.AutoSize = true;
+            this.lbErrorEstado.BackColor = System.Drawing.Color.White;
+            this.lbErrorEstado.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbErrorEstado.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorEstado.Location = new System.Drawing.Point(9, 232);
+            this.lbErrorEstado.Name = "lbErrorEstado";
+            this.lbErrorEstado.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorEstado.TabIndex = 46;
+            this.lbErrorEstado.Text = "Error";
+            this.lbErrorEstado.Visible = false;
+            // 
+            // panelModificarAlmacen
+            // 
+            this.panelModificarAlmacen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelModificarAlmacen.Controls.Add(this.btnGuardarMod);
+            this.panelModificarAlmacen.Controls.Add(this.lbErrorIDAMod);
+            this.panelModificarAlmacen.Controls.Add(this.cbIDAMod);
+            this.panelModificarAlmacen.Controls.Add(this.lbErrorEstadoMod);
+            this.panelModificarAlmacen.Controls.Add(this.btnLimpiarMod);
+            this.panelModificarAlmacen.Controls.Add(this.cbAct2Mod);
+            this.panelModificarAlmacen.Controls.Add(this.cbAct1Mod);
+            this.panelModificarAlmacen.Controls.Add(this.lbErrorNombreAMod);
+            this.panelModificarAlmacen.Controls.Add(this.txtNombreAMod);
+            this.panelModificarAlmacen.Controls.Add(this.lbNombreAMod);
+            this.panelModificarAlmacen.Location = new System.Drawing.Point(8, 12);
+            this.panelModificarAlmacen.Name = "panelModificarAlmacen";
+            this.panelModificarAlmacen.Size = new System.Drawing.Size(303, 480);
+            this.panelModificarAlmacen.TabIndex = 53;
+            // 
+            // lbNombreAMod
+            // 
+            this.lbNombreAMod.AutoSize = true;
+            this.lbNombreAMod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNombreAMod.Location = new System.Drawing.Point(10, 122);
+            this.lbNombreAMod.Name = "lbNombreAMod";
+            this.lbNombreAMod.Size = new System.Drawing.Size(273, 13);
+            this.lbNombreAMod.TabIndex = 38;
+            this.lbNombreAMod.Text = "______________________________________";
+            // 
+            // txtNombreAMod
+            // 
+            this.txtNombreAMod.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombreAMod.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreAMod.ForeColor = System.Drawing.Color.Black;
+            this.txtNombreAMod.Location = new System.Drawing.Point(10, 97);
+            this.txtNombreAMod.Multiline = true;
+            this.txtNombreAMod.Name = "txtNombreAMod";
+            this.txtNombreAMod.Size = new System.Drawing.Size(277, 33);
+            this.txtNombreAMod.TabIndex = 39;
+            this.txtNombreAMod.TextChanged += new System.EventHandler(this.txtNombreAMod_TextChanged);
+            // 
+            // lbErrorNombreAMod
+            // 
+            this.lbErrorNombreAMod.AutoSize = true;
+            this.lbErrorNombreAMod.BackColor = System.Drawing.Color.White;
+            this.lbErrorNombreAMod.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbErrorNombreAMod.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorNombreAMod.Location = new System.Drawing.Point(9, 147);
+            this.lbErrorNombreAMod.Name = "lbErrorNombreAMod";
+            this.lbErrorNombreAMod.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorNombreAMod.TabIndex = 40;
+            this.lbErrorNombreAMod.Text = "Error";
+            this.lbErrorNombreAMod.Visible = false;
+            // 
+            // cbAct1Mod
+            // 
+            this.cbAct1Mod.AutoSize = true;
+            this.cbAct1Mod.Font = new System.Drawing.Font("Reem Kufi", 12F);
+            this.cbAct1Mod.Location = new System.Drawing.Point(57, 200);
+            this.cbAct1Mod.Name = "cbAct1Mod";
+            this.cbAct1Mod.Size = new System.Drawing.Size(76, 32);
+            this.cbAct1Mod.TabIndex = 42;
+            this.cbAct1Mod.Text = "Activo";
+            this.cbAct1Mod.UseVisualStyleBackColor = true;
+            this.cbAct1Mod.CheckedChanged += new System.EventHandler(this.cbAct1Mod_CheckedChanged);
+            // 
+            // cbAct2Mod
+            // 
+            this.cbAct2Mod.AutoSize = true;
+            this.cbAct2Mod.Font = new System.Drawing.Font("Reem Kufi", 12F);
+            this.cbAct2Mod.Location = new System.Drawing.Point(154, 200);
+            this.cbAct2Mod.Name = "cbAct2Mod";
+            this.cbAct2Mod.Size = new System.Drawing.Size(88, 32);
+            this.cbAct2Mod.TabIndex = 43;
+            this.cbAct2Mod.Text = "Inactivo";
+            this.cbAct2Mod.UseVisualStyleBackColor = true;
+            this.cbAct2Mod.CheckedChanged += new System.EventHandler(this.cbAct2Mod_CheckedChanged);
+            // 
+            // btnLimpiarMod
+            // 
+            this.btnLimpiarMod.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnLimpiarMod.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnLimpiarMod.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnLimpiarMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiarMod.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnLimpiarMod.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiarMod.Location = new System.Drawing.Point(10, 433);
+            this.btnLimpiarMod.Name = "btnLimpiarMod";
+            this.btnLimpiarMod.Size = new System.Drawing.Size(277, 30);
+            this.btnLimpiarMod.TabIndex = 44;
+            this.btnLimpiarMod.Text = "LIMPIAR";
+            this.btnLimpiarMod.UseVisualStyleBackColor = false;
+            this.btnLimpiarMod.Click += new System.EventHandler(this.btnLimpiarMod_Click);
+            this.btnLimpiarMod.MouseLeave += new System.EventHandler(this.btnLimpiarMod_MouseLeave);
+            this.btnLimpiarMod.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnLimpiarMod_MouseMove);
+            // 
+            // lbErrorEstadoMod
+            // 
+            this.lbErrorEstadoMod.AutoSize = true;
+            this.lbErrorEstadoMod.BackColor = System.Drawing.Color.White;
+            this.lbErrorEstadoMod.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbErrorEstadoMod.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorEstadoMod.Location = new System.Drawing.Point(9, 240);
+            this.lbErrorEstadoMod.Name = "lbErrorEstadoMod";
+            this.lbErrorEstadoMod.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorEstadoMod.TabIndex = 46;
+            this.lbErrorEstadoMod.Text = "Error";
+            this.lbErrorEstadoMod.Visible = false;
+            // 
+            // cbIDAMod
+            // 
+            this.cbIDAMod.BackColor = System.Drawing.Color.White;
+            this.cbIDAMod.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbIDAMod.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIDAMod.FormattingEnabled = true;
+            this.cbIDAMod.Location = new System.Drawing.Point(10, 15);
+            this.cbIDAMod.Name = "cbIDAMod";
+            this.cbIDAMod.Size = new System.Drawing.Size(273, 36);
+            this.cbIDAMod.TabIndex = 47;
+            this.cbIDAMod.SelectedIndexChanged += new System.EventHandler(this.cbIDAMod_SelectedIndexChanged);
+            // 
+            // lbErrorIDAMod
+            // 
+            this.lbErrorIDAMod.AutoSize = true;
+            this.lbErrorIDAMod.BackColor = System.Drawing.Color.White;
+            this.lbErrorIDAMod.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbErrorIDAMod.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorIDAMod.Location = new System.Drawing.Point(9, 61);
+            this.lbErrorIDAMod.Name = "lbErrorIDAMod";
+            this.lbErrorIDAMod.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorIDAMod.TabIndex = 48;
+            this.lbErrorIDAMod.Text = "Error";
+            this.lbErrorIDAMod.Visible = false;
+            // 
+            // btnGuardarMod
+            // 
+            this.btnGuardarMod.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnGuardarMod.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGuardarMod.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnGuardarMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarMod.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnGuardarMod.ForeColor = System.Drawing.Color.White;
+            this.btnGuardarMod.Location = new System.Drawing.Point(10, 397);
+            this.btnGuardarMod.Name = "btnGuardarMod";
+            this.btnGuardarMod.Size = new System.Drawing.Size(277, 30);
+            this.btnGuardarMod.TabIndex = 49;
+            this.btnGuardarMod.Text = "GUARDAR";
+            this.btnGuardarMod.UseVisualStyleBackColor = false;
+            this.btnGuardarMod.Click += new System.EventHandler(this.btnGuardarMod_Click);
+            this.btnGuardarMod.MouseLeave += new System.EventHandler(this.btnGuardarMod_MouseLeave);
+            this.btnGuardarMod.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnGuardarMod_MouseMove);
+            // 
+            // panelBorrarAlmacen
+            // 
+            this.panelBorrarAlmacen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBorrarAlmacen.Controls.Add(this.panelPortada);
+            this.panelBorrarAlmacen.Controls.Add(this.panelConfBorr);
+            this.panelBorrarAlmacen.Controls.Add(this.descBorr);
+            this.panelBorrarAlmacen.Controls.Add(this.btnAceptarBorrar);
+            this.panelBorrarAlmacen.Controls.Add(this.lbErrorIDABorr);
+            this.panelBorrarAlmacen.Controls.Add(this.cbIDABorr);
+            this.panelBorrarAlmacen.Location = new System.Drawing.Point(8, 12);
+            this.panelBorrarAlmacen.Name = "panelBorrarAlmacen";
+            this.panelBorrarAlmacen.Size = new System.Drawing.Size(303, 480);
+            this.panelBorrarAlmacen.TabIndex = 55;
+            // 
+            // cbIDABorr
+            // 
+            this.cbIDABorr.BackColor = System.Drawing.Color.White;
+            this.cbIDABorr.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbIDABorr.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIDABorr.FormattingEnabled = true;
+            this.cbIDABorr.Location = new System.Drawing.Point(10, 15);
+            this.cbIDABorr.Name = "cbIDABorr";
+            this.cbIDABorr.Size = new System.Drawing.Size(273, 36);
+            this.cbIDABorr.TabIndex = 47;
+            this.cbIDABorr.SelectedIndexChanged += new System.EventHandler(this.cbIDABorr_SelectedIndexChanged);
+            // 
+            // lbErrorIDABorr
+            // 
+            this.lbErrorIDABorr.AutoSize = true;
+            this.lbErrorIDABorr.BackColor = System.Drawing.Color.White;
+            this.lbErrorIDABorr.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
+            this.lbErrorIDABorr.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorIDABorr.Location = new System.Drawing.Point(9, 61);
+            this.lbErrorIDABorr.Name = "lbErrorIDABorr";
+            this.lbErrorIDABorr.Size = new System.Drawing.Size(41, 23);
+            this.lbErrorIDABorr.TabIndex = 48;
+            this.lbErrorIDABorr.Text = "Error";
+            this.lbErrorIDABorr.Visible = false;
+            // 
+            // btnAceptarBorrar
+            // 
+            this.btnAceptarBorrar.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnAceptarBorrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAceptarBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnAceptarBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptarBorrar.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnAceptarBorrar.ForeColor = System.Drawing.Color.White;
+            this.btnAceptarBorrar.Location = new System.Drawing.Point(11, 431);
+            this.btnAceptarBorrar.Name = "btnAceptarBorrar";
+            this.btnAceptarBorrar.Size = new System.Drawing.Size(277, 30);
+            this.btnAceptarBorrar.TabIndex = 50;
+            this.btnAceptarBorrar.Text = "BORRAR";
+            this.btnAceptarBorrar.UseVisualStyleBackColor = false;
+            this.btnAceptarBorrar.Click += new System.EventHandler(this.btnAceptarBorrar_Click);
+            this.btnAceptarBorrar.MouseLeave += new System.EventHandler(this.btnAceptarBorrar_MouseLeave);
+            this.btnAceptarBorrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAceptarBorrar_MouseMove);
+            // 
+            // descBorr
+            // 
+            this.descBorr.Enabled = false;
+            this.descBorr.Font = new System.Drawing.Font("Reem Kufi", 9.7F);
+            this.descBorr.Location = new System.Drawing.Point(10, 255);
+            this.descBorr.Name = "descBorr";
+            this.descBorr.Size = new System.Drawing.Size(273, 158);
+            this.descBorr.TabIndex = 51;
+            this.descBorr.Text = "Una vez borrado el almacén, no se podrá recuperar.\n\nSi el almacen contiene produc" +
+    "tos, no se podrá eliminar.\n\nAl hacer click en el botón de borrar, se te pedirá u" +
+    "na confirmación.";
+            // 
+            // panelConfBorr
+            // 
+            this.panelConfBorr.Controls.Add(this.btnNoBorr);
+            this.panelConfBorr.Controls.Add(this.btnSiBorr);
+            this.panelConfBorr.Controls.Add(this.lbb);
+            this.panelConfBorr.Location = new System.Drawing.Point(10, 98);
+            this.panelConfBorr.Name = "panelConfBorr";
+            this.panelConfBorr.Size = new System.Drawing.Size(273, 147);
+            this.panelConfBorr.TabIndex = 52;
+            this.panelConfBorr.Visible = false;
+            // 
+            // lbb
+            // 
+            this.lbb.AutoSize = true;
+            this.lbb.Font = new System.Drawing.Font("Reem Kufi", 10F);
+            this.lbb.Location = new System.Drawing.Point(3, 31);
+            this.lbb.Name = "lbb";
+            this.lbb.Size = new System.Drawing.Size(262, 26);
+            this.lbb.TabIndex = 0;
+            this.lbb.Text = "¿Seguro que quieres eliminar el almacén?";
+            // 
+            // btnSiBorr
+            // 
+            this.btnSiBorr.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnSiBorr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSiBorr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnSiBorr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSiBorr.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnSiBorr.ForeColor = System.Drawing.Color.White;
+            this.btnSiBorr.Location = new System.Drawing.Point(8, 72);
+            this.btnSiBorr.Name = "btnSiBorr";
+            this.btnSiBorr.Size = new System.Drawing.Size(115, 30);
+            this.btnSiBorr.TabIndex = 51;
+            this.btnSiBorr.Text = "SÍ";
+            this.btnSiBorr.UseVisualStyleBackColor = false;
+            this.btnSiBorr.Click += new System.EventHandler(this.btnSiBorr_Click);
+            this.btnSiBorr.MouseLeave += new System.EventHandler(this.btnSiBorr_MouseLeave);
+            this.btnSiBorr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnSiBorr_MouseMove);
+            // 
+            // btnNoBorr
+            // 
+            this.btnNoBorr.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnNoBorr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNoBorr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnNoBorr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNoBorr.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnNoBorr.ForeColor = System.Drawing.Color.White;
+            this.btnNoBorr.Location = new System.Drawing.Point(150, 72);
+            this.btnNoBorr.Name = "btnNoBorr";
+            this.btnNoBorr.Size = new System.Drawing.Size(115, 30);
+            this.btnNoBorr.TabIndex = 52;
+            this.btnNoBorr.Text = "NO";
+            this.btnNoBorr.UseVisualStyleBackColor = false;
+            this.btnNoBorr.Click += new System.EventHandler(this.btnNoBorr_Click);
+            this.btnNoBorr.MouseLeave += new System.EventHandler(this.btnNoBorr_MouseLeave);
+            this.btnNoBorr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnNoBorr_MouseMove);
+            // 
+            // panelIzquierdo
+            // 
+            this.panelIzquierdo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelIzquierdo.Controls.Add(this.panelBorrarAlmacen);
+            this.panelIzquierdo.Controls.Add(this.panelModificarAlmacen);
+            this.panelIzquierdo.Controls.Add(this.panelAñadirAlmacen);
+            this.panelIzquierdo.Location = new System.Drawing.Point(8, 20);
+            this.panelIzquierdo.Name = "panelIzquierdo";
+            this.panelIzquierdo.Size = new System.Drawing.Size(321, 507);
+            this.panelIzquierdo.TabIndex = 16;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(52, 125);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(196, 176);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panelPortada
+            // 
+            this.panelPortada.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panelPortada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPortada.Controls.Add(this.pictureBox1);
+            this.panelPortada.Location = new System.Drawing.Point(3, 3);
+            this.panelPortada.Name = "panelPortada";
+            this.panelPortada.Size = new System.Drawing.Size(303, 480);
+            this.panelPortada.TabIndex = 57;
+            // 
             // FormAlmacenes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -995,17 +995,17 @@
             this.panelMenuXml.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).EndInit();
-            this.panelIzquierdo.ResumeLayout(false);
-            this.panelBorrarAlmacen.ResumeLayout(false);
-            this.panelBorrarAlmacen.PerformLayout();
-            this.panelPortada.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panelConfBorr.ResumeLayout(false);
-            this.panelConfBorr.PerformLayout();
-            this.panelModificarAlmacen.ResumeLayout(false);
-            this.panelModificarAlmacen.PerformLayout();
             this.panelAñadirAlmacen.ResumeLayout(false);
             this.panelAñadirAlmacen.PerformLayout();
+            this.panelModificarAlmacen.ResumeLayout(false);
+            this.panelModificarAlmacen.PerformLayout();
+            this.panelBorrarAlmacen.ResumeLayout(false);
+            this.panelBorrarAlmacen.PerformLayout();
+            this.panelConfBorr.ResumeLayout(false);
+            this.panelConfBorr.PerformLayout();
+            this.panelIzquierdo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelPortada.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1022,16 +1022,6 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAñadir;
         private System.Windows.Forms.Button btnBorra;
-        private System.Windows.Forms.Panel panelIzquierdo;
-        private System.Windows.Forms.Panel panelAñadirAlmacen;
-        private System.Windows.Forms.Label lbErrorNom;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label lbNombre;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox cbAct2;
-        private System.Windows.Forms.CheckBox cbAct1;
-        private System.Windows.Forms.Button btnAceptarAAdd;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Panel barra4;
         private System.Windows.Forms.PictureBox imgLimpiar;
         private System.Windows.Forms.TextBox txtFiltroA;
@@ -1051,7 +1041,18 @@
         private System.Windows.Forms.Button btnGenEXCEL;
         private System.Windows.Forms.Button btnMenuExcel;
         private System.Windows.Forms.Timer horafecha;
-        private System.Windows.Forms.Label lbErrorEstado;
+        private System.Windows.Forms.Panel panelIzquierdo;
+        private System.Windows.Forms.Panel panelBorrarAlmacen;
+        private System.Windows.Forms.Panel panelPortada;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panelConfBorr;
+        private System.Windows.Forms.Button btnNoBorr;
+        private System.Windows.Forms.Button btnSiBorr;
+        private System.Windows.Forms.Label lbb;
+        private System.Windows.Forms.RichTextBox descBorr;
+        private System.Windows.Forms.Button btnAceptarBorrar;
+        private System.Windows.Forms.Label lbErrorIDABorr;
+        private System.Windows.Forms.ComboBox cbIDABorr;
         private System.Windows.Forms.Panel panelModificarAlmacen;
         private System.Windows.Forms.Button btnGuardarMod;
         private System.Windows.Forms.Label lbErrorIDAMod;
@@ -1063,16 +1064,15 @@
         private System.Windows.Forms.Label lbErrorNombreAMod;
         private System.Windows.Forms.TextBox txtNombreAMod;
         private System.Windows.Forms.Label lbNombreAMod;
-        private System.Windows.Forms.Panel panelBorrarAlmacen;
-        private System.Windows.Forms.Panel panelConfBorr;
-        private System.Windows.Forms.Button btnNoBorr;
-        private System.Windows.Forms.Button btnSiBorr;
-        private System.Windows.Forms.Label lbb;
-        private System.Windows.Forms.RichTextBox descBorr;
-        private System.Windows.Forms.Button btnAceptarBorrar;
-        private System.Windows.Forms.Label lbErrorIDABorr;
-        private System.Windows.Forms.ComboBox cbIDABorr;
-        private System.Windows.Forms.Panel panelPortada;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panelAñadirAlmacen;
+        private System.Windows.Forms.Label lbErrorEstado;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button btnAceptarAAdd;
+        private System.Windows.Forms.CheckBox cbAct2;
+        private System.Windows.Forms.CheckBox cbAct1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lbErrorNom;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Label lbNombre;
     }
 }

@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProductos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbHora = new System.Windows.Forms.Label();
             this.lbInicio = new System.Windows.Forms.Label();
             this.barra1 = new System.Windows.Forms.Panel();
@@ -52,7 +52,7 @@
             this.btnListarXML = new System.Windows.Forms.Button();
             this.btnGenXML = new System.Windows.Forms.Button();
             this.btnMenuXml = new System.Windows.Forms.Button();
-            this.ayuda = new System.Windows.Forms.Button();
+            this.btnAbreCXP = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.imgLimpiar = new System.Windows.Forms.PictureBox();
             this.txtFiltroC = new System.Windows.Forms.TextBox();
@@ -96,6 +96,27 @@
             this.btnEliminarC = new System.Windows.Forms.Button();
             this.btnModificarC = new System.Windows.Forms.Button();
             this.horafecha = new System.Windows.Forms.Timer(this.components);
+            this.panelProductos = new System.Windows.Forms.Panel();
+            this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.barra4 = new System.Windows.Forms.Panel();
+            this.btnMenuXMLProd = new System.Windows.Forms.Button();
+            this.btnMenuJSONProd = new System.Windows.Forms.Button();
+            this.btnMenuExcelProd = new System.Windows.Forms.Button();
+            this.panelMenuXMLProd = new System.Windows.Forms.Panel();
+            this.btnGenListXMLProd = new System.Windows.Forms.Button();
+            this.btnGenXMLProd = new System.Windows.Forms.Button();
+            this.panelMenuJSONProd = new System.Windows.Forms.Panel();
+            this.btnListJSONProd = new System.Windows.Forms.Button();
+            this.btnGenJSONProd = new System.Windows.Forms.Button();
+            this.panelMenuEXCELProd = new System.Windows.Forms.Panel();
+            this.btnListEXCELProd = new System.Windows.Forms.Button();
+            this.btnGenEXCELProd = new System.Windows.Forms.Button();
+            this.btnAñadirProd = new System.Windows.Forms.Button();
+            this.btnEditarProd = new System.Windows.Forms.Button();
+            this.btnElimProd = new System.Windows.Forms.Button();
+            this.btnGenInforme = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.imgAviso = new System.Windows.Forms.PictureBox();
             this.panelCategorias.SuspendLayout();
             this.panelMenuExcel.SuspendLayout();
             this.panelMenuJson.SuspendLayout();
@@ -109,6 +130,13 @@
             this.panelConfBorr.SuspendLayout();
             this.panelModificarC.SuspendLayout();
             this.panelAñadirC.SuspendLayout();
+            this.panelProductos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            this.panelMenuXMLProd.SuspendLayout();
+            this.panelMenuJSONProd.SuspendLayout();
+            this.panelMenuEXCELProd.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAviso)).BeginInit();
             this.SuspendLayout();
             // 
             // lbHora
@@ -177,6 +205,8 @@
             this.btnCategorias.Text = "CATEGORÍAS";
             this.btnCategorias.UseVisualStyleBackColor = false;
             this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
+            this.btnCategorias.MouseLeave += new System.EventHandler(this.btnCategorias_MouseLeave);
+            this.btnCategorias.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCategorias_MouseMove);
             // 
             // btnProductos
             // 
@@ -192,9 +222,13 @@
             this.btnProductos.TabIndex = 12;
             this.btnProductos.Text = "PRODUCTOS";
             this.btnProductos.UseVisualStyleBackColor = false;
+            this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
+            this.btnProductos.MouseLeave += new System.EventHandler(this.btnProductos_MouseLeave);
+            this.btnProductos.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnProductos_MouseMove);
             // 
             // panelCategorias
             // 
+            this.panelCategorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelCategorias.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelCategorias.Controls.Add(this.panelMenuExcel);
             this.panelCategorias.Controls.Add(this.btnMenuEXCEL);
@@ -202,7 +236,7 @@
             this.panelCategorias.Controls.Add(this.btnMenuJSON);
             this.panelCategorias.Controls.Add(this.panelMenuXml);
             this.panelCategorias.Controls.Add(this.btnMenuXml);
-            this.panelCategorias.Controls.Add(this.ayuda);
+            this.panelCategorias.Controls.Add(this.btnAbreCXP);
             this.panelCategorias.Controls.Add(this.panel1);
             this.panelCategorias.Controls.Add(this.imgLimpiar);
             this.panelCategorias.Controls.Add(this.txtFiltroC);
@@ -415,20 +449,23 @@
             this.btnMenuXml.MouseLeave += new System.EventHandler(this.btnMenuXml_MouseLeave);
             this.btnMenuXml.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMenuXml_MouseMove);
             // 
-            // ayuda
+            // btnAbreCXP
             // 
-            this.ayuda.BackColor = System.Drawing.Color.MidnightBlue;
-            this.ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ayuda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ayuda.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
-            this.ayuda.ForeColor = System.Drawing.Color.White;
-            this.ayuda.Image = ((System.Drawing.Image)(resources.GetObject("ayuda.Image")));
-            this.ayuda.Location = new System.Drawing.Point(641, 31);
-            this.ayuda.Name = "ayuda";
-            this.ayuda.Size = new System.Drawing.Size(45, 39);
-            this.ayuda.TabIndex = 39;
-            this.ayuda.UseVisualStyleBackColor = false;
+            this.btnAbreCXP.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnAbreCXP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAbreCXP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnAbreCXP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbreCXP.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnAbreCXP.ForeColor = System.Drawing.Color.White;
+            this.btnAbreCXP.Image = ((System.Drawing.Image)(resources.GetObject("btnAbreCXP.Image")));
+            this.btnAbreCXP.Location = new System.Drawing.Point(641, 31);
+            this.btnAbreCXP.Name = "btnAbreCXP";
+            this.btnAbreCXP.Size = new System.Drawing.Size(45, 39);
+            this.btnAbreCXP.TabIndex = 39;
+            this.btnAbreCXP.UseVisualStyleBackColor = false;
+            this.btnAbreCXP.Click += new System.EventHandler(this.btnAbreCXP_Click);
+            this.btnAbreCXP.MouseLeave += new System.EventHandler(this.btnAbreCXP_MouseLeave);
+            this.btnAbreCXP.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAbreCXP_MouseMove);
             // 
             // panel1
             // 
@@ -494,25 +531,25 @@
             // 
             this.dgvCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCategorias.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Reem Kufi", 8.25F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Reem Kufi", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategorias.Location = new System.Drawing.Point(641, 76);
             this.dgvCategorias.Name = "dgvCategorias";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Reem Kufi", 8.25F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCategorias.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Reem Kufi", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCategorias.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCategorias.Size = new System.Drawing.Size(718, 453);
             this.dgvCategorias.TabIndex = 1;
             // 
@@ -1002,12 +1039,303 @@
             this.horafecha.Enabled = true;
             this.horafecha.Tick += new System.EventHandler(this.horafecha_Tick);
             // 
+            // panelProductos
+            // 
+            this.panelProductos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelProductos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelProductos.Controls.Add(this.panel2);
+            this.panelProductos.Controls.Add(this.btnGenInforme);
+            this.panelProductos.Controls.Add(this.btnElimProd);
+            this.panelProductos.Controls.Add(this.btnEditarProd);
+            this.panelProductos.Controls.Add(this.btnAñadirProd);
+            this.panelProductos.Controls.Add(this.panelMenuEXCELProd);
+            this.panelProductos.Controls.Add(this.panelMenuJSONProd);
+            this.panelProductos.Controls.Add(this.panelMenuXMLProd);
+            this.panelProductos.Controls.Add(this.btnMenuExcelProd);
+            this.panelProductos.Controls.Add(this.btnMenuJSONProd);
+            this.panelProductos.Controls.Add(this.btnMenuXMLProd);
+            this.panelProductos.Controls.Add(this.barra4);
+            this.panelProductos.Controls.Add(this.dgvProductos);
+            this.panelProductos.Font = new System.Drawing.Font("Reem Kufi", 8.25F);
+            this.panelProductos.Location = new System.Drawing.Point(54, 276);
+            this.panelProductos.Name = "panelProductos";
+            this.panelProductos.Size = new System.Drawing.Size(1386, 559);
+            this.panelProductos.TabIndex = 14;
+            // 
+            // dgvProductos
+            // 
+            this.dgvProductos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductos.Location = new System.Drawing.Point(13, 10);
+            this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.Size = new System.Drawing.Size(950, 533);
+            this.dgvProductos.TabIndex = 0;
+            // 
+            // barra4
+            // 
+            this.barra4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.barra4.Location = new System.Drawing.Point(986, 10);
+            this.barra4.Name = "barra4";
+            this.barra4.Size = new System.Drawing.Size(3, 530);
+            this.barra4.TabIndex = 43;
+            // 
+            // btnMenuXMLProd
+            // 
+            this.btnMenuXMLProd.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnMenuXMLProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnMenuXMLProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnMenuXMLProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuXMLProd.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnMenuXMLProd.ForeColor = System.Drawing.Color.White;
+            this.btnMenuXMLProd.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuXMLProd.Image")));
+            this.btnMenuXMLProd.Location = new System.Drawing.Point(1009, 10);
+            this.btnMenuXMLProd.Name = "btnMenuXMLProd";
+            this.btnMenuXMLProd.Size = new System.Drawing.Size(110, 88);
+            this.btnMenuXMLProd.TabIndex = 48;
+            this.btnMenuXMLProd.UseVisualStyleBackColor = false;
+            // 
+            // btnMenuJSONProd
+            // 
+            this.btnMenuJSONProd.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnMenuJSONProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnMenuJSONProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnMenuJSONProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuJSONProd.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnMenuJSONProd.ForeColor = System.Drawing.Color.White;
+            this.btnMenuJSONProd.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuJSONProd.Image")));
+            this.btnMenuJSONProd.Location = new System.Drawing.Point(1134, 10);
+            this.btnMenuJSONProd.Name = "btnMenuJSONProd";
+            this.btnMenuJSONProd.Size = new System.Drawing.Size(110, 88);
+            this.btnMenuJSONProd.TabIndex = 49;
+            this.btnMenuJSONProd.UseVisualStyleBackColor = false;
+            // 
+            // btnMenuExcelProd
+            // 
+            this.btnMenuExcelProd.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnMenuExcelProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnMenuExcelProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnMenuExcelProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuExcelProd.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnMenuExcelProd.ForeColor = System.Drawing.Color.White;
+            this.btnMenuExcelProd.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuExcelProd.Image")));
+            this.btnMenuExcelProd.Location = new System.Drawing.Point(1260, 10);
+            this.btnMenuExcelProd.Name = "btnMenuExcelProd";
+            this.btnMenuExcelProd.Size = new System.Drawing.Size(110, 88);
+            this.btnMenuExcelProd.TabIndex = 50;
+            this.btnMenuExcelProd.UseVisualStyleBackColor = false;
+            // 
+            // panelMenuXMLProd
+            // 
+            this.panelMenuXMLProd.Controls.Add(this.btnGenListXMLProd);
+            this.panelMenuXMLProd.Controls.Add(this.btnGenXMLProd);
+            this.panelMenuXMLProd.Location = new System.Drawing.Point(1009, 97);
+            this.panelMenuXMLProd.Name = "panelMenuXMLProd";
+            this.panelMenuXMLProd.Size = new System.Drawing.Size(110, 62);
+            this.panelMenuXMLProd.TabIndex = 51;
+            this.panelMenuXMLProd.Visible = false;
+            // 
+            // btnGenListXMLProd
+            // 
+            this.btnGenListXMLProd.BackColor = System.Drawing.Color.White;
+            this.btnGenListXMLProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGenListXMLProd.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.btnGenListXMLProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnGenListXMLProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenListXMLProd.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnGenListXMLProd.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnGenListXMLProd.Location = new System.Drawing.Point(2, 30);
+            this.btnGenListXMLProd.Name = "btnGenListXMLProd";
+            this.btnGenListXMLProd.Size = new System.Drawing.Size(108, 30);
+            this.btnGenListXMLProd.TabIndex = 47;
+            this.btnGenListXMLProd.Text = "LISTAR XML";
+            this.btnGenListXMLProd.UseVisualStyleBackColor = false;
+            // 
+            // btnGenXMLProd
+            // 
+            this.btnGenXMLProd.BackColor = System.Drawing.Color.White;
+            this.btnGenXMLProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGenXMLProd.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.btnGenXMLProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnGenXMLProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenXMLProd.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnGenXMLProd.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnGenXMLProd.Location = new System.Drawing.Point(2, 0);
+            this.btnGenXMLProd.Name = "btnGenXMLProd";
+            this.btnGenXMLProd.Size = new System.Drawing.Size(108, 30);
+            this.btnGenXMLProd.TabIndex = 46;
+            this.btnGenXMLProd.Text = "GENERAR XML";
+            this.btnGenXMLProd.UseVisualStyleBackColor = false;
+            // 
+            // panelMenuJSONProd
+            // 
+            this.panelMenuJSONProd.Controls.Add(this.btnListJSONProd);
+            this.panelMenuJSONProd.Controls.Add(this.btnGenJSONProd);
+            this.panelMenuJSONProd.Location = new System.Drawing.Point(1134, 97);
+            this.panelMenuJSONProd.Name = "panelMenuJSONProd";
+            this.panelMenuJSONProd.Size = new System.Drawing.Size(110, 62);
+            this.panelMenuJSONProd.TabIndex = 52;
+            this.panelMenuJSONProd.Visible = false;
+            // 
+            // btnListJSONProd
+            // 
+            this.btnListJSONProd.BackColor = System.Drawing.Color.White;
+            this.btnListJSONProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnListJSONProd.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.btnListJSONProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnListJSONProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListJSONProd.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnListJSONProd.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnListJSONProd.Location = new System.Drawing.Point(2, 30);
+            this.btnListJSONProd.Name = "btnListJSONProd";
+            this.btnListJSONProd.Size = new System.Drawing.Size(108, 30);
+            this.btnListJSONProd.TabIndex = 47;
+            this.btnListJSONProd.Text = "LISTAR JSON";
+            this.btnListJSONProd.UseVisualStyleBackColor = false;
+            // 
+            // btnGenJSONProd
+            // 
+            this.btnGenJSONProd.BackColor = System.Drawing.Color.White;
+            this.btnGenJSONProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGenJSONProd.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.btnGenJSONProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnGenJSONProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenJSONProd.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnGenJSONProd.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnGenJSONProd.Location = new System.Drawing.Point(2, 0);
+            this.btnGenJSONProd.Name = "btnGenJSONProd";
+            this.btnGenJSONProd.Size = new System.Drawing.Size(108, 30);
+            this.btnGenJSONProd.TabIndex = 46;
+            this.btnGenJSONProd.Text = "GENERAR JSON";
+            this.btnGenJSONProd.UseVisualStyleBackColor = false;
+            // 
+            // panelMenuEXCELProd
+            // 
+            this.panelMenuEXCELProd.Controls.Add(this.btnListEXCELProd);
+            this.panelMenuEXCELProd.Controls.Add(this.btnGenEXCELProd);
+            this.panelMenuEXCELProd.Location = new System.Drawing.Point(1260, 97);
+            this.panelMenuEXCELProd.Name = "panelMenuEXCELProd";
+            this.panelMenuEXCELProd.Size = new System.Drawing.Size(110, 62);
+            this.panelMenuEXCELProd.TabIndex = 53;
+            this.panelMenuEXCELProd.Visible = false;
+            // 
+            // btnListEXCELProd
+            // 
+            this.btnListEXCELProd.BackColor = System.Drawing.Color.White;
+            this.btnListEXCELProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnListEXCELProd.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.btnListEXCELProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnListEXCELProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListEXCELProd.Font = new System.Drawing.Font("Reem Kufi", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnListEXCELProd.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnListEXCELProd.Location = new System.Drawing.Point(2, 30);
+            this.btnListEXCELProd.Name = "btnListEXCELProd";
+            this.btnListEXCELProd.Size = new System.Drawing.Size(108, 30);
+            this.btnListEXCELProd.TabIndex = 47;
+            this.btnListEXCELProd.Text = "LISTAR EXCEL";
+            this.btnListEXCELProd.UseVisualStyleBackColor = false;
+            // 
+            // btnGenEXCELProd
+            // 
+            this.btnGenEXCELProd.BackColor = System.Drawing.Color.White;
+            this.btnGenEXCELProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGenEXCELProd.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.btnGenEXCELProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnGenEXCELProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenEXCELProd.Font = new System.Drawing.Font("Reem Kufi", 7F, System.Drawing.FontStyle.Bold);
+            this.btnGenEXCELProd.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnGenEXCELProd.Location = new System.Drawing.Point(2, 0);
+            this.btnGenEXCELProd.Name = "btnGenEXCELProd";
+            this.btnGenEXCELProd.Size = new System.Drawing.Size(108, 30);
+            this.btnGenEXCELProd.TabIndex = 46;
+            this.btnGenEXCELProd.Text = "GENERAR EXCEL";
+            this.btnGenEXCELProd.UseVisualStyleBackColor = false;
+            // 
+            // btnAñadirProd
+            // 
+            this.btnAñadirProd.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnAñadirProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAñadirProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnAñadirProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAñadirProd.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnAñadirProd.ForeColor = System.Drawing.Color.White;
+            this.btnAñadirProd.Image = ((System.Drawing.Image)(resources.GetObject("btnAñadirProd.Image")));
+            this.btnAñadirProd.Location = new System.Drawing.Point(1011, 185);
+            this.btnAñadirProd.Name = "btnAñadirProd";
+            this.btnAñadirProd.Size = new System.Drawing.Size(110, 88);
+            this.btnAñadirProd.TabIndex = 54;
+            this.btnAñadirProd.UseVisualStyleBackColor = false;
+            // 
+            // btnEditarProd
+            // 
+            this.btnEditarProd.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnEditarProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEditarProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnEditarProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarProd.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnEditarProd.ForeColor = System.Drawing.Color.White;
+            this.btnEditarProd.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarProd.Image")));
+            this.btnEditarProd.Location = new System.Drawing.Point(1134, 185);
+            this.btnEditarProd.Name = "btnEditarProd";
+            this.btnEditarProd.Size = new System.Drawing.Size(110, 88);
+            this.btnEditarProd.TabIndex = 55;
+            this.btnEditarProd.UseVisualStyleBackColor = false;
+            // 
+            // btnElimProd
+            // 
+            this.btnElimProd.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnElimProd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnElimProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnElimProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnElimProd.Font = new System.Drawing.Font("Reem Kufi", 12F, System.Drawing.FontStyle.Bold);
+            this.btnElimProd.ForeColor = System.Drawing.Color.White;
+            this.btnElimProd.Image = ((System.Drawing.Image)(resources.GetObject("btnElimProd.Image")));
+            this.btnElimProd.Location = new System.Drawing.Point(1262, 185);
+            this.btnElimProd.Name = "btnElimProd";
+            this.btnElimProd.Size = new System.Drawing.Size(110, 88);
+            this.btnElimProd.TabIndex = 56;
+            this.btnElimProd.UseVisualStyleBackColor = false;
+            // 
+            // btnGenInforme
+            // 
+            this.btnGenInforme.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnGenInforme.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGenInforme.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnGenInforme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenInforme.Font = new System.Drawing.Font("Reem Kufi", 20F, System.Drawing.FontStyle.Bold);
+            this.btnGenInforme.ForeColor = System.Drawing.Color.White;
+            this.btnGenInforme.Location = new System.Drawing.Point(1011, 452);
+            this.btnGenInforme.Name = "btnGenInforme";
+            this.btnGenInforme.Size = new System.Drawing.Size(359, 88);
+            this.btnGenInforme.TabIndex = 57;
+            this.btnGenInforme.Text = "GENERAR INFORME";
+            this.btnGenInforme.UseVisualStyleBackColor = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.imgAviso);
+            this.panel2.Location = new System.Drawing.Point(1011, 293);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(359, 135);
+            this.panel2.TabIndex = 58;
+            // 
+            // imgAviso
+            // 
+            this.imgAviso.Image = ((System.Drawing.Image)(resources.GetObject("imgAviso.Image")));
+            this.imgAviso.Location = new System.Drawing.Point(232, 17);
+            this.imgAviso.Name = "imgAviso";
+            this.imgAviso.Size = new System.Drawing.Size(116, 101);
+            this.imgAviso.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgAviso.TabIndex = 0;
+            this.imgAviso.TabStop = false;
+            // 
             // FormProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1505, 862);
+            this.Controls.Add(this.panelProductos);
             this.Controls.Add(this.panelCategorias);
             this.Controls.Add(this.btnProductos);
             this.Controls.Add(this.btnCategorias);
@@ -1038,6 +1366,13 @@
             this.panelModificarC.PerformLayout();
             this.panelAñadirC.ResumeLayout(false);
             this.panelAñadirC.PerformLayout();
+            this.panelProductos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            this.panelMenuXMLProd.ResumeLayout(false);
+            this.panelMenuJSONProd.ResumeLayout(false);
+            this.panelMenuEXCELProd.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgAviso)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1073,7 +1408,7 @@
         private System.Windows.Forms.Label lbErrorNomC;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button ayuda;
+        private System.Windows.Forms.Button btnAbreCXP;
         private System.Windows.Forms.Panel panelMenuXml;
         private System.Windows.Forms.Button btnListarXML;
         private System.Windows.Forms.Button btnGenXML;
@@ -1108,5 +1443,26 @@
         private System.Windows.Forms.Button btnAceptaCBorr;
         private System.Windows.Forms.Panel panelPortada;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panelProductos;
+        private System.Windows.Forms.DataGridView dgvProductos;
+        private System.Windows.Forms.Panel barra4;
+        private System.Windows.Forms.Button btnMenuExcelProd;
+        private System.Windows.Forms.Button btnMenuJSONProd;
+        private System.Windows.Forms.Button btnMenuXMLProd;
+        private System.Windows.Forms.Panel panelMenuJSONProd;
+        private System.Windows.Forms.Button btnListJSONProd;
+        private System.Windows.Forms.Button btnGenJSONProd;
+        private System.Windows.Forms.Panel panelMenuXMLProd;
+        private System.Windows.Forms.Button btnGenListXMLProd;
+        private System.Windows.Forms.Button btnGenXMLProd;
+        private System.Windows.Forms.Panel panelMenuEXCELProd;
+        private System.Windows.Forms.Button btnListEXCELProd;
+        private System.Windows.Forms.Button btnGenEXCELProd;
+        private System.Windows.Forms.Button btnAñadirProd;
+        private System.Windows.Forms.Button btnGenInforme;
+        private System.Windows.Forms.Button btnElimProd;
+        private System.Windows.Forms.Button btnEditarProd;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox imgAviso;
     }
 }

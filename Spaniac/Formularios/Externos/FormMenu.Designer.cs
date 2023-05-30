@@ -37,7 +37,7 @@
             this.iconoPerfil = new System.Windows.Forms.PictureBox();
             this.lbUser = new System.Windows.Forms.Label();
             this.imgPerfil = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnConfiguracion = new System.Windows.Forms.Button();
             this.btnProveedores = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnEntradas = new System.Windows.Forms.Button();
@@ -74,7 +74,7 @@
             this.panelIzquierdo.Controls.Add(this.iconoPerfil);
             this.panelIzquierdo.Controls.Add(this.lbUser);
             this.panelIzquierdo.Controls.Add(this.imgPerfil);
-            this.panelIzquierdo.Controls.Add(this.button2);
+            this.panelIzquierdo.Controls.Add(this.btnConfiguracion);
             this.panelIzquierdo.Controls.Add(this.btnProveedores);
             this.panelIzquierdo.Controls.Add(this.btnClientes);
             this.panelIzquierdo.Controls.Add(this.btnEntradas);
@@ -164,22 +164,24 @@
             this.imgPerfil.TabIndex = 11;
             this.imgPerfil.TabStop = false;
             // 
-            // button2
+            // btnConfiguracion
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(11)))), ((int)(((byte)(50)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Reem Kufi", 11F);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(0, 592);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 46);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "CONFIGURACIÓN";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(11)))), ((int)(((byte)(50)))));
+            this.btnConfiguracion.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnConfiguracion.FlatAppearance.BorderSize = 0;
+            this.btnConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfiguracion.Font = new System.Drawing.Font("Reem Kufi", 11F);
+            this.btnConfiguracion.ForeColor = System.Drawing.Color.White;
+            this.btnConfiguracion.Location = new System.Drawing.Point(0, 592);
+            this.btnConfiguracion.Name = "btnConfiguracion";
+            this.btnConfiguracion.Size = new System.Drawing.Size(200, 46);
+            this.btnConfiguracion.TabIndex = 10;
+            this.btnConfiguracion.Text = "CONFIGURACIÓN";
+            this.btnConfiguracion.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnConfiguracion.UseVisualStyleBackColor = false;
+            this.btnConfiguracion.Click += new System.EventHandler(this.button2_Click);
+            this.btnConfiguracion.MouseLeave += new System.EventHandler(this.btnConfiguracion_MouseLeave);
+            this.btnConfiguracion.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnConfiguracion_MouseMove);
             // 
             // btnProveedores
             // 
@@ -197,6 +199,8 @@
             this.btnProveedores.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnProveedores.UseVisualStyleBackColor = false;
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
+            this.btnProveedores.MouseLeave += new System.EventHandler(this.btnProveedores_MouseLeave);
+            this.btnProveedores.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnProveedores_MouseMove);
             // 
             // btnClientes
             // 
@@ -214,6 +218,8 @@
             this.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnClientes.UseVisualStyleBackColor = false;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
+            this.btnClientes.MouseLeave += new System.EventHandler(this.btnClientes_MouseLeave);
+            this.btnClientes.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnClientes_MouseMove);
             // 
             // btnEntradas
             // 
@@ -263,6 +269,8 @@
             this.btnAlmacenes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnAlmacenes.UseVisualStyleBackColor = false;
             this.btnAlmacenes.Click += new System.EventHandler(this.btnAlmacenes_Click);
+            this.btnAlmacenes.MouseLeave += new System.EventHandler(this.btnAlmacenes_MouseLeave);
+            this.btnAlmacenes.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAlmacenes_MouseMove);
             // 
             // btnProductos
             // 
@@ -280,6 +288,8 @@
             this.btnProductos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnProductos.UseVisualStyleBackColor = false;
             this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
+            this.btnProductos.MouseLeave += new System.EventHandler(this.btnProductos_MouseLeave);
+            this.btnProductos.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnProductos_MouseMove);
             // 
             // btnInventario
             // 
@@ -313,6 +323,8 @@
             this.btnPanel.TabIndex = 2;
             this.btnPanel.UseVisualStyleBackColor = false;
             this.btnPanel.Click += new System.EventHandler(this.btnPanel_Click);
+            this.btnPanel.MouseLeave += new System.EventHandler(this.btnPanel_MouseLeave);
+            this.btnPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnPanel_MouseMove);
             // 
             // panel1
             // 
@@ -372,7 +384,7 @@
         private System.Windows.Forms.Button btnPanel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnInventario;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnConfiguracion;
         private System.Windows.Forms.Button btnProveedores;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnEntradas;

@@ -99,6 +99,15 @@ namespace Spaniac.Formularios
         {
             abrirFormEnPanel(new FormPanel());
         }
+        private void btnPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnPanel_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
 
 
         /*-------------------------------------------------------------------------------------------------*/
@@ -107,6 +116,15 @@ namespace Spaniac.Formularios
         private void btnProductos_Click(object sender, EventArgs e)
         {
             abrirFormEnPanel(new FormProductos());
+        }
+        private void btnProductos_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnProductos_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
         }
 
 
@@ -118,6 +136,16 @@ namespace Spaniac.Formularios
             abrirFormEnPanel(new FormAlmacenes());
         }
 
+        private void btnAlmacenes_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnAlmacenes_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                             GESTIÓN DE EVENTOS DEL BOTÓN DE CLIENTES                            */
@@ -125,6 +153,16 @@ namespace Spaniac.Formularios
         private void btnClientes_Click(object sender, EventArgs e)
         {
             abrirFormEnPanel(new FormClientes());
+        }
+
+        private void btnClientes_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnClientes_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
         }
 
 
@@ -136,6 +174,16 @@ namespace Spaniac.Formularios
             abrirFormEnPanel(new FormProveedores());
         }
 
+        private void btnProveedores_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnProveedores_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                            GESTIÓN DE EVENTOS DEL BOTÓN DE CONFIGURACIÓN                        */
@@ -143,6 +191,16 @@ namespace Spaniac.Formularios
         private void button2_Click(object sender, EventArgs e)
         {
             abrirFormEnPanel(new FormConfiguracion(userLog));
+        }
+
+        private void btnConfiguracion_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnConfiguracion_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
         }
 
 

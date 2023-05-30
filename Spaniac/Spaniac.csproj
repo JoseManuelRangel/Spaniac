@@ -188,6 +188,12 @@
     <Compile Include="Formularios\Internos\FormPanel.Designer.cs">
       <DependentUpon>FormPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Internos\Productos\FormCategoriaXProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Internos\Productos\FormCategoriaXProducto.Designer.cs">
+      <DependentUpon>FormCategoriaXProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Internos\Productos\FormListarCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\FormPanel.resx">
       <DependentUpon>FormPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Internos\Productos\FormCategoriaXProducto.resx">
+      <DependentUpon>FormCategoriaXProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\Productos\FormListarCategorias.resx">
       <DependentUpon>FormListarCategorias.cs</DependentUpon>

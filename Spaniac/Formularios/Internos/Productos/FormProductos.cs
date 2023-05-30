@@ -104,7 +104,39 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
         private void btnCategorias_Click(object sender, EventArgs e)
         {
             panelCategorias.Visible = true;
+            panelProductos.Visible = false;
         }
+
+        private void btnCategorias_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnCategorias_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                              GESTION DE EVENTOS DEL BOTÓN DE PRODUCTOS                          */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            panelProductos.Visible = true;
+            panelCategorias.Visible = false;
+        }
+
+        private void btnProductos_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnProductos_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                      GESTIÓN DE EVENTOS DEL BOTÓN DEL MENÚ XML DE CATEGORÍAS                    */
@@ -713,6 +745,24 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
         }
 
         private void imgLimpiar_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*          Gestión de eventos del botón que lleva al formulario de productos por categoría.       */
+        private void btnAbreCXP_Click(object sender, EventArgs e)
+        {
+            FormCategoriaXProducto form = new FormCategoriaXProducto();
+            form.Show();
+        }
+
+        private void btnAbreCXP_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnAbreCXP_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
         }
