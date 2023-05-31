@@ -60,7 +60,7 @@ namespace Spaniac.Formularios.Internos.Proveedores
             rellenaCbDatosProveedores();
 
             EstilosTabla estilos = new EstilosTabla(this.dgvProveedores);
-            estilos.estiloCabecera();
+            estilos.estiloCabecera(8);
             estilos.estiloFila();
         }
 

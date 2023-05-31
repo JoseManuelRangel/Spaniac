@@ -59,7 +59,7 @@ namespace Spaniac.Formularios.Internos.Clientes
             rellenaComboBoxIDCliente();
 
             EstilosTabla estilos = new EstilosTabla(this.dgvClientes);
-            estilos.estiloCabecera();
+            estilos.estiloCabecera(8);
             estilos.estiloFila();
         }
 

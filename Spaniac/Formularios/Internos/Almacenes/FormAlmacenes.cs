@@ -68,7 +68,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
             rellenaComboBoxIDAlm();
 
             EstilosTabla estilos = new EstilosTabla(this.dgvAlmacenes);
-            estilos.estiloCabecera();
+            estilos.estiloCabecera(10);
             estilos.estiloFila();
         }
 
@@ -621,7 +621,7 @@ namespace Spaniac.Formularios.Internos.Almacenes
                     string nombreMod = txtNombreAMod.Text;
                     int estadoMod = estadoEscogidoMod;
 
-                    string sql = "UPDATE Almacen SET nombre='" + nombreMod + "', activo=" + estadoMod + "WHERE id=" + cbIDAMod.SelectedIndex;
+                    string sql = "UPDATE Almacen SET nombre='" + nombreMod + "', activo=" + estadoMod + "WHERE id=" + cbIDAMod.Text;
                     SqlConnection cnx = new SqlConnection(conection);
 
                     cnx.Open();

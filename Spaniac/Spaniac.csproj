@@ -200,6 +200,12 @@
     <Compile Include="Formularios\Internos\Productos\FormListarCategorias.Designer.cs">
       <DependentUpon>FormListarCategorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Internos\Productos\FormMenuProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Internos\Productos\FormMenuProductos.Designer.cs">
+      <DependentUpon>FormMenuProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Internos\Productos\FormProductos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\Productos\FormListarCategorias.resx">
       <DependentUpon>FormListarCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Internos\Productos\FormMenuProductos.resx">
+      <DependentUpon>FormMenuProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Internos\Productos\FormProductos.resx">
       <DependentUpon>FormProductos.cs</DependentUpon>

@@ -18,17 +18,17 @@ namespace Spaniac.Clases
             this.miTabla = tabla;
         }
 
-        public void estiloCabecera()
+        public void estiloCabecera(int size)
         {
             DataGridViewCellStyle cabecera = new DataGridViewCellStyle();
 
             cabecera.Alignment = DataGridViewContentAlignment.MiddleCenter;
             cabecera.BackColor = Color.MidnightBlue;
             cabecera.ForeColor = Color.White;
-            cabecera.Font = new Font("Reem Kufi", 10, FontStyle.Bold);
+            cabecera.Font = new Font("Reem Kufi", size, FontStyle.Bold);
 
             this.miTabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.miTabla.ColumnHeadersHeight = 40;
+            this.miTabla.ColumnHeadersHeight = 35;
             this.miTabla.ColumnHeadersDefaultCellStyle = cabecera;
             this.miTabla.EnableHeadersVisualStyles = false;
         }

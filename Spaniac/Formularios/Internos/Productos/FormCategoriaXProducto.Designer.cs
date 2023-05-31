@@ -39,20 +39,14 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.cbIDCategoria = new System.Windows.Forms.ComboBox();
             this.barra1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.dgvCatXProd = new System.Windows.Forms.DataGridView();
-            this.imgLimpiar = new System.Windows.Forms.PictureBox();
-            this.txtFiltroC = new System.Windows.Forms.TextBox();
-            this.cbDatosC = new System.Windows.Forms.ComboBox();
-            this.lbBuscarC = new System.Windows.Forms.Label();
             this.barra4 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelIzquierdo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).BeginInit();
             this.panelCat.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCatXProd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).BeginInit();
             this.SuspendLayout();
             // 
             // panelIzquierdo
@@ -82,6 +76,7 @@
             // 
             this.panelCat.BackColor = System.Drawing.Color.White;
             this.panelCat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCat.Controls.Add(this.label1);
             this.panelCat.Controls.Add(this.lbError);
             this.panelCat.Controls.Add(this.lb1);
             this.panelCat.Controls.Add(this.txtIDAlmacen);
@@ -89,7 +84,6 @@
             this.panelCat.Controls.Add(this.txtNombre);
             this.panelCat.Controls.Add(this.cbIDCategoria);
             this.panelCat.Controls.Add(this.barra1);
-            this.panelCat.Controls.Add(this.pictureBox1);
             this.panelCat.Location = new System.Drawing.Point(137, 21);
             this.panelCat.Name = "panelCat";
             this.panelCat.Size = new System.Drawing.Size(264, 406);
@@ -168,17 +162,6 @@
             this.barra1.Size = new System.Drawing.Size(230, 5);
             this.barra1.TabIndex = 1;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(80, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(107, 55);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnSalir
             // 
             this.btnSalir.BackColor = System.Drawing.Color.MidnightBlue;
@@ -202,50 +185,10 @@
             this.dgvCatXProd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCatXProd.BackgroundColor = System.Drawing.Color.White;
             this.dgvCatXProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCatXProd.Location = new System.Drawing.Point(454, 71);
+            this.dgvCatXProd.Location = new System.Drawing.Point(454, 21);
             this.dgvCatXProd.Name = "dgvCatXProd";
-            this.dgvCatXProd.Size = new System.Drawing.Size(563, 417);
+            this.dgvCatXProd.Size = new System.Drawing.Size(563, 467);
             this.dgvCatXProd.TabIndex = 10;
-            // 
-            // imgLimpiar
-            // 
-            this.imgLimpiar.Image = ((System.Drawing.Image)(resources.GetObject("imgLimpiar.Image")));
-            this.imgLimpiar.Location = new System.Drawing.Point(978, 21);
-            this.imgLimpiar.Name = "imgLimpiar";
-            this.imgLimpiar.Size = new System.Drawing.Size(39, 31);
-            this.imgLimpiar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgLimpiar.TabIndex = 41;
-            this.imgLimpiar.TabStop = false;
-            // 
-            // txtFiltroC
-            // 
-            this.txtFiltroC.Font = new System.Drawing.Font("Reem Kufi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFiltroC.Location = new System.Drawing.Point(798, 21);
-            this.txtFiltroC.Multiline = true;
-            this.txtFiltroC.Name = "txtFiltroC";
-            this.txtFiltroC.Size = new System.Drawing.Size(174, 31);
-            this.txtFiltroC.TabIndex = 40;
-            // 
-            // cbDatosC
-            // 
-            this.cbDatosC.BackColor = System.Drawing.Color.White;
-            this.cbDatosC.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbDatosC.Font = new System.Drawing.Font("Reem Kufi", 10F);
-            this.cbDatosC.FormattingEnabled = true;
-            this.cbDatosC.Location = new System.Drawing.Point(547, 21);
-            this.cbDatosC.Name = "cbDatosC";
-            this.cbDatosC.Size = new System.Drawing.Size(245, 31);
-            this.cbDatosC.TabIndex = 39;
-            // 
-            // lbBuscarC
-            // 
-            this.lbBuscarC.AutoSize = true;
-            this.lbBuscarC.Font = new System.Drawing.Font("Reem Kufi", 9.749999F);
-            this.lbBuscarC.Location = new System.Drawing.Point(450, 24);
-            this.lbBuscarC.Name = "lbBuscarC";
-            this.lbBuscarC.Size = new System.Drawing.Size(75, 23);
-            this.lbBuscarC.TabIndex = 38;
-            this.lbBuscarC.Text = "Buscar por: ";
             // 
             // barra4
             // 
@@ -255,6 +198,17 @@
             this.barra4.Size = new System.Drawing.Size(3, 470);
             this.barra4.TabIndex = 42;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Reem Kufi", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label1.Location = new System.Drawing.Point(40, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(183, 49);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "CATEGORÍA";
+            // 
             // FormCategoriaXProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,10 +216,6 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1049, 509);
             this.Controls.Add(this.barra4);
-            this.Controls.Add(this.imgLimpiar);
-            this.Controls.Add(this.txtFiltroC);
-            this.Controls.Add(this.cbDatosC);
-            this.Controls.Add(this.lbBuscarC);
             this.Controls.Add(this.dgvCatXProd);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.panelCat);
@@ -279,11 +229,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.logoEmpresa)).EndInit();
             this.panelCat.ResumeLayout(false);
             this.panelCat.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCatXProd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLimpiar)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -292,7 +239,6 @@
         private System.Windows.Forms.Panel panelIzquierdo;
         private System.Windows.Forms.PictureBox logoEmpresa;
         private System.Windows.Forms.Panel panelCat;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox cbIDCategoria;
         private System.Windows.Forms.Panel barra1;
         private System.Windows.Forms.Button btnSalir;
@@ -302,10 +248,7 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lb1;
         private System.Windows.Forms.Label lbError;
-        private System.Windows.Forms.PictureBox imgLimpiar;
-        private System.Windows.Forms.TextBox txtFiltroC;
-        private System.Windows.Forms.ComboBox cbDatosC;
-        private System.Windows.Forms.Label lbBuscarC;
         private System.Windows.Forms.Panel barra4;
+        private System.Windows.Forms.Label label1;
     }
 }

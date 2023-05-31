@@ -36,7 +36,7 @@ namespace Spaniac.Formularios.Internos.Productos
 
             EstilosTabla estilos = new EstilosTabla(dgvCatXProd);
             estilos.estiloFila();
-            estilos.estiloCabecera();
+            estilos.estiloCabecera(10);
         }
 
         private void FormCategoriaXProducto_MouseDown(object sender, MouseEventArgs e)
@@ -93,7 +93,7 @@ namespace Spaniac.Formularios.Internos.Productos
                     command.Dispose();
                     lector.Close();
 
-                    sql = "SELECT id, nombre, stock FROM Producto WHERE idCategoria=" + cbIDCategoria.Text;
+                    sql = "SELECT id, nombre, cifProveedor FROM Producto WHERE idCategoria=" + cbIDCategoria.Text;
 
                     SqlCommand command2 = new SqlCommand(sql, cnx);
                     lector = command2.ExecuteReader();

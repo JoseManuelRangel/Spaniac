@@ -43,9 +43,12 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
 
         /* Listas. */
         static List<string> nodosXML = new List<string>();
+        static List<string> productosBajoStock = new List<string>();
 
         /* Variable cadena que almacena el JSON cargado. */
         static string categoriasJSON;
+
+        static int cantMin;
 
         /*-------------------------------------------------------------------------------------------------*/
         /*                      CONFIGURACIÓN DEL FORMULARIO. EVENTOS Y CONSTRUCTOR                        */
@@ -53,40 +56,19 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
         public FormProductos()
         {
             InitializeComponent();
+            inicializaControlesCategorias();
 
-            rellenaTablaCategorias();
+            rellenaTablas();
+
             rellenaComboBoxAlmacenes();
             rellenaCbDatosCategoria();
             rellenaComboBoxIDCat();
 
-            panelPortada.Visible = true;
+            compruebaProductos();
 
-            /* Elementos del panel derecho de la sección de categorías. */
-            imgLimpiar.Image = Image.FromFile("Goma.png");
-
-            /* Elementos del subpanel de adición de categorías. */
-            lbErrorAlmC.Text = "Selecciona un almacén.";
-            lbErrorAlmC.Visible = true;
-
-            /* Elementos del subpanel de modificación de categorías. */
-            lbErrorIdCMod.Text = "Selecciona un ID para buscar categoría a editar.";
-            lbErrorIdCMod.Visible = true;
-
-            txtNombreCMod.Enabled = false;
-            txtProdCMod.Enabled = false;
-            cbAlmacenCMod.Enabled = false;
-
-
-            /* Elementos del subpanel de borrado de categorías. */
-            lbErrorIdCBorr.Text = "Selecciona un ID para buscar categoría a borrar.";
-            lbErrorIdCBorr.Visible = true;
-
-            btnAceptaCBorr.Enabled = false;
-            panelConfBorr.Visible = false;
-
-            EstilosTabla estilos = new EstilosTabla(this.dgvCategorias);
-            estilos.estiloCabecera();
-            estilos.estiloFila();
+            EstilosTabla estilosProductos = new EstilosTabla(this.dgvProductos);
+            estilosProductos.estiloCabecera(8);
+            estilosProductos.estiloFila();
         }
 
         /*-------------------------------------------------------------------------------------------------*/
@@ -113,26 +95,6 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
         }
 
         private void btnCategorias_MouseLeave(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-        }
-
-
-        /*-------------------------------------------------------------------------------------------------*/
-        /*                              GESTION DE EVENTOS DEL BOTÓN DE PRODUCTOS                          */
-        /*-------------------------------------------------------------------------------------------------*/
-        private void btnProductos_Click(object sender, EventArgs e)
-        {
-            panelProductos.Visible = true;
-            panelCategorias.Visible = false;
-        }
-
-        private void btnProductos_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-        }
-
-        private void btnProductos_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
         }
@@ -470,7 +432,7 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                 FormNotificaciones form = new FormNotificaciones("Categoría registrada correctamente.");
                 form.Show();
 
-                rellenaTablaCategorias();
+                rellenaTablaCategoria();
                 rellenaComboBoxIDCat();
             }
         }
@@ -582,7 +544,7 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                     FormNotificaciones form = new FormNotificaciones("Categoría modificada correctamente.");
                     form.Show();
 
-                    rellenaTablaCategorias();
+                    rellenaTablaCategoria();
                 } catch(Exception ex)
                 {
                     FormNotificaciones form = new FormNotificaciones(ex.Message);
@@ -678,7 +640,7 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                     FormNotificaciones form = new FormNotificaciones("Categoría borrada correctamente.");
                     form.Show();
 
-                    rellenaTablaCategorias();
+                    rellenaTablaCategoria();
                     rellenaComboBoxIDCat();
                 } else
                 {
@@ -769,8 +731,80 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
 
 
         /*-------------------------------------------------------------------------------------------------*/
+        /*                              GESTION DE EVENTOS DEL BOTÓN DE PRODUCTOS                          */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            panelProductos.Visible = true;
+            panelCategorias.Visible = false;
+        }
+
+        private void btnProductos_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnProductos_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
+        /*                              GESTION DE EVENTOS DEL BOTÓN DE PRODUCTOS                          */
+        /*-------------------------------------------------------------------------------------------------*/
+        private void btnAñadirProd_Click(object sender, EventArgs e)
+        {
+            FormMenuProductos form = new FormMenuProductos("Insertar", this.dgvProductos);
+            form.Show();
+        }
+
+        private void btnAñadirProd_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void btnAñadirProd_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+
+        /*-------------------------------------------------------------------------------------------------*/
         /*                            METODOS USADOS EN EL CÓDIGO DEL FORMULARIO                           */
         /*-------------------------------------------------------------------------------------------------*/
+        private void inicializaControlesCategorias()
+        {
+            panelPortada.Visible = true;
+
+            /* Elementos del panel derecho de la sección de categorías. */
+            imgLimpiar.Image = Image.FromFile("Goma.png");
+
+            /* Elementos del subpanel de adición de categorías. */
+            lbErrorAlmC.Text = "Selecciona un almacén.";
+            lbErrorAlmC.Visible = true;
+
+            /* Elementos del subpanel de modificación de categorías. */
+            lbErrorIdCMod.Text = "Selecciona un ID para buscar categoría a editar.";
+            lbErrorIdCMod.Visible = true;
+
+            txtNombreCMod.Enabled = false;
+            txtProdCMod.Enabled = false;
+            cbAlmacenCMod.Enabled = false;
+
+
+            /* Elementos del subpanel de borrado de categorías. */
+            lbErrorIdCBorr.Text = "Selecciona un ID para buscar categoría a borrar.";
+            lbErrorIdCBorr.Visible = true;
+
+            btnAceptaCBorr.Enabled = false;
+            panelConfBorr.Visible = false;
+
+            EstilosTabla estilosCategorias = new EstilosTabla(this.dgvCategorias);
+            estilosCategorias.estiloCabecera(9);
+            estilosCategorias.estiloFila();
+        }
+        
         private void generaXmlCategorias()
         {
             try
@@ -1065,14 +1099,20 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
             }
         }
 
-
-        private void rellenaTablaCategorias()
+        private void rellenaTablas()
         {
-            string sql = "SELECT * FROM Categoria";
-            SqlConnection cnx = new SqlConnection(conection);
+            rellenaTablaCategoria();
+            rellenaTablaProductos();
+        }
+
+
+        private void rellenaTablaCategoria()
+        {
 
             try
             {
+                string sql = "SELECT * FROM Categoria";
+                SqlConnection cnx = new SqlConnection(conection);
                 cnx.Open();
 
                 SqlCommand command = new SqlCommand(sql, cnx);
@@ -1088,8 +1128,40 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                 }
 
                 command.Dispose();
+                lector.Close();
                 cnx.Close();
             } catch (Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
+            }
+        }
+
+        private void rellenaTablaProductos()
+        {
+            try
+            {
+                string sql = "SELECT id, nombre, stock, stockReservado, stockFuturo, cantMin, cantMax, precioVenta  FROM Producto";
+                SqlConnection cnx = new SqlConnection(conection);
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                DataTable dt = new DataTable();
+                dt.Load(lector);
+                dgvProductos.DataSource = dt;
+
+                foreach (DataGridViewColumn col in dgvProductos.Columns)
+                {
+                    col.HeaderText = col.HeaderText.ToUpper();
+                }
+
+                command.Dispose();
+                lector.Close();
+                cnx.Close();
+            }
+            catch (Exception ex)
             {
                 FormNotificaciones form = new FormNotificaciones(ex.Message);
                 form.Show();
@@ -1271,7 +1343,6 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
             
         }
 
-
         private void filtroDatos()
         {
             if(cbDatosC.SelectedIndex != 0)
@@ -1297,6 +1368,56 @@ namespace Spaniac.Formularios.FormulariosInternos.FormulariosProductos
                     FormNotificaciones form = new FormNotificaciones(ex.Message);
                     form.Show();
                 }
+            }
+        }
+
+        private void compruebaProductos()
+        {
+            try
+            {
+                productosBajoStock.Clear();
+
+                string sql = "SELECT * FROM Producto";
+                SqlConnection cnx = new SqlConnection(conection);
+
+                cnx.Open();
+
+                SqlCommand command = new SqlCommand(sql, cnx);
+                SqlDataReader lector = command.ExecuteReader();
+
+                while(lector.Read())
+                {
+                    if(lector.GetInt32(2) <= lector.GetInt32(5))
+                    {
+                        productosBajoStock.Add(lector.GetString(1));
+                    }
+                }
+
+                if(productosBajoStock.Count == 0)
+                {
+                    imgAviso.Image = Image.FromFile("Correct.png");
+
+                    txtAviso.Text = "";
+                    txtAviso.ForeColor = System.Drawing.Color.Green;
+                    txtAviso.Text = "Todos los productos están en las cantidades aceptadas de stock.";
+                } else
+                {
+                    imgAviso.Image = Image.FromFile("Peligro.png");
+
+                    txtAviso.Text = "";
+                    txtAviso.ForeColor = System.Drawing.Color.Red;
+                    txtAviso.Text += "Los siguientes productos están en cantidades mínimas o fuera de stock: "
+                        + Environment.NewLine;
+
+                    for(int i = 0; i < productosBajoStock.Count; i++)
+                    {
+                        txtAviso.Text += Environment.NewLine + "- " + productosBajoStock[i].ToString();
+                    }
+                }
+            } catch(Exception ex)
+            {
+                FormNotificaciones form = new FormNotificaciones(ex.Message);
+                form.Show();
             }
         }
     }
